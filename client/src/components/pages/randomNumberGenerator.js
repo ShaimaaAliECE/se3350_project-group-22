@@ -1,4 +1,4 @@
-function RandomNumbersArray(size, max, min){
+export function RandomNumbersArray(size, max, min){
   var count = 1;
   var rangeSize = max-min+1;
   var numbersArray = new Array(size);
@@ -13,7 +13,7 @@ function RandomNumbersArray(size, max, min){
       do {
           randomNum = Math.floor(Math.random() * (max - min + 1) ) + min;
     
-      } while(( count<= rangeSize) && (InNumberList(numbersArray,randomNum, size)));
+      } while((count<= rangeSize) && (InNumberList(numbersArray,randomNum, size)));
 
       numbersArray[i] = randomNum;
       count++;
