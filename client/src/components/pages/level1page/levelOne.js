@@ -18,7 +18,6 @@ function Random() {
   var rnd10 = Math.floor(Math.random() * 20) + 1;
 
   document.getElementById("tb").value = rnd;
-
   document.getElementById("tb2").value = rnd2;
   document.getElementById("tb3").value = rnd3;
   document.getElementById("tb4").value = rnd4;
@@ -26,7 +25,6 @@ function Random() {
   document.getElementById("tb6").value = rnd6;
   document.getElementById("tb7").value = rnd7;
   document.getElementById("tb8").value = rnd8;
-
   document.getElementById("tb9").value = rnd9;
   document.getElementById("tb10").value = rnd10;
 }
