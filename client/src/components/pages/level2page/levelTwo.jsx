@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import {RandomNumbersArray} from '../randomNumberGenerator.js';
+import {RandomNumbersArray} from '../../../randomNumberGenerator.js';
+import Number from '../../Number';
 
 export default class LevelTwo extends React.Component {
   getButtonsUsingMap(){
@@ -10,7 +11,7 @@ export default class LevelTwo extends React.Component {
     //return the button with the number in the array
     let buttons=[];
     for (let num of randomNum){
-      buttons.push(<button>{num}</button>);
+      buttons.push(<Number className={num}></Number>);
     }
         ReactDOM.render(<> 
              {buttons}
@@ -21,11 +22,12 @@ export default class LevelTwo extends React.Component {
     return (
       <div id="main">
         <h1>Hello</h1>
-        <button> alice yout button</button>
+        <button>back</button>
         <button onClick={this.getButtonsUsingMap}>Generate 10 Numbers</button>
-
+        <button>next</button>
         <div id="numbers"></div>
-      </div>
+        <div id="containers"></div>
+        </div>
     );
   }
 
