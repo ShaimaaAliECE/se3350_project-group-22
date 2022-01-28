@@ -29,6 +29,9 @@ function Random() {
   document.getElementById("tb10").value = rnd10;
 
   //display the step
+  var step = document.getElementById("step1");
+  //
+  step.classList.toggle("show");
   document.getElementById("step1").value =
     "Step1: A set of 10 numbers is randomly generated!";
 }

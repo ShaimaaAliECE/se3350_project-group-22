@@ -73,9 +73,9 @@ h1 {
   background-color: #ffffff;
 }
 
-div {
-  text-align: center;
-}
+/* div {
+  /* text-align: center;
+} */
 
 form {
   align-self: center;
@@ -92,4 +92,11 @@ input:focus {
 }
 body {
   background-color: rgb(240, 227, 245);
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }
