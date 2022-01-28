@@ -1,5 +1,5 @@
 .background--custom {
-  background: linear-gradient(90deg, #24aac7, #c8c7f4, #add345);
+  background: linear-gradient(90deg, #271181, #4e045d, #7e3ad9);
   background-size: 300% 300%;
   animation: gradient 4s alternate infinite;
   position: absolute;
