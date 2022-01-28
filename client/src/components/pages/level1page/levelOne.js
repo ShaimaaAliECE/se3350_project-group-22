@@ -27,4 +27,8 @@ function Random() {
   document.getElementById("tb8").value = rnd8;
   document.getElementById("tb9").value = rnd9;
   document.getElementById("tb10").value = rnd10;
+
+  //display the step
+  document.getElementById("step1").value =
+    "Step1: A set of 10 numbers is randomly generated!";
 }

@@ -76,6 +76,20 @@ h1 {
 div {
   text-align: center;
 }
+
+form {
+  align-self: center;
+}
+input,
+select,
+textarea {
+  color: #000000;
+}
+
+textarea:focus,
+input:focus {
+  color: #ff0000;
+}
 body {
   background-color: rgb(240, 227, 245);
 }
