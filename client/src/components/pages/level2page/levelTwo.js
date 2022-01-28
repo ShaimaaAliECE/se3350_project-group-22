@@ -7,6 +7,7 @@ export default class LevelTwo extends React.Component {
       <div className="header">
         <h1>Hello</h1>
         <button> alice yout button</button>
+        <button> alice another button</button>
 
       </div>
     );
