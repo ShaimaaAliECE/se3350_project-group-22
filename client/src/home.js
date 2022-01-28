@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Link from "react-router-dom";
 export default class home extends Component {
   render() {
     return (
@@ -23,15 +24,14 @@ export default class home extends Component {
             {" "}
             Algorithm3{" "}
           </button>
-
         </div>
 
         <div className="name">
-          <br/>
+          <br />
           <h3>Levels</h3>
         </div>
         <div className="container">
-        <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
+          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
             {" "}
             Level 1{" "}
           </button>
