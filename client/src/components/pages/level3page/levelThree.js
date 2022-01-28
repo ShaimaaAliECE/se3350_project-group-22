@@ -1,7 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default class Example extends React.Component {
+class Level3 extends Component {
   render() {
-    return <div>hello</div>;
+    return (
+      <div>
+        <h2>Level3</h2>
+      </div>
+    );
   }
 }
+
+export default Level3;
