@@ -1,30 +1,30 @@
-import React from "react";
+import React, { Component} from 'react';
 import { Nav, NavItem, NavLink } from "reactstrap";
 import { Route, Routes } from "react-router-dom";
 
-import LevelOne from "./LevelOne";
-import LevelTwo from "./LevelTwo";
-import LevelThree from "./LevelThree";
+import LevelOne from "./levelOne";
+import LevelTwo from "./levelTwo";
+import LevelThree from "./levelThree";
 
-export default class Example extends React.Component {
+export default class Example extends Component {
   render() {
     return (
       <div>
         <Nav>
           <NavItem>
-            <NavLink href="/LevelOne/">LevelOne</NavLink>
+            <NavLink href="/levelOne/">LevelOne</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/LevelTwo/">LevelTwo</NavLink>
+            <NavLink href="/levelTwo/">LevelTwo</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/LevelOne/">LevelOne</NavLink>
+            <NavLink href="/levelThree/">LevelThree</NavLink>
           </NavItem>
         </Nav>
         <Routes>
-          <Route path="/LevelOne" element={<LevelOne />} />
-          <Route path="/LevelTwo" element={<LevelTwo />} />
-          <Route path="/LevelThree" element={<LevelThree />} />
+          <Route path="/levelOne" element={<LevelOne />} />
+          <Route path="/levelTwo" element={<LevelTwo />} />
+          <Route path="/levelThree" element={<LevelThree />} />
         </Routes>
       </div>
     );
