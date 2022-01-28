@@ -1,0 +1,20 @@
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* On mouse-over */
+.btn:hover {
+  background: #eee;
+}
+
+.home {
+  color: green;
+}
+body {
+  background-color: rgb(240, 227, 245);
+}
