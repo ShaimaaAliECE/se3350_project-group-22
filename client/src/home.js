@@ -38,8 +38,6 @@ export default class home extends Component {
           <div className="container">
             <Link
               to="/levelOne/"
-              target="_blank"
-              rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
               className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
             >
