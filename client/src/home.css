@@ -1,27 +1,27 @@
 .background--custom {
-    background: linear-gradient(90deg, #24AAC7, #C8C7F4, #ADD345);
-    background-size: 300% 300%;
-    animation: gradient 4s alternate infinite;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+  background: linear-gradient(90deg, #24aac7, #c8c7f4, #add345);
+  background-size: 300% 300%;
+  animation: gradient 4s alternate infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
   }
-  @keyframes gradient {
-    0% {
-      background-position: 0%;
-    }
-    100% {
-      background-position: 100%;
-    }
+  100% {
+    background-position: 100%;
   }
+}
 .header {
   /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
   z-index: 1000;
@@ -32,12 +32,12 @@
   font-size: 30px;
 }
 .name {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    text-align: justify;
-    padding-left: 17.5%;
-    text-transform: uppercase;
-    color: rgb(255, 255, 255);
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  text-align: justify;
+  padding-left: 17.5%;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
 }
 .container {
   display: flex;
@@ -71,34 +71,32 @@
   width: 400px;
 }
 .btn2 {
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    margin-left: 60px;
-  }
-  .btn2:hover:hover .btn-slide-show-text1 {
-    margin-left: 60px;
-  }
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  margin-left: 60px;
+}
+.btn2:hover:hover .btn-slide-show-text1 {
+  margin-left: 60px;
+}
 
 .btn-shadow-drop2 {
-    position: relative;
-    margin-top: 1%;
-    background: rgb(249, 250, 250);
-    padding: 30px;
-    font-size: 0.9em;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out 0s;
-    left: 0px;
-    top: 0px;
-    height: 200px;
-    width: 400px;
-  }
-  .btn-shadow-drop2:hover {
-    left: 4px;
-    top: 4px;
-    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
-  }
+  position: relative;
+  margin-top: 1%;
+  background: rgb(249, 250, 250);
+  padding: 50px;
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out 0s;
+  height: 100px;
+  width: 300px;
+}
+.btn-shadow-drop2:hover {
+  left: 4px;
+  top: 4px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+}
 
 .btn-shadow-drop:hover {
   left: 4px;

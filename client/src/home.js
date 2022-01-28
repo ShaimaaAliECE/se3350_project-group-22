@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 export default class home extends Component {
   render() {
     return (
@@ -31,30 +31,48 @@ export default class home extends Component {
           <h3>Levels</h3>
         </div>
         <div className="container">
-          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
-            {" "}
-            Level 1{" "}
-          </button>
-          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
-            {" "}
-            Level 2{" "}
-          </button>
-          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
-            {" "}
-            Level 3{" "}
-          </button>
-          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
-            {" "}
-            Level 4{" "}
-          </button>
-          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
-            {" "}
-            Level 5{" "}
-          </button>
-          <button class="btn2 btn-shadow-drop2 btn-shadow-drop--black">
-            {" "}
-            Level 6{" "}
-          </button>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+          >
+            Level1
+          </Link>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+          >
+            Level2
+          </Link>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+          >
+            Level3
+          </Link>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+          >
+            Level4
+          </Link>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+          >
+            Level5
+          </Link>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+          >
+            Level6
+          </Link>
         </div>
       </div>
     );
