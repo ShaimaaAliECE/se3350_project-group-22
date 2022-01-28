@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import App from "./App"
+import App from "./App";
 import LevelOne from "./components/pages/level1page/levelOne";
 import LevelTwo from "./components/pages/level2page/levelTwo";
 import LevelThree from "./components/pages/level3page/levelThree";
@@ -38,6 +38,8 @@ export default class home extends Component {
           <div className="container">
             <Link
               to="/levelOne/"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
               className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
             >
