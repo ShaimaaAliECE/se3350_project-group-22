@@ -48,17 +48,30 @@ function Next() {
   var n9 = document.getElementById("n9");
   var n10 = document.getElementById("n10");
 
-  numbers.classList.toggle("show");
-  n2.classList.toggle("show");
-  n3.classList.toggle("show");
-  n4.classList.toggle("show");
-  n5.classList.toggle("show");
-  n6.classList.toggle("show");
-  n7.classList.toggle("show");
-  n8.classList.toggle("show");
-  n9.classList.toggle("show");
-  n10.classList.toggle("show");
+  numbers.value = document.getElementById("tb").value;
+  n2.value = document.getElementById("tb2").value;
+  n3.value = document.getElementById("tb3").value;
+  n4.value = document.getElementById("tb4").value;
+  n5.value = document.getElementById("tb5").value;
+  n6.value = document.getElementById("tb6").value;
+  n7.value = document.getElementById("tb7").value;
+  n8.value = document.getElementById("tb8").value;
+  n9.value = document.getElementById("tb9").value;
+  n10.value = document.getElementById("tb10").value;
 
   step2.classList.toggle("show");
   step2.value = "Step 2: Split the selected array as evenly as possible";
+
+  //   numbers.classList.toggle("show");
+  //   n2.classList.toggle("show");
+  //   n3.classList.toggle("show");
+  //   n4.classList.toggle("show");
+  //   n5.classList.toggle("show");
+  //   n6.classList.toggle("show");
+  //   n7.classList.toggle("show");
+  //   n8.classList.toggle("show");
+  //   n9.classList.toggle("show");
+  //   n10.classList.toggle("show");
+
+  s;
 }
