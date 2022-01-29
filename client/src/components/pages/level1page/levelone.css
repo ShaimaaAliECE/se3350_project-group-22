@@ -97,6 +97,10 @@ body {
 .hide {
   display: none;
 }
+
+.hide2 {
+  display: none;
+}
 .show {
   display: block;
 }

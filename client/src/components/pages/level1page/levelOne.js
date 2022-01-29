@@ -35,3 +35,30 @@ function Random() {
   document.getElementById("step1").value =
     "Step1: A set of 10 numbers is randomly generated!";
 }
+function Next() {
+  var step2 = document.getElementById("step2");
+  var numbers = document.getElementById("n1");
+  var n2 = document.getElementById("n2");
+  var n3 = document.getElementById("n3");
+  var n4 = document.getElementById("n4");
+  var n5 = document.getElementById("n5");
+  var n6 = document.getElementById("n6");
+  var n7 = document.getElementById("n7");
+  var n8 = document.getElementById("n8");
+  var n9 = document.getElementById("n9");
+  var n10 = document.getElementById("n10");
+
+  numbers.classList.toggle("show");
+  n2.classList.toggle("show");
+  n3.classList.toggle("show");
+  n4.classList.toggle("show");
+  n5.classList.toggle("show");
+  n6.classList.toggle("show");
+  n7.classList.toggle("show");
+  n8.classList.toggle("show");
+  n9.classList.toggle("show");
+  n10.classList.toggle("show");
+
+  step2.classList.toggle("show");
+  step2.value = "Step 2: Split the selected array as evenly as possible";
+}
