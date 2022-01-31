@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "express": "^4.17.2",
-    "node": "^17.4.0",
-    "start": "^5.1.0"
-  }
-}
