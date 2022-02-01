@@ -1,56 +1,39 @@
 import React from "react";
-import wrongSfx from '../../../sounds/wrong.mp3';
+import incorrectSfx from '../../../sounds/wrong.mp3';
 import correctSfx from '../../../sounds/correct.mp3';
 
 export default class Example extends React.Component {
     
   state = {
 
-    // Get audio file in a variable
-    wrong: new Audio(wrongSfx),
-    correct: new Audio(correctSfx),
+    // Get audio files in a variable
+    incorrectSound: new Audio(incorrectSfx),
+    correctSound: new Audio(correctSfx),
 
-    // Set initial state of audio
-    wrongIsPlaying: false,
-    correctIsPlaying: false,
-  };
+    // State for user response
+    incorrect: true,
+    correct: false,
+  };   
+  
+  playSound = () => {
+    // Get state of user response
+    let incorrect = this.state.incorrect;
+    let correct = this.state.correct;
+    
+    if (incorrect && !correct) {
+      // Play correct sound if user response is right
+      this.state.incorrectSound.pause();
+      this.state.correctSound.play();
+    }
+    else {    
+      // Play incorrect sound if user response is wrong
+      this.state.correctSound.pause();
+      this.state.incorrectSound.play();
+    }
 
-  playWrong = () => {
-    // Get state of audio
-    let wrongIsPlaying = this.state.wrongIsPlaying;
-
-    /*
-    if (wrongIsPlaying) {
-      // Pause the audio if it is playing
-      this.state.wrong.pause();
-    } else {
-    */
-
-      // Play the audio if it is paused
-      this.state.wrong.play();
-    //}
-
-    // Change the state of audio
-    this.setState({ wrongIsPlaying: !wrongIsPlaying });
-  };
-
-  playCorrect = () => {
-    // Get state of audio
-    let correctIsPlaying = this.state.correctIsPlaying;
-
-    /*
-    if (correctIsPlaying) {
-      // Pause the audio if it is playing
-      this.state.correct.pause();
-    } else {
-    */
-
-      // Play the audio if it is paused
-      this.state.correct.play();
-    //}
-
-    // Change the state of audio
-    this.setState({ correctIsPlaying: !correctIsPlaying });
+    // Change the state of user answer later
+    this.setState({ incorrect: !incorrect });
+    this.setState({ correct: !correct });
   };
 
     render() {
@@ -58,14 +41,9 @@ export default class Example extends React.Component {
       
       <div className="header">
         <h1>Hello</h1>
-        {/* Button to play audio */}
-        <button onClick={this.playWrong}>
-          Play Wrong Sound
+        <button onClick={this.playSound}>
+          Play Audio Feedback Sample
         </button>
-        <button onClick={this.playCorrect}> 
-          Play Correct Sound
-        </button>
-
       </div>
     );
     }
