@@ -1,10 +1,12 @@
 .btn {
+  background-color: #b43fd1; /* Green */
   border: none;
-  background-color: inherit;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
+  color: white;
+  padding: 40px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
+  font-size: 40px;
 }
 
 /* On mouse-over */
@@ -13,8 +15,92 @@
 }
 
 .home {
-  color: green;
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.back {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.next {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.restart {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.quit {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+/* h1 {
+  background-color: #ffffff;
+} */
+
+/* div {
+  /* text-align: center;
+} */
+
+form {
+  align-self: center;
+}
+input,
+select,
+textarea {
+  color: #000000;
+}
+
+textarea:focus,
+input:focus {
+  color: #ff0000;
 }
 body {
   background-color: rgb(240, 227, 245);
+}
+
+.hide {
+  display: none;
+}
+
+.hide2 {
+  display: none;
+}
+.show {
+  display: block;
 }
