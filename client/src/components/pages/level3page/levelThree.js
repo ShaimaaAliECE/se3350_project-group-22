@@ -1,5 +1,5 @@
 import React from "react";
-import incorrectSfx from '../../../sounds/incorrect.mp3';
+import incorrectSfx from '../../../sounds/wrong.mp3';
 import correctSfx from '../../../sounds/correct.mp3';
 
 export default class Example extends React.Component {
