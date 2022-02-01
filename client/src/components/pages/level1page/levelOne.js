@@ -74,10 +74,6 @@ function InNumberList(numbersArray, randomNum, size) {
 }
 
 function Next() {
-  //show them
-  var blocks = document.getElementById("step2blocks");
-  blocks.classList.toggle("show");
-
   var step2 = document.getElementById("step2");
   var numbers = document.getElementById("n1");
   var n2 = document.getElementById("n2");
