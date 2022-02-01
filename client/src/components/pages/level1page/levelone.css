@@ -1,0 +1,143 @@
+.btn {
+  background-color: #b43fd1; /* Green */
+  border: none;
+  color: white;
+  padding: 40px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+}
+
+button:active {
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+          box-shadow: inset 0px 0px 5px #c1c1c1;
+   outline: none;
+}
+
+/* On mouse-over */
+.btn:hover {
+  background: #eee;
+}
+
+.home {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.start {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.back {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.next {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.restart {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.quit {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+/* h1 {
+  background-color: #ffffff;
+} */
+
+/* div {
+  /* text-align: center;
+} */
+
+.step1numbers {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+div.step1numbers
+{
+    display: block;
+    text-align: center;
+}
+
+input,
+select,
+textarea {
+  color: #000000;
+}
+
+textarea:focus,
+input:focus {
+  color: #ff0000;
+}
+body {
+  background-color: rgb(240, 227, 245);
+}
+
+.hide {
+  display: none;
+}
+
+.hide1 {
+  display: none;
+}
+
+.hide2 {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.show1{
+  display: block;
+}
