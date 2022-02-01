@@ -24,16 +24,15 @@
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
-  z-index: 1000;
-  height: 200px;
+  height: 100px;
   overflow: hidden;
   text-align: center;
-  line-height: 100px;
-  font-size: 30px;
+  line-height: 70px;
+  font-size: 20px;
 }
 .name {
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   text-align: justify;
   padding-left: 17.5%;
   text-transform: uppercase;
@@ -68,7 +67,7 @@
   transition: all 0.3s ease-in-out 0s;
   left: 0px;
   top: 0px;
-  width: 400px;
+  width: 250px;
 }
 .btn2 {
   font-family: Arial, Helvetica, sans-serif;
@@ -89,8 +88,8 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out 0s;
-  height: 100px;
-  width: 300px;
+  height: 30px;
+  width: 150px;
 }
 .btn-shadow-drop2:hover {
   left: 4px;
