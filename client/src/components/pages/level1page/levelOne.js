@@ -71,5 +71,5 @@ function Next() {
   //   n9.classList.toggle("show");
   //   n10.classList.toggle("show");
 
-  s;
+  //s;
 }
