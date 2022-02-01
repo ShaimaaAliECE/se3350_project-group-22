@@ -1,8 +1,6 @@
 // import React from "react";
 
-// export default class Example extends React.Component {
-
-// }
+// export default class Example extends React.Component {}
 
 function Random() {
   // var rnd = Math.floor(Math.random() * 20000000000);
