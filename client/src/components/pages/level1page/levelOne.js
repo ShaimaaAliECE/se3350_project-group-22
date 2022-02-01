@@ -72,9 +72,12 @@ function Next() {
   //   n10.classList.toggle("show");
 
   //hide the button for step 2
+  var next = document.getElementById("next1");
+  next.classList.toggle("none");
 
-  var next2 = document.getElementById("next");
-  next2.classList.toggle("none");
+  //show the button for step 3
+  var next3 = document.getElementById("next3");
+  next3.classList.toggle("show");
 }
 
 function nextStep3() {
