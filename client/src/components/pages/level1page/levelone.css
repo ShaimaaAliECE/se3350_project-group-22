@@ -58,6 +58,7 @@
   display: inline-block;
   font-size: 15px;
   display: none;
+  position: absolute;
 }
 
 .restart {
@@ -124,4 +125,8 @@ body {
 }
 .show {
   display: block;
+}
+
+.step2 {
+  display: none;
 }
