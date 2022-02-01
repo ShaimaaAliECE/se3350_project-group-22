@@ -3,23 +3,17 @@
 // export default class Example extends React.Component {}
 
 function Random() {
-  var size = 10;
-  var max = 20;
-  var min = 1;
-  var numbersArray = new Array(size);
-  numbersArray = RandomNumbersArray(size, max, min);
-
-  //random assign stuff
-  var rnd = numbersArray[0];
-  var rnd2 = numbersArray[1];
-  var rnd3 = numbersArray[2];
-  var rnd4 = numbersArray[3];
-  var rnd5 = numbersArray[4];
-  var rnd6 = numbersArray[5];
-  var rnd7 = numbersArray[6];
-  var rnd8 = numbersArray[7];
-  var rnd9 = numbersArray[8];
-  var rnd10 = numbersArray[9];
+  // var rnd = Math.floor(Math.random() * 20000000000);
+  var rnd = Math.floor(Math.random() * 20) + 1;
+  var rnd2 = Math.floor(Math.random() * 20) + 1;
+  var rnd3 = Math.floor(Math.random() * 20) + 1;
+  var rnd4 = Math.floor(Math.random() * 20) + 1;
+  var rnd5 = Math.floor(Math.random() * 20) + 1;
+  var rnd6 = Math.floor(Math.random() * 20) + 1;
+  var rnd7 = Math.floor(Math.random() * 20) + 1;
+  var rnd8 = Math.floor(Math.random() * 20) + 1;
+  var rnd9 = Math.floor(Math.random() * 20) + 1;
+  var rnd10 = Math.floor(Math.random() * 20) + 1;
 
   document.getElementById("tb").value = rnd;
   document.getElementById("tb2").value = rnd2;
@@ -39,40 +33,6 @@ function Random() {
   document.getElementById("step1").value =
     "Step1: A set of 10 numbers is randomly generated!";
 }
-
-function RandomNumbersArray(size, max, min) {
-  var count = 1;
-  var rangeSize = max - min + 1;
-  var numbersArray = new Array(size);
-  var randomNum = 0;
-
-  // populate the array
-  for (var j = 0; j < size; j++) {
-    numbersArray[j] = 0;
-  }
-
-  for (var i = 0; i < size; i++) {
-    do {
-      randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    } while (count <= rangeSize && InNumberList(numbersArray, randomNum, size));
-
-    numbersArray[i] = randomNum;
-    count++;
-  }
-
-  return numbersArray;
-}
-
-function InNumberList(numbersArray, randomNum, size) {
-  // check the numbers to make sure it is not already in the array
-  for (var j = 0; j < size; j++) {
-    if (numbersArray[j] == randomNum) {
-      return true;
-    }
-  }
-  return false;
-}
-
 function Next() {
   var step2 = document.getElementById("step2");
   var numbers = document.getElementById("n1");
@@ -114,12 +74,10 @@ function Next() {
   //hide the button for step 2
   var next = document.getElementById("next1");
   next.classList.toggle("none");
-  next.style.display = "none";
 
   //show the button for step 3
   var next3 = document.getElementById("next3");
   next3.classList.toggle("show");
-  next3.style.display = "show";
 }
 
 function nextStep3() {
