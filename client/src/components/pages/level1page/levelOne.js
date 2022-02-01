@@ -2,15 +2,14 @@
 
 // export default class Example extends React.Component {}
 
-//import RandomNumbersArray from "./client/src/randomNumberGenerator.js";
-
 function Random() {
-  var size= 10;
+  var size = 10;
   var max = 20;
   var min = 1;
   var numbersArray = new Array(size);
-  numbersArray = RandomNumbersArray(size,max,min);
+  numbersArray = RandomNumbersArray(size, max, min);
 
+  //random assign stuff
   var rnd = numbersArray[0];
   var rnd2 = numbersArray[1];
   var rnd3 = numbersArray[2];
@@ -33,60 +32,46 @@ function Random() {
   document.getElementById("tb9").value = rnd9;
   document.getElementById("tb10").value = rnd10;
 
-  var step1content = document.getElementById("step1content");
-  step1content.classList.toggle("show");
-  
-  document.getElementById("randomnumsbutton").disabled = true
-  document.getElementById("next").disabled = false;
-}
-
-function ShowStep1(){
   //display the step
   var step = document.getElementById("step1");
+  //
   step.classList.toggle("show");
-  document.getElementById("step1").value = "Step 1: Generate a set of 10 numbers";
-  
-  //display the get arry of nums button
-  var randomnumsbutton = document.getElementById("randomnumsbutton");
-  randomnumsbutton.classList.toggle("show");
-  document.getElementById("randomnumsbutton").value = "Click to generate random numbers";
-};
+  document.getElementById("step1").value =
+    "Step1: A set of 10 numbers is randomly generated!";
+}
 
-function RandomNumbersArray(size, max, min){
+function RandomNumbersArray(size, max, min) {
   var count = 1;
-  var rangeSize = max-min+1;
+  var rangeSize = max - min + 1;
   var numbersArray = new Array(size);
   var randomNum = 0;
 
   // populate the array
-  for(var j = 0; j < size; j++) {
-      numbersArray[j] = 0;
+  for (var j = 0; j < size; j++) {
+    numbersArray[j] = 0;
   }
 
-  for (var i = 0;i < size; i++){
-      do {
-          randomNum = Math.floor(Math.random() * (max - min + 1) ) + min;
-    
-      } while(( count<= rangeSize) && (InNumberList(numbersArray,randomNum, size)));
+  for (var i = 0; i < size; i++) {
+    do {
+      randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (count <= rangeSize && InNumberList(numbersArray, randomNum, size));
 
-      numbersArray[i] = randomNum;
-      count++;
-
+    numbersArray[i] = randomNum;
+    count++;
   }
 
   return numbersArray;
-};
+}
 
 function InNumberList(numbersArray, randomNum, size) {
   // check the numbers to make sure it is not already in the array
-  for(var j = 0; j < size; j++) {
-    if (numbersArray[j] == randomNum){
+  for (var j = 0; j < size; j++) {
+    if (numbersArray[j] == randomNum) {
       return true;
     }
   }
   return false;
-};
-
+}
 
 function Next() {
   var step2 = document.getElementById("step2");
@@ -125,4 +110,78 @@ function Next() {
   //   n8.classList.toggle("show");
   //   n9.classList.toggle("show");
   //   n10.classList.toggle("show");
+
+  //hide the button for step 2
+  var next = document.getElementById("next1");
+  next.classList.toggle("none");
+  next.style.display = "none";
+  // next.replaceWith(next3.classList.toggle("show"));
+
+  //show the button for step 3
+  var next3 = document.getElementById("next3");
+  next3.classList.toggle("show");
+  next3.style.display = "show";
+
+  // var top = next.offsetLeft;
+  // next3.style.position = "absolute";
+  // next3.style.top = top + "px";
 }
+
+function nextStep3() {
+  //hide the button for step 3
+  var next3 = document.getElementById("next3");
+  next3.classList.toggle("none");
+
+  //hide the step 3 button
+  next3.style.display = "hide";
+  //get step 3
+  var step3 = document.getElementById("step3");
+  step3.value =
+    "Step 3: Continue splitting the selected array as evenly as possible";
+  step3.classList.toggle("show");
+
+  // intialize the numbers value
+  var numbers = document.getElementById("n1");
+  var n2 = document.getElementById("n2");
+  var n3 = document.getElementById("n3");
+  var n4 = document.getElementById("n4");
+  var n5 = document.getElementById("n5");
+  var n6 = document.getElementById("n6");
+  var n7 = document.getElementById("n7");
+  var n8 = document.getElementById("n8");
+  var n9 = document.getElementById("n9");
+  var n10 = document.getElementById("n10");
+  //first group
+  var num1 = document.getElementById("num1");
+  var num2 = document.getElementById("num2");
+  var num3 = document.getElementById("num3");
+  num1.value = numbers.value;
+  num2.value = n2.value;
+  num3.value = n3.value;
+
+  //second group
+  var num4 = document.getElementById("num4");
+  var num5 = document.getElementById("num5");
+  num4.value = n4.value;
+  num5.value = n5.value;
+
+  //third group
+  var num6 = document.getElementById("num6");
+  var num7 = document.getElementById("num7");
+  var num8 = document.getElementById("num8");
+  num6.value = n6.value;
+  num7.value = n7.value;
+  num8.value = n8.value;
+
+  //fourth group
+  var num9 = document.getElementById("num9");
+  var num10 = document.getElementById("num10");
+  num9.value = n9.value;
+  num10.value = n10.value;
+
+  //show button for step 4
+  var buttonStep4 = document.getElementById("step 4");
+  buttonStep4.classList.toggle("show");
+}
+
+function nextStep4() {}
