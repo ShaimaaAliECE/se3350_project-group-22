@@ -1,27 +1,34 @@
-function RandomNumbersArray(size, max, min){
+export function RandomNumbersArray(size, max, min){
+  var count = 1;
+  var rangeSize = max-min+1;
+  var numbersArray = new Array(size);
+  var randomNum = 0;
+
+  // populate the array
+  for(var j = 0; j < size; j++) {
+      numbersArray[j] = 0;
+  }
+
+  for (var i = 0;i < size; i++){
+      do {
+          randomNum = Math.floor(Math.random() * (max - min + 1) ) + min;
     
-    var numbersArray = new Array(size);
-    var randomID = 0;
+      } while((count<= rangeSize) && (InNumberList(numbersArray,randomNum, size)));
 
-    for (i = 0;i < size; i++){
-        do {
-            randomID = Math.floor(Math.random() * (max - min) ) + min;
-      
-        } while(InIDList(randomid));
+      numbersArray[i] = randomNum;
+      count++;
 
-        numbersArray[size] = randomID;
+  }
 
-    }
-  
-    return numbersArray;
+  return numbersArray;
 };
-  
-function InIDList(randomID) {
-    // check the ids to make sure it is not already in it
-    for(var j = 0; j < matrixSize; j++) {
-      if (positions[1][j] == randomID){
-        return true;
-      }
+
+function InNumberList(numbersArray, randomNum, size) {
+  // check the numbers to make sure it is not already in the array
+  for(var j = 0; j < size; j++) {
+    if (numbersArray[j] == randomNum){
+      return true;
     }
-    return false;
+  }
+  return false;
 };
