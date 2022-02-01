@@ -71,5 +71,16 @@ function Next() {
   //   n9.classList.toggle("show");
   //   n10.classList.toggle("show");
 
-  s;
+  //hide the button for step 2
+
+  var next2 = document.getElementById("next");
+  next2.classList.toggle("none");
+}
+
+function nextStep3() {
+  //get step 3
+  var step3 = document.getElementById("step3");
+  step3.value =
+    "Step 3: Continue splitting the selected array as evenly as possible";
+  step3.classList.toggle("show");
 }
