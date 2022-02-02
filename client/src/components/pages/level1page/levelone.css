@@ -9,31 +9,12 @@
   font-size: 40px;
 }
 
-button:active {
-  background: #e5e5e5;
-  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-          box-shadow: inset 0px 0px 5px #c1c1c1;
-   outline: none;
-}
-
 /* On mouse-over */
 .btn:hover {
   background: #eee;
 }
 
 .home {
-  background-color: #e2b4ee; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-}
-
-.start {
   background-color: #e2b4ee; /* Green */
   border: none;
   color: white;
@@ -64,6 +45,20 @@ button:active {
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
+  display: show;
+}
+
+.next33 {
+  background-color: #e2b4ee; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  display: none;
+  position: absolute;
 }
 
 .restart {
@@ -96,19 +91,9 @@ button:active {
   /* text-align: center;
 } */
 
-.step1numbers {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
+form {
+  align-self: center;
 }
-
-div.step1numbers
-{
-    display: block;
-    text-align: center;
-}
-
 input,
 select,
 textarea {
@@ -127,17 +112,21 @@ body {
   display: none;
 }
 
-.hide1 {
+.hide2 {
   display: none;
 }
 
-.hide2 {
+.hide3 {
+  display: show;
+}
+
+.hide33 {
   display: none;
 }
 .show {
   display: block;
 }
 
-.show1{
-  display: block;
+.step2 {
+  display: none;
 }
