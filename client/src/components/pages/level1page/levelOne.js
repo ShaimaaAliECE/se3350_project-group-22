@@ -9,6 +9,9 @@ function Random() {
   var numbersArray = new Array(size);
   numbersArray = RandomNumbersArray(size, max, min);
 
+  //show the steps
+  var show1 = document.getElementById("showStep1");
+  show1.classList.toggle("show");
   //random assign stuff
   var rnd = numbersArray[0];
   var rnd2 = numbersArray[1];
@@ -34,8 +37,7 @@ function Random() {
 
   //display the step
   var step = document.getElementById("step1");
-  //
-  step.classList.toggle("show");
+
   document.getElementById("step1").value =
     "Step1: A set of 10 numbers is randomly generated!";
 }
@@ -74,7 +76,12 @@ function InNumberList(numbersArray, randomNum, size) {
 }
 
 function Next() {
+  var show = document.getElementById("showStep2");
+  show.classList.toggle("show");
+
   var step2 = document.getElementById("step2");
+  step2.value = "Step2: Evenly split the array as much as possible.";
+
   var numbers = document.getElementById("n1");
   var n2 = document.getElementById("n2");
   var n3 = document.getElementById("n3");
@@ -97,20 +104,6 @@ function Next() {
   n9.value = document.getElementById("tb9").value;
   n10.value = document.getElementById("tb10").value;
 
-  step2.classList.toggle("show");
-  step2.value = "Step 2: Split the selected array as evenly as possible";
-
-  //   numbers.classList.toggle("show");
-  //   n2.classList.toggle("show");
-  //   n3.classList.toggle("show");
-  //   n4.classList.toggle("show");
-  //   n5.classList.toggle("show");
-  //   n6.classList.toggle("show");
-  //   n7.classList.toggle("show");
-  //   n8.classList.toggle("show");
-  //   n9.classList.toggle("show");
-  //   n10.classList.toggle("show");
-
   //hide the button for step 2
   var next = document.getElementById("next1");
   next.classList.toggle("none");
@@ -121,13 +114,11 @@ function Next() {
   var next3 = document.getElementById("next3");
   next3.classList.toggle("show");
   next3.style.display = "show";
-
-  // var top = next.offsetLeft;
-  // next3.style.position = "absolute";
-  // next3.style.top = top + "px";
 }
 
 function nextStep3() {
+  var show = document.getElementById("showStep3");
+  show.classList.toggle("show");
   //hide the button for step 3
   var next3 = document.getElementById("next3");
   next3.classList.toggle("none");
@@ -184,4 +175,53 @@ function nextStep3() {
   buttonStep4.classList.toggle("show");
 }
 
-function nextStep4() {}
+function nextStep4() {
+  var show = document.getElementById("showStep4");
+  show.classList.toggle("show");
+
+  var step4 = document.getElementById("step4");
+  step4.value =
+    "Step 4: Continue splitting the selected array as evenly as possible";
+  step4.classList.toggle("show");
+
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step4");
+  var n2 = document.getElementById("n2Step4");
+  var n3 = document.getElementById("n3Step4");
+  var n4 = document.getElementById("n4Step4");
+  var n5 = document.getElementById("n5Step4");
+  var n6 = document.getElementById("n6Step4");
+  var n7 = document.getElementById("n7Step4");
+  var n8 = document.getElementById("n8Step4");
+  var n9 = document.getElementById("n9Step4");
+  var n10 = document.getElementById("n10Step4");
+  //first group
+  var num1 = document.getElementById("num1");
+  var num2 = document.getElementById("num2");
+  n1.value = num1.value;
+  n2.value = num2.value;
+
+  var num3 = document.getElementById("num3");
+
+  n3.value = num3.value;
+
+  //second group
+  var num4 = document.getElementById("num4");
+  var num5 = document.getElementById("num5");
+  n4.value = num4.value;
+  n5.value = num5.value;
+
+  //third group
+  var num6 = document.getElementById("num6");
+  var num7 = document.getElementById("num7");
+  var num8 = document.getElementById("num8");
+  n6.value = num6.value;
+  n7.value = num7.value;
+  n8.value = num8.value;
+
+  //fourth group
+  var num9 = document.getElementById("num9");
+  var num10 = document.getElementById("num10");
+  n9.value = num9.value;
+  n10.value = num10.value;
+}
