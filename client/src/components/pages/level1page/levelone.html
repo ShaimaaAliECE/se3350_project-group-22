@@ -18,9 +18,8 @@
    <span style="display:inline-block; width: 20px;"></span>
 
    <!-- button for first step  -->
-    <button id = "next1" class="next"  value="Random Number!" onclick="Next();">Next</button>
-    <!-- button for third step -->
-    <button id="next3"  class="next33" value="Random Number!"  onclick="nextStep3();">Next</button>
+    <button id = "next" class = "home" value="Random Number!" onclick="Next();">Next</button>
+    
 
     <span style="display:inline-block; width: 20px;"></span>
    
@@ -35,7 +34,8 @@
 </br>
 </br>
      <h3> Click on the button to generate 10 random numbers</h3>
-     <input type="button" value="Random Number!" onclick="Random();" />
+     <span style="display:inline-block; width: 250px;"></span>
+     <input type="button" class="random" value="Random Number!" onclick="Random();" />
     <form name="rn">
     </br>
     
@@ -59,6 +59,8 @@
       <input type="number" id="tb8" value="Random Number!"  readonly/>
       <input type="number" id="tb9"  value="Random Number!"  readonly/>
       <input type="number" id="tb10" value="Random Number!"  readonly/>
+    </br>
+       <input type="button" value="Next Step" onclick="Next();" />
      
     </br>
   </br>
@@ -90,6 +92,8 @@
          <input type="number" id="n10" name="n2" size ="1"   readonly/> 
 
 <span style="display:inline-block; width: 100px;"></span>
+</br>
+ <input type="button" value="Next Step" onclick="nextStep3();" />
 
 </div>
 
@@ -98,7 +102,7 @@
 </br>
 
  <div class = "hide" id="showStep3">
-<input type="text" id="step3" name="step3" size ="60" class="hide2" readonly/>
+<input type="text" id="step3" name="step3" size ="60" readonly/>
  </br>
   <span style="display:inline-block; width: 150px;"></span>
  

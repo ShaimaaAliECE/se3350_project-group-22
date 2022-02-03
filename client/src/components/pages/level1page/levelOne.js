@@ -1,7 +1,5 @@
 // import React from "react";
 
-const { lookup } = require("dns");
-
 // export default class Example extends React.Component {}
 
 function Random() {
@@ -105,17 +103,6 @@ function Next() {
   n8.value = document.getElementById("tb8").value;
   n9.value = document.getElementById("tb9").value;
   n10.value = document.getElementById("tb10").value;
-
-  //hide the button for step 2
-  var next = document.getElementById("next1");
-  next.classList.toggle("none");
-  next.style.display = "none";
-  // next.replaceWith(next3.classList.toggle("show"));
-
-  //show the button for step 3
-  var next3 = document.getElementById("next3");
-  next3.classList.toggle("show");
-  next3.style.display = "show";
 }
 
 function nextStep3() {
@@ -123,8 +110,6 @@ function nextStep3() {
   show.classList.toggle("show");
   //hide the button for step 3
 
-  //hide the step 3 button
-  next3.style.display = "hide";
   //get step 3
   var step3 = document.getElementById("step3");
   step3.value =
