@@ -58,6 +58,7 @@
   display: inline-block;
   font-size: 15px;
   display: none;
+  position: absolute;
 }
 
 .restart {
@@ -124,4 +125,21 @@ body {
 }
 .show {
   display: block;
+}
+
+.step2 {
+  display: none;
+}
+
+input[type="number"] {
+  width: 40px;
+  color: rgb(59, 9, 78);
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+input[type="text"] {
+  color: rgb(59, 9, 78);
+  box-sizing: border-box;
+  background-color: #e68cbd;
 }
