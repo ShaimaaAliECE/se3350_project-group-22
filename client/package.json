@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "npm run build && (cd..) && (cd express-static-serve) && (cd server) && (npm start)"
+    "start": "react-scripts --openssl-legacy-provider start"
   },
   "eslintConfig": {
     "extends": [
