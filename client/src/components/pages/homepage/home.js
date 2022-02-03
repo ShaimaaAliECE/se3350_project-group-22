@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import App from "./App";
-import LevelOne from "./components/pages/level1page/levelOne";
-import LevelTwo from "./components/pages/level2page/levelTwo";
-import LevelThree from "./components/pages/level3page/levelThree";
+import { Link } from "react-router-dom";
+
+
 export default class home extends Component {
   render() {
     return (
@@ -79,12 +77,6 @@ export default class home extends Component {
               Level6
             </Link>
           </div>
-          <Routes>
-            <Route exact path="/" component={App} />
-            <Route exact path="/levelOne" element={<LevelOne />} />
-            <Route exact path="/levelTwo" element={<LevelTwo />} />
-            <Route exact path="/levelThree" element={<LevelThree />} />
-          </Routes>
         </div>
       </div>
     );
