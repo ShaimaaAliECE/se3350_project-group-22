@@ -14,6 +14,18 @@
   background: #eee;
 }
 
+.random {
+  background-color: #db9eeb; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  align-self: center;
+}
+
 .home {
   background-color: #e2b4ee; /* Green */
   border: none;
