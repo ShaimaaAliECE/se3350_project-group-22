@@ -482,7 +482,7 @@ export default class levelPage extends Component {
               {/* //    <!--group 7 -- > */}
               <input type="number" id="n10Step9" name="n2" size="1" readOnly />
             </div>
-            <input type="button" value="Restart" onClick={Next} />
+            {/* <input type="button" value="Restart" onClick={Next} /> */}
           </div>
         </form>
         <div className="footer"></div>
