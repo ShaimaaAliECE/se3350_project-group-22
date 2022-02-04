@@ -77,7 +77,8 @@ export default class levelPage extends Component {
                     </div >
                     {/* // < !--Step 3: --> */}
                     <div className="hide" id="showStep3">
-                        <input type="text" id="step3" name="step3" size="80" readOnly />
+                        <div className='step3'>
+                        <input type="text" id="step3" name="step3" size="80" readOnly /></div>
                         <div className='blockofnum'>
 
                         <input type="number" id="num1" name="n1" size="1" readOnly />
@@ -106,7 +107,8 @@ export default class levelPage extends Component {
 
                     {/* < !--  step 4 button-- > < !--step4 --> */}
                     <div className="hide" id="showStep4">
-                        <input type="text" id="step4" size="80" readOnly />
+                    <div className='step3'>
+                        <input type="text" id="step4" size="80" readOnly /></div>
 
                         
                         <div className='blockofnum'>
@@ -144,7 +146,8 @@ export default class levelPage extends Component {
                     {/* < !--step5 --> */}
 
                     <div className="hide" id="showStep5">
-                        <input type="text" id="step5" size="80" readOnly />
+                    <div className='step3'>
+                        <input type="text" id="step5" size="80" readOnly /></div>
 
 
                       
@@ -188,7 +191,8 @@ export default class levelPage extends Component {
                     {/* < !--step6 --> */}
 
                     <div className="hide" id="showStep6">
-                        <input type="text" id="step6" size="100" readOnly />
+                    <div className='step6'>
+                        <input type="text" id="step6" size="120" readOnly /></div>
                         <div className='blockofnum'>
                         {/* <!--group 1 -- > */}
                         <input type="number" id="n1Step6" name="n1" size="1" readOnly />
@@ -225,6 +229,7 @@ export default class levelPage extends Component {
 
 
                     <div className="hide" id="showStep7">
+
                         <input type="text" id="step7" size="125" readOnly />
 
 
@@ -251,8 +256,7 @@ export default class levelPage extends Component {
                         <input type="number" id="n7Step7" name="n2" size="1" readOnly />
                         <input type="number" id="n8Step7" name="n2" size="1" readOnly />
                         <span style={{ display: "inline-block", width: "40px" }}></span>
-                        {/* <!--
-            group 4 -- > */}
+                        {/* <!--group 4 -- > */}
 
 
                         <span style={{ display: "inline-block", width: "80px" }}></span>
@@ -325,7 +329,7 @@ export default class levelPage extends Component {
                         <input type="number" id="n10Step9" name="n2" size="1" readOnly />
 
                         </div>
-                        <input type="button" value="Restart" onClick={Next} />
+                        <input type="button" className="nextStep" value="Finish" readOnly />
                     </div >
                 </form >
                 <div className='footer'></div>
