@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Home from "./components/pages/homepage/home";
 import "./components/pages/homepage/home.css";
-import LevelOne from "./components/pages/level1page/levelOne"
+import LevelOne from "./components/pages/level1page/levelPage"
 import LevelTwo from "./components/pages/level2page/levelTwo"
 import LevelThree from "./components/pages/level3page/levelThree"
 import {

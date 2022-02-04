@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import {RandomNumbersArray} from '../../../randomNumberGenerator.js';
+import RandomNumbersArray from "../../../randomNumberGenerator";
 import Number from '../../Number';
+import Board from "../../Board.js";
+import './level2.css';
+import { useDrag } from 'react-dnd';
+
 
 export default class LevelTwo extends React.Component {
   getButtonNumbers(){
     //create an array of random number
-    const randomNum = RandomNumbersArray(10,20,1);
+    const randomNum = RandomNumbersArray(10, 20, 1);
 
     //return the button with the number in the array
-    let buttons=[];
-    for (let num of randomNum){
-      buttons.push(<Number className={num}></Number>);
+    let buttons = [];
+    for (let num of randomNum) {
+      buttons.push(<Number id={num} className= "number" draggable="true"></Number>);
     }
     // render the Number button components in the div called numbers
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
