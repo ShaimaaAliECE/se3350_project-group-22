@@ -1,18 +1,9 @@
-.btn {
-  background-color: #b43fd1; /* Green */
-  border: none;
-  color: white;
-  padding: 40px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 40px;
-}
+
 .instruction1{
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
 }
-.header{
+.header1{
   background-color: #e2b4ee;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -105,9 +96,11 @@ select,
 textarea {
   color: #000000;
 }
+
 input:hover {
   background-color: #b43fd1;
 }
+
 body {
   background-color: rgb(240, 227, 245);
 }

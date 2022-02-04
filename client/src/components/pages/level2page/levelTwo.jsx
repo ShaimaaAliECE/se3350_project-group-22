@@ -4,7 +4,6 @@ import RandomNumbersArray from "../../../randomNumberGenerator";
 import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
-import { useDrag } from 'react-dnd';
 
 
 export default class LevelTwo extends React.Component {

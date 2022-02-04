@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./levelone.css";
+import styles from "./levelone.css";
 import { Random, Next, nextStep3, nextStep4, nextStep5, nextStep6, nextStep7, nextStep8, nextStep9 } from './levelOne';
 
 export default class levelPage extends Component {
@@ -7,7 +7,7 @@ export default class levelPage extends Component {
         return (
             <div>
                 <div>
-                    <div className='header'>
+                    <div className='header1'>
                         <h1>Level 1: MergeSort Algorithm</h1>
                     </div>
                     <div className='btnNav'>
