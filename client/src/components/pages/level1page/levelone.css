@@ -16,6 +16,7 @@
   text-align: center;
   display: none;
 }
+
 .random {
   background-color: #db9eeb; /* Green */
   border: none;
@@ -75,6 +76,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
+  
 }
 
 .quit {
