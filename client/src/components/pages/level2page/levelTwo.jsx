@@ -11,7 +11,7 @@ export default class LevelTwo extends React.Component {
   getButtonNumbers(){
     //create an array of random number
     const randomNum = RandomNumbersArray(10, 20, 1);
-
+    //remove comment
     //return the button with the number in the array
     let buttons = [];
     for (let num of randomNum) {
