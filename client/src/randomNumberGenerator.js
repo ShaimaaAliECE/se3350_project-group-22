@@ -1,4 +1,4 @@
-export function RandomNumbersArray(size, max, min){
+export default function RandomNumbersArray(size, max, min){
   var count = 1;
   var rangeSize = max-min+1;
   var numbersArray = new Array(size);

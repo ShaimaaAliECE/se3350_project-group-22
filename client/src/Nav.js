@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { Nav, NavItem, NavLink } from "reactstrap";
 import { Route, Routes } from "react-router-dom";
 
-import LevelOne from "./components/pages/level1page/levelonescreen";
+import LevelOne from "./components/pages/level1page/levelPage";
 import LevelTwo from "./components/pages/level2page/levelTwo";
 import LevelThree from "./components/pages/level3page/levelThree";
 

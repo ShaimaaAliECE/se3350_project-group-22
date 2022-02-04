@@ -1,112 +1,175 @@
-import React, { Component } from "react";
-import './levelone.css';
+/*
+  use for sprint 2 dont look at this
+*/
 
-export default class LevelOneScreen extends Component{
-    
+// import React, { useState } from "react";
+// import './levelone.css';
+// import RandomNumbersArray from "../../../randomNumberGenerator";
 
-    render() {
-        return (
-                <div>
-                  <title>Level 1</title>
-                  <div>
-                    <h1>Level 1: MergeSort Algorithm</h1> 
-                    <button className="home">Home</button>
-                    <span style={{display: 'inline-block', width: '20px'}} />
-                    <button className="back">Back</button>
-                    <span style={{display: 'inline-block', width: '20px'}} />
-                    <button className="next" value="Random Number!" onclick="Next();">Next</button>
-                    <span style={{display: 'inline-block', width: '20px'}} />
-                    <button className="restart">Restart</button>
-                    <span style={{display: 'inline-block', width: '20px'}} />
-                    <button className="quit">Quit</button>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
-                  <h3> Click on the button to generate 10 random numbers</h3>
-                  <form name="rn">
-                    <input type="text" id="tb" name="tb" size={3} /> 
-                    <input type="text" defaultValue={1} id="index" name="index1" size={1} className="hide" /> 
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb2" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb3" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb4" name="tb" size={1} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb5" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb6" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb7" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb8" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb9" name="tb" size={3} />
-                    <span style={{display: 'inline-block', width: '0px'}} />
-                    <input type="text" id="tb10" name="tb" size={3} />
-                    <br />
-                    <br />
-                    <input type="button" defaultValue="Random Number!" onclick="Random();" />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <br />
-                    <br />
-                    <input type="text" id="step1" name="step1" size={40} className="hide" />
-                    <br />
-                    <br />
-                    {/* step 2 */}
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <input type="text" id="step2" name="step2" size={60} className="hide2" />
-                    <br />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} /> 
-                    <input type="text" id="n1" name="n1" size={3} /> 
-                    <input type="text" id="n2" name="n2" size={3} /> 
-                    <input type="text" id="n3" name="n3" size={3} /> 
-                    <input type="text" id="n4" name="n4" size={3} /> 
-                    <input type="text" id="n5" name="n2" size={3} /> 
-                    <span style={{display: 'inline-block', width: '100px'}} />
-                    <span style={{display: 'inline-block', width: '100px'}} />
-                    <input type="text" id="n6" name="n2" size={3} /> 
-                    <input type="text" id="n7" name="n2" size={3} /> 
-                    <input type="text" id="n8" name="n2" size={3} /> 
-                    <input type="text" id="n9" name="n2" size={3} /> 
-                    <input type="text" id="n10" name="n2" size={3} /> 
-                    <span style={{display: 'inline-block', width: '100px'}} />
-                    {/* 
-                   <h1> &#129135</h1> */}
-                    {/* Step 3:  */}
-                    <input type="text" id="step2" name="step3" size={60} className="hide2" />
-                    <br />
-                    <br />
-                    <br />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <input type="text" id="num1" name="n1" size={3} /> 
-                    <input type="text" id="num 2" name="n2" size={3} /> 
-                    <input type="text" id="num2" name="n3" size={3} /> 
-                    <span style={{display: 'inline-block', width: '120px'}} />
-                    <input type="text" id="num4" name="n4" size={3} /> 
-                    <input type="text" id="num5" name="n4" size={3} /> 
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <span style={{display: 'inline-block', width: '40px'}} />
-                    <input type="text" id="num6" name="n1" size={3} /> 
-                    <input type="text" id="num7" name="n2" size={3} /> 
-                    <input type="text" id="num8" name="n2" size={3} /> 
-                    <span style={{display: 'inline-block', width: '130px'}} />
-                    <input type="text" id="num9" name="n2" size={3} /> 
-                    <input type="text" id="num10" name="n2" size={3} /> 
-                  </form>
-                  <br />
-                  <br />
-                  <br />
-                </div>
-        );
-      }
-}
+// // export default class LevelOneScreen extends Component{
+// //     Random() {
+// //         var size = 10;
+// //         var max = 20;
+// //         var min = 1;
+// //         var numbersArray = RandomNumbersArray(size, max, min);
+
+// //         let input = [];
+// //         for (let num of numbersArray)
+// //         {
+// //             input.push(<input type="text" id={num} className="number" value={num} size={3} />)
+// //         }
+// //         ReactDOM.render(<>{input}</>, document.getElementById("numbers"));
+// //         ReactDOM.render(<><h4>Step 1: A set of 10 numbers is randomly generated!</h4></>, document.getElementById("step1"));
+// //       }
+
+// //       next(){
+// //         ReactDOM.render(<><h4>Step 2: Split the selected array as evenly as possible</h4></>, document.getElementById("step2"));
+
+// //       }
+// //       /*import React, { useState } from 'react';
+
+// // function Example() {
+// //   // Declare a new state variable, which we'll call "count"
+// //   const [count, setCount] = useState(0);
+
+// //   return (
+// //     <div>
+// //       <p>You clicked {count} times</p>
+// //       <button onClick={() => setCount(count + 1)}>
+// //         Click me
+// //       </button>
+// //     </div>
+// //   );
+// // }
+// // Th*/
+
+// //     render() {
+// //         return (
+// //                 <div>
+// //                   <title>Level 1</title>
+// //                   <div>
+// //                     <h1>Level 1: MergeSort Algorithm</h1> 
+// //                     <button className="home">Home</button>
+
+// //                     <button className="back">Back</button>
+
+// //                     <button className="next" value="Random Number!" onClick={this.next}>Next</button>
+
+// //                     <button className="restart">Restart</button>
+
+// //                     <button className="quit">Quit</button>
+// //                   </div>
+// //                   <h3> Click on the button to generate 10 random numbers</h3>
+// //                   <form id="area" >
+// //                     <div id = "numbers"></div>
+// //                     <input type="button" defaultValue="Random Number!" onClick={this.Random} />
+// //                     <div id="step1"></div>
+// //                     {/* step 2 */}
+// //                     <div id = "half1"></div>
+// //                     <div id = "half2"></div>
+// //                     <div id="step2"></div>
+// //                     {/* 
+// //                    <h1> &#129135</h1> */}
+// //                     {/* Step 3:  */}
+
+// //                   </form>
+// //                 </div>
+// //         );
+// //       }
+// // }
+
+// export default function LevelOneScreen() {
+//   const [step,setStep] = useState("");
+//   const [count,setCount] = useState(0);
+//   const [array,setArray] = useState();
+//   const [split,setSplit] = useState(0);
+//   const steps = [
+//     "Step 1: A set of 10 numbers is randomly generated!", 
+//     "Step 2: Split the selected array as evenly as possible",
+//     "Step 3: Split the array even more"
+//   ]
+//   //function to increment the counter
+//   function incrementCounter(){
+//     var input =[];
+//     setCount(count+1);
+//     setStep(steps[count]);
+//     alert(array[1].value);
+
+//     //if count === 2
+//     if(count == 1){
+//       for(var i = 0; i < array.length/2; i++){
+//           input.push(<input type="text" id= {i} value={array[i]} size={3} readOnly/>)
+//       }
+//       setSplit(1);
+//       setArray(input);
+
+//       for(var j = array.length/2; j > 0; j--){
+//         input.push(<input type="text" id={j} value={array[j]} size={3} readOnly/>)
+//       }
+//       setSplit(2);
+//       setArray(input);
+//     }
+//   }
+//   //function to generate 10 numbers
+//   function getRandomNumber() {
+//     setCount(0);
+//     var size = 10;
+//     var max = 20;
+//     var min = 1;
+//     var numbersArray = RandomNumbersArray(size, max, min);
+
+//     let input = [];
+//     for (let num of numbersArray) {
+//       input.push(<input type="text" id={num} className="number" value={num} size={3} readOnly/>)
+//     }
+//     setArray(input);
+//   }
+//   function decrementCounter(){
+//     setCount(count-1);
+//     setStep(steps[count]);
+//   }
+//   return (
+//     <div>
+//       <title>Level 1</title>
+//       <div>
+//         <h1>Level 1: MergeSort Algorithm</h1>
+//         <button className="home">Home</button>
+
+//         <button className="back" onClick={decrementCounter}>Back</button>
+
+//         <button className="next" onClick={incrementCounter}>Next</button>
+
+//         <button className="restart">Restart</button>
+
+//         <button className="quit">Quit</button>
+//       </div>
+//       <h3> Click on the button to generate 10 random numbers</h3>
+//       <form id="area" >
+//         <input type="button" defaultValue="Random Number!" onClick={getRandomNumber} />
+//         <div id="numbers">{array}</div>
+//         <div id="step1">{count === 1 ? step: null}</div>
+//         {/* step 2 */}
+//         <div id="half1">{array}</div>
+//         <div id="half2">{split === 1 ? {array}:null}</div>
+//         <div>hiiii</div>
+//         <div id="step2"> {count === 2 ? step: null}</div>
+//         {/* Step 3:  */}
+//         <div id="half1"></div>
+//         <div id="half2"></div>
+//         <div id="half3"></div>
+//         <div id="half4">hiiii</div>
+//         <div id="step2"> {count === 3 ? step: null}</div>
+//         {/* Step 3:  */}
+//         {/* Step 3:  */}
+//         {/* Step 3:  */}
+//         {/* Step 3:  */}
+//         {/* Step 3:  */}
+//         {/* Step 3:  */}
+//         {/* Step 3:  */}
+
+        
+
+//       </form>
+//     </div>
+//   )
+// }

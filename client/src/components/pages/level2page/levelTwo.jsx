@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { RandomNumbersArray } from '../../../randomNumberGenerator.js';
+import RandomNumbersArray from "../../../randomNumberGenerator";
 import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
