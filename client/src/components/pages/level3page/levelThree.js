@@ -1,7 +1,7 @@
   import React, { Component } from "react";
   import incorrectSfx from '../../../sounds/wrong.mp3';
   import correctSfx from '../../../sounds/correct.mp3';
-  export default class LevelThree extends React.Component {
+  export default class LevelThree extends Component {
 
   // verify user response
   checkResponse = async e => {       
