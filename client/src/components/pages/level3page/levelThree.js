@@ -54,10 +54,11 @@
       return (
 
         <div className="header">
-          <h1>Hello</h1>
+          <h1>Hello
             <button onClick={this.playSound}>
               Play Audio Feedback Sample
             </button>
+            </h1>
         </div>
     );
     }
