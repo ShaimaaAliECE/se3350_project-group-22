@@ -2,7 +2,7 @@
 
 // export default class Example extends React.Component {}
 
-function Random() {
+export function Random() {
   var size = 10;
   var max = 20;
   var min = 1;
@@ -75,7 +75,7 @@ function InNumberList(numbersArray, randomNum, size) {
   return false;
 }
 
-function Next() {
+export function Next() {
   var show = document.getElementById("showStep2");
   show.classList.toggle("show");
 
@@ -105,7 +105,7 @@ function Next() {
   n10.value = document.getElementById("tb10").value;
 }
 
-function nextStep3() {
+export function nextStep3() {
   var show = document.getElementById("showStep3");
   show.classList.toggle("show");
   //hide the button for step 3
@@ -160,7 +160,7 @@ function nextStep3() {
   buttonStep4.classList.toggle("show");
 }
 
-function nextStep4() {
+export function nextStep4() {
   var show = document.getElementById("showStep4");
   show.classList.toggle("show");
 
@@ -211,7 +211,7 @@ function nextStep4() {
   n10.value = num10.value;
 }
 
-function nextStep5() {
+export function nextStep5() {
   var show = document.getElementById("showStep5");
   show.classList.toggle("show");
 
@@ -263,7 +263,7 @@ function nextStep5() {
 }
 
 //function 6
-function nextStep6() {
+export function nextStep6() {
   var show = document.getElementById("showStep6");
   show.classList.toggle("show");
 
@@ -345,7 +345,7 @@ function nextStep6() {
   n10.value = merge4[0];
 }
 
-function nextStep7() {
+export function nextStep7() {
   var show = document.getElementById("showStep7");
   show.classList.toggle("show");
 
@@ -407,7 +407,7 @@ function nextStep7() {
   n10.value = n106.value;
 }
 
-function nextStep8() {
+export function nextStep8() {
   var show = document.getElementById("showStep8");
   show.classList.toggle("show");
 
@@ -466,7 +466,7 @@ function nextStep8() {
   n10.value = merge2[0];
 }
 
-function nextStep9() {
+export function nextStep9() {
   var show = document.getElementById("showStep9");
   show.classList.toggle("show");
 
@@ -528,4 +528,3 @@ function nextStep9() {
   n10.value = merge1[0];
 }
 
-//export default Level1;

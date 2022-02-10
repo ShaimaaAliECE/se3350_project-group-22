@@ -12,9 +12,12 @@
 .flexbox .board {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
     width: 100%;
     max-width: 780px;
-    background-color: black;
+
+    background-color: rgb(156, 128, 202);
     padding: 15px;
 }
 
