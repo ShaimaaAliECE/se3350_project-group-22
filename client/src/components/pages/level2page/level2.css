@@ -1,13 +1,10 @@
 .flexbox{
     display: flex;
     justify-content: space-between;
-
     width: 100%;
     max-width: 780px;
     height: 100vh;
-
     overflow: hidden;
-
     margin: 0 auto;
     padding: 15px;
 }
@@ -15,10 +12,8 @@
 .flexbox .board {
     display: flex;
     flex-direction: row;
-
     width: 100%;
     max-width: 780px;
-
     background-color: black;
     padding: 15px;
 }
@@ -26,7 +21,6 @@
 .flexbox .board .number {
     padding: 15px 25px;
     background-color: #f3f3f3;
-
     cursor: pointer;
     margin-bottom: 15px;
 }

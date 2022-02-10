@@ -528,4 +528,4 @@ function nextStep9() {
   n10.value = merge1[0];
 }
 
-export default Level1;
+//export default Level1;

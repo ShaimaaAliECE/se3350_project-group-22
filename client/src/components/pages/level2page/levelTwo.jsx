@@ -4,7 +4,7 @@ import { RandomNumbersArray } from '../../../randomNumberGenerator.js';
 import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
-import { useDrag } from 'react-dnd';
+import {useDrag} from 'react-dnd';
 
 
 export default class LevelTwo extends React.Component {
@@ -23,10 +23,8 @@ export default class LevelTwo extends React.Component {
         <Board id='board-1' className='board'> {buttons} </Board> 
         <Board id='board-2' className='board'> </Board>
         <Board id='board-2' className='board'> </Board>
+        <button onClick={this.checkAns}>check answer</button>
       </>, document.getElementById("numbers"));
-       // render the check answer button so that users can check their answers
-    ReactDOM.render(<button onClick={this.checkAns}>check answer</button>, document.getElementById("numbers"));
-
   };
 
   checkAns(){
@@ -64,8 +62,11 @@ export default class LevelTwo extends React.Component {
           <button onClick={this.getPrev}>back</button>
           <button onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
           <button onClick={this.getNext}>next</button>
+          <div id="numbers"></div>
           <div className="flexbox">
-              <div id="numbers"></div>
+              <div id="containers"></div>
+          </div>
+          <div className="flexbox-2">
               <div id="containers"></div>
           </div>
           <div id="containers"></div>
