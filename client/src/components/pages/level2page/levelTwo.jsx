@@ -8,11 +8,7 @@ import {useDrag} from 'react-dnd';
 
 
 export default class LevelTwo extends React.Component {
-<<<<<<< HEAD
-  getButtonNumbers(){
-=======
   getButtonNumbers() {
->>>>>>> 953546397dc2e9e634df1004c7cc05854a5239c0
     //create an array of random number
     const randomNum = RandomNumbersArray(10, 20, 1);
     //remove comment
@@ -22,18 +18,6 @@ export default class LevelTwo extends React.Component {
       buttons.push(<Number id={num} className="number" draggable="true"></Number>);
     }
     // render the Number button components in the div called numbers
-<<<<<<< HEAD
-    //ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
-    ReactDOM.render(<>
-        <Board id='board-1' className='board'> {buttons} </Board> 
-        <Board id='board-2' className='board'> </Board>
-        <Board id='board-2' className='board'> </Board>
-        <button onClick={this.checkAns}>check answer</button>
-      </>, document.getElementById("numbers"));
-  };
-
-  checkAns(){
-=======
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
     ReactDOM.render(<>
       <Board className='board' id='1'></Board>
@@ -43,7 +27,6 @@ export default class LevelTwo extends React.Component {
     ReactDOM.render(<button onClick={this.checkAns}>check answer</button>, document.getElementById("numbers"));
   };
   checkAns() {
->>>>>>> 953546397dc2e9e634df1004c7cc05854a5239c0
     // randomly choosing if they're right or wrong for now
     let random = Math.random() * 2;
     if (random === 1) {
@@ -72,28 +55,6 @@ export default class LevelTwo extends React.Component {
   };
 
   render() {
-<<<<<<< HEAD
-      return (
-        <div id="main">
-          <h1>Level Two</h1>
-          <button onClick={this.getPrev}>back</button>
-          <button onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
-          <button onClick={this.getNext}>next</button>
-          <div id="numbers"></div>
-          <div className="flexbox">
-              <div id="containers"></div>
-          </div>
-          <div className="flexbox-2">
-              <div id="containers"></div>
-          </div>
-          <div id="containers"></div>
-          <div id="feedback"></div>
-          <div id="step"></div>
-        </div>
-      );
-    }
-  }
-=======
     return (
       <div id="main">
         <h1>Level Two</h1>
@@ -114,7 +75,6 @@ export default class LevelTwo extends React.Component {
     );
   }
 }
->>>>>>> 953546397dc2e9e634df1004c7cc05854a5239c0
 
 
 // getting the question stem
