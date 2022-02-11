@@ -126,6 +126,22 @@ export default class LevelThree extends Component {
               //go to the next step
               onClick={Wrong}
             />
+            <div className="hide" id="wrong">
+              <input
+                type="text"
+                id="wrong"
+                name="step1"
+                size="80"
+                style={{
+                  flex: 1,
+                  width: "100%",
+                  height: 50,
+                  color: "#FFF",
+                  textAlignVertical: "top", // android fix for centering it at the top-left corner
+                }}
+                readOnly
+              />
+            </div>
           </div>
           );{" "}
         </form>
