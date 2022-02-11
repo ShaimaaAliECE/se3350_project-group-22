@@ -31,9 +31,8 @@ div[id=containers] {
     flex-direction: column;
     overflow: wrap;
     border: solid #f3f3f3 10px;
-    padding-left: 50px;
-    max-width: 200px;
+    width: 100%;
     align-items: center;
-    display:flex;
+    display: inline-block;
     white-space: pre-wrap;
 }
