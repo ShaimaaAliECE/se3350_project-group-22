@@ -4,10 +4,13 @@ import RandomNumbersArray from "../../../randomNumberGenerator";
 import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
-import { useDrag } from 'react-dnd';
+import {useDrag} from 'react-dnd';
 import { steps } from "./steps";
 
+// declare var to keep track of the step we're on, and start on step one.
+let count = 0; 
 export default class LevelTwo extends React.Component {
+
   constructor(props){
     super(props);
     this.state = {
@@ -18,19 +21,30 @@ export default class LevelTwo extends React.Component {
     };
 
     this.verify = this.verify.bind(this);
+    this.incrStep = this.incrStep.bind(this);
     this.getButtonNumbers = this.getButtonNumbers.bind(this);
   }
-  
-  //function to verify if the user drags the right component
   verify(){
-    alert("it worked");
-    console.log(this.state.step)
-    //check what step we are on
     if(this.state.step == 1){
-      //check if the containers is 2
       alert("hi");
-
     }
+  }
+
+  incrStep() {
+    if (count < 9){
+      count++;
+      this.setState({ step :  count }, () => {
+        console.log(this.state.step);
+      });
+    }
+    ReactDOM.render(<><text>step: </text>{count}</>, document.getElementById("step"));
+  }
+
+  decrStep(){
+    if (count > 1){
+      count--;
+    }
+    ReactDOM.render(<><text>step: </text>{count}</>, document.getElementById("step"));
   }
 
   getButtonNumbers() {
@@ -61,8 +75,8 @@ export default class LevelTwo extends React.Component {
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
     ReactDOM.render(<>
       <Board className='board' id='1'></Board>
-      <Board className='board' id='1'></Board>
-    </>, document.getElementById("containers"))
+      <Board className='board' id='2'></Board>
+    </>, document.getElementById("containers"));
     // render the check answer button so that users can check their answers
     // ReactDOM.render(<button onClick={this.checkAns}>check answer</button>, document.getElementById("numbers"));
   };
@@ -100,30 +114,22 @@ export default class LevelTwo extends React.Component {
     return (
       <div id="main">
         <h1>Level Two</h1>
-        <button onClick={this.getPrev}>back</button>
+        <button onClick={this.decrStep}>back</button>
         <button onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
-        <button onClick={this.getNext}>next</button>
-        
-        <div className="flexbox">
-          <div id="numbers">
-
-          </div>
-          <div id="containers">
-
-          </div>
-        </div>
-        <button onClick={this.verify}>Verify</button>
-        <div id="feedback"></div>
+        <button onClick={this.incrStep}>next</button>
+        <div className="flexbox"> <div id="numbers"></div>  </div>
+        <div className="flexbox"> <div id="containers"></div> </div>
         <div id="step"></div>
+        <button onClick={this.verify}>Verify</button>
+        <div id="check"></div>
+        <div id="feedback"></div>
       </div>
     );
   }
 }
-
-
-// getting the question stem
-function showNext() {
-  let stepDiv = document.getElementById("step");
-  stepDiv.innerHTML = '<text>' + this.responseText + '</text><br><br><button href="/levelTwo/">click to restart</button>';
-}
+// // getting the question stem
+// function showNext() {
+//   let stepDiv = document.getElementById("step");
+//   stepDiv.innerHTML = '<text>' + this.responseText + '</text><br><br><button href="/levelTwo/">click to restart</button>';
+// }
 

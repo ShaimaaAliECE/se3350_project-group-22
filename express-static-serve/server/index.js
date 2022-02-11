@@ -15,13 +15,12 @@ app.use((req, res, next) => {
 
 
 // handles returning the next step of the algorithm
-app.get('/next-step', (req, res, next) => {
-
-  
+app.get('/levelOne', (req, res, next) => {
+  res.sendFile(path.join(__dirname, "../../client/src/components/pages", "level1page", "levelone.html"));
 });
 
 app.get('/prev-step', (req, res, next) => {
-
+    
 });
 
 // handles generating an array of any number of numbers in a given range

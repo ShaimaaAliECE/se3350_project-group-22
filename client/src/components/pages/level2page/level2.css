@@ -1,33 +1,39 @@
 .flexbox{
     display: flex;
-    justify-content: space-between;
-
     width: 100%;
-    max-width: 780px;
-    height: 100vh;
-
     overflow: hidden;
-
-    margin: 0 auto;
-    padding: 15px;
+    margin: 0px auto;
+    padding: 20px;
+    align-items: center;
 }
 
 .flexbox .board {
     display: flex;
     flex-direction: row;
-    align-items: center;
-
+    padding: solid 10px rgb(156, 128, 202);
     width: 100%;
-    max-width: 780px;
-
+    max-width: 200px;
+    height: 50px;
     background-color: rgb(156, 128, 202);
-    padding: 15px;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+
 }
 
 .flexbox .board .number {
-    padding: 15px 25px;
     background-color: #f3f3f3;
-
     cursor: pointer;
-    margin-bottom: 15px;
+    border: solid #f3f3f3 10px;
+    margin-right: 10px;
+}
+
+div[id=containers] {
+    flex-direction: column;
+    overflow: wrap;
+    border: solid #f3f3f3 10px;
+    padding-left: 50px;
+    max-width: 200px;
+    align-items: center;
+    display:flex;
+    white-space: pre-wrap;
 }
