@@ -29,9 +29,11 @@
     
     if(body == "wrong"){
       this.setState({ userResponse: false });
+      alert ("Wrong answer, please try again")
     }    
     else{
       this.setState({ userResponse: true });
+      alert ("Correct!")
     } 
   };
 
