@@ -30,7 +30,7 @@ export default class LevelTwo extends React.Component {
   // handling the user clicking the next button
   incrStep(){
     // if it's not the last step, increase the count variable
-    if (count < 9){
+    if (count < 8){
       count++;
     }
   }
@@ -58,7 +58,7 @@ export default class LevelTwo extends React.Component {
     //   <Board className='board' id='2'></Board>
     // </>, document.getElementById("containers"));
     // render the check answer button so that users can check their answers
-    ReactDOM.render(<button onClick={this.checkAns}>check answer</button>, document.getElementById("numbers"));
+    ReactDOM.render(<button>Verify</button>, document.getElementById("verify"));
   };
   // checkAns() {
   //   // randomly choosing if they're right or wrong for now
@@ -98,7 +98,7 @@ export default class LevelTwo extends React.Component {
         <div className="flexbox"> <div id="numbers"></div>  </div>
         <div className="flexbox"> <div id="containers"></div> </div>
         <div id="step"></div>
-        <div id="check"></div>
+        <div id="verify"></div>
         <div id="feedback"></div>
       </div>
     );
