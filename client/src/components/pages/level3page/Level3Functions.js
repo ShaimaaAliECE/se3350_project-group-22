@@ -70,6 +70,8 @@ function InNumberList(numbersArray, randomNum, size) {
 export function Next() {
   var show = document.getElementById("showStep1");
   show.classList.toggle("show");
+
+  alert("wrong answer please try again");
 }
 //    <div className="footer"></div>
 //         <h1>
