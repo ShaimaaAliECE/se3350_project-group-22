@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import incorrectSfx from "../../../sounds/wrong.mp3";
 import correctSfx from "../../../sounds/correct.mp3";
 import styles from "./levelThree.css";
-import { Random, Next } from "./Level3Functions";
+import { Random, Wrong } from "./Level3Functions";
 export default class LevelThree extends Component {
   // verify user response
   checkResponse = async (e) => {
@@ -116,7 +116,7 @@ export default class LevelThree extends Component {
               className="nextStep"
               value="Merge Array"
               //go to the next step
-              onClick={this.playSound}
+              onClick={Wrong}
             />
             <span style={{ display: "inline-block", width: "20px" }}></span>
             <input
@@ -124,7 +124,7 @@ export default class LevelThree extends Component {
               className="nextStep"
               value="Split Array"
               //go to the next step
-              onClick={Next}
+              onClick={Wrong}
             />
           </div>
           );{" "}

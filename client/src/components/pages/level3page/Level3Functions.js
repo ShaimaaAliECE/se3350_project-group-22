@@ -67,11 +67,11 @@ function InNumberList(numbersArray, randomNum, size) {
   return false;
 }
 
-export function Next() {
+export function Wrong() {
   var show = document.getElementById("showStep1");
   show.classList.toggle("show");
 
-  alert("wrong answer please try again");
+  alert("Wrong answer please try again!");
 }
 //    <div className="footer"></div>
 //         <h1>
