@@ -1,19 +1,38 @@
-.btn {
-  background-color: #b43fd1; /* Green */
-  border: none;
-  color: white;
-  padding: 40px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 40px;
-}
 
+.instruction1{
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+.header1{
+  background-color: #e2b4ee;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 /* On mouse-over */
 .btn:hover {
   background: #eee;
 }
+.btnNav{
+  margin-top: 2%;
+  text-align: center;
+  display: none;
+}
 
+.random {
+  background-color: #db9eeb; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  align-self: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 800;
+}
+.randomdiv{
+  text-align: center;
+}
 .home {
   background-color: #e2b4ee; /* Green */
   border: none;
@@ -48,19 +67,6 @@
   display: show;
 }
 
-.next33 {
-  background-color: #e2b4ee; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-  display: none;
-  position: absolute;
-}
-
 .restart {
   background-color: #e2b4ee; /* Green */
   border: none;
@@ -70,6 +76,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
+  
 }
 
 .quit {
@@ -83,14 +90,6 @@
   font-size: 15px;
 }
 
-/* h1 {
-  background-color: #ffffff;
-} */
-
-/* div {
-  /* text-align: center;
-} */
-
 form {
   align-self: center;
 }
@@ -100,33 +99,66 @@ textarea {
   color: #000000;
 }
 
-textarea:focus,
-input:focus {
-  color: #ff0000;
+input:hover {
+  background-color: #b43fd1;
 }
+
 body {
   background-color: rgb(240, 227, 245);
 }
 
 .hide {
   display: none;
+  margin-top: 2%;
+  text-align: center;
+}
+.blockofnum{
+  margin-top: 1%;
 }
 
-.hide2 {
-  display: none;
+.footer{
+  margin-top: 5%;
 }
 
-.hide3 {
-  display: show;
-}
-
-.hide33 {
-  display: none;
-}
 .show {
   display: block;
 }
 
 .step2 {
   display: none;
+}
+
+.nextStep{
+  background-color: rgb(59, 9, 78);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 1%;
+  padding: 5px 5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+}
+input[type="number"] {
+  width: 40px;
+  color: rgb(59, 9, 78);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  text-align: center;
+  margin-left: 0.1%;
+}
+
+input[type="text"] {
+  color: rgb(59, 9, 78);
+  border: none;
+  box-sizing: border-box;
+  background-color: #e68cbd;
+  padding: 5px 5px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
 }

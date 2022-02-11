@@ -9,7 +9,6 @@
   </head>
 
   <body>
-
    <div>
     <h1>Level 1: MergeSort Algorithm</h1> 
        <button class="home">Home</button>
@@ -19,9 +18,8 @@
    <span style="display:inline-block; width: 20px;"></span>
 
    <!-- button for first step  -->
-    <button id = "next1" class="next"  value="Random Number!" onclick="Next();">Next</button>
-    <!-- button for third step -->
-    <button id="next3"  class="next33" value="Random Number!"  onclick="nextStep3();">Next</button>
+    <button id = "next" class = "home" value="Random Number!" onclick="Next();">Next</button>
+    
 
     <span style="display:inline-block; width: 20px;"></span>
    
@@ -36,270 +34,333 @@
 </br>
 </br>
      <h3> Click on the button to generate 10 random numbers</h3>
+     <span style="display:inline-block; width: 250px;"></span>
+     <input type="button" class="random" value="Random Number!" onclick="Random();" />
     <form name="rn">
-      <input type="text" id="tb" name="tb" size ="3" readonly/> 
- 
-      <input type="text" value="1" id="index" name="index1" size ="1" class="hide" readonly /> 
-      <span style="display:inline-block; width: 0px;"></span>
+    </br>
+    
+      <!-- step1 -->
+      
+      <div class = "hide" id="showStep1">
 
-      <input type="text" id="tb2" name="tb" size ="3" readonly/>
-  
-      <span style="display:inline-block; width: 0px;"></span>
+         
+        <input type="text" id="step1" name="step1" size ="40" readonly/>
+      </br>
+      </br>
+          <span style="display:inline-block; width: 250px;"></span>
 
-        <input type="text" id="tb3" name="tb" size ="3" readonly />
-       
-        <span style="display:inline-block; width: 0px;"></span>
-
-      <input type="text" id="tb4" name="tb" size ="1" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      <input type="text" id="tb5" name="tb" size ="3" readonly/>
-
-      <span style="display:inline-block; width: 0px;"></span>
-      <input type="text" id="tb6" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-        <input type="text" id="tb7" name="tb" size ="3" readonly/>
-        <span style="display:inline-block; width: 0px;"></span>
-      <input type="text" id="tb8" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      <input type="text" id="tb9" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      <input type="text" id="tb10" name="tb" size ="3" readonly />
+      <input type="number" id="tb" value="Random Number!"   readonly/> 
+      <input type="number"  id="tb2" value="Random Number!" readonly /> 
+       <input type="number" id="tb3" value="Random Number!"  readonly/>
+       <input type="number" id="tb4" value="Random Number!" readonly />
+       <input type="number" id="tb5" value="Random Number!"  readonly/>
+      <input type="number" id="tb6" value="Random Number!"   readonly/>
+      <input type="number" id="tb7" value="Random Number!"  readonly/>
+      <input type="number" id="tb8" value="Random Number!"  readonly/>
+      <input type="number" id="tb9"  value="Random Number!"  readonly/>
+      <input type="number" id="tb10" value="Random Number!"  readonly/>
+    </br>
+       <input type="button" value="Next Step" onclick="Next();" />
+     
     </br>
   </br>
-      <input type="button" value="Random Number!" onclick="Random();" />
-      <span style="display:inline-block; width: 40px;"></span>
-</br>
-</br>
-      <input type="text" id="step1" name="step1" size ="40"class = "hide" readonly/>
-=======
-    <div>
-      <h1>Level 1: MergeSort Algorithm</h1> 
-      
-      <button class="home">Home</button>
-      <span style="display:inline-block; width: 20px;"></span>
-
-      <button class="start" value="Start" onclick="ShowStep1();">Start</button>
-      <span style="display:inline-block; width: 20px;"></span>
-      
-      <button class="back">Back</button>
-      <span style="display:inline-block; width: 20px;"></span>
-
-      <button class="next" value="Random Number!" onclick="Next();">Next</button>
-      <span style="display:inline-block; width: 20px;"></span>
-   
-      <button class="restart">Restart</button>
-      <span style="display:inline-block; width: 20px;"></span>
-   
-      <button class="quit">Quit</button>
-    </div>
-</br>
-</br>
-</br>
-    <input type="text" id="step1" value="step1gener" size ="40" class="hide" readonly/>
-
-</br><div class="step1numbers">
-    <form name="rn">
-      <input type="button" id="randomnumsbutton" value="Click to generate the random numbers" onclick="Random();" class="hide"/>
-      <span style="display:inline-block; width: 40px;"></span>
-  </br>
-  </br>
-      <step1numbers class="hide1" id="step1content">
-      <input type="text" value="1" id="index" name="index1" size ="1" class="hide" /> 
-      
-      <input type="text" id="tb" name="tb" size ="3" readonly/> 
-      <span style="display:inline-block; width: 0px;"></span>
-
-      <input type="text" id="tb2" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-
-      <input type="text" id="tb3" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-
-      <input type="text" id="tb4" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      
-      <input type="text" id="tb5" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      
-      <input type="text" id="tb6" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-        
-      <input type="text" id="tb7" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      
-      <input type="text" id="tb8" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      
-      <input type="text" id="tb9" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-      
-      <input type="text" id="tb10" name="tb" size ="3" readonly/>
-      <span style="display:inline-block; width: 0px;"></span>
-
-      </step1numbers>
-
-    </form>
-  </div>
-</br>
-</br>
-
-</br>
-</br>
-
-
+      </div>
+       
       <!-- step 2 -->
-          <span style="display:inline-block; width: 40px;"></span>
-
-
-         
+      <div class = "hide" id="showStep2">
      
+
         <input type="text" id="step2" name="step2" size ="60" readonly/>
-
-     
-        <input type="text" id="step2" name="step2" size ="60" class="hide2" />
-
 </br>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span> 
-
-         <input type="text" id="n1" name="n1" size ="3"  /> 
-         <input type="text" id="n2" name="n2" size ="3"   /> 
-         <input type="text" id="n3" name="n3" size ="3"  /> 
-         <input type="text" id="n4" name="n4" size ="3"  /> 
-         <input type="text" id="n5" name="n2" size ="3"   /> 
+</br>
+ <span style="display:inline-block; width: 190px;"></span>
+         <input type="number" id="n1" name="n1" size ="1"  readonly/> 
+         <input type="number" id="n2" name="n2" size ="1"  readonly /> 
+         <input type="number" id="n3" name="n3" size ="1"  readonly/> 
+         <input type="number" id="n4" name="n4" size ="1"  readonly/> 
+         <input type="number" id="n5" name="n2" size ="1"  readonly /> 
 
          
-     <span style="display:inline-block; width: 100px;"></span>
-     <span style="display:inline-block; width: 100px;"></span>
+     <span style="display:inline-block; width: 200px;"></span>
+      
 
      
-         <input type="text" id="n6" name="n2" size ="3" readonly  /> 
-         <input type="text" id="n7" name="n2" size ="3"  readonly /> 
-         <input type="text" id="n8" name="n2" size ="3"  readonly/> 
-          <input type="text" id="n9" name="n2" size ="3"  readonly/> 
-         <input type="text" id="n10" name="n2" size ="3"   readonly/> 
+         <input type="number" id="n6" name="n2" size ="1" readonly  /> 
+         <input type="number" id="n7" name="n2" size ="1"  readonly /> 
+         <input type="number" id="n8" name="n2" size ="1"  readonly/> 
+          <input type="number" id="n9" name="n2" size ="1"  readonly/> 
+         <input type="number" id="n10" name="n2" size ="1"   readonly/> 
 
 <span style="display:inline-block; width: 100px;"></span>
-
-=======
-         <input type="text" id="n6" name="n2" size ="3"   /> 
-         <input type="text" id="n7" name="n2" size ="3"   /> 
-         <input type="text" id="n8" name="n2" size ="3"  /> 
-          <input type="text" id="n9" name="n2" size ="3"  /> 
-         <input type="text" id="n10" name="n2" size ="3"   /> 
-
-<span style="display:inline-block; width: 100px;"></span>
-
-<!-- 
-         <h1> &#129135</h1> -->
-
-     
-
-         <!-- Step 3:  -->
-
 </br>
-</br>
-<input type="text" id="step3" name="step3" size ="60" class="hide2" readonly/>
+ <input type="button" value="Next Step" onclick="nextStep3();" />
+
+</div>
+
+
+<!-- Step 3:  -->
 </br>
 
+ <div class = "hide" id="showStep3">
+<input type="text" id="step3" name="step3" size ="60" readonly/>
+ </br>
+  <span style="display:inline-block; width: 150px;"></span>
+ 
 
-
-
-             <input type="text" id="step2" name="step3" size ="60" class="hide2" />
-</br>
-</br>
-</br>
-
-
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-<span style="display:inline-block; width: 40px;"></span>
-
-
-
-        <input type="text" id="num1" name="n1" size ="3" readonly /> 
-         <input type="text" id="num2" name="n2" size ="3"  readonly /> 
-          <input type="text" id="num3" name="n3" size ="3" readonly /> 
-        <span style="display:inline-block; width: 120px;"></span>
+        <input type="number" id="num1" name="n1" size ="1" readonly /> 
+         <input type="number" id="num2" name="n2" size ="1"  readonly /> 
+          <input type="number" id="num3" name="n3" size ="1" readonly /> 
+        <span style="display:inline-block; width: 70px;"></span>
 
         
-         <input type="text" id="num4" name="n4" size ="3"  readonly /> 
-         <input type="text" id="num5" name="n4" size ="3"  readonly /> 
+         <input type="number" id="num4" name="n4" size ="1"  readonly /> 
+         <input type="number" id="num5" name="n4" size ="1"  readonly /> 
 
-        <input type="text" id="num1" name="n1" size ="3"  /> 
-         <input type="text" id="num 2" name="n2" size ="3"   /> 
-          <input type="text" id="num2" name="n3" size ="3"  /> 
-        <span style="display:inline-block; width: 120px;"></span>
-
-        
-         <input type="text" id="num4" name="n4" size ="3"   /> 
-         <input type="text" id="num5" name="n4" size ="3"   /> 
-
-
-         <span style="display:inline-block; width: 40px;"></span>
-         <span style="display:inline-block; width: 40px;"></span>
+         <span style="display:inline-block; width: 100px;"></span>
+          
          
+         <input type="number" id="num6" name="n1" size ="1" readonly /> 
+          <input type="number" id="num7" name="n2" size ="1" readonly  /> 
+          <input type="number" id="num8" name="n2" size ="1" readonly  /> 
 
-         <input type="text" id="num6" name="n1" size ="3" readonly /> 
-          <input type="text" id="num7" name="n2" size ="3" readonly  /> 
-          <input type="text" id="num8" name="n2" size ="3" readonly  /> 
+          <span style="display:inline-block; width: 100px;"></span>
 
-          <span style="display:inline-block; width: 130px;"></span>
-
-           <input type="text" id="num9" name="n2" size ="3"  readonly /> 
-          <input type="text" id="num10" name="n2" size ="3"  readonly /> 
-
+           <input type="number" id="num9" name="n2" size ="1"  readonly /> 
+          <input type="number" id="num10" name="n2" size ="1"  readonly /> 
+</br>
+ 
+ <input type="button" value="Next Step" onclick="nextStep4();" />
+</div>
 
 <!-- 
           step 4 button  -->
           <!-- step4 -->
 </br>
-           <button id="step 4"  class="hide" onclick="nextStep4();" >Next</button>
+<div class = "hide" id="showStep4">
+          <input type="text" id="step4" size ="60"   readonly/>
+</br>
+<span style="display:inline-block; width: 100px;"></span>
 <!-- 
            group 1 -->
-           <input type="text" id="n1Step4" name="n1" size ="3" readonly /> 
-         <input type="text" id="num2" name="n2" size ="3"  readonly /> 
-
+           <input type="number" id="n1Step4" name="n1" size ="1" readonly /> 
+         <input type="number" id="n2Step4" name="n2" size ="1"  readonly /> 
+          <span style="display:inline-block; width: 60px;"></span>
          <!-- group 2 -->
-          <input type="text" id="num3" name="n3" size ="3" readonly /> 
-        <span style="display:inline-block; width: 120px;"></span>
-
-        
-         <input type="text" id="num4" name="n4" size ="3"  readonly /> 
-         <input type="text" id="num5" name="n4" size ="3"  readonly /> 
-
-         <span style="display:inline-block; width: 40px;"></span>
-         <span style="display:inline-block; width: 40px;"></span>
+          <input type="number" id="n3Step4" name="n3" size ="1" readonly /> 
+            <span style="display:inline-block; width: 50px;"></span>
+          <!-- group 3 -->
+         <input type="number" id="n4Step4" name="n4" size ="1"  readonly /> 
+        <span style="display:inline-block; width: 20px;"></span>
+         <input type="number" id="n5Step4" name="n4" size ="1"  readonly /> 
+       
          
-         <input type="text" id="num6" name="n1" size ="3" readonly /> 
-          <input type="text" id="num7" name="n2" size ="3" readonly  /> 
-          <input type="text" id="num8" name="n2" size ="3" readonly  /> 
-
-          <span style="display:inline-block; width: 130px;"></span>
-
-           <input type="text" id="num9" name="n2" size ="3"  readonly /> 
-          <input type="text" id="num10" name="n2" size ="3"  readonly /> 
-         <input type="text" id="num6" name="n1" size ="3"  /> 
-          <input type="text" id="num7" name="n2" size ="3"   /> 
-          <input type="text" id="num8" name="n2" size ="3"   /> 
-
-          <span style="display:inline-block; width: 130px;"></span>
-
-           <input type="text" id="num9" name="n2" size ="3"   /> 
-          <input type="text" id="num10" name="n2" size ="3"   /> 
-
-
-
-
-
+         <!-- group 3 -->
+         <span style="display:inline-block; width: 80px;"></span>
+         <input type="number" id="n6Step4" name="n1" size ="1" readonly /> 
+          <input type="number" id="n7Step4" name="n2" size ="1" readonly  /> 
+          <span style="display:inline-block; width: 20px;"></span>
+<!-- 
+          group 4 -->
+          <input type="number" id="n8Step4" name="n2" size ="1" readonly  /> 
+           
+           <span style="display:inline-block; width: 80px;"></span>
+<!-- group 5 -->
+           <input type="number" id="n9Step4" name="n2" size ="1"  readonly /> 
+             <span style="display:inline-block; width: 20px;"></span>
+           <!-- group 7 -->
+          <input type="number" id="n10Step4" name="n2" size ="1"  readonly />
+</br>  
+</br>    
+ <input type="button" value="Next Step" onclick="nextStep5();" />
+</div>
 
 
+          <!-- step5 -->
+</br>
+<div class = "hide" id="showStep5">
+          <input type="text" id="step5" size ="60"   readonly/>
+</br>
+</br>
+<span style="display:inline-block; width: 80px;"></span>
+<!-- 
+           group 1 -->
+           <input type="number" id="n1Step5" name="n1" size ="1" readonly />
+            <span style="display:inline-block; width: 15px;"></span>
+         <input type="number" id="n2Step5" name="n2" size ="1"  readonly /> 
+          <span style="display:inline-block; width: 60px;"></span>
+         <!-- group 2 -->
+          <input type="number" id="n3Step5" name="n3" size ="1" readonly /> 
+            <span style="display:inline-block; width: 50px;"></span>
+          <!-- group 3 -->
+         <input type="number" id="n4Step5" name="n4" size ="1"  readonly /> 
+        <span style="display:inline-block; width: 20px;"></span>
+         <input type="number" id="n5Step5" name="n4" size ="1"  readonly /> 
+       
+         
+         <!-- group 3 -->
+         <span style="display:inline-block; width: 60px;"></span>
+         <input type="number" id="n6Step5" name="n1" size ="1" readonly /> 
+          <span style="display:inline-block; width: 20px;"></span>
+          <input type="number" id="n7Step5" name="n2" size ="1" readonly  /> 
+          <span style="display:inline-block; width: 20px;"></span>
+<!-- 
+          group 4 -->
+          <input type="number" id="n8Step5" name="n2" size ="1" readonly  /> 
+           
+           <span style="display:inline-block; width: 80px;"></span>
+<!-- group 5 -->
+           <input type="number" id="n9Step5" name="n2" size ="1"  readonly /> 
+             <span style="display:inline-block; width: 20px;"></span>
+           <!-- group 7 -->
+          <input type="number" id="n10Step5" name="n2" size ="1"  readonly />
+</br>  
+</br>    
+ <input type="button" value="Next Step" onclick="nextStep6();" />
+</div>
 
+          <!-- step6 -->
+</br>
+<div class = "hide" id="showStep6">
+          <input type="text" id="step6" size ="100"   readonly/>
+</br>
+</br>
+<span style="display:inline-block; width: 80px;"></span>
+<!-- 
+           group 1 -->
+           <input type="number" id="n1Step6" name="n1" size ="1" readonly />
+         <input type="number" id="n2Step6" name="n2" size ="1"  readonly /> 
+          <span style="display:inline-block; width: 80px;"></span>
+         <!-- group 2 -->
+          <input type="number" id="n3Step6" name="n3" size ="1" readonly /> 
+            <span style="display:inline-block; width: 80px;"></span>
+          <!-- group 3 -->
+         <input type="number" id="n4Step6" name="n4" size ="1"  readonly /> 
+         <input type="number" id="n5Step6" name="n5" size ="1"  readonly /> 
+       
+         
+         <!-- group 3 -->
+         <span style="display:inline-block; width: 90px;"></span>
+         <input type="number" id="n6Step6" name="n1" size ="1" readonly /> 
+          <input type="number" id="n7Step6" name="n2" size ="1" readonly  /> 
+          <span style="display:inline-block; width: 40px;"></span>
+<!-- 
+          group 4 -->
+          <input type="number" id="n8Step6" name="n2" size ="1" readonly  /> 
+           
+           <span style="display:inline-block; width: 80px;"></span>
+<!-- group 5 -->
+           <input type="number" id="n9Step6" name="n2" size ="1"  readonly /> 
+           <!-- group 7 -->
+          <input type="number" id="n10Step6" name="n2" size ="1"  readonly />
+</br>  
+</br>    
+ <input type="button" value="Next Step" onclick="nextStep7();" />
+</div>
+
+<!-- step 7 -->
+          
+</br>
+<div class = "hide" id="showStep7">
+          <input type="text" id="step7" size ="120"   readonly/>
+</br>
+</br>
+
+<!-- 
+   <span style="display:inline-block; width: 50px;"></span>
+           group 1 -->
+           <span style="display:inline-block; width: 160px;"></span>
+          <input type="number" id="n1Step7" name="n1" size ="1" readonly />
+          <input type="number" id="n2Step7" name="n2" size ="1"  readonly /> 
+          <input type="number" id="n3Step7" name="n3" size ="1" readonly /> 
+         <!-- group 2 -->
+    
+            <span style="display:inline-block; width: 80px;"></span>
+          <!-- group 3 -->
+         <input type="number" id="n4Step7" name="n4" size ="1"  readonly /> 
+         <input type="number" id="n5Step7" name="n5" size ="1"  readonly />
+       
+         
+         <!-- group 3 -->
+         <span style="display:inline-block; width: 100px;"></span> 
+         <input type="number" id="n6Step7" name="n1" size ="1" readonly /> 
+          <input type="number" id="n7Step7" name="n2" size ="1" readonly  />
+           <input type="number" id="n8Step7" name="n2" size ="1" readonly  />  
+          <span style="display:inline-block; width: 40px;"></span>
+<!-- 
+          group 4 -->
+         
+           
+           <span style="display:inline-block; width: 80px;"></span>
+<!-- group 5 -->
+           <input type="number" id="n9Step7" name="n2" size ="1"  readonly /> 
+           <!-- group 7 -->
+          <input type="number" id="n10Step7" name="n2" size ="1"  readonly />
+</br>  
+</br>    
+ <input type="button" value="Next Step" onclick="nextStep8();" />
+</div>
+
+<!-- step 8 -->
+          
+</br>
+<div class = "hide" id="showStep8">
+          <input type="text" id="step8" size ="120"   readonly/>
+</br>
+</br>
+
+<!-- 
+   <span style="display:inline-block; width: 50px;"></span>
+           group 1 -->
+           <span style="display:inline-block; width: 200px;"></span>
+          <input type="number" id="n1Step8" name="n1" size ="1" readonly />
+          <input type="number" id="n2Step8" name="n2" size ="1"  readonly /> 
+          <input type="number" id="n3Step8" name="n3" size ="1" readonly /> 
+         <input type="number" id="n4Step8" name="n4" size ="1"  readonly /> 
+         <input type="number" id="n5Step8" name="n5" size ="1"  readonly />
+       
+         
+         <!-- group 3 -->
+         <span style="display:inline-block; width: 180px;"></span> 
+         <input type="number" id="n6Step8" name="n1" size ="1" readonly /> 
+          <input type="number" id="n7Step8" name="n2" size ="1" readonly  />
+           <input type="number" id="n8Step8" name="n2" size ="1" readonly  />  
+      
+           <input type="number" id="n9Step8" name="n2" size ="1"  readonly /> 
+           <!-- group 7 -->
+          <input type="number" id="n10Step8" name="n2" size ="1"  readonly />
+</br>  
+</br>    
+ <input type="button" value="Next Step" onclick="nextStep9();" />
+</div>
+
+<!-- step 9 -->
+          
+</br>
+<div class = "hide" id="showStep9">
+          <input type="text" id="step9" size ="120"   readonly/>
+</br>
+</br>
+
+<!-- 
+   <span style="display:inline-block; width: 50px;"></span>
+           group 1 -->
+           <span style="display:inline-block; width: 250px;"></span>
+          <input type="number" id="n1Step9" name="n1" size ="1" readonly />
+          <input type="number" id="n2Step9" name="n2" size ="1"  readonly /> 
+          <input type="number" id="n3Step9" name="n3" size ="1" readonly /> 
+         <input type="number" id="n4Step9" name="n4" size ="1"  readonly /> 
+         <input type="number" id="n5Step9" name="n5" size ="1"  readonly />
+         <input type="number" id="n6Step9" name="n1" size ="1" readonly /> 
+          <input type="number" id="n7Step9" name="n2" size ="1" readonly  />
+           <input type="number" id="n8Step9" name="n2" size ="1" readonly  />  
+      
+           <input type="number" id="n9Step9" name="n2" size ="1"  readonly /> 
+           <!-- group 7 -->
+          <input type="number" id="n10Step9" name="n2" size ="1"  readonly />
+</br>  
+</br>    
+ <input type="button" value="Restart" onclick="Next();" />
+</div>
     </form>
   </br>
 </br>

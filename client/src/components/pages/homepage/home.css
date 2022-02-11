@@ -1,0 +1,109 @@
+.background--custom {
+  background: linear-gradient(90deg, #271181, #4e045d, #7e3ad9);
+  background-size: 300% 300%;
+  animation: gradient 4s alternate infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+.header {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  height: 100px;
+  overflow: hidden;
+  text-align: center;
+  line-height: 70px;
+  font-size: 20px;
+}
+.name {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  text-align: justify;
+  padding-left: 29%;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 50vw;
+  margin: 0 auto;
+}
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  margin-left: 60px;
+}
+.btn:hover .btn-slide-show-text1 {
+  margin-left: 60px;
+}
+.btn-shadow-drop {
+  position: relative;
+  margin-top: 1%;
+  background: rgb(249, 250, 250);
+  padding: 30px;
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out 0s;
+  left: 0px;
+  top: 0px;
+  width: 250px;
+}
+.btn2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  margin-left: 60px;
+}
+.btn2:hover:hover .btn-slide-show-text1 {
+  margin-left: 60px;
+}
+
+.btn-shadow-drop2 {
+  position: relative;
+  margin-top: 1%;
+  background: rgb(249, 250, 250);
+  padding: 50px;
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out 0s;
+  height: 30px;
+  width: 150px;
+}
+.btn-shadow-drop2:hover {
+  left: 4px;
+  top: 4px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+}
+
+.btn-shadow-drop:hover {
+  left: 4px;
+  top: 4px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+}
+.btn-shadow-drop--black {
+  border: 1px solid rgb(51, 51, 51);
+  color: rgb(51, 51, 51);
+  box-shadow: rgb(51, 51, 51) 4px 4px 0px 0px;
+}
