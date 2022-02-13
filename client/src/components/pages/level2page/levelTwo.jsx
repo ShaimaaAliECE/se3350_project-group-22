@@ -9,6 +9,9 @@ import { steps } from "./steps";
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0; 
+
+//declare a variable to keep track of the array.
+let numOfArray = [];
 export default class LevelTwo extends React.Component {
 
   constructor(props){
@@ -16,8 +19,7 @@ export default class LevelTwo extends React.Component {
     this.state = {
       verify:false,
       step:0,
-      containers:0,
-      numOfArray:[]
+      containers:0
     };
 
     this.verify = this.verify.bind(this);
@@ -25,8 +27,59 @@ export default class LevelTwo extends React.Component {
     this.getButtonNumbers = this.getButtonNumbers.bind(this);
   }
   verify(){
-    if(this.state.step == 1){
-      alert("hi");
+    //check what step the user is on
+    var currentStep = this.state.step;
+    
+    var userContainerList = [];
+    var currentValues = [];
+    var countTrue = 0;
+    var index = 0;
+    console.log(numOfArray);
+
+
+    //check how many containers is there for the current step
+    var currentContainers = steps[currentStep-1].container;
+    console.log("num of containers" + currentContainers);
+
+    //check the numbers on the container currenlty on the screen
+    var boardContainers = document.getElementsByClassName('board');
+
+    //create variable names for each container present
+    for(var m = 0; m < currentContainers; m++){
+      userContainerList[m] = [];
+    }
+    
+    //loop through the current containers to find what numbers are in what container
+    for(var k = 0; k < currentContainers; k++){
+      for(var h = 0; h < 5; h++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
+        //push the numbers in the currentValues by looking at boardcontainer at index k and the childrens associated with it.
+        currentValues.push(boardContainers[k].children[h].id);
+      }
+      //add the values from above to the current user container list at index k
+      userContainerList[k] = currentValues;
+      //set current values back to nothing.
+      currentValues = [];
+    }
+
+    //check if the numbers in the first container the same and the answer
+    for(var b = 0; b < currentContainers; b++){
+      for(var c = 0; c < 5; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
+      //checking if the array stored is the same as the users array.
+        if(numOfArray[index] == userContainerList[b][c]){
+          countTrue++;
+          index++;
+        }
+      }
+    }
+
+    //set index to 0
+    index = 0;
+
+    //if counttrue equals 10 that means user got everything correct
+    if(countTrue == 10){
+      console.log("Yay you are correct");
+    }else{
+      console.log("my dude you wrong!");
     }
   }
 
@@ -49,28 +102,21 @@ export default class LevelTwo extends React.Component {
 
   getButtonNumbers() {
     //create an array of random number
+    numOfArray = [];
     const randomNum = RandomNumbersArray(10, 20, 1);
     //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
     for(var i =0; i < randomNum.length; i++){
-      this.setState({ numOfArray : this.state.numOfArray.push(randomNum[i]) });
+      numOfArray.push(randomNum[i]);
     }
 
-    //setting the step to once since generating the array of number is the first step
-    this.setState({ step : this.state.step++ });
-    console.log(this.state.step);
     //remove comment
     //return the button with the number in the array
     let buttons = [];
     for (let num of randomNum) {
       buttons.push(<Number id={num} className="number" draggable="true"></Number>);
     }
-
-    let boards = [];
-    for(var j = 0; j < 2; j++){
-      boards.push(<Board className='board' id={j}></Board>);
-    }
     
-    console.log(this.state.numOfArray);
+    console.log(numOfArray);
     // render the Number button components in the div called numbers
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
     ReactDOM.render(<>
