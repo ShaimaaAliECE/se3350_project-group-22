@@ -73,7 +73,7 @@ export default class LevelTwo extends React.Component {
     for(var b = 0; b < currentContainers; b++){
       for(var c = 0; c < steps[currentStep-1].numInCon[b]; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
         if(boardContainers[b].children[c] != steps[currentStep-1].numInCon[b]){
-          
+          console.log("BITCHHH you wrong afff");
         }
       //checking if the array stored is the same as the users array.
         if(numOfArray[index] == boardContainers[b].children[c].id){
