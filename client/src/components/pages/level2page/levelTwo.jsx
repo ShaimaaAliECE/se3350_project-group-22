@@ -6,7 +6,6 @@ import Board from "../../Board.js";
 import './level2.css';
 import {steps} from "./steps";
 import {useDrag} from 'react-dnd';
-import { steps } from "./steps";
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0; 
@@ -19,54 +18,62 @@ export default class LevelTwo extends React.Component {
     super(props);
     this.state = {
       verify:false,
-      step:0,
-      containers:0
+      step:0
     };
 
     this.verify = this.verify.bind(this);
     this.incrStep = this.incrStep.bind(this);
     this.getButtonNumbers = this.getButtonNumbers.bind(this);
   }
+
   verify(){
     //check what step the user is on
     var currentStep = this.state.step;
     
-    var userContainerList = [];
-    var currentValues = [];
-    var countTrue = 0;
-    var index = 0;
-    console.log(numOfArray);
+    // //keeping track of the containers
+    // var userContainerList = [];
+    // //keeping track of the current values in the containers
+    // var currentValues = [];
 
+    //keeping track of the num of correct the user gets
+    var countTrue = 0;
+
+    var index = 0;
+    //console.log("generate array button value: " + numOfArray);
 
     //check how many containers is there for the current step
     var currentContainers = steps[currentStep-1].container;
-    console.log("num of containers" + currentContainers);
+    console.log("num of containers: " + currentContainers);
 
-    //check the numbers on the container currenlty on the screen
+    //getting a collection of all the boardcontainers currently on the screen
     var boardContainers = document.getElementsByClassName('board');
 
-    //create variable names for each container present
-    for(var m = 0; m < currentContainers; m++){
-      userContainerList[m] = [];
-    }
     
-    //loop through the current containers to find what numbers are in what container
-    for(var k = 0; k < currentContainers; k++){
-      for(var h = 0; h < 5; h++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
-        //push the numbers in the currentValues by looking at boardcontainer at index k and the childrens associated with it.
-        currentValues.push(boardContainers[k].children[h].id);
-      }
-      //add the values from above to the current user container list at index k
-      userContainerList[k] = currentValues;
-      //set current values back to nothing.
-      currentValues = [];
-    }
+    //disregard dont delete
+    // //create variable names for each container present
+    // for(var m = 0; m < currentContainers; m++){
+    //   //creating an array to put current values inside the each of the userContainerList
+    //   userContainerList[m] = [];
+    // }
+    //loop through the current containers to find what numbers are in the conatiner at index k
+    // for(var k = 0; k < currentContainers; k++){
+    //   //looping through however many numbers are supposed to be in the currentContainers at index k.
+    //   for(var h = 0; h < steps[currentStep-1].numInCon[k]; h++){ //in the js file for steps have ex under step 1 numberscontained : [5,5] so it would loop through the 5 numbers then the second container would loop through 5 numbers again.
+    //     //push the numbers in the currentValues by looking at boardcontainer at index k and the childrens associated with it.
+    //     currentValues.push(boardContainers[k].children[h].id);
+    //   }
+    //   //add the values from above to the current user container list at index k
+    //   userContainerList[k] = currentValues;
+    //   //set current values back to nothing.
+    //   currentValues = [];
 
-    //check if the numbers in the first container the same and the answer
+    // }
+
+    //loop through all the containers to check 
     for(var b = 0; b < currentContainers; b++){
-      for(var c = 0; c < 5; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
+      for(var c = 0; c < steps[currentStep-1].numInCon[b]; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
       //checking if the array stored is the same as the users array.
-        if(numOfArray[index] == userContainerList[b][c]){
+        if(numOfArray[index] == boardContainers[b].children[c].id){
           countTrue++;
           index++;
         }
@@ -78,20 +85,13 @@ export default class LevelTwo extends React.Component {
 
     //if counttrue equals 10 that means user got everything correct
     if(countTrue == 10){
-      console.log("Yay you are correct");
+      //render the feedback text
+      ReactDOM.render(<><text>Yay you got it right! Click next.</text></>, document.getElementById("feedback"));
     }else{
-      console.log("my dude you wrong!");
+      ReactDOM.render(<><text>You got it wrong my dude</text></>, document.getElementById("feedback"));
     }
   }
 
-  // incrStep() {
-  //   if (count < 9){
-  //     count++;
-  //     this.setState({ step :  count }, () => {
-  //       console.log(this.state.step);
-  //     });
-  //   }
-    // ReactDOM.render(<><text>step: </text>{count}</>, document.getElementById("step"));
   getContainers(){
     // render and display the steps (written here to allow reusability)
     ReactDOM.render(<><text>Step {count}: {steps[count].step}</text> </>, document.getElementById("step"));
@@ -112,6 +112,9 @@ export default class LevelTwo extends React.Component {
     // if it's not the last step, increase the count variable
     if (count < 8){
       count++;
+      this.setState({ step :  count }, () => {
+              console.log(this.state.step);
+            });
     }
   }
 
@@ -147,7 +150,7 @@ export default class LevelTwo extends React.Component {
     //   <Board className='board' id='2'></Board>
     // </>, document.getElementById("containers"));
     // render the check answer button so that users can check their answers
-    ReactDOM.render(<button>Verify</button>, document.getElementById("verify"));
+    ReactDOM.render(<button onClick={this.verify}>Verify</button>, document.getElementById("verify"));
   };
 
 
