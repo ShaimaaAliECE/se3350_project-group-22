@@ -15,41 +15,41 @@ let countmerge = 0;
 let numOfArray = [];
 let answerArray = [];
 
-//mergesort algorithm
-function merge(left,right){
-  let arr = [];
+// //mergesort algorithm
+// function merge(left,right){
+//   let arr = [];
 
-  //break out of the loop if any one of the array gets empty
-  while(left.length && right.length){
-    // console.log("value in the first element in the left " + left[0]);
-    // console.log("value in the first element in the right " + right[0]);
-    if(left[0] < right[0]){
-      arr.push(left.shift());
-      //console.log("shifting left: " + arr);
-    } else {
-      arr.push(right.shift());
-      //console.log("shifting right: " +arr);
-    }
-  }
-  console.log( "array: " + arr + " left array: " + left + " right array: " + right);
-  return [...arr,...left,...right]
-}
+//   //break out of the loop if any one of the array gets empty
+//   while(left.length && right.length){
+//     // console.log("value in the first element in the left " + left[0]);
+//     // console.log("value in the first element in the right " + right[0]);
+//     if(left[0] < right[0]){
+//       arr.push(left.shift());
+//       //console.log("shifting left: " + arr);
+//     } else {
+//       arr.push(right.shift());
+//       //console.log("shifting right: " +arr);
+//     }
+//   }
+//   console.log( "array: " + arr + " left array: " + left + " right array: " + right);
+//   return [...arr,...left,...right]
+// }
 
-function mergeSort(array){
+// function mergeSort(array){
   
-  const half = array.length / 2
+//   const half = array.length / 2
   
-  // Base case or terminating case
-  if(array.length < 2){
-    //console.log(array);
-    return array 
-  }
+//   // Base case or terminating case
+//   if(array.length < 2){
+//     //console.log(array);
+//     return array 
+//   }
   
-  const left = array.splice(0, half)
-  countmerge++;
-  console.log("merge num " + countmerge + " left array: " + left + " array: " + array)
-  return merge(mergeSort(left),mergeSort(array))
-}
+//   const left = array.splice(0, half)
+//   countmerge++;
+//   console.log("merge num " + countmerge + " left array: " + left + " array: " + array)
+//   return merge(mergeSort(left),mergeSort(array))
+// }
 export default class LevelTwo extends React.Component {
 
   constructor(props){
@@ -63,15 +63,19 @@ export default class LevelTwo extends React.Component {
     this.incrStep = this.incrStep.bind(this);
     this.getButtonNumbers = this.getButtonNumbers.bind(this);
   }
+  //  divide(array){
+  //    var split = array.splice(0,half);
+  //    return split + array;
+  //  }
 
   verify(){
     //check what step the user is on
     var currentStep = this.state.step;
     
-    // //keeping track of the containers
-    // var userContainerList = [];
-    // //keeping track of the current values in the containers
-    // var currentValues = [];
+    //keeping track of the containers
+    var userContainerList = [];
+    //keeping track of the current values in the containers
+    var currentValues = [];
 
     //keeping track of the num of correct the user gets
     var countTrue = 0;
@@ -81,6 +85,7 @@ export default class LevelTwo extends React.Component {
 
     //check how many containers is there for the current step
     var currentContainers = steps[currentStep-1].container;
+
     console.log("num of containers: " + currentContainers);
 
     //getting a collection of all the boardcontainers currently on the screen
@@ -88,51 +93,69 @@ export default class LevelTwo extends React.Component {
 
     
     //disregard dont delete
-    // //create variable names for each container present
+    //create variable names for each container present
     // for(var m = 0; m < currentContainers; m++){
     //   //creating an array to put current values inside the each of the userContainerList
     //   userContainerList[m] = [];
     // }
-    //loop through the current containers to find what numbers are in the conatiner at index k
-    // for(var k = 0; k < currentContainers; k++){
-    //   //looping through however many numbers are supposed to be in the currentContainers at index k.
-    //   for(var h = 0; h < steps[currentStep-1].numInCon[k]; h++){ //in the js file for steps have ex under step 1 numberscontained : [5,5] so it would loop through the 5 numbers then the second container would loop through 5 numbers again.
-    //     //push the numbers in the currentValues by looking at boardcontainer at index k and the childrens associated with it.
-    //     currentValues.push(boardContainers[k].children[h].id);
-    //   }
-    //   //add the values from above to the current user container list at index k
-    //   userContainerList[k] = currentValues;
-    //   //set current values back to nothing.
-    //   currentValues = [];
 
+    var userValues = [];
+    var numNumbers =[];
+    /**Checking the user arrays */
+    //loop through the current containers to find what numbers are in the conatiner at index k
+    for(var k = 0; k < currentContainers; k++){
+      console.log("hello");
+      //looping through however many numbers are supposed to be in the currentContainers at index k.
+      for(var h = 0; h < boardContainers[k].childElementCount; h++){ //in the js file for steps have ex under step 1 numberscontained : [5,5] so it would loop through the 5 numbers then the second container would loop through 5 numbers again.
+        //push the numbers in the currentValues by looking at boardcontainer at index k and the childrens associated with it.
+        userValues.push(boardContainers[k].children[h].id);
+        console.log("user value " + h + userValues[h]);
+      }
+      numNumbers.push(boardContainers[k].childElementCount);
+      // //add the values from above to the current user container list at index k
+      // userContainerList[k] = currentValues;
+
+      // //set current values back to nothing.
+      // currentValues = [];
+    }
+
+    //check if each containers contains correct number of numbers 
+    
+
+    console.log(...userValues);
+    console.log(...numNumbers);
+
+    // //loop through all the containers to check 
+    // for(var b = 0; b < currentContainers; b++){
+    //   for(var c = 0; c < steps[currentStep-1].numInCon[b]; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
+    //     if(boardContainers[b].children[c] != steps[currentStep-1].numInCon[b]){
+    //      // console.log("BITCHHH you wrong afff");
+    //       this.setState({feedback : "BITCHHH you wrong afff"});
+    //     }
+    //   //checking if the array stored is the same as the users array.
+    //     if(numOfArray[index] == boardContainers[b].children[c].id){
+    //       countTrue++;
+    //       index++;
+    //     }
+    //   }
     // }
 
-    //loop through all the containers to check 
-    for(var b = 0; b < currentContainers; b++){
-      for(var c = 0; c < steps[currentStep-1].numInCon[b]; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
-        if(boardContainers[b].children[c] != steps[currentStep-1].numInCon[b]){
-          console.log("BITCHHH you wrong afff");
-          this.setState({feedback : "BITCHHH you wrong afff"});
-        }
-      //checking if the array stored is the same as the users array.
-        if(numOfArray[index] == boardContainers[b].children[c].id){
-          countTrue++;
-          index++;
-        }
-      }
-    }
+    // //set index to 0
+    // index = 0;
 
-    //set index to 0
-    index = 0;
-
-    //if counttrue equals 10 that means user got everything correct
-    if(countTrue == 10){
-      //render the feedback text
-      this.setState({feedback : "Yay you got it right"});
+    // //if counttrue equals 10 that means user got everything correct
+    // if(countTrue == 10){
+    //   //render the feedback text
+    //   this.setState({feedback : "Yay you got it right"});
+    // }
       //ReactDOM.render(<><text>Yay you got it right! Click next.</text></>, document.getElementById("feedback"));
-    }else{
-      ReactDOM.render(<><text>You got it wrong my dude</text></>, document.getElementById("feedback"));
-    }
+    // }else{
+    //   ReactDOM.render(<><text>You got it wrong my dude</text></>, document.getElementById("feedback"));
+    // }
+  }
+
+  checkNum(num){
+    let [];
   }
 
   getContainers(){
@@ -168,6 +191,10 @@ export default class LevelTwo extends React.Component {
     // if it's not the first step, decrease the count variable
     if (count > 1){
       count--;
+      this.setState({ step :  count }, () => {
+        console.log(this.state.step);
+      });
+      this.setState({ feedback: " " });
     }
   }
 
@@ -188,7 +215,7 @@ export default class LevelTwo extends React.Component {
     }
     
     console.log("current array when generated: " + numOfArray);
-    console.log("merged array" + mergeSort(numOfArray));
+    //console.log("merged array" + mergeSort(numOfArray));
     // render the Number button components in the div called numbers
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
     // ReactDOM.render(<>
