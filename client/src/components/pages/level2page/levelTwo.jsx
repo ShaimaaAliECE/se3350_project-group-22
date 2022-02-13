@@ -4,6 +4,7 @@ import RandomNumbersArray from "../../../randomNumberGenerator";
 import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
+import {steps} from "./steps";
 import {useDrag} from 'react-dnd';
 import { steps } from "./steps";
 
@@ -83,21 +84,43 @@ export default class LevelTwo extends React.Component {
     }
   }
 
-  incrStep() {
-    if (count < 9){
-      count++;
-      this.setState({ step :  count }, () => {
-        console.log(this.state.step);
-      });
-    }
-    ReactDOM.render(<><text>step: </text>{count}</>, document.getElementById("step"));
+  // incrStep() {
+  //   if (count < 9){
+  //     count++;
+  //     this.setState({ step :  count }, () => {
+  //       console.log(this.state.step);
+  //     });
+  //   }
+    // ReactDOM.render(<><text>step: </text>{count}</>, document.getElementById("step"));
+  getContainers(){
+    // render and display the steps (written here to allow reusability)
+    ReactDOM.render(<><text>Step {count}: {steps[count].step}</text> </>, document.getElementById("step"));
+    // figure out the number of containers needed for the current step number
+    let numConts = steps[count-1].container;
+    // array to hold number of containers
+    let containers = [];  
+    // add as many containers to the array as required, with increasing id numbers
+    for (let i=0; i<numConts; i++) {
+      containers.push(<Board className='board' id={i}></Board>);
+    } 
+    // render the containers
+    ReactDOM.render(<>{containers}</>, document.getElementById("containers"));
   }
 
+  // handling the user clicking the next button
+  incrStep(){
+    // if it's not the last step, increase the count variable
+    if (count < 8){
+      count++;
+    }
+  }
+
+  // handling the user clicking the back button
   decrStep(){
+    // if it's not the first step, decrease the count variable
     if (count > 1){
       count--;
     }
-    ReactDOM.render(<><text>step: </text>{count}</>, document.getElementById("step"));
   }
 
   getButtonNumbers() {
@@ -119,12 +142,12 @@ export default class LevelTwo extends React.Component {
     console.log(numOfArray);
     // render the Number button components in the div called numbers
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
-    ReactDOM.render(<>
-      <Board className='board' id='1'></Board>
-      <Board className='board' id='2'></Board>
-    </>, document.getElementById("containers"));
+    // ReactDOM.render(<>
+    //   <Board className='board' id='1'></Board>
+    //   <Board className='board' id='2'></Board>
+    // </>, document.getElementById("containers"));
     // render the check answer button so that users can check their answers
-    // ReactDOM.render(<button onClick={this.checkAns}>check answer</button>, document.getElementById("numbers"));
+    ReactDOM.render(<button>Verify</button>, document.getElementById("verify"));
   };
 
 
@@ -160,14 +183,13 @@ export default class LevelTwo extends React.Component {
     return (
       <div id="main">
         <h1>Level Two</h1>
-        <button onClick={this.decrStep}>back</button>
+        <button onClick={ ()=>{ this.decrStep(); this.getContainers() } }>back</button>
         <button onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
-        <button onClick={this.incrStep}>next</button>
+        <button onClick={()=>{ this.incrStep(); this.getContainers() }}>next</button>
         <div className="flexbox"> <div id="numbers"></div>  </div>
         <div className="flexbox"> <div id="containers"></div> </div>
         <div id="step"></div>
-        <button onClick={this.verify}>Verify</button>
-        <div id="check"></div>
+        <div id="verify"></div>
         <div id="feedback"></div>
       </div>
     );
