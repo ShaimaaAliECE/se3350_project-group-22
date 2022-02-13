@@ -9,15 +9,53 @@ import {useDrag} from 'react-dnd';
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0; 
+let countmerge = 0;
 
 //declare a variable to keep track of the array.
 let numOfArray = [];
+let answerArray = [];
+
+//mergesort algorithm
+function merge(left,right){
+  let arr = [];
+
+  //break out of the loop if any one of the array gets empty
+  while(left.length && right.length){
+    // console.log("value in the first element in the left " + left[0]);
+    // console.log("value in the first element in the right " + right[0]);
+    if(left[0] < right[0]){
+      arr.push(left.shift());
+      //console.log("shifting left: " + arr);
+    } else {
+      arr.push(right.shift());
+      //console.log("shifting right: " +arr);
+    }
+  }
+  console.log( "array: " + arr + " left array: " + left + " right array: " + right);
+  return [...arr,...left,...right]
+}
+
+function mergeSort(array){
+  
+  const half = array.length / 2
+  
+  // Base case or terminating case
+  if(array.length < 2){
+    //console.log(array);
+    return array 
+  }
+  
+  const left = array.splice(0, half)
+  countmerge++;
+  console.log("merge num " + countmerge + " left array: " + left + " array: " + array)
+  return merge(mergeSort(left),mergeSort(array))
+}
 export default class LevelTwo extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      verify:false,
+      feedback:"",
       step:0
     };
 
@@ -74,6 +112,7 @@ export default class LevelTwo extends React.Component {
       for(var c = 0; c < steps[currentStep-1].numInCon[b]; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
         if(boardContainers[b].children[c] != steps[currentStep-1].numInCon[b]){
           console.log("BITCHHH you wrong afff");
+          this.setState({feedback : "BITCHHH you wrong afff"});
         }
       //checking if the array stored is the same as the users array.
         if(numOfArray[index] == boardContainers[b].children[c].id){
@@ -89,7 +128,8 @@ export default class LevelTwo extends React.Component {
     //if counttrue equals 10 that means user got everything correct
     if(countTrue == 10){
       //render the feedback text
-      ReactDOM.render(<><text>Yay you got it right! Click next.</text></>, document.getElementById("feedback"));
+      this.setState({feedback : "Yay you got it right"});
+      //ReactDOM.render(<><text>Yay you got it right! Click next.</text></>, document.getElementById("feedback"));
     }else{
       ReactDOM.render(<><text>You got it wrong my dude</text></>, document.getElementById("feedback"));
     }
@@ -118,6 +158,8 @@ export default class LevelTwo extends React.Component {
       this.setState({ step :  count }, () => {
               console.log(this.state.step);
             });
+      this.setState({ feedback: " " });
+
     }
   }
 
@@ -145,7 +187,8 @@ export default class LevelTwo extends React.Component {
       buttons.push(<Number id={num} className="number" draggable="true"></Number>);
     }
     
-    console.log(numOfArray);
+    console.log("current array when generated: " + numOfArray);
+    console.log("merged array" + mergeSort(numOfArray));
     // render the Number button components in the div called numbers
     ReactDOM.render(<>{buttons}</>, document.getElementById("numbers"));
     // ReactDOM.render(<>
@@ -196,7 +239,7 @@ export default class LevelTwo extends React.Component {
         <div className="flexbox"> <div id="containers"></div> </div>
         <div id="step"></div>
         <div id="verify"></div>
-        <div id="feedback"></div>
+        <div id="feedback">{this.state.feedback}</div>
       </div>
     );
   }
