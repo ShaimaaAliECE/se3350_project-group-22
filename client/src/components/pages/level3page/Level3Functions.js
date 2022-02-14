@@ -1,3 +1,9 @@
+import sound from "./correct.mp3";
+import wrong from "./wrong.mp3";
+
+const wrongAudio = new Audio(wrong);
+const audio = new Audio(sound);
+
 export function Random() {
   var size = 10;
   var max = 20;
@@ -32,6 +38,9 @@ export function Random() {
   document.getElementById("tb8").value = rnd8;
   document.getElementById("tb9").value = rnd9;
   document.getElementById("tb10").value = rnd10;
+
+  const wrongAudio = document.getElementById("wrong-audio");
+  wrongAudio.play();
 }
 
 function RandomNumbersArray(size, max, min) {
@@ -68,13 +77,25 @@ function InNumberList(numbersArray, randomNum, size) {
 }
 
 export function Wrong() {
-  var show = document.getElementById("showStep1");
+  var show = document.getElementById("wrong");
   show.classList.toggle("show");
-
-  alert("Wrong answer please try again!");
+  document.getElementById("wrong").value = "Wrong answer please try again";
+  wrongAudio.play();
+  //   alert("Wrong answer please try again!");
 }
 //    <div className="footer"></div>
 //         <h1>
 //           Hello
 //           <button onClick={this.playSound}>Play Audio Feedback Sample</button>
 //         </h1>
+
+export function Next1() {
+  var show = document.getElementById("right");
+  show.classList.toggle("show");
+  var show = document.getElementById("wrong");
+  show.classList.toggle("none");
+
+  // var correctAudio = document.getElementById("correct-audio");
+  // correctAudio.play();
+  audio.play();
+}

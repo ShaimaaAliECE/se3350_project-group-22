@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import incorrectSfx from "../../../sounds/wrong.mp3";
 import correctSfx from "../../../sounds/correct.mp3";
 import styles from "./levelThree.css";
-import { Random, Wrong } from "./Level3Functions";
+import { Random, Wrong, Next1 } from "./Level3Functions";
 export default class LevelThree extends Component {
   // verify user response
   checkResponse = async (e) => {
@@ -118,30 +118,26 @@ export default class LevelThree extends Component {
               //go to the next step
               onClick={Wrong}
             />
+            <audio
+              src="correct.mp3"
+              id="correct-audio"
+              type="audio/mpeg"
+            ></audio>
+            <audio src="wrong.mp3" id="wrong-audio" type="audio/mpeg"></audio>
             <span style={{ display: "inline-block", width: "20px" }}></span>
             <input
               type="button"
               className="nextStep"
               value="Split Array"
               //go to the next step
-              onClick={Wrong}
+              onClick={Next1}
             />
-            <div className="hide" id="wrong">
-              <input
-                type="text"
-                id="wrong"
-                name="step1"
-                size="80"
-                style={{
-                  flex: 1,
-                  width: "100%",
-                  height: 50,
-                  color: "#FFF",
-                  textAlignVertical: "top", // android fix for centering it at the top-left corner
-                }}
-                readOnly
-              />
-            </div>
+            <h5 class="hide" id="wrong">
+              Wrong answer please try again!{" "}
+            </h5>
+            <h4 class="hide" id="right">
+              Correct answer!{" "}
+            </h4>
           </div>
           );{" "}
         </form>
