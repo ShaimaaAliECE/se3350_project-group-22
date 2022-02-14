@@ -69,9 +69,6 @@ export default class LevelTwo extends React.Component {
   //  }
 
   verify(){
-    //check what step the user is on
-    var currentStep = this.state.step;
-    
     //keeping track of the containers
     //var userContainerList = [];
     //keeping track of the current values in the containers
@@ -83,13 +80,9 @@ export default class LevelTwo extends React.Component {
     //var index = 0;
     //console.log("generate array button value: " + numOfArray);
 
-    //check how many containers is there for the current step
-    var currentContainers = steps[currentStep-1].container;
-
     //console.log("num of containers: " + currentContainers);
 
     //getting a collection of all the boardcontainers currently on the screen
-    var boardContainers = document.getElementsByClassName('board');
     
     //disregard dont delete
     //create variable names for each container present
@@ -98,115 +91,24 @@ export default class LevelTwo extends React.Component {
     //   userContainerList[m] = [];
     // }
 
-    var userValues = [];
-    var numNumbers =[];
-    /**Checking the user arrays */
-    //loop through the current containers to find what numbers are in the conatiner at index k
-    for(var k = 0; k < currentContainers; k++){
-      //console.log("hello");
-      //looping through however many numbers are supposed to be in the currentContainers at index k.
-      for(var h = 0; h < boardContainers[k].childElementCount; h++){ //in the js file for steps have ex under step 1 numberscontained : [5,5] so it would loop through the 5 numbers then the second container would loop through 5 numbers again.
-        //push the numbers in the currentValues by looking at boardcontainer at index k and the childrens associated with it.
-        userValues.push(boardContainers[k].children[h].id);
-        //console.log("user value " + h + userValues[h]);
-      }
-      numNumbers.push(boardContainers[k].childElementCount);
-      // //add the values from above to the current user container list at index k
-      // userContainerList[k] = currentValues;
-
-      // //set current values back to nothing.
-      // currentValues = [];
-    }
-
-    //check if each containers contains correct number of numbers 
-    
-    // ------------------------ getting user input -----------------------
     // array of the users values
-    console.log("USER - ARRAY: "+ userValues); 
+    //console.log("USER - ARRAY: "+ userValues); 
     // array of how many numbers the user put in each box, ordered from left to right
-    console.log("USER - # boxes: " + numNumbers); 
-    
-    // ----------------------- verifying user answers --------------------
-
+    //console.log("USER - # boxes: " + numNumbers); 
+  
     // what the answer is supposed to be 
     //console.log("step: " + currentStep);
     // after step 4, starts merging, so the array needs to be in order
-    console.log("ANS - ARRAY: " + numOfArray);
-    
-    // getting min and max values of array
-    let max, min;
-    max = Math.max(...numNumbers);
-    min = Math.min(...numNumbers);
-    
-    console.log("max " + max);
-    console.log("min " + min);
-
+    //console.log("ANS - ARRAY: " + numOfArray);
 
     // for the answer to be right, then numNumbers needs to be the same as numOfArray
     // also, we need to find the number of numbers that should be in each box, depending on which step
     //console.log("number of containers: " + currentContainers);
     // let correctNoCont = [];  // array to hold the correct number of numbers needed in each container depending on the step
-    
 
     // // divide number of numbers by number of containers to get how many are supposed to be in each box
 
-    // -----------------  check correct split  ------------------------
-    let correctSplit;
-    let numsInCont;
-    numsInCont = 10/currentContainers;
-
-    let difference;
-    difference = Math.max(...numNumbers) - Math.min(...numNumbers);
     
-    // case 1: if the modulus is 0, then it's a whole number, so each box has an equal amount of numbers in it
-    // thus, the difference in the max and min should be a 0
-    // case 2: if it's not a whole number, then the difference should be 1, because the user has to sort numbers as evenly as possible
-    // if either case 1 or case 2 is true, then the user is correct in splitting their numbers
-    if ( (numsInCont % 1 === 0 && difference === 0)   ||  (numsInCont %1 !== 0 && difference === 1)  ){
-        correctSplit = true;
-    } else {    // otherwise, the user is incorrect
-       correctSplit = false;
-    }
-    console.log("was split evenly: " + correctSplit);
-
-
-    // -----------------  check correct order  ---------------------------
-    let correctOrder;
-    let userString, ansString;
-    userString = userValues.toString();
-    
-    // if it's not after the merging step, answer string is unsorted array 
-    if (currentStep<5){
-      ansString = numOfArray.toString();
-      // if it's after the merging step, the answer string is the sorted array
-    } else if (currentStep>4){
-      // sort the unsorted array before adding it to the string
-      ansString = numOfArray.sorted().toString();
-    }
-    if (userString === ansString) {
-      correctOrder = true;
-    } else {
-      correctOrder = false;
-    }
-    console.log("was in order: " + correctOrder);
-
-    // ----------------------  user feedback  ----------------------
-    // if the user didn't drag all the numbers
-    if (userValues.length < 10) {
-      this.setState({feedback : "please finish ordering all numbers"});
-    // if one of the boxes contains >1 more numbers than any of the other boxes
-    } else {
-      if (!correctSplit && !correctOrder) {
-          this.setState({feedback : "please try again."});
-        } else if (!correctOrder && correctSplit){
-          this.setState({feedback : "the numbers are not in the correct order. please try again."});
-        } else if (correctSplit && !correctOrder) {
-          this.setState({feedback : "the numbers are in the correct order but they need to be split as evenly as possible. please try again."});
-        } else if (correctOrder && correctSplit){
-          this.setState({feedback : "correct bae!!!! click next to go to the next step"});
-        };
-    }
-
     // if modulus is 0
     // max-min should give 0, otherwise the user is wrong
     
@@ -225,10 +127,6 @@ export default class LevelTwo extends React.Component {
     // } else {
 
     // }
-
-
-
-
 
     // //loop through all the containers to check 
     // for(var b = 0; b < currentContainers; b++){
@@ -257,6 +155,87 @@ export default class LevelTwo extends React.Component {
     // }else{
     //   ReactDOM.render(<><text>You got it wrong my dude</text></>, document.getElementById("feedback"));
     // }
+
+
+    // ---------------------------   getting user input  ---------------------------
+
+    //check what step the user is on
+    var currentStep = this.state.step;
+
+    //check how many containers there are for the current step
+    var currentContainers = steps[currentStep-1].container;
+
+    var userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
+    var numNumbers = [];    // array to hold the number of numbers in each box, in order from left to right
+    
+    var boardContainers = document.getElementsByClassName('board');
+    //loop through the current containers to find what numbers are in the conatiner at index k
+    for(var k = 0; k < currentContainers; k++){
+      //looping through however many numbers are supposed to be in the currentContainers at index k
+      for(var h = 0; h < boardContainers[k].childElementCount; h++){ 
+        //push the numbers in the currentValues by looking at boardcontainer at index k and the children associated with it
+        userValues.push(boardContainers[k].children[h].id);
+      }
+      // push the number of children (i.e. number of numbers) that each box has into the array
+      numNumbers.push(boardContainers[k].childElementCount);
+    }
+
+    // -----------------------  check correct split  ------------------------
+    let correctSplit;
+    let numsInCont;
+    numsInCont = 10/currentContainers;
+
+    let difference;
+    difference = Math.max(...numNumbers) - Math.min(...numNumbers);
+    
+    // case 1: if the modulus is 0, then it's a whole number, so each box has an equal amount of numbers in it
+    // thus, the difference in the max and min should be a 0
+    // case 2: if it's not a whole number, then the difference should be 1, because the user has to sort numbers as evenly as possible
+    // if either case 1 or case 2 is true, then the user is correct in splitting their numbers
+    if ( (numsInCont % 1 === 0 && difference === 0)   ||  (numsInCont %1 !== 0 && difference === 1)  ){
+        correctSplit = true;
+    } else {    // otherwise, the user is incorrect
+       correctSplit = false;
+    }
+    //console.log("was split evenly: " + correctSplit);
+
+
+    // ---------------------   check correct order   -----------------------------
+    let correctOrder;
+    let userString, ansString;
+    userString = userValues.toString();
+    
+    // if it's not after the merging step, answer string is unsorted array 
+    if (currentStep<5){
+      ansString = numOfArray.toString();
+      // if it's after the merging step, the answer string is the sorted array
+    } else if (currentStep>4){
+      // sort the unsorted array before adding it to the string
+      ansString = numOfArray.sorted().toString();
+    }
+    if (userString === ansString) {
+      correctOrder = true;
+    } else {
+      correctOrder = false;
+    }
+    //console.log("was in order: " + correctOrder);
+
+    // ------------------------  user feedback  ------------------------
+    // if the user didn't drag all the numbers
+    if (userValues.length < 10) {
+      this.setState({feedback : "please finish ordering all numbers"});
+    // if one of the boxes contains >1 more numbers than any of the other boxes
+    } else {
+      if (!correctSplit && !correctOrder) {
+          this.setState({feedback : "please try again."});
+        } else if (!correctOrder && correctSplit){
+          this.setState({feedback : "the numbers are not in the correct order. please try again."});
+        } else if (correctSplit && !correctOrder) {
+          this.setState({feedback : "the numbers are in the correct order but they need to be split as evenly as possible. please try again."});
+        } else if (correctOrder && correctSplit){
+          this.setState({feedback : "correct bae!!!! click next to go to the next step"});
+        };
+    }
   }
 
   getContainers(){
