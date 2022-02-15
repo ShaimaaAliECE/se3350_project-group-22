@@ -355,7 +355,6 @@ export default class LevelTwo extends React.Component {
         <button onClick={() => {this.incrStep(); this.getContainers() }}>next</button>
         <div className="flexbox">
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
-          <div id="user">{this.state.userContainer}</div>
           <div id="containers">{this.state.containers}</div>
         </div>
         <div id="step"></div>
