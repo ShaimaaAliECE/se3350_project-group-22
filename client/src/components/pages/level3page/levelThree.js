@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import incorrectSfx from "../../../sounds/wrong.mp3";
 import correctSfx from "../../../sounds/correct.mp3";
 import styles from "./levelThree.css";
-import { Random, Wrong, Next1 } from "./Level3Functions";
+import {
+  Random,
+  checkFeedbackCorrect,
+  checkFeedbackCorrect1,
+  checkFeedbackWrong,
+  Next1,
+} from "./Level3Functions";
 export default class LevelThree extends Component {
   // verify user response
   checkResponse = async (e) => {
@@ -103,7 +109,13 @@ export default class LevelThree extends Component {
               <input type="number" id="tb2" value="Random Number!" readOnly />
               <input type="number" id="tb3" value="Random Number!" readOnly />
               <input type="number" id="tb4" value="Random Number!" readOnly />
-              <input type="number" id="tb5" value="Random Number!" readOnly />
+              <input
+                type="number"
+                id="tb5"
+                value="Random Number!"
+                // onClick={checkFeedbackCorrect}
+                readOnly
+              />
               <input type="number" id="tb6" value="Random Number!" readOnly />
               <input type="number" id="tb7" value="Random Number!" readOnly />
               <input type="number" id="tb8" value="Random Number!" readOnly />
@@ -116,29 +128,128 @@ export default class LevelThree extends Component {
               className="nextStep"
               value="Merge Array"
               //go to the next step
-              onClick={Wrong}
+              onClick={checkFeedbackWrong}
             />
-            <audio
-              src="correct.mp3"
-              id="correct-audio"
-              type="audio/mpeg"
-            ></audio>
-            <audio src="wrong.mp3" id="wrong-audio" type="audio/mpeg"></audio>
+
             <span style={{ display: "inline-block", width: "20px" }}></span>
             <input
               type="button"
               className="nextStep"
               value="Split Array"
               //go to the next step
+              onClick={checkFeedbackCorrect}
+            />
+          </div>
+          {/* first place to split */}
+          <div className="hide" id="Split1">
+            <h4 id="right"> Click where to split the array</h4>
+            <div className="blockofnum">
+              <input
+                type="number"
+                id="n1"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n3"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n4"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n5"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n6"
+                value="Random Number!"
+                onClick={checkFeedbackCorrect1}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n7"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n8"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n9"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n10"
+                value="Random Number!"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+            </div>
+          </div>
+          <div className="hide" id="fedback1">
+            <input
+              type="button"
+              id="feedbackcorrect"
+              name="feedback"
+              size="80"
+              style={{ color: "green" }}
+              readOnly
+            />
+          </div>
+          <div className="hide" id="fedback2">
+            <input
+              type="button"
+              id="feedbackwrong"
+              name="feedback"
+              size="80"
+              style={{ color: "red" }}
+              readOnly
+            />
+          </div>
+          <div className="hide" id="Next">
+            <input
+              type="button"
+              id="next"
+              value="Next"
+              //go to the next step
               onClick={Next1}
             />
-            <h5 class="hide" id="wrong">
-              Wrong answer please try again!{" "}
-            </h5>
-            <h4 class="hide" id="right">
-              Correct answer!{" "}
-            </h4>
           </div>
+          {/* <h4 class="hide" id="right">
+              Correct answer!{" "}
+            </h4> */}
           );{" "}
         </form>
         <div className="footer"></div>

@@ -17,7 +17,7 @@
 }
 
 .random {
-  background-color: #db9eeb; /* Green */
+  background-color: #1f0325; /* Green */
   border: none;
   color: white;
   padding: 15px 20px;
@@ -148,6 +148,10 @@ input[type="number"] {
   border-color: #000000;
   text-align: center;
   margin-left: 0.1%;
+}
+
+input[type="number"]:focus {
+  outline: 2px solid orange; /* oranges! yey */
 }
 
 input[type="text"] {

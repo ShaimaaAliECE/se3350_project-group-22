@@ -2,7 +2,7 @@ import sound from "./correct.mp3";
 import wrong from "./wrong.mp3";
 
 const wrongAudio = new Audio(wrong);
-const audio = new Audio(sound);
+const correctaudio = new Audio(sound);
 
 export function Random() {
   var size = 10;
@@ -38,9 +38,6 @@ export function Random() {
   document.getElementById("tb8").value = rnd8;
   document.getElementById("tb9").value = rnd9;
   document.getElementById("tb10").value = rnd10;
-
-  const wrongAudio = document.getElementById("wrong-audio");
-  wrongAudio.play();
 }
 
 function RandomNumbersArray(size, max, min) {
@@ -76,26 +73,89 @@ function InNumberList(numbersArray, randomNum, size) {
   return false;
 }
 
-export function Wrong() {
-  var show = document.getElementById("wrong");
-  show.classList.toggle("show");
-  document.getElementById("wrong").value = "Wrong answer please try again";
-  wrongAudio.play();
-  //   alert("Wrong answer please try again!");
+//check if user choice i correct or wrong
+export function checkFeedbackCorrect() {
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+  var next = document.getElementById("Next");
+  next.style.display = "block";
 }
-//    <div className="footer"></div>
-//         <h1>
-//           Hello
-//           <button onClick={this.playSound}>Play Audio Feedback Sample</button>
-//         </h1>
 
 export function Next1() {
-  var show = document.getElementById("right");
-  show.classList.toggle("show");
-  var show = document.getElementById("wrong");
-  show.classList.toggle("none");
+  var feedback = document.getElementById("fedback1");
+  feedback.style.display = "none";
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+  //show numbers
+  var values = document.getElementById("Split1");
+  values.classList.toggle("show");
+  var next = document.getElementById("Next");
+  next.style.display = "none";
+  //display the array
+  var numbers = document.getElementById("n1");
+  var n2 = document.getElementById("n2");
+  var n3 = document.getElementById("n3");
+  var n4 = document.getElementById("n4");
+  var n5 = document.getElementById("n5");
+  var n6 = document.getElementById("n6");
+  var n7 = document.getElementById("n7");
+  var n8 = document.getElementById("n8");
+  var n9 = document.getElementById("n9");
+  var n10 = document.getElementById("n10");
 
-  // var correctAudio = document.getElementById("correct-audio");
+  numbers.value = document.getElementById("tb").value;
+  n2.value = document.getElementById("tb2").value;
+  n3.value = document.getElementById("tb3").value;
+  n4.value = document.getElementById("tb4").value;
+  n5.value = document.getElementById("tb5").value;
+  n6.value = document.getElementById("tb6").value;
+  n7.value = document.getElementById("tb7").value;
+  n8.value = document.getElementById("tb8").value;
+  n9.value = document.getElementById("tb9").value;
+  n10.value = document.getElementById("tb10").value;
+}
+
+//user choice is wrong
+export function checkFeedbackWrong() {
+  var feedback = document.getElementById("fedback2");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackcorrect = document.getElementById("fedback1");
+  feedbackcorrect.style.display = "none";
+
+  document.getElementById("feedbackwrong").value =
+    "Wrong Answer Please try again!";
+
+  //play wrong audio
+  wrongAudio.play();
+
+  var next = document.getElementById("Next");
+  next.style.display = "none";
+}
+
+//where to split the first number
+
+//check if user choice i correct or wrong
+export function checkFeedbackCorrect1() {
   // correctAudio.play();
-  audio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
 }
