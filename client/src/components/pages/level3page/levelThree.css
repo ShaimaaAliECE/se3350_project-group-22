@@ -17,7 +17,7 @@
 }
 
 .random {
-  background-color: #db9eeb; /* Green */
+  background-color: #1f0325; /* Green */
   border: none;
   color: white;
   padding: 15px 20px;
@@ -109,6 +109,7 @@ body {
   display: none;
   margin-top: 2%;
   text-align: center;
+  align-self: center;
 }
 .blockofnum {
   margin-top: 1%;
@@ -150,6 +151,17 @@ input[type="number"] {
   margin-left: 0.1%;
 }
 
+input[type="radio"]:focus {
+  outline: 2px solid orange; /* oranges! yey */
+}
+
+.split:focus {
+  outline: 2px solid orange; /* oranges! yey */
+}
+
+.split {
+  background-color: rgb(171, 161, 228);
+}
 input[type="text"] {
   color: rgb(59, 9, 78);
   border: none;
@@ -164,4 +176,12 @@ input[type="text"] {
   height: 50;
   color: "#FFF";
   vertical-align: top;
+}
+
+h5 {
+  color: #b41a10;
+}
+
+h4 {
+  color: #3b9e4b;
 }
