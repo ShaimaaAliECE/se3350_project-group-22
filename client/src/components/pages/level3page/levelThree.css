@@ -158,6 +158,10 @@ input[type="radio"]:focus {
 .split:focus {
   outline: 2px solid orange; /* oranges! yey */
 }
+
+.split {
+  background-color: rgb(171, 161, 228);
+}
 input[type="text"] {
   color: rgb(59, 9, 78);
   border: none;

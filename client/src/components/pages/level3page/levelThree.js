@@ -8,6 +8,10 @@ import {
   checkFeedbackCorrect1,
   checkFeedbackWrong,
   Next2,
+  checkFeedbackCorrect2,
+  checkFeedbackCorrect3,
+  checkFeedbackCorrect4,
+  Next3,
   Next1,
 } from "./Level3Functions";
 export default class LevelThree extends Component {
@@ -145,8 +149,13 @@ export default class LevelThree extends Component {
           <div className="hide" id="Split1">
             <h5 id="right" style={{ color: "black" }}>
               {" "}
-              Click where you want to split the array
+              Click where you want to split the array on the yellow space
             </h5>
+            <h6 id="right" style={{ color: "black" }}>
+              {" "}
+              Hint: you must split all the groups in each step to be able to
+              move to the next one
+            </h6>
 
             <div className="blockofnum">
               <input type="number" id="n1" value="Random Number!" readOnly />
@@ -156,6 +165,7 @@ export default class LevelThree extends Component {
                 className="split"
                 id="n1space"
                 value=""
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -166,6 +176,7 @@ export default class LevelThree extends Component {
                 id="n2space"
                 className="split"
                 value=""
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -175,6 +186,7 @@ export default class LevelThree extends Component {
                 id="n3space"
                 className="split"
                 value=""
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -184,6 +196,7 @@ export default class LevelThree extends Component {
                 id="n4space"
                 className="split"
                 value=""
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -194,6 +207,7 @@ export default class LevelThree extends Component {
                 id="n5space"
                 className="split"
                 value=""
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect1}
                 readOnly
               />
@@ -203,6 +217,7 @@ export default class LevelThree extends Component {
                 id="n6space"
                 className="split"
                 value=""
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -213,6 +228,7 @@ export default class LevelThree extends Component {
                 id="n7space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -222,6 +238,7 @@ export default class LevelThree extends Component {
                 id="n8space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -231,6 +248,7 @@ export default class LevelThree extends Component {
                 id="n9space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
@@ -242,83 +260,175 @@ export default class LevelThree extends Component {
           split 2 */}
           <div className="hide" id="split2">
             <div className="blockofnum">
-              <input type="number" id="n1" name="n1" size="1" readOnly />
+              <input type="number" id="n12" name="n1" size="1" readOnly />
               <input
                 type="number"
-                id="n9space"
+                id="n12space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
-              <input type="number" id="n2" name="n2" size="1" readOnly />
+              <input type="number" id="n22" name="n2" size="1" readOnly />
               <input
                 type="number"
-                id="n9space"
+                id="n22space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
-              <input type="number" id="n3" name="n3" size="1" readOnly />
+              <input type="number" id="n32" name="n32" size="1" readOnly />
               <input
                 type="number"
-                id="n9space"
+                id="n32space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
+                onClick={checkFeedbackCorrect2}
+                readOnly
+              />
+
+              <input type="number" id="n42" name="n4" size="1" readOnly />
+              <input
+                type="number"
+                id="n42space"
+                value=""
+                className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
-              <input type="number" id="n4" name="n4" size="1" readOnly />
-              <input
-                type="number"
-                id="n9space"
-                value=""
-                className="split"
-                onClick={checkFeedbackWrong}
-                readOnly
-              />
-              <input type="number" id="n5" name="n2" size="1" readOnly />
+              <input type="number" id="n52" name="n2" size="1" readOnly />
 
               <span style={{ display: "inline-block", width: "200px" }}></span>
 
-              <input type="number" id="n6" name="n2" size="1" readOnly />
+              <input type="number" id="n62" name="n2" size="1" readOnly />
               <input
                 type="number"
-                id="n9space"
+                id="n62space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
-              <input type="number" id="n7" name="n2" size="1" readOnly />
+              <input type="number" id="n72" name="n2" size="1" readOnly />
               <input
                 type="number"
-                id="n9space"
+                id="n72space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
-              <input type="number" id="n8" name="n2" size="1" readOnly />
+              <input type="number" id="n82" name="n2" size="1" readOnly />
               <input
                 type="number"
-                id="n9space"
+                id="n82space"
                 value=""
                 className="split"
+                style={{ backgroundColor: "yellow" }}
+                onClick={checkFeedbackCorrect3}
+                readOnly
+              />
+              <input type="number" id="n92" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n92space"
+                value=""
+                className="split"
+                style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
-              <input type="number" id="n9" name="n2" size="1" readOnly />
-              <input
-                type="number"
-                id="n9space"
-                value=""
-                className="split"
-                onClick={checkFeedbackWrong}
-                readOnly
-              />
-              <input type="number" id="n10" name="n2" size="1" readOnly />
+              <input type="number" id="n102" name="n2" size="1" readOnly />
+            </div>
+
+            {/* split 3 */}
+            <div className="hide" id="split3">
+              <div className="blockofnum">
+                <input type="number" id="num1" name="n1" size="1" readOnly />
+                <input
+                  type="number"
+                  id="n92space"
+                  value=""
+                  className="split"
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={checkFeedbackWrong}
+                  readOnly
+                />
+                <input type="number" id="num2" name="n2" size="1" readOnly />
+                <input
+                  type="number"
+                  id="space13"
+                  value=""
+                  className="split"
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={checkFeedbackCorrect4}
+                  readOnly
+                />
+                <input type="number" id="num3" name="n3" size="1" readOnly />
+
+                <span style={{ display: "inline-block", width: "70px" }}></span>
+
+                <input type="number" id="num4" name="n4" size="1" readOnly />
+                <input
+                  type="number"
+                  id="space23"
+                  value=""
+                  className="split"
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={checkFeedbackCorrect4}
+                  readOnly
+                />
+                <input type="number" id="num5" name="n4" size="1" readOnly />
+
+                <span
+                  style={{ display: "inline-block", width: "100px" }}
+                ></span>
+
+                <input type="number" id="num6" name="n1" size="1" readOnly />
+                <input
+                  type="number"
+                  id="n92space"
+                  value=""
+                  className="split"
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={checkFeedbackWrong}
+                  readOnly
+                />
+                <input type="number" id="num7" name="n2" size="1" readOnly />
+                <input
+                  type="number"
+                  id="space33"
+                  value=""
+                  className="split"
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={checkFeedbackCorrect4}
+                  readOnly
+                />
+                <input type="number" id="num8" name="n2" size="1" readOnly />
+
+                <span
+                  style={{ display: "inline-block", width: "100px" }}
+                ></span>
+
+                <input type="number" id="num9" name="n2" size="1" readOnly />
+                <input
+                  type="number"
+                  id="space43"
+                  value=""
+                  className="split"
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={checkFeedbackCorrect4}
+                  readOnly
+                />
+                <input type="number" id="num10" name="n2" size="1" readOnly />
+              </div>
             </div>
           </div>
           <div className="hide" id="fedback1">
@@ -357,6 +467,23 @@ export default class LevelThree extends Component {
             value="Next"
             //go to the next step
             onClick={Next2}
+          />
+          <input
+            className="hide"
+            type="button"
+            id="next3"
+            value="Next"
+            //go to the next step
+            onClick={Next3}
+          />
+          <input
+            className="hide"
+            type="button"
+            id="next4"
+            value="Next"
+            //go to the next step
+            style={{ backgroundColor: "orange" }}
+            onClick={Next3}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
