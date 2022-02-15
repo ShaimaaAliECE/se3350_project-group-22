@@ -5,6 +5,7 @@ const wrongAudio = new Audio(wrong);
 const correctaudio = new Audio(sound);
 var counter = 0;
 var countertwo = 0;
+var counter3 = 0;
 export function Random() {
   var size = 10;
   var max = 20;
@@ -232,7 +233,7 @@ export function checkFeedbackCorrect2() {
 
   document.getElementById("feedbackcorrect").value = "Correct Answer";
   //get the two balues that you are supposed to click on
-  if (counter == 2) {
+  if (counter >= 2) {
     var next = document.getElementById("next3");
     next.style.display = "block";
   }
@@ -257,9 +258,10 @@ export function checkFeedbackCorrect3() {
   // var next = document.getElementById("next2");
   // next.style.display = "block";
   //go to next step
-  if (counter == 2) {
+  if (counter >= 2) {
     var next = document.getElementById("next3");
     next.style.display = "block";
+    alert("Congratulations! You have splitted all the groups in this step");
   }
 }
 
@@ -331,8 +333,152 @@ export function checkFeedbackCorrect4() {
 
   document.getElementById("feedbackcorrect").value = "Correct Answer";
 
-  if (countertwo == 4) {
+  if (countertwo >= 4) {
     var next = document.getElementById("next4");
     next.style.display = "block";
+    alert("Congratulations! You have splitted all the groups in this step");
   }
+}
+
+export function Next4() {
+  var feedback = document.getElementById("fedback1");
+  feedback.style.display = "none";
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+  //show numbers
+
+  var next = document.getElementById("next4");
+  next.style.display = "none";
+
+  var split3 = document.getElementById("split4");
+  split3.style.display = "block";
+
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step4");
+  var n2 = document.getElementById("n2Step4");
+  var n3 = document.getElementById("n3Step4");
+  var n4 = document.getElementById("n4Step4");
+  var n5 = document.getElementById("n5Step4");
+  var n6 = document.getElementById("n6Step4");
+  var n7 = document.getElementById("n7Step4");
+  var n8 = document.getElementById("n8Step4");
+  var n9 = document.getElementById("n9Step4");
+  var n10 = document.getElementById("n10Step4");
+
+  //first group
+  var num1 = document.getElementById("num1");
+  var num2 = document.getElementById("num2");
+  n1.value = num1.value;
+  n2.value = num2.value;
+
+  var num3 = document.getElementById("num3");
+
+  n3.value = num3.value;
+
+  //second group
+  var num4 = document.getElementById("num4");
+  var num5 = document.getElementById("num5");
+  n4.value = num4.value;
+  n5.value = num5.value;
+
+  //third group
+  var num6 = document.getElementById("num6");
+  var num7 = document.getElementById("num7");
+  var num8 = document.getElementById("num8");
+  n6.value = num6.value;
+  n7.value = num7.value;
+  n8.value = num8.value;
+
+  //fourth group
+  var num9 = document.getElementById("num9");
+  var num10 = document.getElementById("num10");
+  n9.value = num9.value;
+  n10.value = num10.value;
+
+  var space = document.getElementById("space14");
+
+  space.addEventListener("click", function () {
+    counter3 += 1;
+  });
+
+  var space2 = document.getElementById("space24");
+
+  space2.addEventListener("click", function () {
+    counter3 += 1;
+  });
+}
+
+export function checkFeedbackCorrect5() {
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+  if (counter3 >= 2) {
+    var next = document.getElementById("next5");
+    next.style.display = "block";
+    alert("Congratulations! You have splitted all the groups in this step");
+  }
+}
+
+export function Next5() {
+  var feedback = document.getElementById("fedback1");
+  feedback.style.display = "none";
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+  //show numbers
+
+  var next = document.getElementById("next5");
+  next.style.display = "none";
+
+  var split3 = document.getElementById("split5");
+  split3.style.display = "block";
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step5");
+  var n2 = document.getElementById("n2Step5");
+  var n3 = document.getElementById("n3Step5");
+  var n4 = document.getElementById("n4Step5");
+  var n5 = document.getElementById("n5Step5");
+  var n6 = document.getElementById("n6Step5");
+  var n7 = document.getElementById("n7Step5");
+  var n8 = document.getElementById("n8Step5");
+  var n9 = document.getElementById("n9Step5");
+  var n10 = document.getElementById("n10Step5");
+
+  //first group
+  var num1 = document.getElementById("num1");
+  var num2 = document.getElementById("num2");
+  n1.value = num1.value;
+  n2.value = num2.value;
+
+  var num3 = document.getElementById("num3");
+
+  n3.value = num3.value;
+
+  //second group
+  var num4 = document.getElementById("num4");
+  var num5 = document.getElementById("num5");
+  n4.value = num4.value;
+  n5.value = num5.value;
+
+  //third group
+  var num6 = document.getElementById("num6");
+  var num7 = document.getElementById("num7");
+  var num8 = document.getElementById("num8");
+  n6.value = num6.value;
+  n7.value = num7.value;
+  n8.value = num8.value;
+
+  //fourth group
+  var num9 = document.getElementById("num9");
+  var num10 = document.getElementById("num10");
+  n9.value = num9.value;
+  n10.value = num10.value;
 }

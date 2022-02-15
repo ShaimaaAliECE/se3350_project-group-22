@@ -11,7 +11,10 @@ import {
   checkFeedbackCorrect2,
   checkFeedbackCorrect3,
   checkFeedbackCorrect4,
+  checkFeedbackCorrect5,
   Next3,
+  Next4,
+  Next5,
   Next1,
 } from "./Level3Functions";
 export default class LevelThree extends Component {
@@ -431,6 +434,90 @@ export default class LevelThree extends Component {
               </div>
             </div>
           </div>
+          {/* split 4 */}
+          <div className="hide" id="split4">
+            <div className="blockofnum">
+              {/* <!-- group 1 -- > */}
+              <input type="number" id="n1Step4" name="n1" size="1" readOnly />
+              <input
+                type="number"
+                id="space14"
+                value=""
+                className="split"
+                style={{ backgroundColor: "yellow" }}
+                onClick={checkFeedbackCorrect5}
+                readOnly
+              />
+              <input type="number" id="n2Step4" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "60px" }}></span>
+              {/* <!--group 2 -- > */}
+              <input type="number" id="n3Step4" name="n3" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+              {/* <!--group 3 -- > */}
+              <input type="number" id="n4Step4" name="n4" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              <input type="number" id="n5Step4" name="n4" size="1" readOnly />
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              <input type="number" id="n6Step4" name="n1" size="1" readOnly />
+              <input
+                type="number"
+                id="space24"
+                value=""
+                className="split"
+                style={{ backgroundColor: "yellow" }}
+                onClick={checkFeedbackCorrect5}
+                readOnly
+              />
+              <input type="number" id="n7Step4" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              {/* <!--   group 4 -- > */}
+              <input type="number" id="n8Step4" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input type="number" id="n9Step4" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              {/* <!--group 7 -- > */}
+              <input type="number" id="n10Step4" name="n2" size="1" readOnly />
+            </div>
+          </div>
+          {/* split5 */}
+          <div className="hide" id="split5">
+            <div className="blockofnum">
+              {/* <!--
+            group 1 -- > */}
+              <input type="number" id="n1Step5" name="n1" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "15px" }}></span>
+              <input type="number" id="n2Step5" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "60px" }}></span>
+              {/* <!--group 2 -- > */}
+              <input type="number" id="n3Step5" name="n3" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+              {/* <!--group 3 -- > */}
+              <input type="number" id="n4Step5" name="n4" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              <input type="number" id="n5Step5" name="n4" size="1" readOnly />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "60px" }}></span>
+              <input type="number" id="n6Step5" name="n1" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              <input type="number" id="n7Step5" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              {/* <!--
+            group 4 -- > */}
+              <input type="number" id="n8Step5" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input type="number" id="n9Step5" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              {/* <!--group 7 -- > */}
+              <input type="number" id="n10Step5" name="n2" size="1" readOnly />
+            </div>
+          </div>
           <div className="hide" id="fedback1">
             <input
               type="button"
@@ -483,7 +570,16 @@ export default class LevelThree extends Component {
             value="Next"
             //go to the next step
             style={{ backgroundColor: "orange" }}
-            onClick={Next3}
+            onClick={Next4}
+          />
+          <input
+            className="hide"
+            type="button"
+            id="next5"
+            value="Next"
+            //go to the next step
+            style={{ backgroundColor: "orange" }}
+            onClick={Next5}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
