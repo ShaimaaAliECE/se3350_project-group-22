@@ -7,6 +7,7 @@ import {
   checkFeedbackCorrect,
   checkFeedbackCorrect1,
   checkFeedbackWrong,
+  Next2,
   Next1,
 } from "./Level3Functions";
 export default class LevelThree extends Component {
@@ -142,80 +143,182 @@ export default class LevelThree extends Component {
           </div>
           {/* first place to split */}
           <div className="hide" id="Split1">
-            <h4 id="right"> Click where to split the array</h4>
+            <h5 id="right" style={{ color: "black" }}>
+              {" "}
+              Click where you want to split the array
+            </h5>
+
             <div className="blockofnum">
+              <input type="number" id="n1" value="Random Number!" readOnly />
+
               <input
                 type="number"
-                id="n1"
-                value="Random Number!"
+                className="split"
+                id="n1space"
+                value=""
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n2" value="Random Number!" readOnly />
+
               <input
                 type="number"
-                id="n2"
-                value="Random Number!"
+                id="n2space"
+                className="split"
+                value=""
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n3" value="Random Number!" readOnly />
               <input
                 type="number"
-                id="n3"
-                value="Random Number!"
+                id="n3space"
+                className="split"
+                value=""
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n4" value="Random Number!" readOnly />
               <input
                 type="number"
-                id="n4"
-                value="Random Number!"
+                id="n4space"
+                className="split"
+                value=""
                 onClick={checkFeedbackWrong}
                 readOnly
               />
 
+              <input type="number" id="n5" value="Random Number!" readOnly />
               <input
                 type="number"
-                id="n5"
-                value="Random Number!"
-                onClick={checkFeedbackWrong}
-                readOnly
-              />
-              <input
-                type="number"
-                id="n6"
-                value="Random Number!"
+                id="n5space"
+                className="split"
+                value=""
                 onClick={checkFeedbackCorrect1}
                 readOnly
               />
+              <input type="number" id="n6" value="Random Number!" readOnly />
+              <input
+                type="number"
+                id="n6space"
+                className="split"
+                value=""
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
 
+              <input type="number" id="n7" value="Random Number!" readOnly />
               <input
                 type="number"
-                id="n7"
-                value="Random Number!"
+                id="n7space"
+                value=""
+                className="split"
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n8" value="Random Number!" readOnly />
               <input
                 type="number"
-                id="n8"
-                value="Random Number!"
+                id="n8space"
+                value=""
+                className="split"
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n9" value="Random Number!" readOnly />
               <input
                 type="number"
-                id="n9"
-                value="Random Number!"
+                id="n9space"
+                value=""
+                className="split"
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n10" value="Random Number!" readOnly />
+            </div>
+          </div>
+          {/* 
+
+          split 2 */}
+          <div className="hide" id="split2">
+            <div className="blockofnum">
+              <input type="number" id="n1" name="n1" size="1" readOnly />
               <input
                 type="number"
-                id="n10"
-                value="Random Number!"
+                id="n9space"
+                value=""
+                className="split"
                 onClick={checkFeedbackWrong}
                 readOnly
               />
+              <input type="number" id="n2" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n3" name="n3" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n4" name="n4" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n5" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "200px" }}></span>
+
+              <input type="number" id="n6" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n7" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n8" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n9" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9space"
+                value=""
+                className="split"
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <input type="number" id="n10" name="n2" size="1" readOnly />
             </div>
           </div>
           <div className="hide" id="fedback1">
@@ -247,10 +350,17 @@ export default class LevelThree extends Component {
               onClick={Next1}
             />
           </div>
+          <input
+            className="hide"
+            type="button"
+            id="next2"
+            value="Next"
+            //go to the next step
+            onClick={Next2}
+          />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
-            </h4> */}
-          );{" "}
+            </h4> */}{" "}
         </form>
         <div className="footer"></div>
         <div className="footer"></div>{" "}

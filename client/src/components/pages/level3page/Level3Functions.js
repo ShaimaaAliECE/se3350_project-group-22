@@ -146,6 +146,7 @@ export function checkFeedbackWrong() {
 //where to split the first number
 
 //check if user choice i correct or wrong
+//first split
 export function checkFeedbackCorrect1() {
   // correctAudio.play();
   correctaudio.play();
@@ -158,4 +159,39 @@ export function checkFeedbackCorrect1() {
   feedbackwrong.style.display = "none";
 
   document.getElementById("feedbackcorrect").value = "Correct Answer";
+  //get the two balues that you are supposed to click on
+
+  //go to next step
+  var next = document.getElementById("next2");
+  next.style.display = "block";
+}
+
+//the second split
+export function Next2() {
+  var split2 = document.getElementById("split2");
+  split2.style.display = "block";
+
+  var feedback = document.getElementById("fedback1");
+  feedback.style.display = "none";
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+  //show numbers
+
+  var next = document.getElementById("next2");
+  next.style.display = "none";
+
+  //intialize the numbers
+
+  //previous numbers
+  var numbers = document.getElementById("n1");
+  var n2 = document.getElementById("n2");
+  var n3 = document.getElementById("n3");
+  var n4 = document.getElementById("n4");
+  var n5 = document.getElementById("n5");
+  var n6 = document.getElementById("n6");
+  var n7 = document.getElementById("n7");
+  var n8 = document.getElementById("n8");
+  var n9 = document.getElementById("n9");
+  var n10 = document.getElementById("n10");
+  //those numbers
 }
