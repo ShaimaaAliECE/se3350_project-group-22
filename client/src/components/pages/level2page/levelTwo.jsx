@@ -256,7 +256,7 @@ export default class LevelTwo extends React.Component {
     for (let i = 0; i < numConts; i++) {
       container.push(<Board id={i} className="board" ></Board>);
     }
-    //set the state of containers to container array
+    //set the state of containers to the container array
     this.setState({ containers: container })
     // render the containers
     //ReactDOM.render(<>{containers}</>, document.getElementById("containers"));
