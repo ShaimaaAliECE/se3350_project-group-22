@@ -24,7 +24,7 @@ import {
 const getItems = (count) =>
   Array.from({ length: count }, (v, k) => k).map((k) => ({
     id: `item-${k}`,
-    content: `item ${k}`,
+    content: `number ${k}`,
   }));
 
 // a little function to help us with reordering the result
@@ -45,24 +45,25 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   margin: `0 ${grid}px 0 0`,
 
   // change background colour if dragging
-  background: isDragging ? "lightgreen" : "grey",
+  background: isDragging ? "lightpink" : "pink",
 
   // styles we need to apply on draggables
   ...draggableStyle,
 });
 
 const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
+  background: isDraggingOver ? "#e2b4ee	" : "#e2b4ee	",
   display: "flex",
   padding: grid,
   overflow: "auto",
+
 });
 
 export default class LevelThree extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: getItems(6),
+      items: getItems(10),
     };
     this.onDragEnd = this.onDragEnd.bind(this);
   }
@@ -134,7 +135,7 @@ export default class LevelThree extends Component {
         <div className="header1">
           <h1>Level 3: MergeSort Algorithm</h1>
         </div>
-        <div>
+        <div className="functions">
           <button className="home">Home</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
           <button className="back">Back</button>
@@ -658,6 +659,7 @@ export default class LevelThree extends Component {
           <Droppable droppableId="droppable" direction="horizontal">
             {(provided, snapshot) => (
               <div
+                className="grid"
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 {...provided.droppableProps}
