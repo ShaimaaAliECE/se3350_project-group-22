@@ -6,7 +6,7 @@ export default function Board(props) {
         const num_id = e.dataTransfer.getData('num_id');
 
         const num = document.getElementById(num_id);
-        num.style.display = 'block';
+        num.style.display = 'block';        
 
         e.target.appendChild(num);
     }
