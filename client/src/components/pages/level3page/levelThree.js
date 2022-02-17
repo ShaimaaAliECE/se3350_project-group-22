@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import incorrectSfx from "../../../sounds/wrong.mp3";
 import correctSfx from "../../../sounds/correct.mp3";
-import styles from "./levelThree.css";
-import { Random, Wrong } from "./Level3Functions";
+import "./levelThree.css";
+import { Random, Wrong , refreshPage} from "./Level3Functions";
+import { Link } from "react-router-dom";
 export default class LevelThree extends Component {
   // verify user response
   checkResponse = async (e) => {
@@ -46,7 +47,9 @@ export default class LevelThree extends Component {
     // Change the state of user answer later
     this.setState({ incorrect: !incorrect });
     this.setState({ correct: !correct });
-  };
+};
+
+  
 
   render() {
     return (
@@ -55,19 +58,23 @@ export default class LevelThree extends Component {
           <h1>Level 3: MergeSort Algorithm</h1>
         </div>
         <div>
+        <Link to="/home/">
           <button className="home">Home</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
+        </Link>
+         
+          
           <button className="back">Back</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
-          {/* 
-                  {/* <!-- button for first step  --> */}
-          <button id="next" className="home" value="Start" onClick={Random}>
-            Next
-          </button>
+          
+          <button className="restart" onClick={refreshPage}>Restart</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
-          <button className="restart">Restart</button>
-          <span style={{ display: "inline-block", width: "20px" }}></span>
+
+        <Link to="/home/"> 
           <button className="quit">Quit</button>
+          <span style={{ display: "inline-block", width: "20px" }}></span>
+        </Link>
+
         </div>
         <div className="instruction1">
           <h3> Click on the button to Start</h3>
@@ -345,15 +352,10 @@ export default class LevelThree extends Component {
 
 
           </div>
-          );{" "}
-        </form>
-        <div className="footer"></div>
-        <div className="footer"></div>{" "}
-        <h1>
-          Hello{" "}
-          <button onClick={this.playSound}>Play Audio Feedback Sample</button>{" "}
-        </h1>
-      </div>
-    );
+        );
+      </form>
+      <div className="footer"></div>
+    </div>
+  );
   }
 }

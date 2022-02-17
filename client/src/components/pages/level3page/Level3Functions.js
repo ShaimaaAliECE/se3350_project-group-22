@@ -1,3 +1,7 @@
+export function refreshPage(){
+  window.location.reload();
+};
+
 export function Random() {
   var size = 10;
   var max = 20;
