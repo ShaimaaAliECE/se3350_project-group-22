@@ -10,7 +10,7 @@
     display: inline-flex;
     flex-direction: row;
     padding: solid 10px rgb(156, 128, 202);
-    max-width: 210px;
+    max-width: 410px;
     background-color: rgb(156, 128, 202);
     padding: 10px 10px;
     margin: 10px 10px;
@@ -29,6 +29,18 @@
 }
 
 div[id=containers] {
+    flex-direction: row;
+    overflow: wrap;
+    border: solid #f3f3f3 10px ;
+    align-items: center ;
+    white-space: pre-wrap;
+    position: 'absolute'; 
+    left: '50%'; 
+    top: '50%';
+    transform: 'translate(-50%, -50%)';
+    justify-content: center;
+}
+div[id=containerss] {
     flex-direction: row;
     overflow: wrap;
     border: solid #f3f3f3 10px ;

@@ -14,7 +14,7 @@ let countmerge = 0;
 
 //declare a variable to keep track of the array.
 let numOfArray = [];
-//let answerArray = "";
+let answerArray = "";
 
 export default class LevelTwo extends React.Component {
 
@@ -26,6 +26,7 @@ export default class LevelTwo extends React.Component {
       step: 0,
       buttons: [],
       containers: [],
+      previousContainer: [],
       answer: ""
     };
 
@@ -129,13 +130,16 @@ export default class LevelTwo extends React.Component {
     var currentStep = this.state.step;
 
     //check how many containers there are for the current step
-    var currentContainers = steps[currentStep - 1].container;
+    var currentContainers = steps[currentStep].container;
 
     var userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
     var numNumbers = [];    // array to hold the number of numbers in each box, in order from left to right
 
-    var boardContainers = document.getElementsByClassName('board');
-
+    //getting all the board elements in the bottom container
+    let bottomContainer = document.getElementsByClassName('nextcontainers');
+    var boardContainers = bottomContainer[0].children;
+    //var boardContainers = document.getElementsByClassName('board');
+    console.log(boardContainers);
     //loop through the current containers to find what numbers are in the conatiner at index k
     for (var k = 0; k < currentContainers; k++) {
       //looping through however many numbers are supposed to be in the currentContainers at index k
@@ -173,18 +177,21 @@ export default class LevelTwo extends React.Component {
     let userString, ansString;
     // ansString = "";
     userString = userValues.toString();
+    console.log("current step: " + currentStep);
 
     // if it's not after the merging step, answer string is unsorted array 
-    if (currentStep < 5) {
+    if (currentStep < 4) {
       ansString = numOfArray.toString();
+      console.log(ansString);
       // if it's after the merging step, the answer string is the sorted array
-    } else if (currentStep > 4) {
+    } else if (currentStep >= 4) {
       // sort the unsorted array before adding it to the string
-      ansString = numOfArray.sorted().toString();
+      ansString = numOfArray.sort((a,b) => a - b).toString();
+      console.log(ansString);
     }
     if (userString === ansString) {
       correctOrder = true;
-      this.setState({answer:ansString})
+      this.setState({ answer: ansString })
     } else {
       correctOrder = false;
     }
@@ -210,30 +217,79 @@ export default class LevelTwo extends React.Component {
 
   getContainers() {
     // render and display the steps (written here to allow reusability)
-    ReactDOM.render(<><text>Step {count}: {steps[count].step}</text> </>, document.getElementById("step"));
+    ReactDOM.render(<><text>Step {count}: {steps[count - 1].step}</text> </>, document.getElementById("step"));
     // figure out the number of containers needed for the current step number
     let numConts = steps[count - 1].container;
+    console.log("current container : " + numConts);
+
+
+    //getting previous stuff
+    if (count > 1) {
+      //figure out the number of containers needed from the previous step
+      let prevNumConts = steps[count - 2].container;
+      //console.log("prev container : " + prevNumConts);
+      // array to hold number of containers
+      let container = [];
+      for (let i = 0; i < prevNumConts; i++) {
+        container.push(<div id={i} className="board" ></div>);
+      }
+
+      this.setState({ previousContainer: container })
+
+    }
     //checking how many containers are needed to push on top of the current containers
 
     // array to hold number of containers
     let container = [];
-    // add as many containers to the array as required, with increasing id numbers
+
     for (let i = 0; i < numConts; i++) {
       container.push(<Board id={i} className="board" ></Board>);
     }
-    //set the state of containers to the container array
     this.setState({ containers: container });
+
+    //for the current container
+
+    //for the next container
+    //set the state of containers to the container array
+
   }
 
   //----------- handling the user clicking the next button----------------------
   incrStep() {
     // if it's not the last step, increase the count variable
-    if (count < 8) {
+    if (count < 9) {
       count++;
-      this.setState({ step: count }, () => {
+      this.setState({ step: count - 1 }, () => {
         console.log(this.state.step);
       });
       this.setState({ feedback: " " });
+      if (count > 2) {
+        var currentStep = this.state.step;
+
+        //gwt the num of containers in the previous step
+        var prevContainers = steps[count - 2].container;
+        
+        //show the top container
+        console.log(this.state.containers);
+        console.log("prev cont: " + prevContainers);
+
+        //get the elements in the top
+        
+        // var boardContainers = topContainer[0].children;
+        
+        
+        // //gettting the container then getting the children which is the board then to get the board children you would do 
+        // let button = [];
+        
+        // for (let num of numOfArray) {
+        // button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
+        // }
+        // console.log(button);
+        // this.setState({ previousContainer:button});
+        // let topContainer = document.getElementById('containerss').innerHTML = this.setState({prevContainers:button})
+        //console.log(topContainer)
+        
+      }
     }
   }
 
@@ -242,7 +298,7 @@ export default class LevelTwo extends React.Component {
     // if it's not the first step, decrease the count variable
     if (count > 1) {
       count--;
-      this.setState({ step: count }, () => {
+      this.setState({ step: count - 1 }, () => {
         console.log(this.state.step);
       });
       this.setState({ feedback: " " });
@@ -255,7 +311,7 @@ export default class LevelTwo extends React.Component {
 
     //create an array of random number
     numOfArray = [];
-    
+
     const randomNum = RandomNumbersArray(10, 20, 1);
     //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
     for (var i = 0; i < randomNum.length; i++) {
@@ -265,14 +321,14 @@ export default class LevelTwo extends React.Component {
     //remove comment
     //return the button with the number in the array
     let button = [];
-    
+
     for (let num of randomNum) {
       button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
     }
 
     let numstr = numOfArray.toString();
     this.setState({ answer: numstr });
-    this.setState({buttons:button});
+    this.setState({ buttons: button });
     console.log("current array when generated: " + numOfArray);
     //console.log("merged array" + mergeSort(numOfArray));
     // render the Number button components in the div called numbers
@@ -284,25 +340,6 @@ export default class LevelTwo extends React.Component {
     // render the check answer button so that users can check their answers
     ReactDOM.render(<button onClick={this.verify}>Verify</button>, document.getElementById("verify"));
   };
-
-  // remove(){
-    
-  //   //get the board elements
-  //   let board = document.getElementsByClassName('board');
-  //   //make sure the board length more than 0 or it will throw an error
-  //   if(board.length > 0){
-  //     this.setState({step:0});
-      
-  //     //loop through the board elements and remove the children
-  //    for(var f = 0; f < board.length; f++){
-  //      board[f].remove(this.children);
-  //      //board[f].remove();
-  //    }
-  //    this.getButtonNumbers();
-  //   }
-  //   //recall this method to generate the numbers again
-    
-  // }
 
   // checkAns() {
   //   // randomly choosing if they're right or wrong for now
@@ -337,16 +374,19 @@ export default class LevelTwo extends React.Component {
       <div id="main">
         <h1>Level Two</h1>
         <button onClick={() => { this.decrStep(); this.getContainers() }}>back</button>
-        <button onClick={() => {this.getButtonNumbers()}}>Generate 10 Numbers</button>
+        <button onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
         <button onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
         <div className="flexbox">
-          <div id="fixednumbers">{this.state.clicked ?this.state.answer : null}</div>
+          <div id="fixednumbers">{this.state.clicked ? this.state.answer : null}</div>
         </div>
         <div className="flexbox">
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
         </div>
         <div className="flexbox">
-          <div id="containers">{this.state.containers}</div>
+          <div className="containers" id="containerss">{this.state.step > 0 ? this.state.previousContainer : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="nextcontainers" id="containers">{this.state.step > 0 ? this.state.containers : this.state.step == 0 ? this.state.containers : null}</div>
         </div>
 
         <div id="step"></div>

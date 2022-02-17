@@ -3,12 +3,10 @@ import React from 'react'
 export default function Number(props) {
     const dragStart = e =>{
         const target = e.target;
+        console.log("target:" + target.id)
 
         e.dataTransfer.setData('num_id', target.id);
 
-        // setTimeout(() =>{
-        //     target.style.display = "none";
-        // },0)
     }
 
     const dragOver = e =>{
