@@ -1,11 +1,15 @@
 import sound from "./correct.mp3";
 import wrong from "./wrong.mp3";
-
 const wrongAudio = new Audio(wrong);
 const correctaudio = new Audio(sound);
 var counter = 0;
 var countertwo = 0;
 var counter3 = 0;
+
+export function refreshPage(){
+  window.location.reload();
+};
+
 export function Random() {
   var size = 10;
   var max = 20;
