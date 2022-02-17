@@ -948,6 +948,10 @@ export function VerifyAnswer2() {
     //show the next button
     var next11 = document.getElementById("next12");
     next11.style.display = "none";
+
+    //show the next button
+    var next11 = document.getElementById("next13");
+    next11.style.display = "block";
   } else {
     var feedback = document.getElementById("fedback2");
     feedback.classList.toggle("show");
@@ -962,11 +966,181 @@ export function VerifyAnswer2() {
     //play wrong audio
     wrongAudio.play();
     //hide verify button
-    var next11 = document.getElementById("next12");
+    var next11 = document.getElementById("next13");
     next11.style.display = "block";
   }
 }
 
+//fourth merge
+export function Next13() {
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge3");
+  merge2.style.display = "none";
+
+  //show the third merge choice
+  var chooseMerge3 = document.getElementById("chooseMerge4");
+  chooseMerge3.style.display = "block";
+
+  //initalize the values
+  //intialize the values
+  var n1C = document.getElementById("n1CM4");
+  var n2C = document.getElementById("n2CM4");
+  var n3C = document.getElementById("n3CM4");
+  var n4C = document.getElementById("n4CM4");
+  var n5C = document.getElementById("n5CM4");
+  var n6C = document.getElementById("n6CM4");
+  var n7C = document.getElementById("n7CM4");
+  var n8C = document.getElementById("n8CM4");
+  var n9C = document.getElementById("n9CM4");
+  var n10C = document.getElementById("n10CM4");
+
+  n1C.value = document.getElementById("n1Step7A").value;
+  n2C.value = document.getElementById("n2Step7A").value;
+
+  //second merged ones
+  n4C.value = document.getElementById("n1A2").value;
+
+  n5C.value = document.getElementById("n2A2").value;
+
+  //the rest
+  n3C.value = document.getElementById("n3CM3").value;
+
+  //thirdmerged ones
+  n6C.value = document.getElementById("n1A3").value;
+  n7C.value = document.getElementById("n2A3").value;
+  //rest alone
+  n8C.value = document.getElementById("n8CM3").value;
+  //to be merged
+  n9C.value = document.getElementById("n9CM3").value;
+  n10C.value = document.getElementById("n10CM3").value;
+}
+
+//check the choice of user and sort the real anser of 9 and 10
+export function checkFeedbackCorrect10() {
+  //show the next button
+  var next11 = document.getElementById("next13");
+  next11.style.display = "none";
+
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+  //set the values of the answer
+  //set teh value of the answer of merge 4
+  //get the answers
+  var n1A = document.getElementById("n1A4");
+  n1A.value = document.getElementById("n9CM4").value;
+  var n2A = document.getElementById("n2A4");
+  n2A.value = document.getElementById("n10CM4").value;
+
+  console.log(n1A.value);
+  console.log(n2A.value);
+  var merge4 = [n1A.value, n2A.value];
+  merge4.sort(function (a, b) {
+    return b - a;
+  });
+
+  n1A.value = merge4[1];
+  n2A.value = merge4[0];
+  console.log("merge 4 sort" + n1A.value, n2A.value);
+  //show step 10 block
+  var next10 = document.getElementById("next14");
+  next10.style.display = "block";
+}
+
+export function Next14() {
+  //show merge 4
+  var next10 = document.getElementById("next12");
+  next10.style.display = "none";
+  var next11 = document.getElementById("next14");
+  next11.style.display = "none";
+  var merge4 = document.getElementById("merge4");
+  merge4.style.display = "block";
+  //intialize it
+  var n1I = document.getElementById("n1Input4");
+  var n2I = document.getElementById("n2Input4");
+  //need to be grouped
+  n1I.value = document.getElementById("n9CM4").value;
+  n2I.value = document.getElementById("n10CM4").value;
+}
+
+export function VerifyAnswer3() {
+  //the user input
+  var n1Merge4 = document.getElementById("n1Input4");
+  var n2Merge4 = document.getElementById("n2Input4");
+
+  var n1Answer = document.getElementById("n1A4");
+
+  var n2Answer = document.getElementById("n2A4");
+
+  if (n1Merge4.value == n1Answer.value && n2Merge4.value == n2Answer.value) {
+    // correctAudio.play();
+    correctaudio.play();
+    var feedback = document.getElementById("fedback1");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackwrong = document.getElementById("fedback2");
+    feedbackwrong.classList.toggle("none");
+    feedbackwrong.style.display = "none";
+
+    document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+    //show the next button
+    var next11 = document.getElementById("next14");
+    next11.style.display = "none";
+
+    //show the next button
+    var next113 = document.getElementById("next15");
+    next113.style.display = "block";
+  } else {
+    var feedback = document.getElementById("fedback2");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackcorrect = document.getElementById("fedback1");
+    feedbackcorrect.style.display = "none";
+
+    document.getElementById("feedbackwrong").value =
+      "Wrong Answer Please try again!";
+
+    //play wrong audio
+    wrongAudio.play();
+    //hide verify button
+    var next11 = document.getElementById("next14");
+    next11.style.display = "block";
+  }
+}
+
+//show the four merged groups
+export function Next15() {
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge4");
+  merge2.style.display = "none";
+
+  //show the third merge choice
+  var chooseMerge3 = document.getElementById("chooseMerge5");
+  chooseMerge3.style.display = "block";
+
+  //intiliaze the values
+}
 //make a verify button
 
 // function dragStart(e) {
