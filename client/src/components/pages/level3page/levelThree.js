@@ -108,7 +108,7 @@ export default class LevelThree extends Component {
     } 
   };
 
-  //will be merged with checkResponse
+  /*
   playSound = () => {
     // Get state of user response
     let incorrect = this.state.incorrect;
@@ -129,6 +129,7 @@ export default class LevelThree extends Component {
     this.setState({ incorrect: !incorrect });
     this.setState({ correct: !correct });
   };
+  */
 
   render() {
     return (
@@ -655,7 +656,7 @@ export default class LevelThree extends Component {
         </form>
         <div className="footer"></div>
         <div className="footer"></div>{" "}
-        <button onClick={this.playSound}>Play Audio Feedback Sample</button>{" "}
+        {/*<button onClick={this.playSound}>Play Audio Feedback Sample</button>{" "}*/}
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable" direction="horizontal">
             {(provided, snapshot) => (
