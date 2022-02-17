@@ -9,12 +9,12 @@ import { useDrag } from 'react-dnd';
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
-let countmerge = 0;
+//let countmerge = 0;
 //let buttons = [];
 
 //declare a variable to keep track of the array.
 let numOfArray = [];
-let answerArray = "";
+//let answerArray = "";
 
 export default class LevelTwo extends React.Component {
 
