@@ -164,10 +164,11 @@ export default class LevelThree extends Component {
               <input type="number" id="n1" value="Random Number!" readOnly />
 
               <input
-                type="number"
+                type="text"
                 className="split"
                 id="n1space"
-                value=""
+                size="5"
+                value="Split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -175,30 +176,33 @@ export default class LevelThree extends Component {
               <input type="number" id="n2" value="Random Number!" readOnly />
 
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n2space"
                 className="split"
-                value=""
+                value="Split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
               <input type="number" id="n3" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n3space"
                 className="split"
-                value=""
+                value="Split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
               />
               <input type="number" id="n4" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n4space"
                 className="split"
-                value=""
+                value="Split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -206,20 +210,22 @@ export default class LevelThree extends Component {
 
               <input type="number" id="n5" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n5space"
                 className="split"
-                value=""
+                value="Split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect1}
                 readOnly
               />
               <input type="number" id="n6" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n6space"
                 className="split"
-                value=""
+                value="Split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -227,9 +233,10 @@ export default class LevelThree extends Component {
 
               <input type="number" id="n7" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n7space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -237,9 +244,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n8" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n8space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -247,9 +255,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n9" value="Random Number!" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n9space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -265,9 +274,10 @@ export default class LevelThree extends Component {
             <div className="blockofnum">
               <input type="number" id="n12" name="n1" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n12space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -275,9 +285,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n22" name="n2" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n22space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -285,9 +296,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n32" name="n32" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n32space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect2}
@@ -296,9 +308,10 @@ export default class LevelThree extends Component {
 
               <input type="number" id="n42" name="n4" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n42space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -310,9 +323,10 @@ export default class LevelThree extends Component {
 
               <input type="number" id="n62" name="n2" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n62space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -320,9 +334,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n72" name="n2" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n72space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -330,9 +345,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n82" name="n2" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n82space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect3}
@@ -340,9 +356,10 @@ export default class LevelThree extends Component {
               />
               <input type="number" id="n92" name="n2" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="n92space"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -356,9 +373,10 @@ export default class LevelThree extends Component {
               <div className="blockofnum">
                 <input type="number" id="num1" name="n1" size="1" readOnly />
                 <input
-                  type="number"
+                  type="text"
+                  size="5"
                   id="n92space"
-                  value=""
+                  value="Split"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackWrong}
@@ -366,9 +384,10 @@ export default class LevelThree extends Component {
                 />
                 <input type="number" id="num2" name="n2" size="1" readOnly />
                 <input
-                  type="number"
+                  type="text"
+                  size="5"
                   id="space13"
-                  value=""
+                  value="Split"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -380,9 +399,10 @@ export default class LevelThree extends Component {
 
                 <input type="number" id="num4" name="n4" size="1" readOnly />
                 <input
-                  type="number"
+                  type="text"
+                  size="5"
                   id="space23"
-                  value=""
+                  value="Split"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -396,9 +416,10 @@ export default class LevelThree extends Component {
 
                 <input type="number" id="num6" name="n1" size="1" readOnly />
                 <input
-                  type="number"
+                  type="text"
+                  size="5"
                   id="n92space"
-                  value=""
+                  value="Split"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackWrong}
@@ -406,9 +427,10 @@ export default class LevelThree extends Component {
                 />
                 <input type="number" id="num7" name="n2" size="1" readOnly />
                 <input
-                  type="number"
+                  type="text"
+                  size="5"
                   id="space33"
-                  value=""
+                  value="Split"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -422,9 +444,10 @@ export default class LevelThree extends Component {
 
                 <input type="number" id="num9" name="n2" size="1" readOnly />
                 <input
-                  type="number"
+                  type="text"
+                  size="5"
                   id="space43"
-                  value=""
+                  value="Split"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -440,9 +463,10 @@ export default class LevelThree extends Component {
               {/* <!-- group 1 -- > */}
               <input type="number" id="n1Step4" name="n1" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="space14"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect5}
@@ -462,9 +486,10 @@ export default class LevelThree extends Component {
               <span style={{ display: "inline-block", width: "80px" }}></span>
               <input type="number" id="n6Step4" name="n1" size="1" readOnly />
               <input
-                type="number"
+                type="text"
+                size="5"
                 id="space24"
-                value=""
+                value="Split"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect5}
@@ -580,6 +605,23 @@ export default class LevelThree extends Component {
             //go to the next step
             style={{ backgroundColor: "orange" }}
             onClick={Next5}
+          />
+          <input
+            id="SplitBtn"
+            type="button"
+            className="hide"
+            value="Merge Array"
+            //go to the next step
+            onClick={checkFeedbackWrong}
+          />
+          <span style={{ display: "inline-block", width: "20px" }}></span>
+          <input
+            id="mergeBtn"
+            type="button"
+            className="hide"
+            value="Split Array"
+            //go to the next step
+            onClick={checkFeedbackCorrect}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
