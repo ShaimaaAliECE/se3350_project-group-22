@@ -17,7 +17,9 @@ import {
   Next13,
   Next14,
   Next15,
+  Next16,
   checkFeedbackCorrect2,
+  checkFeedbackCorrect11,
   checkFeedbackCorrect3,
   checkFeedbackCorrect4,
   checkFeedbackCorrect5,
@@ -28,6 +30,7 @@ import {
   VerifyAnswer,
   VerifyAnswer2,
   VerifyAnswer3,
+  VerifyAnswer4,
   Next3,
   Next4,
   Next5,
@@ -1504,7 +1507,7 @@ export default class LevelThree extends Component {
           <div className="hide" id="chooseMerge5">
             <input
               type="number"
-              id="n1CM4"
+              id="n1CM5"
               name="n1"
               draggable="true"
               size="1"
@@ -1512,7 +1515,7 @@ export default class LevelThree extends Component {
             />
             <input
               type="number"
-              id="n2CM4"
+              id="n2CM5"
               draggable="true"
               name="n2"
               size="1"
@@ -1525,13 +1528,14 @@ export default class LevelThree extends Component {
               value="><"
               className="merge"
               style={{ backgroundColor: "green" }}
-              onClick={checkFeedbackCorrect}
+              onClick={checkFeedbackWrong}
               readOnly
             />
+
             {/* <!--group 2 -- > */}
             <input
               type="number"
-              id="n3CM4"
+              id="n3CM5"
               draggable="true"
               name="n3"
               size="1"
@@ -1544,7 +1548,7 @@ export default class LevelThree extends Component {
               value="><"
               className="merge"
               style={{ backgroundColor: "green" }}
-              onClick={checkFeedbackWrong}
+              onClick={checkFeedbackCorrect11}
               readOnly
             />
             <span style={{ display: "inline-block", width: "50px" }}></span>
@@ -1553,7 +1557,7 @@ export default class LevelThree extends Component {
             {/* <!--group 3 -- > */}
             <input
               type="number"
-              id="n4CM4"
+              id="n4CM5"
               draggable="true"
               name="n4"
               size="1"
@@ -1562,7 +1566,7 @@ export default class LevelThree extends Component {
 
             <input
               type="number"
-              id="n5CM4"
+              id="n5CM5"
               draggable="true"
               name="n4"
               size="1"
@@ -1583,7 +1587,7 @@ export default class LevelThree extends Component {
 
             <input
               type="number"
-              id="n6CM4"
+              id="n6CM5"
               draggable="true"
               name="n1"
               size="1"
@@ -1592,7 +1596,7 @@ export default class LevelThree extends Component {
 
             <input
               type="number"
-              id="n7CM4"
+              id="n7CM5"
               draggable="true"
               name="n2"
               size="1"
@@ -1613,7 +1617,7 @@ export default class LevelThree extends Component {
   group 4 -- > */}
             <input
               type="number"
-              id="n8CM4"
+              id="n8CM5"
               draggable="true"
               name="n2"
               size="1"
@@ -1633,32 +1637,48 @@ export default class LevelThree extends Component {
             {/* <!--group 5 -- > */}
             <input
               type="number"
-              id="n9CM4"
+              id="n9CM5"
               draggable="true"
               name="n2"
               size="1"
               readOnly
             />
-            <input
-              type="text"
-              size="3"
-              id="space26"
-              value="><"
-              className="merge"
-              style={{ backgroundColor: "green" }}
-              onClick={checkFeedbackCorrect10}
-              readOnly
-            />
-            <span style={{ display: "inline-block", width: "20px" }}></span>
+
             {/* <!--group 7 -- > */}
             <input
               type="number"
-              id="n10CM4"
+              id="n10CM5"
               draggable="true"
               name="n2"
               size="1"
               readOnly
             />
+          </div>
+          {/* merge5  */}
+          <div className="hide" id="merge5">
+            <h6>order the numbers</h6>
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n1Input5" name="n4" size="1" />
+
+            <input type="number" id="n2Input5" name="n4" size="1" />
+            <input type="number" id="n3Input5" name="n4" size="1" />
+            <input
+              type="button"
+              id="verify2"
+              value="Verify Answer"
+              size="6"
+              //go to the next step
+              style={{ backgroundColor: "Purple" }}
+              onClick={VerifyAnswer4}
+            />
+          </div>
+          {/* merge5 Answer */}
+          <div className="hide" id="merge5Answer">
+            <input type="number" id="n1A5" name="n4" size="1" />
+
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n2A5" name="n4" size="1" />
+            <input type="number" id="n3A5" name="n4" size="1" />
           </div>
           <div className="hide" id="Next">
             <input
@@ -1831,6 +1851,15 @@ export default class LevelThree extends Component {
             //go to the next step
             style={{ backgroundColor: "Purple" }}
             onClick={Next15}
+          />
+          <input
+            type="button"
+            id="next16"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next16}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
