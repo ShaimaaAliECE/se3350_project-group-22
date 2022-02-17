@@ -729,10 +729,11 @@ export function checkFeedbackCorrect8() {
   document.getElementById("feedbackcorrect").value = "Correct Answer";
   //set teh value of the answer of merge 2
   var n1Answer = document.getElementById("n1A2");
-  n1Answer.value = document.getElementById("n4CM2");
+  n1Answer.value = document.getElementById("n4CM2").value;
   var n2Answer = document.getElementById("n2A2");
-  n2Answer.value = document.getElementById("n5CM2");
-
+  n2Answer.value = document.getElementById("n5CM2").value;
+  console.log(n1Answer.value);
+  console.log(n2Answer.value);
   var merge2 = [n1Answer.value, n2Answer.value];
   merge2.sort(function (a, b) {
     return b - a;
@@ -795,6 +796,8 @@ export function VerifyAnswer() {
     next.style.display = "none";
 
     //show the next button
+    var next11 = document.getElementById("next11");
+    next11.style.display = "block";
   } else {
     var feedback = document.getElementById("fedback2");
     feedback.classList.toggle("show");
@@ -811,7 +814,158 @@ export function VerifyAnswer() {
     //hide verify button
   }
 }
-export function Next11() {}
+export function Next11() {
+  //delete the feddback correct
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge2");
+  merge2.style.display = "none";
+
+  //show the third merge choice
+  var chooseMerge3 = document.getElementById("chooseMerge3");
+  chooseMerge3.style.display = "block";
+
+  //intialize the values
+  var n1C = document.getElementById("n1CM3");
+  var n2C = document.getElementById("n2CM3");
+  var n3C = document.getElementById("n3CM3");
+  var n4C = document.getElementById("n4CM3");
+  var n5C = document.getElementById("n5CM3");
+  var n6C = document.getElementById("n6CM3");
+  var n7C = document.getElementById("n7CM3");
+  var n8C = document.getElementById("n8CM3");
+  var n9C = document.getElementById("n9CM3");
+  var n10C = document.getElementById("n10CM3");
+
+  //first sorted ones
+  //first 2 merged groups
+  n1C.value = document.getElementById("n1Step7A").value;
+  n2C.value = document.getElementById("n2Step7A").value;
+
+  //second merged ones
+  n4C.value = document.getElementById("n1A2").value;
+
+  n5C.value = document.getElementById("n2A2").value;
+
+  //the rest
+  n3C.value = document.getElementById("n3Step5").value;
+
+  //need to be grouped
+  n6C.value = document.getElementById("n6Step5").value;
+  n7C.value = document.getElementById("n7Step5").value;
+  //rest alone
+  n8C.value = document.getElementById("n8Step5").value;
+  n9C.value = document.getElementById("n9Step5").value;
+  n10C.value = document.getElementById("n10Step5").value;
+}
+
+//sort the correct answer + show the merge 3
+export function checkFeedbackCorrect9() {
+  //show the next button
+  var next11 = document.getElementById("next11");
+  next11.style.display = "none";
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+  //set teh value of the answer of merge 2
+  //get the answers
+  var n1A = document.getElementById("n1A3");
+  n1A.value = document.getElementById("n6CM3").value;
+  var n2A = document.getElementById("n2A3");
+  n2A.value = document.getElementById("n7CM3").value;
+
+  console.log(n1A.value);
+  console.log(n2A.value);
+  var merge3 = [n1A.value, n2A.value];
+  merge3.sort(function (a, b) {
+    return b - a;
+  });
+
+  n1A.value = merge3[1];
+  n2A.value = merge3[0];
+  console.log("merge 3 sort" + n1A.value, n2A.value);
+  //show step 10 block
+  var next10 = document.getElementById("next12");
+  next10.style.display = "block";
+}
+
+export function Next12() {
+  var next10 = document.getElementById("next12");
+  next10.style.display = "none";
+  //delete the feddback correct
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge3");
+  merge2.style.display = "block";
+
+  //intialize it
+  var n1I = document.getElementById("n1Input3");
+  var n2I = document.getElementById("n2Input3");
+  //need to be grouped
+  n1I.value = document.getElementById("n6CM3").value;
+  n2I.value = document.getElementById("n7CM3").value;
+}
+
+//verify the answer
+export function VerifyAnswer2() {
+  //the user input
+  var n1Merge3 = document.getElementById("n1Input3");
+  var n2Merge3 = document.getElementById("n2Input3");
+
+  var n1Answer = document.getElementById("n1A3");
+
+  var n2Answer = document.getElementById("n2A3");
+
+  if (n1Merge3.value == n1Answer.value && n2Merge3.value == n2Answer.value) {
+    // correctAudio.play();
+    correctaudio.play();
+    var feedback = document.getElementById("fedback1");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackwrong = document.getElementById("fedback2");
+    feedbackwrong.classList.toggle("none");
+    feedbackwrong.style.display = "none";
+
+    document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+    //show the next button
+    var next11 = document.getElementById("next12");
+    next11.style.display = "none";
+  } else {
+    var feedback = document.getElementById("fedback2");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackcorrect = document.getElementById("fedback1");
+    feedbackcorrect.style.display = "none";
+
+    document.getElementById("feedbackwrong").value =
+      "Wrong Answer Please try again!";
+
+    //play wrong audio
+    wrongAudio.play();
+    //hide verify button
+    var next11 = document.getElementById("next12");
+    next11.style.display = "block";
+  }
+}
 
 //make a verify button
 
