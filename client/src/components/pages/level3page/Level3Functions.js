@@ -481,4 +481,427 @@ export function Next5() {
   var num10 = document.getElementById("num10");
   n9.value = num9.value;
   n10.value = num10.value;
+
+  //ask if merge or split
+
+  var merge = document.getElementById("mergeInstructions");
+  merge.style.display = "block";
 }
+
+export function checkFeedbackCorrect6() {
+  var n1 = document.getElementById("n1Step5");
+  var merge = document.getElementById("mergeInstructions");
+  merge.style.display = "none";
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+  var next6 = document.getElementById("next6");
+  next6.style.display = "block";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+  // console.log(n1.value);
+  // alert(n1.value);
+}
+
+export function Next6() {
+  var feedback = document.getElementById("fedback1");
+  feedback.style.display = "none";
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+  //show numbers
+
+  var next = document.getElementById("next6");
+  next.style.display = "none";
+
+  var split3 = document.getElementById("chooseMerge");
+  split3.style.display = "block";
+
+  var n1 = document.getElementById("n1Step6");
+  var n2 = document.getElementById("n2Step6");
+  var n3 = document.getElementById("n3Step6");
+  var n4 = document.getElementById("n4Step6");
+  var n5 = document.getElementById("n5Step6");
+  var n6 = document.getElementById("n6Step6");
+  var n7 = document.getElementById("n7Step6");
+  var n8 = document.getElementById("n8Step6");
+  var n9 = document.getElementById("n9Step6");
+  var n10 = document.getElementById("n10Step6");
+
+  n1.value = document.getElementById("n1Step5").value;
+  n2.value = document.getElementById("n2Step5").value;
+  n3.value = document.getElementById("n3Step5").value;
+  n4.value = document.getElementById("n4Step5").value;
+  n5.value = document.getElementById("n5Step5").value;
+  n6.value = document.getElementById("n6Step5").value;
+  n7.value = document.getElementById("n7Step5").value;
+  n8.value = document.getElementById("n8Step5").value;
+  n9.value = document.getElementById("n9Step5").value;
+  n10.value = document.getElementById("n10Step5").value;
+}
+
+export function checkFeedbackCorrect7() {
+  // correctAudio.play();
+
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+  var next = document.getElementById("next7");
+  next.style.display = "block";
+}
+
+export function Next7() {
+  var feedback = document.getElementById("fedback1");
+  feedback.style.display = "none";
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.style.display = "none";
+  //show numbers
+
+  var next = document.getElementById("next7");
+  next.style.display = "none";
+
+  //show the merge 1 user input
+  var merge = document.getElementById("merge1");
+  merge.style.display = "block";
+
+  var n1 = document.getElementById("n1Step7");
+  var n2 = document.getElementById("n2Step7");
+
+  //intialize the values
+  n1.value = document.getElementById("n1Step6").value;
+  n2.value = document.getElementById("n2Step6").value;
+
+  //show the value
+
+  //set the value of the answer ot correct answer after sorting
+  var n1A = document.getElementById("n1Step7A");
+  n1A.value = document.getElementById("n1Step6").value;
+
+  var n2A = document.getElementById("n2Step7A");
+  n2A.value = document.getElementById("n2Step6").value;
+  //place them all in an array into groups
+  var merge1 = [n1A.value, n2A.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });
+  console.log(merge1);
+
+  n1A.value = merge1[1];
+  n2A.value = merge1[0];
+
+  //go to next step
+  var next = document.getElementById("next8");
+  next.style.display = "block";
+  //if the user answer matches the
+}
+//verify
+export function Next8() {
+  var n1 = document.getElementById("n1Step7");
+  var n2 = document.getElementById("n2Step7");
+  console.log(n1.value);
+
+  var n1A = document.getElementById("n1Step7A");
+  n1A.value = document.getElementById("n1Step6").value;
+
+  var n2A = document.getElementById("n2Step7A");
+  n2A.value = document.getElementById("n2Step6").value;
+  //place them all in an array into groups
+  var merge1 = [n1A.value, n2A.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });
+  console.log(merge1);
+
+  n1A.value = merge1[1];
+  n2A.value = merge1[0];
+  console.log(n1A.value, n2A.value);
+
+  console.log("n1 value" + n1.value);
+  console.log("n1A.value" + n1A.value);
+
+  console.log("n2 value" + n2.value);
+  console.log("n2A.value" + n2A.value);
+  if (n1.value == n1A.value && n2.value == n2A.value) {
+    // correctAudio.play();
+    correctaudio.play();
+    var feedback = document.getElementById("fedback1");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackwrong = document.getElementById("fedback2");
+    feedbackwrong.classList.toggle("none");
+    feedbackwrong.style.display = "none";
+
+    document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+    //hide verify button
+    var next = document.getElementById("next8");
+    next.style.display = "none";
+
+    //show next button
+    var next = document.getElementById("next9");
+    next.style.display = "block";
+
+    //show the next button
+  } else {
+    var feedback = document.getElementById("fedback2");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackcorrect = document.getElementById("fedback1");
+    feedbackcorrect.style.display = "none";
+
+    document.getElementById("feedbackwrong").value =
+      "Wrong Answer Please try again!";
+
+    //play wrong audio
+    wrongAudio.play();
+    //hide verify button
+    var next = document.getElementById("next8");
+    next.style.display = "block";
+  }
+}
+
+export function Next9() {
+  //choose where to merge again
+  //show next button
+  var next = document.getElementById("next9");
+  next.style.display = "none";
+  var feedbackcorrect = document.getElementById("fedback1");
+  feedbackcorrect.style.display = "none";
+  var choose2 = document.getElementById("chooseMerg2");
+  choose2.style.display = "block";
+  var merge = document.getElementById("merge1");
+  merge.style.display = "none";
+
+  //first 2 merged groups
+  var n1A = document.getElementById("n1Step7A");
+
+  var n2A = document.getElementById("n2Step7A");
+
+  var n1C = document.getElementById("n1CM2");
+  var n2C = document.getElementById("n2CM2");
+  var n3C = document.getElementById("n3CM2");
+  var n4C = document.getElementById("n4CM2");
+  var n5C = document.getElementById("n5CM2");
+  var n6C = document.getElementById("n6CM2");
+  var n7C = document.getElementById("n7CM2");
+  var n8C = document.getElementById("n8CM2");
+  var n9C = document.getElementById("n9CM2");
+  var n10C = document.getElementById("n10CM2");
+
+  n1C.value = n1A.value;
+  n2C.value = n2A.value;
+  n3C.value = document.getElementById("n3Step5").value;
+  n4C.value = document.getElementById("n4Step5").value;
+  n5C.value = document.getElementById("n5Step5").value;
+  n6C.value = document.getElementById("n6Step5").value;
+  n7C.value = document.getElementById("n7Step5").value;
+  n8C.value = document.getElementById("n8Step5").value;
+  n9C.value = document.getElementById("n9Step5").value;
+  n10C.value = document.getElementById("n10Step5").value;
+}
+
+export function checkFeedbackCorrect8() {
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+  //set teh value of the answer of merge 2
+  var n1Answer = document.getElementById("n1A2");
+  n1Answer.value = document.getElementById("n4CM2");
+  var n2Answer = document.getElementById("n2A2");
+  n2Answer.value = document.getElementById("n5CM2");
+
+  var merge2 = [n1Answer.value, n2Answer.value];
+  merge2.sort(function (a, b) {
+    return b - a;
+  });
+
+  n1Answer.value = merge2[1];
+  n2Answer.value = merge2[0];
+  console.log("merge 2 sort" + n1Answer.value, n2Answer.value);
+  //show step 10 block
+  var next10 = document.getElementById("next10");
+  next10.style.display = "block";
+}
+
+export function Next10() {
+  //hide the nest button
+  var next10 = document.getElementById("next10");
+  next10.style.display = "none";
+  //hide the feedback:
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "none";
+
+  //show merge2 option
+  var merge2 = document.getElementById("merge2");
+  merge2.style.display = "block";
+
+  //intialize the merge 2 buttons
+  var n1Merge2 = document.getElementById("n1Input");
+  var n2Merge2 = document.getElementById("n2Input");
+
+  //previous n4 and n5 values and intialize
+  n1Merge2.value = document.getElementById("n4CM2").value;
+  n2Merge2.value = document.getElementById("n5CM2").value;
+}
+
+//check response of the numbers again here
+export function VerifyAnswer() {
+  var n1Merge2 = document.getElementById("n1Input");
+  var n2Merge2 = document.getElementById("n2Input");
+
+  var n1Answer = document.getElementById("n1A2");
+
+  var n2Answer = document.getElementById("n2A2");
+
+  if (n1Merge2.value == n1Answer.value && n2Merge2.value == n2Answer.value) {
+    // correctAudio.play();
+    correctaudio.play();
+    var feedback = document.getElementById("fedback1");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackwrong = document.getElementById("fedback2");
+    feedbackwrong.classList.toggle("none");
+    feedbackwrong.style.display = "none";
+
+    document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+    //hide verify button
+    var next = document.getElementById("next8");
+    next.style.display = "none";
+
+    //show the next button
+  } else {
+    var feedback = document.getElementById("fedback2");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackcorrect = document.getElementById("fedback1");
+    feedbackcorrect.style.display = "none";
+
+    document.getElementById("feedbackwrong").value =
+      "Wrong Answer Please try again!";
+
+    //play wrong audio
+    wrongAudio.play();
+    //hide verify button
+  }
+}
+export function Next11() {}
+
+//make a verify button
+
+// function dragStart(e) {
+//   console.log("merged");
+//   e.dataTransfer.setData("text/plain", e.target.id);
+//   setTimeout(() => {
+//     e.target.classList.add("hide");
+//   }, 0);
+
+//   var n1 = document.getElementById("n1Step7");
+//   console.log(n1.value);
+// }
+
+// function dragEnter(e) {
+//   e.preventDefault();
+//   e.target.classList.add("drag-over");
+
+//   var n1 = document.getElementById("n1Step7");
+//   console.log(n1.value);
+// }
+
+// function dragOver(e) {
+//   e.preventDefault();
+//   e.target.classList.add("drag-over");
+
+//   var n1 = document.getElementById("n1Step7");
+//   n1.value = e.value;
+//   console.log(n1.value);
+// }
+
+// function dragLeave(e) {
+//   e.target.classList.remove("drag-over");
+
+//   var n1 = document.getElementById("n1Step7");
+
+//   console.log(n1.textContent);
+// }
+
+// function drop(e) {
+//   e.target.classList.remove("drag-over");
+
+//   // get the draggable element
+//   const id = e.dataTransfer.getData("text/plain");
+//   const draggable = document.getElementById(id);
+
+//   // add it to the drop target
+//   e.target.appendChild(draggable);
+
+//   // display the draggable element
+//   draggable.classList.remove("hide");
+
+//   console.log(e.dataTransfer.getData("text").value);
+// }
+
+//   <div className="drop-targets">
+//     <div className="box">
+//       {/* <!--
+//   group 1 -- > */}
+//       <input
+//         type="number"
+//         id="n1Step7"
+//         name="n1"
+//         draggable="true"
+//         size="1"
+//         readOnly
+//       />
+//     </div>
+//     {/* end of box */}
+//     <div className="box" value="">
+//       <input
+//         type="number"
+//         id="n2Step7"
+//         draggable="true"
+//         name="n2"
+//         size="1"
+//         readOnly
+//       />
+//     </div>
+//     <div class="box" id="box3">
+//       {/* <!--group 2 -- > */}
+//       <input
+//         type="number"
+//         id="n3Step7"
+//         draggable="true"
+//         name="n3"
+//         size="1"
+//         readOnly
+//       />
+
+//       {/* end of drop-targets */}
+//     </div>
+//   </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import incorrectSfx from "../../../sounds/wrong.mp3";
 import correctSfx from "../../../sounds/correct.mp3";
-import styles from "./levelThree.css";
+import style from "./levelThree.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import {
@@ -10,14 +10,24 @@ import {
   checkFeedbackCorrect1,
   checkFeedbackWrong,
   Next2,
+  Next10,
+  Next11,
   checkFeedbackCorrect2,
   checkFeedbackCorrect3,
   checkFeedbackCorrect4,
   checkFeedbackCorrect5,
+  checkFeedbackCorrect6,
+  checkFeedbackCorrect7,
+  checkFeedbackCorrect8,
+  VerifyAnswer,
   Next3,
   Next4,
   Next5,
+  Next6,
   Next1,
+  Next8,
+  Next9,
+  Next7,
 } from "./Level3Functions";
 
 // fake data generator
@@ -56,7 +66,6 @@ const getListStyle = (isDraggingOver) => ({
   display: "flex",
   padding: grid,
   overflow: "auto",
-
 });
 
 export default class LevelThree extends Component {
@@ -234,8 +243,8 @@ export default class LevelThree extends Component {
                 type="text"
                 className="split"
                 id="n1space"
-                size="5"
-                value="Split"
+                size="3"
+                value="< >"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -244,10 +253,10 @@ export default class LevelThree extends Component {
 
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n2space"
                 className="split"
-                value="Split"
+                value="< >"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -255,10 +264,10 @@ export default class LevelThree extends Component {
               <input type="number" id="n3" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n3space"
                 className="split"
-                value="Split"
+                value="< >"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -266,10 +275,10 @@ export default class LevelThree extends Component {
               <input type="number" id="n4" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n4space"
                 className="split"
-                value="Split"
+                value="< >"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -278,10 +287,10 @@ export default class LevelThree extends Component {
               <input type="number" id="n5" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n5space"
                 className="split"
-                value="Split"
+                value="< >"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect1}
                 readOnly
@@ -289,10 +298,10 @@ export default class LevelThree extends Component {
               <input type="number" id="n6" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n6space"
                 className="split"
-                value="Split"
+                value="< >"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
                 readOnly
@@ -301,9 +310,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n7" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n7space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -312,9 +321,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n8" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n8space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -323,9 +332,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n9" value="Random Number!" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n9space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -342,9 +351,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n12" name="n1" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n12space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -353,9 +362,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n22" name="n2" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n22space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -364,9 +373,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n32" name="n32" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n32space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect2}
@@ -376,9 +385,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n42" name="n4" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n42space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -391,9 +400,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n62" name="n2" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n62space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -402,9 +411,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n72" name="n2" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n72space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -413,9 +422,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n82" name="n2" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n82space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect3}
@@ -424,9 +433,9 @@ export default class LevelThree extends Component {
               <input type="number" id="n92" name="n2" size="1" readOnly />
               <input
                 type="text"
-                size="5"
+                size="3"
                 id="n92space"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackWrong}
@@ -441,9 +450,9 @@ export default class LevelThree extends Component {
                 <input type="number" id="num1" name="n1" size="1" readOnly />
                 <input
                   type="text"
-                  size="5"
+                  size="3"
                   id="n92space"
-                  value="Split"
+                  value="< >"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackWrong}
@@ -454,7 +463,7 @@ export default class LevelThree extends Component {
                   type="text"
                   size="5"
                   id="space13"
-                  value="Split"
+                  value="< >"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -469,7 +478,7 @@ export default class LevelThree extends Component {
                   type="text"
                   size="5"
                   id="space23"
-                  value="Split"
+                  value="< >"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -486,7 +495,7 @@ export default class LevelThree extends Component {
                   type="text"
                   size="5"
                   id="n92space"
-                  value="Split"
+                  value="< >"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackWrong}
@@ -497,7 +506,7 @@ export default class LevelThree extends Component {
                   type="text"
                   size="5"
                   id="space33"
-                  value="Split"
+                  value="< >"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -514,7 +523,7 @@ export default class LevelThree extends Component {
                   type="text"
                   size="5"
                   id="space43"
-                  value="Split"
+                  value="< >"
                   className="split"
                   style={{ backgroundColor: "yellow" }}
                   onClick={checkFeedbackCorrect4}
@@ -533,7 +542,7 @@ export default class LevelThree extends Component {
                 type="text"
                 size="5"
                 id="space14"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect5}
@@ -556,7 +565,7 @@ export default class LevelThree extends Component {
                 type="text"
                 size="5"
                 id="space24"
-                value="Split"
+                value="< >"
                 className="split"
                 style={{ backgroundColor: "yellow" }}
                 onClick={checkFeedbackCorrect5}
@@ -577,58 +586,533 @@ export default class LevelThree extends Component {
           </div>
           {/* split5 */}
           <div className="hide" id="split5">
-            <div className="blockofnum">
+            <div className="blockofnum" draggable="true" id="item">
               {/* <!--
-            group 1 -- > */}
-              <input type="number" id="n1Step5" name="n1" size="1" readOnly />
+  group 1 -- > */}
+              <input
+                type="number"
+                id="n1Step5"
+                name="n1"
+                draggable="true"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "15px" }}></span>
-              <input type="number" id="n2Step5" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n2Step5"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "60px" }}></span>
               {/* <!--group 2 -- > */}
-              <input type="number" id="n3Step5" name="n3" size="1" readOnly />
+              <input
+                type="number"
+                id="n3Step5"
+                draggable="true"
+                name="n3"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "50px" }}></span>
               {/* <!--group 3 -- > */}
-              <input type="number" id="n4Step5" name="n4" size="1" readOnly />
+              <input
+                type="number"
+                id="n4Step5"
+                draggable="true"
+                name="n4"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "20px" }}></span>
-              <input type="number" id="n5Step5" name="n4" size="1" readOnly />
+              <input
+                type="number"
+                id="n5Step5"
+                draggable="true"
+                name="n4"
+                size="1"
+                readOnly
+              />
 
               {/* <!--group 3 -- > */}
               <span style={{ display: "inline-block", width: "60px" }}></span>
-              <input type="number" id="n6Step5" name="n1" size="1" readOnly />
+              <input
+                type="number"
+                id="n6Step5"
+                draggable="true"
+                name="n1"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "20px" }}></span>
-              <input type="number" id="n7Step5" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n7Step5"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "20px" }}></span>
               {/* <!--
-            group 4 -- > */}
-              <input type="number" id="n8Step5" name="n2" size="1" readOnly />
+  group 4 -- > */}
+              <input
+                type="number"
+                id="n8Step5"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
 
               <span style={{ display: "inline-block", width: "80px" }}></span>
               {/* <!--group 5 -- > */}
-              <input type="number" id="n9Step5" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9Step5"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "20px" }}></span>
               {/* <!--group 7 -- > */}
-              <input type="number" id="n10Step5" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n10Step5"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
+              {/* end of box */}
+            </div>
+
+            {/* end of step 5 */}
+          </div>
+          {/* choose where to merge 1 */}
+          <div className="hide" id="chooseMerge">
+            <div className="blockofnum" draggable="true" id="item">
+              {/* <!--
+  group 1 -- > */}
+              <input
+                type="number"
+                id="n1Step6"
+                name="n1"
+                draggable="true"
+                size="1"
+                readOnly
+              />
+
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackCorrect7}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n2Step6"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+
+              {/* <!--group 2 -- > */}
+              <input
+                type="number"
+                id="n3Step6"
+                draggable="true"
+                name="n3"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+              {/* <!--group 3 -- > */}
+              <input
+                type="number"
+                id="n4Step6"
+                draggable="true"
+                name="n4"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              <input
+                type="number"
+                id="n5Step6"
+                draggable="true"
+                name="n4"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "60px" }}></span>
+              <input
+                type="number"
+                id="n6Step6"
+                draggable="true"
+                name="n1"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              <input
+                type="number"
+                id="n7Step6"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              {/* <!--
+  group 4 -- > */}
+              <input
+                type="number"
+                id="n8Step6"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input
+                type="number"
+                id="n9Step6"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
+              <input
+                type="text"
+                size="3"
+                id="space26"
+                value="><"
+                className="merge"
+                style={{ backgroundColor: "green" }}
+                onClick={checkFeedbackWrong}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "20px" }}></span>
+              {/* <!--group 7 -- > */}
+              <input
+                type="number"
+                id="n10Step6"
+                draggable="true"
+                name="n2"
+                size="1"
+                readOnly
+              />
             </div>
           </div>
-          <div className="hide" id="fedback1">
+          {/* merge 1 */}
+          <div className="hide" id="merge1">
+            <h6>Order the numbers by chossing a value</h6>
+
+            <input type="number" id="n1Step7" name="n1" size="1" />
+
+            <input type="number" id="n2Step7" name="n2" size="1" />
+
+            {/* end of merge1 */}
+          </div>
+          <div className="hide" id="merge1Answer">
+            <h6>Order the numbers by chossing a value</h6>
+
+            <input type="number" id="n1Step7A" name="n1" size="1" />
+
+            <input type="number" id="n2Step7A" name="n2" size="1" />
+
+            {/* end of merge1 */}
+          </div>
+          {/* choose the second merge  */}
+          <div className="hide" id="chooseMerg2">
             <input
-              type="button"
-              id="feedbackcorrect"
-              name="feedback"
-              size="80"
-              style={{ color: "green" }}
+              type="number"
+              id="n1CM2"
+              name="n1"
+              draggable="true"
+              size="1"
+              readOnly
+            />
+            <input
+              type="number"
+              id="n2CM2"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            {/* <!--group 2 -- > */}
+            <input
+              type="number"
+              id="n3CM2"
+              draggable="true"
+              name="n3"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "50px" }}></span>
+            {/* <!--group 3 -- > */}
+            <span style={{ display: "inline-block", width: "50px" }}></span>
+            {/* <!--group 3 -- > */}
+            <input
+              type="number"
+              id="n4CM2"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackCorrect8}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input
+              type="number"
+              id="n5CM2"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            {/* <!--group 3 -- > */}
+            <span style={{ display: "inline-block", width: "60px" }}></span>
+            <input
+              type="number"
+              id="n6CM2"
+              draggable="true"
+              name="n1"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input
+              type="number"
+              id="n7CM2"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            {/* <!--
+  group 4 -- > */}
+            <input
+              type="number"
+              id="n8CM2"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "80px" }}></span>
+            {/* <!--group 5 -- > */}
+            <input
+              type="number"
+              id="n9CM2"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            {/* <!--group 7 -- > */}
+            <input
+              type="number"
+              id="n10CM2"
+              draggable="true"
+              name="n2"
+              size="1"
               readOnly
             />
           </div>
-          <div className="hide" id="fedback2">
+          {/* the second merge usewr input */}
+          <div className="hide" id="merge2">
+            <h6>order the numbers</h6>
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n1Input" name="n4" size="1" />
+
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n2Input" name="n4" size="1" />
             <input
               type="button"
-              id="feedbackwrong"
-              name="feedback"
-              size="80"
-              style={{ color: "red" }}
-              readOnly
+              id="verify2"
+              value="Verify Answer"
+              size="6"
+              //go to the next step
+              style={{ backgroundColor: "Purple" }}
+              onClick={VerifyAnswer}
             />
+          </div>
+          {/* the second merge answer sorted  */}
+          <div className="hide" id="merge2Answer">
+            <input type="number" id="n1A2" name="n4" size="1" />
+
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n2A2" name="n4" size="1" />
           </div>
           <div className="hide" id="Next">
             <input
@@ -673,22 +1157,98 @@ export default class LevelThree extends Component {
             style={{ backgroundColor: "orange" }}
             onClick={Next5}
           />
+          <div className="hide" id="mergeInstructions">
+            <input id="Instruction" type="text" value="Choose the next step" />
+            <input
+              id="SplitBtn"
+              type="button"
+              value="Split Array"
+              //go to the next step
+              onClick={checkFeedbackWrong}
+            />
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input
+              id="mergeBtn"
+              type="button"
+              value="Merge Array"
+              //go to the next step
+              onClick={checkFeedbackCorrect6}
+            />
+          </div>
+          <div className="hide" id="fedback1">
+            <input
+              type="button"
+              id="feedbackcorrect"
+              name="feedback"
+              size="80"
+              style={{ color: "green" }}
+              readOnly
+            />
+          </div>
+          <div className="hide" id="fedback2">
+            <input
+              type="button"
+              id="feedbackwrong"
+              name="feedback"
+              size="80"
+              style={{ color: "red" }}
+              readOnly
+            />
+          </div>
           <input
-            id="SplitBtn"
             type="button"
+            id="next6"
+            value="Next"
             className="hide"
-            value="Merge Array"
             //go to the next step
-            onClick={checkFeedbackWrong}
+            style={{ backgroundColor: "orange" }}
+            onClick={Next6}
           />
-          <span style={{ display: "inline-block", width: "20px" }}></span>
           <input
-            id="mergeBtn"
             type="button"
+            id="next7"
+            value="Next"
             className="hide"
-            value="Split Array"
             //go to the next step
-            onClick={checkFeedbackCorrect}
+            style={{ backgroundColor: "orange" }}
+            onClick={Next7}
+          />
+          <input
+            type="button"
+            id="next8"
+            value="Verify Answer"
+            className="hide"
+            size="6"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next8}
+          />
+          <input
+            type="button"
+            id="next9"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next9}
+          />
+          <input
+            type="button"
+            id="next10"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next10}
+          />
+          <input
+            type="button"
+            id="next11"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next11}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
