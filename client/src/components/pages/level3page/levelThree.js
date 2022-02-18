@@ -56,7 +56,6 @@ const getListStyle = (isDraggingOver) => ({
   display: "flex",
   padding: grid,
   overflow: "auto",
-
 });
 
 export default class LevelThree extends Component {
