@@ -7,6 +7,8 @@ import './level2.css';
 import { steps } from "./steps";
 import { useDrag } from 'react-dnd';
 
+
+
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
 let countmerge = 0;
@@ -145,6 +147,14 @@ export default class LevelTwo extends React.Component {
       step: 0,
       buttons: [],
       containers: [],
+      containers0: [],
+      containers1: [],
+      containers2: [],
+      containers3: [],
+      containers4: [],
+      containers5: [],
+      containers6: [],
+      containers7: [],
       previousContainer: [],
       //correctSplit: null,
       answer: ""
@@ -288,7 +298,34 @@ export default class LevelTwo extends React.Component {
       idHolder = i * 30;  //literally you can do anything just not numbers from (1-10 or maybe 1-20 not sure)
       container.push(<Board id={idHolder} className="board" ></Board>);
     }
-    this.setState({ containers: container });
+
+    switch (steps[count - 1].stepID) {
+      case 1:
+        this.setState({ containers0: container });
+        break;
+      case 2:
+        this.setState({ containers1: container });
+        break;
+      case 3:
+        this.setState({ containers2: container });
+        break;
+      case 4:
+        this.setState({ containers3: container });
+        break;
+      case 5:
+        this.setState({ containers4: container });
+        break;
+      case 6:
+        this.setState({ containers5: container });
+        break;
+      case 7:
+        this.setState({ containers6: container });
+        break;
+      case 8:
+        this.setState({ containers7: container });
+        break;
+    }
+    //this.setState({ containers: container });
 
     //for the current container
 
@@ -301,10 +338,20 @@ export default class LevelTwo extends React.Component {
   incrStep() {
     // if it's not the last step, increase the count variable
     if (count < 9) {
+      let con = "container";
+      let conPointer;
       count++;
       this.setState({ step: count - 1 }, () => {
         //console.log(this.state.step);
+        conPointer = con + this.state.step;
       });
+     
+      //change the style to block to show the div in the current step container
+      Array.prototype.forEach.call(document.getElementsByClassName('flexbox'), function (element) {
+        element.style.display = 'flex';
+      });
+           
+
       this.setState({ feedback: " " });
       if (count > 1) {
         var currentStep = this.state.step;
@@ -420,6 +467,8 @@ export default class LevelTwo extends React.Component {
   getUserInput() {
     //check what step the user is on
     var currentStep = this.state.step;
+    let con = "container";
+    let conPointer;
 
     //check how many containers there are for the current step
     var currentContainers = steps[currentStep].container;
@@ -427,8 +476,12 @@ export default class LevelTwo extends React.Component {
     userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
     numNumbers = [];    // array to hold the number of numbers in each box, in order from left to right
 
+    //get the div of the current containers
+    conPointer = con + currentStep;
+    console.log("pointer" + conPointer)
+
     //getting all the board elements in the bottom container
-    let bottomContainer = document.getElementsByClassName('nextcontainers');
+    let bottomContainer = document.getElementsByClassName(conPointer);
     var boardContainers = bottomContainer[0].children;
     console.log(boardContainers);
     //loop through the current containers to find what numbers are in the conatiner at index k
@@ -561,20 +614,41 @@ export default class LevelTwo extends React.Component {
           <button className="generateBtn" onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
           <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
         </div>
-        
+
         <h3 className="text">{this.state.clicked ? "The Array that was generated" : null}</h3>
-        <div className="flexbox">
+        <div className="flexbox1">
           <div id="answers">{this.state.clicked ? this.state.answer : null}</div>
         </div>
         <h3 className="text">{this.state.clicked ? "Drag the buttons below" : null}</h3>
-        <div className="flexbox">
+        <div className="flexbox1">
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
         </div>
         {/* <div className="flexbox">
           <div className="containers" id="containerss">{this.state.step > 0 ? this.state.buttons : null}</div>
         </div> */}
         <div className="flexbox">
-          <div className="nextcontainers" id="containers">{this.state.step > 0 ? this.state.containers : this.state.step == 0 ? this.state.containers : null}</div>
+          <div className="container0" id="containers">{(this.state.step >= 0) && (this.state.step <= 1) ? this.state.containers0 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container1" id="containers">{this.state.step >= 1  && (this.state.step <= 2)? this.state.containers1 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container2" id="containers">{this.state.step >= 2  && (this.state.step <= 3)? this.state.containers2 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container3" id="containers">{this.state.step >= 3  && (this.state.step <= 4)? this.state.containers3 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container4" id="containers">{this.state.step >= 4  && (this.state.step <= 5)? this.state.containers4 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container5" id="containers">{this.state.step >= 5  && (this.state.step <= 6)? this.state.containers5 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container6" id="containers">{this.state.step >= 6 ? this.state.containers6 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container7" id="containers">{this.state.step >= 7? this.state.containers7 : null}</div>
         </div>
         <div id="step"></div>
         <div id="verify"></div>

@@ -1,4 +1,12 @@
 .flexbox{
+    display: none; /*changed to none from flex*/
+    overflow: hidden;
+    padding: 20px 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexbox1{
     display: flex;
     overflow: hidden;
     padding: 20px 20px;
@@ -17,7 +25,7 @@
     align-items: center;
     justify-content: center;
 }
-.flexbox .topboard {
+/* .flexbox .topboard {
     display: inline-flex;
     flex-direction: row;
     padding: solid 10px rgb(156, 128, 202);
@@ -27,9 +35,7 @@
     margin: 10px 10px;
     align-items: center;
     justify-content: center;
-
-
-}
+} */
 
 .flexbox .board .number {
     /* background-color: #f3f3f3; */
@@ -43,7 +49,7 @@
 div[id=containers] {
     flex-direction: row;
     overflow: wrap;
-    border: solid #f3f3f3 10px ;
+    /* border: solid #f3f3f3 10px ; */
     align-items: center ;
     white-space: pre-wrap;
     position: 'absolute'; 
@@ -177,3 +183,28 @@ div[id=containerss] {
     font-family: monospace;
     font-size: 20px;
 }
+
+/* .container0{
+    display: none;
+}
+.container1{
+    display: none;
+}
+.container2{
+    display: none;
+}
+.container3{
+    display: none;
+}
+.container4{
+    display: none;
+}
+.container5{
+    display: none;
+}
+.container6{
+    display: none;
+}
+.container7{
+    display: none; 
+} */
