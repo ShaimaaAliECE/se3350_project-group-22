@@ -2147,7 +2147,7 @@ export function VerifyAnswer8() {
 
     //view sorted array button
     var next25 = document.getElementById("next25");
-    next25.style.display = "none";
+    next25.style.display = "block";
   } else {
     var feedback = document.getElementById("fedback2");
     feedback.classList.toggle("show");
@@ -2217,13 +2217,13 @@ export function Next25() {
 
   n5C.value = document.getElementById("n5A9").value;
 
-  n6C.value = document.getElementById("n1A9").value;
-  n7C.value = document.getElementById("n2A9").value;
+  n6C.value = document.getElementById("n6A9").value;
+  n7C.value = document.getElementById("n7A9").value;
 
-  n8C.value = document.getElementById("n3A9").value;
+  n8C.value = document.getElementById("n8A9").value;
 
-  n9C.value = document.getElementById("n4A9").value;
-  n10C.value = document.getElementById("n5A9").value;
+  n9C.value = document.getElementById("n9A9").value;
+  n10C.value = document.getElementById("n10A9").value;
 }
 // function dragStart(e) {
 //   console.log("merged");
