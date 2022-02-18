@@ -24,6 +24,7 @@ import {
   Next18,
   Next19,
   Next20,
+  Next21,
   checkFeedbackCorrect2,
   checkFeedbackCorrect11,
   checkFeedbackCorrect3,
@@ -38,6 +39,7 @@ import {
   VerifyAnswer3,
   VerifyAnswer4,
   VerifyAnswer5,
+  VerifyAnswer6,
   Next3,
   Next4,
   Next5,
@@ -1985,7 +1987,7 @@ export default class LevelThree extends Component {
             />
           </div>
           {/* mereg 7 */}
-          <div className="hide" id="merge1">
+          <div className="hide" id="merge7">
             <h6>order the numbers</h6>
             <span style={{ display: "inline-block", width: "20px" }}></span>
             <input type="number" id="n1Input7" name="n4" size="1" />
@@ -2001,7 +2003,7 @@ export default class LevelThree extends Component {
               size="6"
               //go to the next step
               style={{ backgroundColor: "Purple" }}
-              onClick={VerifyAnswer5}
+              onClick={VerifyAnswer6}
             />
           </div>
           {/* merge 7 answers  */}
@@ -2012,6 +2014,125 @@ export default class LevelThree extends Component {
             <input type="number" id="n3A7" name="n4" size="1" />
             <input type="number" id="n4A7" name="n4" size="1" />
             <input type="number" id="n5A7" name="n4" size="1" />
+          </div>
+          {/* chhose merge 8 */}
+          <div className="hide" id="chooseMerge8">
+            <input
+              type="number"
+              id="n1CM8"
+              name="n1"
+              draggable="true"
+              size="1"
+              readOnly
+            />
+            <input
+              type="number"
+              id="n2CM8"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 2 -- > */}
+            <input
+              type="number"
+              id="n3CM8"
+              draggable="true"
+              name="n3"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 3 -- > */}
+            <input
+              type="number"
+              id="n4CM8"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="number"
+              id="n5CM8"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            {/* <!--group 3 -- > */}
+
+            <input
+              type="number"
+              id="n6CM8"
+              draggable="true"
+              name="n1"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="number"
+              id="n7CM8"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--
+  group 4 -- > */}
+            <input
+              type="number"
+              id="n8CM8"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackCorrect}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "80px" }}></span>
+            {/* <!--group 5 -- > */}
+            <input
+              type="number"
+              id="n9CM8"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 7 -- > */}
+            <input
+              type="number"
+              id="n10CM8"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
           </div>
           <div className="hide" id="Next">
             <input
@@ -2229,6 +2350,15 @@ export default class LevelThree extends Component {
             //go to the next step
             style={{ backgroundColor: "Purple" }}
             onClick={Next20}
+          />
+          <input
+            type="button"
+            id="next21"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next21}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
