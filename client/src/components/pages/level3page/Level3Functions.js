@@ -1867,6 +1867,8 @@ export function VerifyAnswer7() {
     var next22 = document.getElementById("next22");
     next22.style.display = "none";
     //show next button
+    var next23 = document.getElementById("next23");
+    next23.style.display = "block";
   } else {
     var feedback = document.getElementById("fedback2");
     feedback.classList.toggle("show");
@@ -1886,6 +1888,343 @@ export function VerifyAnswer7() {
   }
 }
 
+//show the 2 groups sorted and only 1 connection to merge it all
+export function Next23() {
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge8");
+  merge2.style.display = "none";
+
+  //show the third merge choice
+  var chooseMerge7 = document.getElementById("chooseMerge9");
+  chooseMerge7.style.display = "block";
+  var next11 = document.getElementById("next17");
+  next11.style.display = "none";
+  var next113 = document.getElementById("next18");
+  next113.style.display = "none";
+  var next113 = document.getElementById("next19");
+  next113.style.display = "none";
+  var next20 = document.getElementById("next20");
+  next113.style.display = "none";
+  var next21 = document.getElementById("next21");
+  next113.style.display = "none";
+  var next21 = document.getElementById("next22");
+  next113.style.display = "none";
+  var next21 = document.getElementById("next23");
+  next113.style.display = "none";
+
+  //intialize
+  //intialize the values
+  var n1C = document.getElementById("n1CM9");
+  var n2C = document.getElementById("n2CM9");
+  var n3C = document.getElementById("n3CM9");
+  var n4C = document.getElementById("n4CM9");
+  var n5C = document.getElementById("n5CM9");
+  var n6C = document.getElementById("n6CM9");
+  var n7C = document.getElementById("n7CM9");
+  var n8C = document.getElementById("n8CM9");
+  var n9C = document.getElementById("n9CM9");
+  var n10C = document.getElementById("n10CM9");
+
+  //3 merged together
+  n1C.value = document.getElementById("n1A7").value;
+  n2C.value = document.getElementById("n2A7").value;
+  n3C.value = document.getElementById("n3A7").value;
+  //second merged ones
+  n4C.value = document.getElementById("n4A7").value;
+
+  n5C.value = document.getElementById("n5A7").value;
+
+  //thirdmerged ones
+  n6C.value = document.getElementById("n1A8").value;
+  n7C.value = document.getElementById("n2A8").value;
+  //rest alone
+  n8C.value = document.getElementById("n3A8").value;
+  //to be merged
+  n9C.value = document.getElementById("n4A8").value;
+  n10C.value = document.getElementById("n5A8").value;
+}
+
+//check the feedback  + sort all 10
+export function checkFeedbackCorrect15() {
+  var next11 = document.getElementById("next23");
+  next11.style.display = "none";
+
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+  //set the values of the answer
+  //set teh value of the answer of merge 4
+  //get the answers
+  var n1A = document.getElementById("n1A9");
+  n1A.value = document.getElementById("n1CM9").value;
+  var n2A = document.getElementById("n2A9");
+  n2A.value = document.getElementById("n2CM9").value;
+  var n3A = document.getElementById("n3A9");
+  n3A.value = document.getElementById("n3CM9").value;
+  var n4A = document.getElementById("n4A9");
+  n4A.value = document.getElementById("n4CM9").value;
+  var n5A = document.getElementById("n5A9");
+  n5A.value = document.getElementById("n5CM9").value;
+
+  var n6A = document.getElementById("n6A9");
+  n6A.value = document.getElementById("n6CM9").value;
+  var n7A = document.getElementById("n7A9");
+  n7A.value = document.getElementById("n7CM9").value;
+  var n8A = document.getElementById("n8A9");
+  n8A.value = document.getElementById("n8CM9").value;
+  var n9A = document.getElementById("n9A9");
+  n9A.value = document.getElementById("n9CM9").value;
+  var n10A = document.getElementById("n10A9");
+  n10A.value = document.getElementById("n10CM9").value;
+
+  //merge the 3 numbers together
+  //merge the 5 numbers together
+  var merge9 = [
+    n1A.value,
+    n2A.value,
+    n3A.value,
+    n4A.value,
+    n5A.value,
+    n6A.value,
+    n7A.value,
+    n8A.value,
+    n9A.value,
+    n10A.value,
+  ];
+  merge9.sort(function (a, b) {
+    return b - a;
+  });
+
+  n1A.value = merge9[9];
+  n2A.value = merge9[8];
+  n3A.value = merge9[7];
+  n4A.value = merge9[6];
+  n5A.value = merge9[5];
+  n6A.value = merge9[4];
+  n7A.value = merge9[3];
+  n8A.value = merge9[2];
+  n9A.value = merge9[1];
+  n10A.value = merge9[0];
+  console.log(
+    "merge 9 sort" + n1A.value,
+    n2A.value,
+    n3A.value,
+    n4A.value,
+    n5A.value,
+    n6A.value,
+    n7A.value,
+    n8A.value,
+    n9A.value,
+    n10A.value
+  );
+  //show step 10 block
+  var next10 = document.getElementById("next19");
+  next10.style.display = "none";
+  var next10 = document.getElementById("next20");
+  next10.style.display = "none";
+  var next21 = document.getElementById("next23");
+  next21.style.display = "none";
+
+  //show next button
+  var next24 = document.getElementById("next24");
+  next24.style.display = "block";
+}
+
+//show the merge 9 and intialize IT
+export function Next24() {
+  //show merge 4
+  var next10 = document.getElementById("next18");
+  next10.style.display = "none";
+
+  var next11 = document.getElementById("next19");
+  next11.style.display = "none";
+  var next11 = document.getElementById("next20");
+  next11.style.display = "none";
+  var next11 = document.getElementById("next24");
+  next11.style.display = "none";
+
+  //intialize it
+  var merge7 = document.getElementById("merge9");
+  merge7.style.display = "block";
+
+  var n1I = document.getElementById("n1Input9");
+  var n2I = document.getElementById("n2Input9");
+  var n3I = document.getElementById("n3Input9");
+  var n4I = document.getElementById("n4Input9");
+  var n5I = document.getElementById("n5Input9");
+
+  var n6I = document.getElementById("n6Input9");
+  var n7I = document.getElementById("n7Input9");
+  var n8I = document.getElementById("n8Input9");
+  var n9I = document.getElementById("n9Input9");
+  var n10I = document.getElementById("n10Input9");
+  //need to be grouped
+  n1I.value = document.getElementById("n1CM9").value;
+  n2I.value = document.getElementById("n2CM9").value;
+  n3I.value = document.getElementById("n3CM9").value;
+  n4I.value = document.getElementById("n4CM9").value;
+  n5I.value = document.getElementById("n5CM9").value;
+  n6I.value = document.getElementById("n6CM9").value;
+  n7I.value = document.getElementById("n7CM9").value;
+  n8I.value = document.getElementById("n8CM9").value;
+  n9I.value = document.getElementById("n9CM9").value;
+  n10I.value = document.getElementById("n10CM9").value;
+}
+
+//verigy button
+export function VerifyAnswer8() {
+  //the user input
+  var n1Merge9 = document.getElementById("n1Input9");
+  var n2Merge9 = document.getElementById("n2Input9");
+  var n3Merge9 = document.getElementById("n3Input9");
+  var n4Merge9 = document.getElementById("n4Input9");
+  var n5Merge9 = document.getElementById("n5Input9");
+  var n6Merge9 = document.getElementById("n6Input9");
+  var n7Merge9 = document.getElementById("n7Input9");
+  var n8Merge9 = document.getElementById("n8Input9");
+  var n9Merge9 = document.getElementById("n9Input9");
+  var n10Merge9 = document.getElementById("n10Input9");
+
+  var n1Answer = document.getElementById("n1A9");
+  var n2Answer = document.getElementById("n2A9");
+  var n3Answer = document.getElementById("n3A9");
+  var n4Answer = document.getElementById("n4A9");
+  var n5Answer = document.getElementById("n5A9");
+
+  var n6Answer = document.getElementById("n6A9");
+  var n7Answer = document.getElementById("n7A9");
+  var n8Answer = document.getElementById("n8A9");
+  var n9Answer = document.getElementById("n9A9");
+  var n10Answer = document.getElementById("n10A9");
+  if (
+    n1Merge9.value == n1Answer.value &&
+    n2Merge9.value == n2Answer.value &&
+    n3Merge9.value == n3Answer.value &&
+    n4Merge9.value == n4Answer.value &&
+    n5Merge9.value == n5Answer.value &&
+    n6Merge9.value == n6Answer.value &&
+    n7Merge9.value == n7Answer.value &&
+    n8Merge9.value == n8Answer.value &&
+    n9Merge9.value == n9Answer.value &&
+    n10Merge9.value == n10Answer.value
+  ) {
+    // correctAudio.play();
+    correctaudio.play();
+    var feedback = document.getElementById("fedback1");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackwrong = document.getElementById("fedback2");
+    feedbackwrong.classList.toggle("none");
+    feedbackwrong.style.display = "none";
+
+    document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+    //show the next button
+    var next11 = document.getElementById("next18");
+    next11.style.display = "none";
+    var next115 = document.getElementById("next19");
+    next115.style.display = "none";
+    var next20 = document.getElementById("next20");
+    next20.style.display = "none";
+    var next21 = document.getElementById("next21");
+    next21.style.display = "none";
+    var next22 = document.getElementById("next24");
+    next22.style.display = "none";
+
+    //view sorted array button
+    var next25 = document.getElementById("next25");
+    next25.style.display = "none";
+  } else {
+    var feedback = document.getElementById("fedback2");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackcorrect = document.getElementById("fedback1");
+    feedbackcorrect.style.display = "none";
+
+    document.getElementById("feedbackwrong").value =
+      "Wrong Answer Please try again!";
+
+    //play wrong audio
+    wrongAudio.play();
+  }
+}
+
+//button to show the entire merged thing and congratulations
+export function Next25() {
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge9");
+  merge2.style.display = "none";
+
+  //show the third merge choice
+  var chooseMerge7 = document.getElementById("sortedArray");
+  chooseMerge7.style.display = "block";
+  var next11 = document.getElementById("next17");
+  next11.style.display = "none";
+  var next113 = document.getElementById("next18");
+  next113.style.display = "none";
+  var next113 = document.getElementById("next19");
+  next113.style.display = "none";
+  var next20 = document.getElementById("next20");
+  next113.style.display = "none";
+  var next21 = document.getElementById("next21");
+  next113.style.display = "none";
+  var next21 = document.getElementById("next22");
+  next113.style.display = "none";
+  var next21 = document.getElementById("next23");
+  next113.style.display = "none";
+
+  var next21 = document.getElementById("next25");
+  next113.style.display = "none";
+  //intialize
+  //intialize the values
+  var n1C = document.getElementById("n1CM10");
+  var n2C = document.getElementById("n2CM10");
+  var n3C = document.getElementById("n3CM10");
+  var n4C = document.getElementById("n4CM10");
+  var n5C = document.getElementById("n5CM10");
+  var n6C = document.getElementById("n6CM10");
+  var n7C = document.getElementById("n7CM10");
+  var n8C = document.getElementById("n8CM10");
+  var n9C = document.getElementById("n9CM10");
+  var n10C = document.getElementById("n10CM10");
+
+  //3 merged together
+  n1C.value = document.getElementById("n1A9").value;
+  n2C.value = document.getElementById("n2A9").value;
+  n3C.value = document.getElementById("n3A9").value;
+
+  n4C.value = document.getElementById("n4A9").value;
+
+  n5C.value = document.getElementById("n5A9").value;
+
+  n6C.value = document.getElementById("n1A9").value;
+  n7C.value = document.getElementById("n2A9").value;
+
+  n8C.value = document.getElementById("n3A9").value;
+
+  n9C.value = document.getElementById("n4A9").value;
+  n10C.value = document.getElementById("n5A9").value;
+}
 // function dragStart(e) {
 //   console.log("merged");
 //   e.dataTransfer.setData("text/plain", e.target.id);

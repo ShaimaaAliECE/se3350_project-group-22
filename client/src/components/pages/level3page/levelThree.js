@@ -13,6 +13,7 @@ import {
   checkFeedbackCorrect10,
   checkFeedbackCorrect12,
   checkFeedbackCorrect14,
+  checkFeedbackCorrect15,
   Next2,
   Next10,
   Next11,
@@ -27,6 +28,9 @@ import {
   Next20,
   Next21,
   Next22,
+  Next23,
+  Next24,
+  Next25,
   checkFeedbackCorrect2,
   checkFeedbackCorrect11,
   checkFeedbackCorrect3,
@@ -43,6 +47,7 @@ import {
   VerifyAnswer5,
   VerifyAnswer6,
   VerifyAnswer7,
+  VerifyAnswer8,
   Next3,
   Next4,
   Next5,
@@ -2166,6 +2171,110 @@ export default class LevelThree extends Component {
             <input type="number" id="n4A8" name="n4" size="1" />
             <input type="number" id="n5A8" name="n4" size="1" />
           </div>
+          {/* choose merehge 9  */}
+          <div className="hide" id="chooseMerge9">
+            <input type="number" id="n1CM9" name="n1" size="1" readOnly />
+            <input type="number" id="n2CM9" name="n2" size="1" readOnly />
+
+            {/* <!--group 2 -- > */}
+            <input type="number" id="n3CM9" name="n3" size="1" readOnly />
+
+            {/* <!--group 3 -- > */}
+            <input type="number" id="n4CM9" name="n4" size="1" readOnly />
+
+            <input type="number" id="n5CM9" name="n4" size="1" readOnly />
+
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackCorrect15}
+              readOnly
+            />
+            {/* <!--group 3 -- > */}
+
+            <input type="number" id="n6CM9" name="n1" size="1" readOnly />
+
+            <input type="number" id="n7CM9" name="n2" size="1" readOnly />
+
+            {/* <!--
+  group 4 -- > */}
+            <input type="number" id="n8CM9" name="n2" size="1" readOnly />
+
+            {/* <!--group 5 -- > */}
+            <input type="number" id="n9CM9" name="n2" size="1" readOnly />
+
+            {/* <!--group 7 -- > */}
+            <input type="number" id="n10CM9" name="n2" size="1" readOnly />
+          </div>
+          {/* merge 9 */}
+          <div className="hide" id="merge9">
+            <h6>order the numbers</h6>
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n1Input9" name="n4" size="1" />
+            <input type="number" id="n2Input9" name="n4" size="1" />
+            <input type="number" id="n3Input9" name="n4" size="1" />
+            <input type="number" id="n4Input9" name="n4" size="1" />
+            <input type="number" id="n5Input9" name="n4" size="1" />
+            <input type="number" id="n6Input9" name="n4" size="1" />
+            <input type="number" id="n7Input9" name="n4" size="1" />
+            <input type="number" id="n8Input9" name="n4" size="1" />
+            <input type="number" id="n9Input9" name="n4" size="1" />
+            <input type="number" id="n10Input9" name="n4" size="1" />
+            <input
+              type="button"
+              id="verify2"
+              value="Verify Answer"
+              size="6"
+              //go to the next step
+              style={{ backgroundColor: "Purple" }}
+              onClick={VerifyAnswer8}
+            />
+          </div>
+          {/* merge 9 answers  */}
+          <div className="hide" id="merge9Answer">
+            <input type="number" id="n1A9" name="n4" size="1" />
+            <input type="number" id="n2A9" name="n4" size="1" />
+            <input type="number" id="n3A9" name="n4" size="1" />
+            <input type="number" id="n4A9" name="n4" size="1" />
+            <input type="number" id="n5A9" name="n4" size="1" />
+            <input type="number" id="n6A9" name="n4" size="1" />
+            <input type="number" id="n7A9" name="n4" size="1" />
+            <input type="number" id="n8A9" name="n4" size="1" />
+            <input type="number" id="n9A9" name="n4" size="1" />
+            <input type="number" id="n10A9" name="n4" size="1" />
+          </div>
+          {/* final result sorted array  */}
+          <div className="hide" id="sortedArray">
+            <h5>Congratulations you have sorted the array!</h5>
+            <input type="number" id="n1CM10" name="n1" size="1" readOnly />
+            <input type="number" id="n2CM10" name="n2" size="1" readOnly />
+
+            {/* <!--group 2 -- > */}
+            <input type="number" id="n3CM10" name="n3" size="1" readOnly />
+
+            {/* <!--group 3 -- > */}
+            <input type="number" id="n4CM10" name="n4" size="1" readOnly />
+
+            <input type="number" id="n5CM10" name="n4" size="1" readOnly />
+
+            <input type="number" id="n6CM10" name="n1" size="1" readOnly />
+
+            <input type="number" id="n7CM10" name="n2" size="1" readOnly />
+
+            {/* <!--
+  group 4 -- > */}
+            <input type="number" id="n8CM10" name="n2" size="1" readOnly />
+
+            {/* <!--group 5 -- > */}
+            <input type="number" id="n9CM10" name="n2" size="1" readOnly />
+
+            {/* <!--group 7 -- > */}
+            <input type="number" id="n10CM10" name="n2" size="1" readOnly />
+          </div>
           <div className="hide" id="Next">
             <input
               type="button"
@@ -2400,6 +2509,33 @@ export default class LevelThree extends Component {
             //go to the next step
             style={{ backgroundColor: "Purple" }}
             onClick={Next22}
+          />
+          <input
+            type="button"
+            id="next23"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next23}
+          />
+          <input
+            type="button"
+            id="next24"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next24}
+          />
+          <input
+            type="button"
+            id="next25"
+            value="View Sorted Array"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next25}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
