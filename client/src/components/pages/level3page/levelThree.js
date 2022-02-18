@@ -12,6 +12,7 @@ import {
   checkFeedbackWrong,
   checkFeedbackCorrect10,
   checkFeedbackCorrect12,
+  checkFeedbackCorrect14,
   Next2,
   Next10,
   Next11,
@@ -25,6 +26,7 @@ import {
   Next19,
   Next20,
   Next21,
+  Next22,
   checkFeedbackCorrect2,
   checkFeedbackCorrect11,
   checkFeedbackCorrect3,
@@ -40,6 +42,7 @@ import {
   VerifyAnswer4,
   VerifyAnswer5,
   VerifyAnswer6,
+  VerifyAnswer7,
   Next3,
   Next4,
   Next5,
@@ -2110,7 +2113,7 @@ export default class LevelThree extends Component {
               value="><"
               className="merge"
               style={{ backgroundColor: "green" }}
-              onClick={checkFeedbackCorrect}
+              onClick={checkFeedbackCorrect14}
               readOnly
             />
             <span style={{ display: "inline-block", width: "80px" }}></span>
@@ -2133,6 +2136,35 @@ export default class LevelThree extends Component {
               size="1"
               readOnly
             />
+          </div>
+          {/* merge 8 */}
+          <div className="hide" id="merge8">
+            <h6>order the numbers</h6>
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n1Input8" name="n4" size="1" />
+            <input type="number" id="n2Input8" name="n4" size="1" />
+            <input type="number" id="n3Input8" name="n4" size="1" />
+            <input type="number" id="n4Input8" name="n4" size="1" />
+            <input type="number" id="n5Input8" name="n4" size="1" />
+
+            <input
+              type="button"
+              id="verify2"
+              value="Verify Answer"
+              size="6"
+              //go to the next step
+              style={{ backgroundColor: "Purple" }}
+              onClick={VerifyAnswer7}
+            />
+          </div>
+          {/* merge Answer */}
+          <div className="hide" id="merge8Answer">
+            <input type="number" id="n1A8" name="n4" size="1" />
+
+            <input type="number" id="n2A8" name="n4" size="1" />
+            <input type="number" id="n3A8" name="n4" size="1" />
+            <input type="number" id="n4A8" name="n4" size="1" />
+            <input type="number" id="n5A8" name="n4" size="1" />
           </div>
           <div className="hide" id="Next">
             <input
@@ -2359,6 +2391,15 @@ export default class LevelThree extends Component {
             //go to the next step
             style={{ backgroundColor: "Purple" }}
             onClick={Next21}
+          />
+          <input
+            type="button"
+            id="next22"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next22}
           />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}

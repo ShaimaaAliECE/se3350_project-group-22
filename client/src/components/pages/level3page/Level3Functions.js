@@ -1727,8 +1727,165 @@ export function Next21() {
   n10C.value = document.getElementById("n2A4").value;
 }
 
-//check the feedback  correct
-export function checkFeedbackCorrect14() {}
+//check the feedback  correct and sort the correct answers
+export function checkFeedbackCorrect14() {
+  //show the next button
+  var next11 = document.getElementById("next21");
+  next11.style.display = "none";
+
+  // correctAudio.play();
+  correctaudio.play();
+  var feedback = document.getElementById("fedback1");
+  feedback.classList.toggle("show");
+  feedback.style.display = "block";
+
+  var feedbackwrong = document.getElementById("fedback2");
+  feedbackwrong.classList.toggle("none");
+  feedbackwrong.style.display = "none";
+
+  document.getElementById("feedbackcorrect").value = "Correct Answer";
+  //set the values of the answer
+  //set teh value of the answer of merge 4
+  //get the answers
+  var n1A = document.getElementById("n1A8");
+  n1A.value = document.getElementById("n6CM8").value;
+  var n2A = document.getElementById("n2A8");
+  n2A.value = document.getElementById("n7CM8").value;
+  var n3A = document.getElementById("n3A8");
+  n3A.value = document.getElementById("n8CM8").value;
+  var n4A = document.getElementById("n4A8");
+  n4A.value = document.getElementById("n9CM8").value;
+  var n5A = document.getElementById("n5A8");
+  n5A.value = document.getElementById("n10CM8").value;
+
+  //merge the 3 numbers together
+  //merge the 5 numbers together
+  var merge8 = [n1A.value, n2A.value, n3A.value, n4A.value, n5A.value];
+  merge8.sort(function (a, b) {
+    return b - a;
+  });
+  console.log(merge8);
+
+  n1A.value = merge8[4];
+  n2A.value = merge8[3];
+  n3A.value = merge8[2];
+  n4A.value = merge8[1];
+  n5A.value = merge8[0];
+  console.log(
+    "merge 8 sort" + n1A.value,
+    n2A.value,
+    n3A.value,
+    n4A.value,
+    n5A.value
+  );
+  //show step 10 block
+  var next10 = document.getElementById("next19");
+  next10.style.display = "none";
+  var next10 = document.getElementById("next20");
+  next10.style.display = "none";
+  var next21 = document.getElementById("next21");
+  next21.style.display = "none";
+
+  //show next button
+  var next22 = document.getElementById("next22");
+  next22.style.display = "block";
+}
+
+//fucntion to show merge 8 and assign values
+export function Next22() {
+  //show merge 4
+  var next10 = document.getElementById("next18");
+  next10.style.display = "none";
+
+  var next11 = document.getElementById("next19");
+  next11.style.display = "none";
+  var next11 = document.getElementById("next20");
+  next11.style.display = "none";
+  var next11 = document.getElementById("next22");
+  next11.style.display = "none";
+
+  //intialize it
+  var merge7 = document.getElementById("merge8");
+  merge7.style.display = "block";
+  var n1I = document.getElementById("n1Input8");
+  var n2I = document.getElementById("n2Input8");
+
+  var n3I = document.getElementById("n3Input8");
+  var n4I = document.getElementById("n4Input8");
+
+  var n5I = document.getElementById("n5Input8");
+  //need to be grouped
+  n1I.value = document.getElementById("n6CM8").value;
+  n2I.value = document.getElementById("n7CM8").value;
+  n3I.value = document.getElementById("n8CM8").value;
+  n4I.value = document.getElementById("n9CM8").value;
+  n5I.value = document.getElementById("n10CM8").value;
+}
+
+//make a verify button
+export function VerifyAnswer7() {
+  //the user input
+  var n1Merge8 = document.getElementById("n1Input8");
+  var n2Merge8 = document.getElementById("n2Input8");
+  var n3Merge8 = document.getElementById("n3Input8");
+  var n4Merge8 = document.getElementById("n4Input8");
+  var n5Merge8 = document.getElementById("n5Input8");
+
+  var n1Answer = document.getElementById("n1A8");
+  var n2Answer = document.getElementById("n2A8");
+  var n3Answer = document.getElementById("n3A8");
+  var n4Answer = document.getElementById("n4A8");
+  var n5Answer = document.getElementById("n5A8");
+  if (
+    n1Merge8.value == n1Answer.value &&
+    n2Merge8.value == n2Answer.value &&
+    n3Merge8.value == n3Answer.value &&
+    n4Merge8.value == n4Answer.value &&
+    n5Merge8.value == n5Answer.value
+  ) {
+    // correctAudio.play();
+    correctaudio.play();
+    var feedback = document.getElementById("fedback1");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackwrong = document.getElementById("fedback2");
+    feedbackwrong.classList.toggle("none");
+    feedbackwrong.style.display = "none";
+
+    document.getElementById("feedbackcorrect").value = "Correct Answer";
+
+    //show the next button
+    var next11 = document.getElementById("next18");
+    next11.style.display = "none";
+    var next115 = document.getElementById("next19");
+    next115.style.display = "none";
+    var next20 = document.getElementById("next20");
+    next20.style.display = "none";
+    var next21 = document.getElementById("next21");
+    next21.style.display = "none";
+    var next22 = document.getElementById("next22");
+    next22.style.display = "none";
+    //show next button
+  } else {
+    var feedback = document.getElementById("fedback2");
+    feedback.classList.toggle("show");
+    feedback.style.display = "block";
+
+    var feedbackcorrect = document.getElementById("fedback1");
+    feedbackcorrect.style.display = "none";
+
+    document.getElementById("feedbackwrong").value =
+      "Wrong Answer Please try again!";
+
+    //play wrong audio
+    wrongAudio.play();
+    //hide verify button
+    var next22 = document.getElementById("next22");
+    next22.style.display = "block";
+  }
+}
+
 // function dragStart(e) {
 //   console.log("merged");
 //   e.dataTransfer.setData("text/plain", e.target.id);
