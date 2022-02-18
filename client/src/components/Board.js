@@ -7,10 +7,10 @@ export default function Board(props) {
         console.log(num_id);
 
         const num = document.getElementById(num_id);
-        console.log(num);
-        num.style.display = 'block';        
-
+        console.log(num)
+        num.style.display = 'block';
         e.target.appendChild(num);
+        
     }
 
     const dragOver = (e) => {
