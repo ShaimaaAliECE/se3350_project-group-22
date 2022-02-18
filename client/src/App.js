@@ -21,7 +21,6 @@ class App extends Component {
           <Route path="/levelOne" element={<LevelOne/>}/>
           <Route path="/levelTwo" element={<LevelTwo/>}/>
           <Route path="/levelThree" element={<LevelThree/>}/>
-          <Route path="/home" element={<Home/>}/>
         </Routes>
       </Router>
     );
