@@ -282,7 +282,7 @@ export default class LevelTwo extends React.Component {
 
     // array to hold number of containers
     let container = [];
-    
+
 
     for (let i = 0; i < numConts; i++) {
       idHolder = i * 30;  //literally you can do anything just not numbers from (1-10 or maybe 1-20 not sure)
@@ -303,10 +303,10 @@ export default class LevelTwo extends React.Component {
     if (count < 9) {
       count++;
       this.setState({ step: count - 1 }, () => {
-        console.log(this.state.step);
+        //console.log(this.state.step);
       });
       this.setState({ feedback: " " });
-      if (count > 2) {
+      if (count > 1) {
         var currentStep = this.state.step;
 
         //gwt the num of containers in the previous step
@@ -316,21 +316,32 @@ export default class LevelTwo extends React.Component {
         console.log(this.state.containers);
         console.log("prev cont: " + prevContainers);
 
-        //get the elements in the top
+        // // ----------------------------------remove the children----------------------------------------------
+        // let bottomContainer = document.getElementsByClassName('nextcontainers');
+        // var boardContainers = bottomContainer[0].children;
 
-        // var boardContainers = topContainer[0].children;
+        // var h = 0;
+        // // //loop through the current containers to find what numbers are in the conatiner at index k
+        // for (var k = 0; k < prevContainers; k++) {
+        //   console.log(boardContainers[k].children.length)
+        //   //looping through to see if first child exist
+        //   while (boardContainers[k].firstChild) {
+        //     console.log(boardContainers[k].firstChild.textContent);
+        //     boardContainers[k].removeChild(boardContainers[k].firstChild);
+        //     h++;
+        //   }
+        //   h = 0;
+        // }
 
-
-        // //gettting the container then getting the children which is the board then to get the board children you would do 
+        //--------------------------------bring them children back-----------------------------------------------
         // let button = [];
 
         // for (let num of numOfArray) {
-        // button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
+        //   button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
         // }
-        // console.log(button);
-        // this.setState({ previousContainer:button});
-        // let topContainer = document.getElementById('containerss').innerHTML = this.setState({prevContainers:button})
-        //console.log(topContainer)
+        // this.setState({buttons:button}, () => {
+        //   console.log(this.state.buttons);
+        // });
 
       }
     }
@@ -352,29 +363,49 @@ export default class LevelTwo extends React.Component {
 
     //set clicked to true so the buttons will show up
     this.setState({ clicked: true });
+    this.setState({ buttons: [] }, () => {
+      //create an array of random number
+      numOfArray = [];
 
-    //create an array of random number
-    numOfArray = [];
+      const randomNum = RandomNumbersArray(10, 20, 1);
+      //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
+      for (var i = 0; i < randomNum.length; i++) {
+        numOfArray.push(randomNum[i]);
+      }
 
-    const randomNum = RandomNumbersArray(10, 20, 1);
-    //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
-    for (var i = 0; i < randomNum.length; i++) {
-      numOfArray.push(randomNum[i]);
-    }
+      //return the button with the number in the array
+      let button = [];
 
-    Array.from(numOfArray)
-    //remove comment
-    //return the button with the number in the array
-    let button = [];
+      for (let num of randomNum) {
+        button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
+      }
 
-    for (let num of randomNum) {
-      button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
-    }
+      let numstr = numOfArray.toString();
+      this.setState({ answer: numstr });
+      this.setState({ buttons: button });
+      console.log("current array when generated: " + numOfArray);
+    });
 
-    let numstr = numOfArray.toString();
-    this.setState({ answer: numstr });
-    this.setState({ buttons: button });
-    console.log("current array when generated: " + numOfArray);
+    // //create an array of random number
+    // numOfArray = [];
+
+    // const randomNum = RandomNumbersArray(10, 20, 1);
+    // //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
+    // for (var i = 0; i < randomNum.length; i++) {
+    //   numOfArray.push(randomNum[i]);
+    // }
+
+    // //return the button with the number in the array
+    // let button = [];
+
+    // for (let num of randomNum) {
+    //   button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
+    // }
+
+    // let numstr = numOfArray.toString();
+    // this.setState({ answer: numstr });
+    // this.setState({ buttons: button });
+    // console.log("current array when generated: " + numOfArray);
     //console.log("merged array" + mergeSort(numOfArray));
     // render the Number button components in the div called numbers
     //ReactDOM.render(<></>, document.getElementById("numbers"));
@@ -383,7 +414,7 @@ export default class LevelTwo extends React.Component {
     //   <Board className='board' id='2'></Board>
     // </>, document.getElementById("containers"));
     // render the check answer button so that users can check their answers
-    ReactDOM.render(<button onClick={this.verify}>Verify</button>, document.getElementById("verify"));
+    ReactDOM.render(<button className="verifyBtn" onClick={this.verify}>Verify</button>, document.getElementById("verify"));
   };
 
   getUserInput() {
@@ -417,10 +448,7 @@ export default class LevelTwo extends React.Component {
   }
 
 
-  // ---------------------------------------------  check correct split  -------------------------------------------
-
-
-
+  // ---------------------------------------------  check correct split  -------------------------------------------F
 
   verifyMerge() {
     console.log("Merge verify");
@@ -533,23 +561,22 @@ export default class LevelTwo extends React.Component {
           <button className="generateBtn" onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
           <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
         </div>
-        <div id="step"></div>
+        
         <h3 className="text">{this.state.clicked ? "The Array that was generated" : null}</h3>
         <div className="flexbox">
-          
           <div id="answers">{this.state.clicked ? this.state.answer : null}</div>
         </div>
         <h3 className="text">{this.state.clicked ? "Drag the buttons below" : null}</h3>
         <div className="flexbox">
-         
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
         </div>
-        <div className="flexbox">
-          <div className="containers" id="containerss">{this.state.step > 0 ? this.state.previousContainer : null}</div>
-        </div>
+        {/* <div className="flexbox">
+          <div className="containers" id="containerss">{this.state.step > 0 ? this.state.buttons : null}</div>
+        </div> */}
         <div className="flexbox">
           <div className="nextcontainers" id="containers">{this.state.step > 0 ? this.state.containers : this.state.step == 0 ? this.state.containers : null}</div>
         </div>
+        <div id="step"></div>
         <div id="verify"></div>
         <div id="feedback">{this.state.feedback}</div>
       </div>
