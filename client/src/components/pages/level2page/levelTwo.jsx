@@ -218,11 +218,11 @@ export default class LevelTwo extends React.Component {
     //console.log("current step: " + currentStep);
 
     // if it's not after the merging step, answer string is unsorted array 
-    
+
     ansString = numOfArray.toString();
     console.log(ansString);
-      // if it's after the merging step, the answer string is the sorted array
-  
+    // if it's after the merging step, the answer string is the sorted array
+
     // else if (currentStep >= 4) {
     //   // // sort the unsorted array before adding it to the string
     //   // ansString = numOfArray.sort((a, b) => a - b).toString();
@@ -261,7 +261,8 @@ export default class LevelTwo extends React.Component {
     let numConts = steps[count - 1].container;
     console.log("current container : " + numConts);
 
-
+    //creating an id holder to avoid conflict
+    let idHolder;
     //getting previous stuff
     if (count > 1) {
       //figure out the number of containers needed from the previous step
@@ -270,7 +271,8 @@ export default class LevelTwo extends React.Component {
       // array to hold number of containers
       let container = [];
       for (let i = 0; i < prevNumConts; i++) {
-        container.push(<div id={i} className="board" ></div>);
+        idHolder = i * 30; //literally you can do anything just not numbers from (1-10 or maybe 1-20 not sure)
+        container.push(<div id={idHolder} className="board" ></div>);
       }
 
       this.setState({ previousContainer: container })
@@ -280,9 +282,11 @@ export default class LevelTwo extends React.Component {
 
     // array to hold number of containers
     let container = [];
+    
 
     for (let i = 0; i < numConts; i++) {
-      container.push(<Board id={i} className="board" ></Board>);
+      idHolder = i * 30;  //literally you can do anything just not numbers from (1-10 or maybe 1-20 not sure)
+      container.push(<Board id={idHolder} className="board" ></Board>);
     }
     this.setState({ containers: container });
 
@@ -413,10 +417,10 @@ export default class LevelTwo extends React.Component {
   }
 
 
-   // ---------------------------------------------  check correct split  -------------------------------------------
-  
+  // ---------------------------------------------  check correct split  -------------------------------------------
 
-  
+
+
 
   verifyMerge() {
     console.log("Merge verify");
@@ -449,7 +453,7 @@ export default class LevelTwo extends React.Component {
       correctSplit = false;
       console.log("false the number in the containers: " + numsInCont);
     }
-    
+
     //------------------------ check order ----------------------------------
     let userArray = [];
     let answerArray = [];
@@ -521,14 +525,23 @@ export default class LevelTwo extends React.Component {
   render() {
     return (
       <div id="main">
-        <h1>Level Two</h1>
-        <button onClick={() => { this.decrStep(); this.getContainers() }}>back</button>
-        <button onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
-        <button onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
-        <div className="flexbox">
-          <div id="fixednumbers">{this.state.clicked ? this.state.answer : null}</div>
+        <div className="head">
+          <h1>Level Two</h1>
         </div>
+        <div className="nav">
+          <button className="backBtn" onClick={() => { this.decrStep(); this.getContainers() }}>back</button>
+          <button className="generateBtn" onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
+          <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
+        </div>
+        <div id="step"></div>
+        <h3 className="text">{this.state.clicked ? "The Array that was generated" : null}</h3>
         <div className="flexbox">
+          
+          <div id="answers">{this.state.clicked ? this.state.answer : null}</div>
+        </div>
+        <h3 className="text">{this.state.clicked ? "Drag the buttons below" : null}</h3>
+        <div className="flexbox">
+         
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
         </div>
         <div className="flexbox">
@@ -537,8 +550,6 @@ export default class LevelTwo extends React.Component {
         <div className="flexbox">
           <div className="nextcontainers" id="containers">{this.state.step > 0 ? this.state.containers : this.state.step == 0 ? this.state.containers : null}</div>
         </div>
-
-        <div id="step"></div>
         <div id="verify"></div>
         <div id="feedback">{this.state.feedback}</div>
       </div>
