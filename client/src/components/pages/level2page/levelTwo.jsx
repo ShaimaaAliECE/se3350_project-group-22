@@ -155,9 +155,10 @@ export default class LevelTwo extends React.Component {
       containers3: [],
       containers4: [],
       containers5: [],
+      incorrectSound: new Audio(incorrectSfx),
+      correctSound: new Audio(correctSfx),
       containers6: [],
       containers7: [],
-      //HERE AMEENA  GET THE AUDIO FILES
       previousContainer: [],
       //correctSplit: null,
       answer: ""
@@ -252,26 +253,38 @@ export default class LevelTwo extends React.Component {
     // ------------------------  user feedback  ------------------------
     // if the user didn't drag all the numbers
     if (userValues.length < 10) {
-      // Play incorrect sound if user response is wrong HERE AMEENA
+      document.getElementById('feedback').style.backgroundColor='red';
       
+      // Play incorrect sound if user response is wrong
+      this.state.correctSound.pause();
+      this.state.incorrectSound.play();
       this.setState({ feedback: "please finish ordering all numbers" });
       // if one of the boxes contains >1 more numbers than any of the other boxes
     } else {
       if (!correctSplit && !correctOrder) {
-        // Play incorrect sound if user response is wrong HERE AMEENA
-       
+        document.getElementById('feedback').style.backgroundColor='red';
+        // Play incorrect sound if user response is wrong
+        this.state.correctSound.pause();
+        this.state.incorrectSound.play();
         this.setState({ feedback: "please try again." });
       } else if (!correctOrder && correctSplit) {
-        // Play incorrect sound if user response is wrong HERE AMEENA
-        
+        document.getElementById('feedback').style.backgroundColor='red';
+        // Play incorrect sound if user response is wrong
+        this.state.correctSound.pause();
+        this.state.incorrectSound.play();
         this.setState({ feedback: "the numbers are not in the correct order. please try again." });
       } else if (correctSplit && !correctOrder) {
-        // Play incorrect sound if user response is wrong HERE AMEENA
-        
+        document.getElementById('feedback').style.backgroundColor='red';
+        // Play incorrect sound if user response is wrong
+        this.state.correctSound.pause();
+        this.state.incorrectSound.play();
         this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
       } else if (correctOrder && correctSplit) {
-        // Play correct sound if user response is right HERE AMEENA
-        
+        document.getElementById('feedback').style.backgroundColor='green';
+        document.getElementById('feedback').style.color='white';
+        // Play correct sound if user response is right
+        this.state.incorrectSound.pause();
+        this.state.correctSound.play();
         this.setState({ feedback: "correct bae!!!! click next to go to the next step" });
       };
     }
@@ -364,6 +377,7 @@ export default class LevelTwo extends React.Component {
         element.style.display = 'flex';
       });
 
+      document.getElementById('feedback').style.backgroundColor="white";
 
       this.setState({ feedback: " " });
       if (count > 1) {
@@ -514,7 +528,7 @@ export default class LevelTwo extends React.Component {
   }
 
 
-  // ---------------------------------------------  check correct split  -------------------------------------------F
+  // ---------------------------------------------  MERGEEEEEEEE  -------------------------------------------F
 
   verifyMerge() {
     console.log("Merge verify");
@@ -583,27 +597,32 @@ export default class LevelTwo extends React.Component {
       // console.log("split " + this.state.correctSplit + " order " + correctOrder);
       // if the user didn't drag all the numbers
       if (userValues.length < 10) {
-        
         this.setState({ feedback: "please finish ordering all numbers" });
-        // Play incorrect sound if user response is wrong HERE AMEENA
-        
+        document.getElementById('feedback').style.backgroundColor='red';
+        this.state.correctSound.pause();
+        this.state.incorrectSound.play();
         // if one of the boxes contains >1 more numbers than any of the other boxes
       } else {
         if (!correctSplit && !correctOrder) {
           this.setState({ feedback: "please try again." });
-          // Play incorrect sound if user response is wrong HERE AMEENA
-          
+          document.getElementById('feedback').style.backgroundColor='red';
+          this.state.correctSound.pause();
+        this.state.incorrectSound.play();
         } else if (!correctOrder && correctSplit) {
-          // Play incorrect sound if user response is wrong HERE AMEENA
-          
+          document.getElementById('feedback').style.backgroundColor='red';
+          this.state.correctSound.pause();
+        this.state.incorrectSound.play();
           this.setState({ feedback: "the numbers are not in the correct order. please try again." });
         } else if (correctSplit && !correctOrder) {
-          // Play incorrect sound if user response is wrong HERE AMEENA
-          
+          document.getElementById('feedback').style.backgroundColor='red';
+          this.state.correctSound.pause();
+        this.state.incorrectSound.play();
           this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
         } else if (correctOrder && correctSplit) {
-          // Play correct sound if user response is right   HERE AMEENA
-          
+          document.getElementById('feedback').style.backgroundColor='green';
+          document.getElementById('feedback').style.color='white';
+          this.state.correctSound.play();
+        this.state.incorrectSound.pause();
           this.setState({ feedback: "correct bae!!!! click next to go to the next step" });
         };
       }
@@ -650,23 +669,24 @@ export default class LevelTwo extends React.Component {
         {/* <div className="flexbox">
           <div className="containers" id="containerss">{this.state.step > 0 ? this.state.buttons : null}</div>
         </div> */}
+        <div id="feedback">{this.state.feedback}</div>
         <div className="flexbox">
-          <div className="container0" id="containers">{(this.state.step >= 0) && (this.state.step <= 1) ? this.state.containers0 : null}</div>
+          <div className="container0" id="containers">{(this.state.step >= 0) && (this.state.step <= 2) ? this.state.containers0 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container1" id="containers">{this.state.step >= 1 && (this.state.step <= 2) ? this.state.containers1 : null}</div>
+          <div className="container1" id="containers">{this.state.step >= 1? this.state.containers1 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container2" id="containers">{this.state.step >= 2 && (this.state.step <= 3) ? this.state.containers2 : null}</div>
+          <div className="container2" id="containers">{this.state.step >= 2 ? this.state.containers2 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container3" id="containers">{this.state.step >= 3 && (this.state.step <= 4) ? this.state.containers3 : null}</div>
+          <div className="container3" id="containers">{this.state.step >= 3 ? this.state.containers3 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container4" id="containers">{this.state.step >= 4 && (this.state.step <= 5) ? this.state.containers4 : null}</div>
+          <div className="container4" id="containers">{this.state.step >= 4? this.state.containers4 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container5" id="containers">{this.state.step >= 5 && (this.state.step <= 6) ? this.state.containers5 : null}</div>
+          <div className="container5" id="containers">{this.state.step >= 5? this.state.containers5 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container6" id="containers">{this.state.step >= 6 ? this.state.containers6 : null}</div>
@@ -676,7 +696,6 @@ export default class LevelTwo extends React.Component {
         </div>
         <div id="step"></div>
         <div id="verify"></div>
-        <div id="feedback">{this.state.feedback}</div>
       </div>
     );
   }
