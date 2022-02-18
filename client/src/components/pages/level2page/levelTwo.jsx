@@ -216,9 +216,11 @@ export default class LevelTwo extends React.Component {
     // if either case 1 or case 2 is true, then the user is correct in splitting their numbers
     if ((numsInCont % 1 === 0 && difference === 0) || (numsInCont % 1 !== 0 && difference === 1)) {
       correctSplit = true;
+      console.log(correctSplit);
       // this.setState({correctSplit: true});
     } else {    // otherwise, the user is incorrect
       correctSplit = false;
+      console.log(correctSplit);
       // this.setState({correctSplit: false});
     }
     //console.log("was split evenly: " + correctSplit);
@@ -254,7 +256,6 @@ export default class LevelTwo extends React.Component {
     // if the user didn't drag all the numbers
     if (userValues.length < 10) {
       document.getElementById('feedback').style.backgroundColor='red';
-      
       // Play incorrect sound if user response is wrong
       this.state.correctSound.pause();
       this.state.incorrectSound.play();
@@ -273,7 +274,13 @@ export default class LevelTwo extends React.Component {
         this.state.correctSound.pause();
         this.state.incorrectSound.play();
         this.setState({ feedback: "the numbers are not in the correct order. please try again." });
-      } else if (correctSplit && !correctOrder) {
+      } else if (correctOrder && !correctSplit) {
+        document.getElementById('feedback').style.backgroundColor='red';
+        // Play incorrect sound if user response is wrong
+        this.state.correctSound.pause();
+        this.state.incorrectSound.play();
+        this.setState({ feedback: "the numbers are not split correctly. please try again." });
+      }else if (correctSplit && !correctOrder) {
         document.getElementById('feedback').style.backgroundColor='red';
         // Play incorrect sound if user response is wrong
         this.state.correctSound.pause();
@@ -285,7 +292,7 @@ export default class LevelTwo extends React.Component {
         // Play correct sound if user response is right
         this.state.incorrectSound.pause();
         this.state.correctSound.play();
-        this.setState({ feedback: "correct bae!!!! click next to go to the next step" });
+        this.setState({ feedback: "correct!!!! click next to go to the next step" });
       };
     }
   }
@@ -533,6 +540,8 @@ export default class LevelTwo extends React.Component {
   verifyMerge() {
     console.log("Merge verify");
     var index = 0;
+    var orderCount = 0;
+    var splitCount = 0;
     // ---------------------------   getting user input  ---------------------------
     this.getUserInput();
     console.log("user values: inside merge" + userValues);
@@ -565,6 +574,7 @@ export default class LevelTwo extends React.Component {
     //------------------------ check order ----------------------------------
     let userArray = [];
     let answerArray = [];
+    let finalAnswerArray = "";
     //looping through each container and seeing the elements inside the container
     for (var u = 0; u < numNumbers.length; u++) {
       for (var t = 0; t < numNumbers[u]; t++) {
@@ -578,14 +588,19 @@ export default class LevelTwo extends React.Component {
       let userString, ansString;
       userString = userArray.toString();
       ansString = answerArray.sort((a, b) => a - b).toString();
+      finalAnswerArray += ansString;
 
       console.log("User Array: " + userString);
-      console.log("answer Array: " + ansString);
+      console.log("answer Array: " + finalAnswerArray);
 
 
       if (userString === ansString) {
-        correctOrder = true;
+        orderCount++;
+        if(orderCount == currentContainers){
+          correctOrder = true;
+        }
         console.log("yay correct order");
+        console.log(finalAnswerArray);
         //this.setState({ answer: ansString })
       } else {
         correctOrder = false;
@@ -623,12 +638,13 @@ export default class LevelTwo extends React.Component {
           document.getElementById('feedback').style.color='white';
           this.state.correctSound.play();
         this.state.incorrectSound.pause();
-          this.setState({ feedback: "correct bae!!!! click next to go to the next step" });
+          this.setState({ feedback: "correct!!!! click next to go to the next step" });
         };
       }
       userArray = [];
       answerArray = [];
     }
+    orderCount = 0;
     index = 0;
   }
 
