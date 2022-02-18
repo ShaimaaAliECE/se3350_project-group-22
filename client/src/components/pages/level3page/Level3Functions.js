@@ -1274,6 +1274,9 @@ export function VerifyAnswer4() {
     //show the next button
     var next11 = document.getElementById("next16");
     next11.style.display = "none";
+    //show next button
+    var next17 = document.getElementById("next17");
+    next17.style.display = "block";
   } else {
     var feedback = document.getElementById("fedback2");
     feedback.classList.toggle("show");
@@ -1293,6 +1296,58 @@ export function VerifyAnswer4() {
   }
 }
 
+//the three grouped
+export function Next17() {
+  var feedback = document.getElementById("fedback1");
+
+  feedback.style.display = "none";
+
+  //hide merge 2
+  //show merge2 option
+  var merge2 = document.getElementById("merge5");
+  merge2.style.display = "none";
+
+  //show the third merge choice
+  var chooseMerge3 = document.getElementById("chooseMerge6");
+  chooseMerge3.style.display = "block";
+  var next11 = document.getElementById("next16");
+  next11.style.display = "none";
+  var next113 = document.getElementById("next17");
+  next113.style.display = "none";
+
+  //intialize
+  //intialize the values
+  var n1C = document.getElementById("n1CM6");
+  var n2C = document.getElementById("n2CM6");
+  var n3C = document.getElementById("n3CM6");
+  var n4C = document.getElementById("n4CM6");
+  var n5C = document.getElementById("n5CM6");
+  var n6C = document.getElementById("n6CM6");
+  var n7C = document.getElementById("n7CM6");
+  var n8C = document.getElementById("n8CM6");
+  var n9C = document.getElementById("n9CM6");
+  var n10C = document.getElementById("n10CM6");
+
+  //3 merged together
+  n1C.value = document.getElementById("n1A5").value;
+  n2C.value = document.getElementById("n2A5").value;
+  n3C.value = document.getElementById("n3A5").value;
+  //second merged ones
+  n4C.value = document.getElementById("n1A2").value;
+
+  n5C.value = document.getElementById("n2A2").value;
+
+  //thirdmerged ones
+  n6C.value = document.getElementById("n1A3").value;
+  n7C.value = document.getElementById("n2A3").value;
+  //rest alone
+  n8C.value = document.getElementById("n8CM3").value;
+  //to be merged
+  n9C.value = document.getElementById("n1A4").value;
+  n10C.value = document.getElementById("n2A4").value;
+}
+
+//check the feedbac and sort the correct answers
 //make a verify button
 
 // function dragStart(e) {
