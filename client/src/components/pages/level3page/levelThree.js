@@ -8,8 +8,10 @@ import {
   Random,
   checkFeedbackCorrect,
   checkFeedbackCorrect1,
+  checkFeedbackCorrect13,
   checkFeedbackWrong,
   checkFeedbackCorrect10,
+  checkFeedbackCorrect12,
   Next2,
   Next10,
   Next11,
@@ -18,6 +20,10 @@ import {
   Next14,
   Next15,
   Next16,
+  Next17,
+  Next18,
+  Next19,
+  Next20,
   checkFeedbackCorrect2,
   checkFeedbackCorrect11,
   checkFeedbackCorrect3,
@@ -31,6 +37,7 @@ import {
   VerifyAnswer2,
   VerifyAnswer3,
   VerifyAnswer4,
+  VerifyAnswer5,
   Next3,
   Next4,
   Next5,
@@ -1528,7 +1535,7 @@ export default class LevelThree extends Component {
               value="><"
               className="merge"
               style={{ backgroundColor: "green" }}
-              onClick={checkFeedbackWrong}
+              onClick={checkFeedbackCorrect11}
               readOnly
             />
 
@@ -1548,7 +1555,7 @@ export default class LevelThree extends Component {
               value="><"
               className="merge"
               style={{ backgroundColor: "green" }}
-              onClick={checkFeedbackCorrect11}
+              onClick={checkFeedbackWrong}
               readOnly
             />
             <span style={{ display: "inline-block", width: "50px" }}></span>
@@ -1679,6 +1686,332 @@ export default class LevelThree extends Component {
             <span style={{ display: "inline-block", width: "20px" }}></span>
             <input type="number" id="n2A5" name="n4" size="1" />
             <input type="number" id="n3A5" name="n4" size="1" />
+          </div>
+          {/* choose merge6  */}
+          <div className="hide" id="chooseMerge6">
+            <input
+              type="number"
+              id="n1CM6"
+              name="n1"
+              draggable="true"
+              size="1"
+              readOnly
+            />
+            <input
+              type="number"
+              id="n2CM6"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 2 -- > */}
+            <input
+              type="number"
+              id="n3CM6"
+              draggable="true"
+              name="n3"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "50px" }}></span>
+            {/* <!--group 3 -- > */}
+            <span style={{ display: "inline-block", width: "50px" }}></span>
+            {/* <!--group 3 -- > */}
+            <input
+              type="number"
+              id="n4CM6"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="number"
+              id="n5CM6"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            {/* <!--group 3 -- > */}
+
+            <input
+              type="number"
+              id="n6CM6"
+              draggable="true"
+              name="n1"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="number"
+              id="n7CM6"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackCorrect12}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            {/* <!--
+  group 4 -- > */}
+            <input
+              type="number"
+              id="n8CM6"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "80px" }}></span>
+            {/* <!--group 5 -- > */}
+            <input
+              type="number"
+              id="n9CM6"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 7 -- > */}
+            <input
+              type="number"
+              id="n10CM6"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+          </div>
+          {/* merge 6 */}
+          <div className="hide" id="merge6">
+            <h6>order the numbers</h6>
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n1Input6" name="n4" size="1" />
+
+            <input type="number" id="n2Input6" name="n4" size="1" />
+            <input type="number" id="n3Input6" name="n4" size="1" />
+            <input
+              type="button"
+              id="verify2"
+              value="Verify Answer"
+              size="6"
+              //go to the next step
+              style={{ backgroundColor: "Purple" }}
+              onClick={VerifyAnswer5}
+            />
+          </div>
+          {/* merge6 answers */}
+          <div className="hide" id="merge6Answer">
+            <input type="number" id="n1A6" name="n4" size="1" />
+
+            <input type="number" id="n2A6" name="n4" size="1" />
+            <input type="number" id="n3A6" name="n4" size="1" />
+          </div>
+          {/* chose mereg 7 */}
+          <div className="hide" id="chooseMerge7">
+            <input
+              type="number"
+              id="n1CM7"
+              name="n1"
+              draggable="true"
+              size="1"
+              readOnly
+            />
+            <input
+              type="number"
+              id="n2CM7"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 2 -- > */}
+            <input
+              type="number"
+              id="n3CM7"
+              draggable="true"
+              name="n3"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackCorrect13}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "50px" }}></span>
+            {/* <!--group 3 -- > */}
+            <span style={{ display: "inline-block", width: "50px" }}></span>
+            {/* <!--group 3 -- > */}
+            <input
+              type="number"
+              id="n4CM7"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="number"
+              id="n5CM7"
+              draggable="true"
+              name="n4"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            {/* <!--group 3 -- > */}
+
+            <input
+              type="number"
+              id="n6CM7"
+              draggable="true"
+              name="n1"
+              size="1"
+              readOnly
+            />
+
+            <input
+              type="number"
+              id="n7CM7"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--
+  group 4 -- > */}
+            <input
+              type="number"
+              id="n8CM7"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+            <input
+              type="text"
+              size="3"
+              id="space26"
+              value="><"
+              className="merge"
+              style={{ backgroundColor: "green" }}
+              onClick={checkFeedbackWrong}
+              readOnly
+            />
+            <span style={{ display: "inline-block", width: "80px" }}></span>
+            {/* <!--group 5 -- > */}
+            <input
+              type="number"
+              id="n9CM7"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+
+            {/* <!--group 7 -- > */}
+            <input
+              type="number"
+              id="n10CM7"
+              draggable="true"
+              name="n2"
+              size="1"
+              readOnly
+            />
+          </div>
+          {/* mereg 7 */}
+          <div className="hide" id="merge1">
+            <h6>order the numbers</h6>
+            <span style={{ display: "inline-block", width: "20px" }}></span>
+            <input type="number" id="n1Input7" name="n4" size="1" />
+            <input type="number" id="n2Input7" name="n4" size="1" />
+            <input type="number" id="n3Input7" name="n4" size="1" />
+            <input type="number" id="n4Input7" name="n4" size="1" />
+            <input type="number" id="n5Input7" name="n4" size="1" />
+
+            <input
+              type="button"
+              id="verify2"
+              value="Verify Answer"
+              size="6"
+              //go to the next step
+              style={{ backgroundColor: "Purple" }}
+              onClick={VerifyAnswer5}
+            />
+          </div>
+          {/* merge 7 answers  */}
+          <div className="hide" id="merge7Answer">
+            <input type="number" id="n1A7" name="n4" size="1" />
+
+            <input type="number" id="n2A7" name="n4" size="1" />
+            <input type="number" id="n3A7" name="n4" size="1" />
+            <input type="number" id="n4A7" name="n4" size="1" />
+            <input type="number" id="n5A7" name="n4" size="1" />
           </div>
           <div className="hide" id="Next">
             <input
@@ -1861,11 +2194,47 @@ export default class LevelThree extends Component {
             style={{ backgroundColor: "Purple" }}
             onClick={Next16}
           />
+          <input
+            type="button"
+            id="next17"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next17}
+          />
+          <input
+            type="button"
+            id="next18"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next18}
+          />
+          <input
+            type="button"
+            id="next19"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next19}
+          />
+          <input
+            type="button"
+            id="next20"
+            value="Next"
+            className="hide"
+            //go to the next step
+            style={{ backgroundColor: "Purple" }}
+            onClick={Next20}
+          />
           {/* <h4 class="hide" id="right">
               Correct answer!{" "}
             </h4> */}{" "}
         </form>
-        <div className="footer"></div>
+        {/* <div className="footer"></div>
         <div className="footer"></div>{" "}
         <button onClick={this.playSound}>Play Audio Feedback Sample</button>{" "}
         <DragDropContext onDragEnd={this.onDragEnd}>
@@ -1898,7 +2267,7 @@ export default class LevelThree extends Component {
               </div>
             )}
           </Droppable>
-        </DragDropContext>
+        </DragDropContext> */}
       </div>
     );
   }
