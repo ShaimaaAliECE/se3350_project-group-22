@@ -1,6 +1,8 @@
 import React, { Children } from "react";
 import ReactDOM from 'react-dom';
 import RandomNumbersArray from "../../../randomNumberGenerator";
+import incorrectSfx from "../../../sounds/wrong.mp3";
+import correctSfx from "../../../sounds/correct.mp3";
 import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
@@ -155,6 +157,7 @@ export default class LevelTwo extends React.Component {
       containers5: [],
       containers6: [],
       containers7: [],
+      //HERE AMEENA  GET THE AUDIO FILES
       previousContainer: [],
       //correctSplit: null,
       answer: ""
@@ -249,16 +252,26 @@ export default class LevelTwo extends React.Component {
     // ------------------------  user feedback  ------------------------
     // if the user didn't drag all the numbers
     if (userValues.length < 10) {
+      // Play incorrect sound if user response is wrong HERE AMEENA
+      
       this.setState({ feedback: "please finish ordering all numbers" });
       // if one of the boxes contains >1 more numbers than any of the other boxes
     } else {
       if (!correctSplit && !correctOrder) {
+        // Play incorrect sound if user response is wrong HERE AMEENA
+       
         this.setState({ feedback: "please try again." });
       } else if (!correctOrder && correctSplit) {
+        // Play incorrect sound if user response is wrong HERE AMEENA
+        
         this.setState({ feedback: "the numbers are not in the correct order. please try again." });
       } else if (correctSplit && !correctOrder) {
+        // Play incorrect sound if user response is wrong HERE AMEENA
+        
         this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
       } else if (correctOrder && correctSplit) {
+        // Play correct sound if user response is right HERE AMEENA
+        
         this.setState({ feedback: "correct bae!!!! click next to go to the next step" });
       };
     }
@@ -345,12 +358,12 @@ export default class LevelTwo extends React.Component {
         //console.log(this.state.step);
         conPointer = con + this.state.step;
       });
-     
+
       //change the style to block to show the div in the current step container
       Array.prototype.forEach.call(document.getElementsByClassName('flexbox'), function (element) {
         element.style.display = 'flex';
       });
-           
+
 
       this.setState({ feedback: " " });
       if (count > 1) {
@@ -570,16 +583,27 @@ export default class LevelTwo extends React.Component {
       // console.log("split " + this.state.correctSplit + " order " + correctOrder);
       // if the user didn't drag all the numbers
       if (userValues.length < 10) {
+        
         this.setState({ feedback: "please finish ordering all numbers" });
+        // Play incorrect sound if user response is wrong HERE AMEENA
+        
         // if one of the boxes contains >1 more numbers than any of the other boxes
       } else {
         if (!correctSplit && !correctOrder) {
           this.setState({ feedback: "please try again." });
+          // Play incorrect sound if user response is wrong HERE AMEENA
+          
         } else if (!correctOrder && correctSplit) {
+          // Play incorrect sound if user response is wrong HERE AMEENA
+          
           this.setState({ feedback: "the numbers are not in the correct order. please try again." });
         } else if (correctSplit && !correctOrder) {
+          // Play incorrect sound if user response is wrong HERE AMEENA
+          
           this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
         } else if (correctOrder && correctSplit) {
+          // Play correct sound if user response is right   HERE AMEENA
+          
           this.setState({ feedback: "correct bae!!!! click next to go to the next step" });
         };
       }
@@ -630,25 +654,25 @@ export default class LevelTwo extends React.Component {
           <div className="container0" id="containers">{(this.state.step >= 0) && (this.state.step <= 1) ? this.state.containers0 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container1" id="containers">{this.state.step >= 1  && (this.state.step <= 2)? this.state.containers1 : null}</div>
+          <div className="container1" id="containers">{this.state.step >= 1 && (this.state.step <= 2) ? this.state.containers1 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container2" id="containers">{this.state.step >= 2  && (this.state.step <= 3)? this.state.containers2 : null}</div>
+          <div className="container2" id="containers">{this.state.step >= 2 && (this.state.step <= 3) ? this.state.containers2 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container3" id="containers">{this.state.step >= 3  && (this.state.step <= 4)? this.state.containers3 : null}</div>
+          <div className="container3" id="containers">{this.state.step >= 3 && (this.state.step <= 4) ? this.state.containers3 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container4" id="containers">{this.state.step >= 4  && (this.state.step <= 5)? this.state.containers4 : null}</div>
+          <div className="container4" id="containers">{this.state.step >= 4 && (this.state.step <= 5) ? this.state.containers4 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container5" id="containers">{this.state.step >= 5  && (this.state.step <= 6)? this.state.containers5 : null}</div>
+          <div className="container5" id="containers">{this.state.step >= 5 && (this.state.step <= 6) ? this.state.containers5 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container6" id="containers">{this.state.step >= 6 ? this.state.containers6 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container7" id="containers">{this.state.step >= 7? this.state.containers7 : null}</div>
+          <div className="container7" id="containers">{this.state.step >= 7 ? this.state.containers7 : null}</div>
         </div>
         <div id="step"></div>
         <div id="verify"></div>
