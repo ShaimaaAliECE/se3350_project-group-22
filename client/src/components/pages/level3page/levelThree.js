@@ -175,13 +175,7 @@ export default class LevelThree extends Component {
         <div className="functions">
           <button className="home">Home</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
-          <button className="back">Back</button>
-          <span style={{ display: "inline-block", width: "20px" }}></span>
-          {/* 
-                  {/* <!-- button for first step  --> */}
-          <button id="next" className="home" value="Start" onClick={Random}>
-            Next
-          </button>
+
           <span style={{ display: "inline-block", width: "20px" }}></span>
           <button className="restart">Restart</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
