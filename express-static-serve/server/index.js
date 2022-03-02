@@ -6,6 +6,9 @@ const app = express();  // create express app
 app.use(express.static(path.join(__dirname, "../../client", "build")));   // displaying react app first
 app.use(express.static("../../client"));     // adding middleware
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, "../../client", "build", "index.html"));
