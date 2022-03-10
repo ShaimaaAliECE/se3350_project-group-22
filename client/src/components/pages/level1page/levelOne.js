@@ -269,7 +269,7 @@ export function nextStep6() {
 
   var step6 = document.getElementById("step6");
   step6.value =
-    "Step 6: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order";
+    "Step 6: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green.";
   step6.classList.toggle("show");
 
   // intialize the numbers value
@@ -345,13 +345,103 @@ export function nextStep6() {
   n10.value = merge4[0];
 }
 
+export function nextStep6Group2() {
+  var next = document.getElementById("step6Group2");
+  next.style.display = "block";
+
+  //group 2 values
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step62");
+  var n2 = document.getElementById("n2Step62");
+  var n3 = document.getElementById("n3Step62");
+  var n4 = document.getElementById("n4Step62");
+  var n5 = document.getElementById("n5Step62");
+  var n6 = document.getElementById("n6Step62");
+  var n7 = document.getElementById("n7Step62");
+  var n8 = document.getElementById("n8Step62");
+  var n9 = document.getElementById("n9Step62");
+  var n10 = document.getElementById("n10Step62");
+
+  //intialize the values to step 6 stuff
+  // intialize the numbers value
+  n1.value = document.getElementById("n1Step6").value;
+  n2.value = document.getElementById("n2Step6").value;
+  n3.value = document.getElementById("n3Step6").value;
+  n4.value = document.getElementById("n4Step6").value;
+  n5.value = document.getElementById("n5Step6").value;
+  n6.value = document.getElementById("n6Step6").value;
+  n7.value = document.getElementById("n7Step6").value;
+  n8.value = document.getElementById("n8Step6").value;
+  n9.value = document.getElementById("n9Step6").value;
+  n10.value = document.getElementById("n10Step6").value;
+}
+
+export function nextStep6Group3() {
+  var next = document.getElementById("step6Group3");
+  next.style.display = "block";
+
+  //group 2 values
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step63");
+  var n2 = document.getElementById("n2Step63");
+  var n3 = document.getElementById("n3Step63");
+  var n4 = document.getElementById("n4Step63");
+  var n5 = document.getElementById("n5Step63");
+  var n6 = document.getElementById("n6Step63");
+  var n7 = document.getElementById("n7Step63");
+  var n8 = document.getElementById("n8Step63");
+  var n9 = document.getElementById("n9Step63");
+  var n10 = document.getElementById("n10Step63");
+
+  //intialize the values to step 6 stuff
+  // intialize the numbers value
+  n1.value = document.getElementById("n1Step6").value;
+  n2.value = document.getElementById("n2Step6").value;
+  n3.value = document.getElementById("n3Step6").value;
+  n4.value = document.getElementById("n4Step6").value;
+  n5.value = document.getElementById("n5Step6").value;
+  n6.value = document.getElementById("n6Step6").value;
+  n7.value = document.getElementById("n7Step6").value;
+  n8.value = document.getElementById("n8Step6").value;
+  n9.value = document.getElementById("n9Step6").value;
+  n10.value = document.getElementById("n10Step6").value;
+}
+
+//step 6 group 4
+export function nextStep6Group4() {
+  var next = document.getElementById("step6Group4");
+  next.style.display = "block";
+
+  //group 2 values
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step64");
+  var n2 = document.getElementById("n2Step64");
+  var n3 = document.getElementById("n3Step64");
+  var n4 = document.getElementById("n4Step64");
+  var n5 = document.getElementById("n5Step64");
+  var n6 = document.getElementById("n6Step64");
+  var n7 = document.getElementById("n7Step64");
+  var n8 = document.getElementById("n8Step64");
+  var n9 = document.getElementById("n9Step64");
+  var n10 = document.getElementById("n10Step64");
+
+  //intialize the values to step 6 stuff
+  // intialize the numbers value
+  n1.value = document.getElementById("n1Step6").value;
+  n2.value = document.getElementById("n2Step6").value;
+  n3.value = document.getElementById("n3Step6").value;
+  n4.value = document.getElementById("n4Step6").value;
+  n5.value = document.getElementById("n5Step6").value;
+  n6.value = document.getElementById("n6Step6").value;
+  n7.value = document.getElementById("n7Step6").value;
+  n8.value = document.getElementById("n8Step6").value;
+  n9.value = document.getElementById("n9Step6").value;
+  n10.value = document.getElementById("n10Step6").value;
+}
+
 export function nextStep7() {
   var show = document.getElementById("showStep7");
   show.classList.toggle("show");
-
-  var step7 = document.getElementById("step7");
-  step7.value =
-    "Step 7: Continue merging the numbers that are ready to be merged together while recusively ordering them in ascending order";
 
   // intialize the numbers value
   var n1 = document.getElementById("n1Step7");
@@ -407,13 +497,39 @@ export function nextStep7() {
   n10.value = n106.value;
 }
 
+export function nextStep7Group2() {
+  var show = document.getElementById("showStep7Group2");
+  show.classList.toggle("show");
+
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step72");
+  var n2 = document.getElementById("n2Step72");
+  var n3 = document.getElementById("n3Step72");
+  var n4 = document.getElementById("n4Step72");
+  var n5 = document.getElementById("n5Step72");
+  var n6 = document.getElementById("n6Step72");
+  var n7 = document.getElementById("n7Step72");
+  var n8 = document.getElementById("n8Step72");
+  var n9 = document.getElementById("n9Step72");
+  var n10 = document.getElementById("n10Step72");
+
+  //intialize according to step 7 that sorts them
+  // intialize the numbers value
+  n1.value = document.getElementById("n1Step7").value;
+  n2.value = document.getElementById("n2Step7").value;
+  n3.value = document.getElementById("n3Step7").value;
+  n4.value = document.getElementById("n4Step7").value;
+  n5.value = document.getElementById("n5Step7").value;
+  n6.value = document.getElementById("n6Step7").value;
+  n7.value = document.getElementById("n7Step7").value;
+  n8.value = document.getElementById("n8Step7").value;
+  n9.value = document.getElementById("n9Step7").value;
+  n10.value = document.getElementById("n10Step7").value;
+}
+
 export function nextStep8() {
   var show = document.getElementById("showStep8");
   show.classList.toggle("show");
-
-  var step7 = document.getElementById("step8");
-  step7.value =
-    "Step 8: Continue merging the numbers that are ready to be merged together while recusively ordering them in ascending order";
 
   // intialize the numbers value
   var n1 = document.getElementById("n1Step8");
@@ -466,13 +582,43 @@ export function nextStep8() {
   n10.value = merge2[0];
 }
 
+//group 2 for step 8
+export function nextStep8Group2() {
+  var show = document.getElementById("showStep8Group2");
+  show.classList.toggle("show");
+
+  // intialize the numbers value
+  var n1 = document.getElementById("n1Step82");
+  var n2 = document.getElementById("n2Step82");
+  var n3 = document.getElementById("n3Step82");
+  var n4 = document.getElementById("n4Step82");
+  var n5 = document.getElementById("n5Step82");
+  var n6 = document.getElementById("n6Step82");
+  var n7 = document.getElementById("n7Step82");
+  var n8 = document.getElementById("n8Step82");
+  var n9 = document.getElementById("n9Step82");
+  var n10 = document.getElementById("n10Step82");
+
+  // intialize the numbers value
+  n1.value = document.getElementById("n1Step8").value;
+  n2.value = document.getElementById("n2Step8").value;
+  n3.value = document.getElementById("n3Step8").value;
+  n4.value = document.getElementById("n4Step8").value;
+  n5.value = document.getElementById("n5Step8").value;
+  n6.value = document.getElementById("n6Step8").value;
+  n7.value = document.getElementById("n7Step8").value;
+  n8.value = document.getElementById("n8Step8").value;
+  n9.value = document.getElementById("n9Step8").value;
+  n10.value = document.getElementById("n10Step8").value;
+}
+
 export function nextStep9() {
   var show = document.getElementById("showStep9");
   show.classList.toggle("show");
 
   var step7 = document.getElementById("step9");
   step7.value =
-    "Step 9: Merge the 2 groups together in ascending order. This is the end of the algorithm";
+    "Step 14: Merge the 2 groups together in ascending order. This is the end of the algorithm";
 
   // intialize the numbers value
   var n1 = document.getElementById("n1Step9");
@@ -527,4 +673,3 @@ export function nextStep9() {
   n9.value = merge1[1];
   n10.value = merge1[0];
 }
-

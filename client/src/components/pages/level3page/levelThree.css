@@ -200,3 +200,38 @@ h5 {
 h4 {
   color: #3b9e4b;
 }
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.drop-targets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  margin: 20px 0;
+}
+
+.box {
+  height: 50px;
+  width: 60px;
+  border: solid 3px rgb(57, 84, 156);
+  margin: 10px;
+
+  /* align items in the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.drag-over {
+  border: dashed 3px red;
+}
