@@ -161,13 +161,8 @@ function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, co
         right[j] = array[middleIndex + 1 + j];
     }
 
-    // Initial index of first subarray
     var i = 0;
-
-    // Initial index of second subarray
     var j = 0;
-
-    // Initial index of merged subarray
     var k = leftIndex;
 
     while (i < lSize && j < rSize) {
