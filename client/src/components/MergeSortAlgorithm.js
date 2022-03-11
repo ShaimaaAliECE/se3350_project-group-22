@@ -1,13 +1,16 @@
 // declare global variables
 
 //these 3 are all that get changed to update the array parameters
-var arraySize = 4;
+var arraySize = 5;
 var arrayMax = 20;
 var arrayMin = 1;
 
+
+var firstCall = true;
 var levelArray = new Array(arraySize);
 var finalLevelArray = new Array(arraySize);
-
+var compareLArray;
+var compareRArray;
 var compareL;
 var compareR;
 
@@ -17,22 +20,13 @@ levelArray = RandomNumbersArray(arraySize, arrayMax, arrayMin);
 var originalLevelArray = levelArray;
 
 //print starting array to console
-console.log(""); console.log("");
-console.log("this is the original array");
-print(levelArray, arraySize);
-console.log(""); console.log("");
-
+process.stdout.write("Original Array to sort: "); print(levelArray, arraySize); console.log(""); console.log("");
 
 //call merge sort and print each step
-//passes array name, index 0, final index number
-mergeSortAlgorithm(levelArray, 0, arraySize - 1);
-
+mergeSortAlgorithm(levelArray, 0, arraySize - 1, compareLArray, compareRArray);
 
 //print final array
-console.log(""); console.log("");
-console.log("this is the final sorted array");
-print(levelArray, arraySize);
-console.log(""); console.log("");
+console.log(""); console.log(""); process.stdout.write("This is the final sorted array: "); print(levelArray, arraySize);
 
 /*--------------------------Functions----------------------------*/
 
@@ -72,35 +66,12 @@ function InNumberList(numbersArray, randomNum, size) {
 
 function print(array, size) {
     for (var i = 0; i < size; i++){
-        process.stdout.write(array[i] + " ");
+        process.stdout.write("["+array[i] + "]");
     }
 }//end of print function
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function mergeSortAlgorithm(array, leftIndex, rightIndex) {
-    console.log(" ");
-    console.log("the merge split algorithm was called: array: "+array+", middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
+function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compareRArray) {
     //if the start index has become equal or less than the end index then the merge sort is done
     if(leftIndex >= rightIndex) {
         return;
@@ -108,117 +79,87 @@ function mergeSortAlgorithm(array, leftIndex, rightIndex) {
     
     //set the middle index
     var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
-   
-    var leftSideSize = (leftIndex + middleIndex + 1);
+    var thisBlockSize;
+    
+    //set variable and conditionals which check if the algorithm has moved on the the right side of the original split
+    //if it has it resets the first call
+    var newBlockCheck;
+    
+    if((arraySize % 2)==0){
+        newBlockCheck = (arraySize/2)-1;
+    }
+
+    else{
+        newBlockCheck = Math.ceil(arraySize/2); 
+    }
+
+    if(middleIndex == newBlockCheck) {
+        firstCall = true;
+    }
+
+    if(firstCall){
+        thisBlockSize = arraySize - leftIndex;
+        firstCall = false;
+    }
+    else {
+        thisBlockSize = arraySize - (arraySize -(rightIndex+1));
+    }
+    
+    //declaring variables
     var rightSideSize = rightIndex - middleIndex;
+    var leftSideSize = thisBlockSize - rightSideSize;
     
-    var compareLArray = new Array(leftSideSize);
-    var compareRArray = new Array(rightSideSize);
-    
-    console.log("after setting the variables: array: "+array+", middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    console.log(" ");
+    compareLArray = new Array(leftSideSize);
+    compareRArray = new Array(rightSideSize);
 
-
-    //setting left side of the array being done
-    for (let i = 0; i <= middleIndex; i++){
-        //console.log("l is working, copying array i=:"+ array[i]);
-        compareLArray[i] = array[i];
+    //setting the left side of the numbers to compare
+    for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
+        compareLArray[y] = array[i];
     }
     
-    let k = 0;
-    //setting right side of the array being done
-    for (let j = (middleIndex + 1);j <= rightIndex; k++ , j++){
-        //console.log("r is working, copying array j=:"+ array[j]);
+    //setting right side of the numbers to compare
+    for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
         compareRArray[k] = array[j];
     }
-    //console.log("compareLArray length: "+compareLArray.length);
-    //console.log("compareRArray length: "+compareRArray.length);
 
-    console.log("after setting the for loops: array: "+array+", middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    console.log(" ");
+    //outputing a split
+    process.stdout.write("Splitting numbers: "); print(compareLArray, leftSideSize); process.stdout.write("   "); print(compareRArray, rightSideSize); console.log(" "); console.log(" ");
 
+    //recursively spliting the left side
+    mergeSortAlgorithm(array, leftIndex, middleIndex, compareLArray, compareRArray);
     
-    console.log("calling function recursive split (using left indexes) middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: ",+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    //recursively merge sorting the left (start) side
-    mergeSortAlgorithm(array, leftIndex, middleIndex);
-    console.log("left split was returned,: array: "+array+", middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    console.log(" ");
-
-    for (let i = 0; i <= middleIndex; i++){
-        //console.log("l is working, copying array i=:"+ array[i]);
-        compareLArray[i] = array[i];
+    //setting the left side of the numbers to compare
+    for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
+        compareLArray[y] = array[i];
     }
-    
-    k = 0;
-    //setting right side of the array being done
-    for (let j = (middleIndex + 1);j <= rightIndex; k++ , j++){
-        //console.log("r is working, copying array j=:"+ array[j]);
+
+    //setting right side of the numbers to compare
+    for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
         compareRArray[k] = array[j];
     }
    
-    console.log("calling function recursive split (using right indexes) middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    //recursively merge sorting the left (start) side
-    mergeSortAlgorithm(array, middleIndex + 1, rightIndex);
-    console.log("right split was returned,: array: "+array+", middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    console.log(" ");
-
-    // for (let i = 0; i <= middleIndex; i++){
-    //     //console.log("l is working, copying array i=:"+ array[i]);
-    //     compareLArray[i] = array[i];
-    // }
+    //recursively merge sorting the right (end) side
+    mergeSortAlgorithm(array, middleIndex + 1, rightIndex, compareLArray, compareRArray);
     
-    // k = 0;
-    // //setting right side of the array being done
-    // for (let j = (middleIndex + 1);j <= rightIndex; k++ , j++){
-    //     //console.log("r is working, copying array j=:"+ array[j]);
-    //     compareRArray[k] = array[j];
-    // }
-
-
     //merging the array
-    console.log("calling merge function: array: "+array+"middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    merge(array, leftIndex, middleIndex, rightIndex);
-    console.log("merge is done now recursing: array: "+array+",middle index: "+middleIndex+", leftIndex: "+leftIndex+", rightIndex: "+rightIndex+ ", leftSideSize: "+leftSideSize+", rightSideSize: "+rightSideSize+", compareLArray: "+ compareLArray+", compare RArray: "+compareRArray);
-    console.log(" ");
+    mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray);
 }//end of the mergesortalgorithm function
 
+//merge function
+function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray) {
+    var lSize = middleIndex - leftIndex + 1;
+    var rSize = rightIndex - middleIndex;
 
+    var left = new Array(lSize); 
+    var right = new Array(rSize);
 
+    for (var i = 0; i < lSize; i++) {
+        left[i] = array[leftIndex + i];
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function merge(array, leftIndex, middleIndex, rightIndex) {
-    var n1 = middleIndex - leftIndex + 1;
-    var n2 = rightIndex - middleIndex;
-
-    // Create temp arrays
-    var L = new Array(n1); 
-    var R = new Array(n2);
-
-    // Copy data to temp arrays L[] and R[]
-    for (var i = 0; i < n1; i++)
-        L[i] = array[leftIndex + i];
-    for (var j = 0; j < n2; j++)
-        R[j] = array[middleIndex + 1 + j];
-
-    console.log("copying temp data to L "+L);
-    console.log("copying temp data to R "+R);
-
-    // Merge the temp arrays back into arr[l..r]
+    for (var j = 0; j < rSize; j++) {
+        right[j] = array[middleIndex + 1 + j];
+    }
 
     // Initial index of first subarray
     var i = 0;
@@ -229,42 +170,50 @@ function merge(array, leftIndex, middleIndex, rightIndex) {
     // Initial index of merged subarray
     var k = leftIndex;
 
-    while (i < n1 && j < n2) {
-        console.log("comparing : " + L[i] + " and "+ R[j]);
-        if (L[i] <= R[j]) {
-            array[k] = L[i];
-            console.log("copying "+L[i]+" to array at index: "+k+"   new array: "+array)
+    while (i < lSize && j < rSize) {
+        console.log(" "); console.log(" "); process.stdout.write("Comparing: " + left[i] + " & "+ right[j]);
+        if (left[i] <= right[j]) {
+            array[k] = left[i];
+            console.log("  --->  "+left[i]+" is smaller than or equal to "+right[j]);
+            console.log(" ");
+            console.log("Inserting "+left[i]+" to the array at index "+k);
+            console.log(" ");
+            process.stdout.write("The updated array looks like this: "); print(array,arraySize); console.log(" ");
             i++;
         }
         else {
-            array[k] = R[j];
-            console.log("copying "+R[j]+" to array at index: "+k+"   new array: "+array)
+            array[k] = right[j];
+            console.log("  --->  "+right[j]+" is smaller than "+left[i]);
+            console.log(" "); console.log("Inserting "+right[j]+" to the array at index "+k);
+            console.log(" "); process.stdout.write("The updated array looks like this: "); print(array,arraySize); console.log(" ");
             j++;
         }
         k++;
     }
+
     
-    console.log("copying any leftover L array numbers from L: " + L);
-    // Copy the remaining elements of
-    // L[], if there are any
-    while (i < n1) {
-        console.log("copying left: "+ L[i]+ " to array at index "+k);
-        array[k] = L[i];
+    console.log(" "); process.stdout.write("Inserting any remaining numbers from the left side:"); 
+    if (!(i < lSize)){
+        process.stdout.write(" No numbers to add");
+    }
+    while (i < lSize) {
+        process.stdout.write(" "+left[i]+" at index "+k+".");
+        array[k] = left[i];
         i++;
         k++;
     }
 
-    console.log("array: "+array); 
-   
-
-    // Copy the remaining elements of
-    // R[], if there are any
-    console.log("copying any leftover R array numbers from R: " + R);
-    while (j < n2) {
-        console.log("copying right: "+ R[j]+ " to array at index "+k);
-        array[k] = R[j];
+    
+    console.log(" "); console.log(" "); process.stdout.write("Inserting any remaining numbers from the right side:"); 
+    if (!(j < rSize)){
+        process.stdout.write(" No numbers to add")
+    }
+    while (j < rSize) {
+        process.stdout.write(" "+right[j]+" at index "+k+".");
+        array[k] = right[j];
         j++;
         k++;
     }
-    console.log("array: "+array);
+    
+    console.log(" "); console.log(" "); process.stdout.write("This is the array after the merge: "); print(array, arraySize); console.log(" "); console.log(" "); console.log(" ");
 }//end of the merge function
