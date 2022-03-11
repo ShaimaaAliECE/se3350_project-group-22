@@ -13,7 +13,7 @@ import { useDrag } from 'react-dnd';
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
-let countmerge = 0;
+//let countmerge = 0;
 //let buttons = [];
 let userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
 let numNumbers = [];    // array to hold the number of numbers in each box, in order from left to right
