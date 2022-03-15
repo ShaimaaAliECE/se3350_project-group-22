@@ -205,11 +205,26 @@ export default class LevelTwo extends React.Component {
     // -----------------------  check correct split  ------------------------
     let correctSplit;
     let numsInCont;
-    numsInCont = 10 / currentContainers;
 
+    //find the total num in the current step
+    let totalNum = 0;
+    for(var p = 0; p < steps[this.state.step].numInCon.length; p++){
+      totalNum = totalNum + steps[this.state.step].numInCon[p];
+    }
+    console.log("totol Num: " + totalNum);
+    numsInCont = totalNum / currentContainers;
+
+    //find the starting value
+
+    //find the answer
+    let ansString = [];
+    for(var k = 0; k < totalNum; k++){
+      ansString.push(numOfArray[k]);
+    }
+    ansString = ansString.toString();
     let difference;
     difference = Math.max(...numNumbers) - Math.min(...numNumbers);
-
+    //------------------checking if split is correct--------------------
     // case 1: if the modulus is 0, then it's a whole number, so each box has an equal amount of numbers in it
     // thus, the difference in the max and min should be a 0
     // case 2: if it's not a whole number, then the difference should be 1, because the user has to sort numbers as evenly as possible
@@ -223,20 +238,22 @@ export default class LevelTwo extends React.Component {
       console.log(correctSplit);
       // this.setState({correctSplit: false});
     }
+
+    
     //console.log("was split evenly: " + correctSplit);
 
 
     // ---------------------   check correct order   -----------------------------
     //let correctOrder;
-    let userString, ansString;
+    let userString;
     // ansString = "";
     userString = userValues.toString();
-    //console.log("current step: " + currentStep);
+    console.log("user Str: " + userString);
 
     // if it's not after the merging step, answer string is unsorted array 
-
-    ansString = numOfArray.toString();
-    console.log(ansString);
+    
+    // ansString = numOfArray.toString();
+    console.log(" answer:" + ansString);
     // if it's after the merging step, the answer string is the sorted array
 
     // else if (currentStep >= 4) {
@@ -246,15 +263,18 @@ export default class LevelTwo extends React.Component {
     // }
     if (userString === ansString) {
       correctOrder = true;
-      this.setState({ answer: ansString })
+      //this.setState({ answer: ansString })
     } else {
       correctOrder = false;
     }
-    //console.log("was in order: " + correctOrder);
+
+    
+    console.log("total num" + totalNum);
+    console.log("was in order: " + ansString);
 
     // ------------------------  user feedback  ------------------------
     // if the user didn't drag all the numbers
-    if (userValues.length < 10) {
+    if (userValues.length < totalNum) {
       document.getElementById('feedback').style.backgroundColor='red';
       // Play incorrect sound if user response is wrong
       this.state.correctSound.pause();
@@ -332,6 +352,7 @@ export default class LevelTwo extends React.Component {
       container.push(<Board id={idHolder} className="board" ></Board>);
     }
 
+    //getting the num of containers
     switch (steps[count - 1].stepID) {
       case 1:
         this.setState({ containers0: container });
@@ -553,7 +574,14 @@ export default class LevelTwo extends React.Component {
     // -----------------------  check correct split  ------------------------
     let correctSplit;
     let numsInCont;
-    numsInCont = 10 / currentContainers;
+    //find the total num in the current step
+    let totalNum = 0;
+    for(var p = 0; p < steps[this.state.step].numInCon.length; p++){
+      totalNum = totalNum + steps[this.state.step].numInCon[p];
+    }
+    console.log("totol Num: " + totalNum);
+    numsInCont = totalNum / currentContainers;
+    //numsInCont = 10 / currentContainers;
 
     let difference;
     difference = Math.max(...numNumbers) - Math.min(...numNumbers);
@@ -578,7 +606,7 @@ export default class LevelTwo extends React.Component {
     //looping through each container and seeing the elements inside the container
     for (var u = 0; u < numNumbers.length; u++) {
       for (var t = 0; t < numNumbers[u]; t++) {
-        // console.log("inside the " + u + "first container there are these user value: " + userValues[index]);
+        console.log("inside the " + u + "first container there are these user value: " + userValues[index]);
         userArray.push(userValues[index]);
         answerArray.push(numOfArray[index]);
         index++;
@@ -611,7 +639,7 @@ export default class LevelTwo extends React.Component {
       // this.getUserFeedback();
       // console.log("split " + this.state.correctSplit + " order " + correctOrder);
       // if the user didn't drag all the numbers
-      if (userValues.length < 10) {
+      if (userValues.length < totalNum) {
         this.setState({ feedback: "please finish ordering all numbers" });
         document.getElementById('feedback').style.backgroundColor='red';
         this.state.correctSound.pause();
@@ -653,13 +681,28 @@ export default class LevelTwo extends React.Component {
     //get the current step
     var currentStep = this.state.step;
 
-    //check if the current step is below 4, if so call verify split function, but if not call verify merge function
-    if (currentStep < 4) {
+    //check if verify is 1, if so it will go to verify split. If verify is 2, it will go to merge
+    if(steps[count - 1].verify == 1){
       this.verifySplit();
-
-    } else if (currentStep >= 4) {
+      console.log("cuurent step:" + currentStep);
+      console.log("it is verifying");
+    } else {
       this.verifyMerge();
+      console.log("it is merging");
+      console.log("cuurent step:" + currentStep);
     }
+
+    // //check if the current step is below 4, if so call verify split function, but if not call verify merge function
+    // if (currentStep < 4) {
+    //   this.verifySplit();
+    //   console.log("cuurent step:" + currentStep);
+    //   console.log("it is verifying");
+
+    // } else if (currentStep >= 4) {
+    //   this.verifyMerge();
+    //   console.log("it is merging");
+    //   console.log("cuurent step:" + currentStep);
+    // }
   }
 
   render() {
@@ -687,19 +730,19 @@ export default class LevelTwo extends React.Component {
         </div> */}
         <div id="feedback">{this.state.feedback}</div>
         <div className="flexbox">
-          <div className="container0" id="containers">{(this.state.step >= 0) && (this.state.step <= 2) ? this.state.containers0 : null}</div>
+          <div className="container0" id="containers">{(this.state.step >= 0) ? this.state.containers0 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container1" id="containers">{this.state.step >= 1? this.state.containers1 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container2" id="containers">{this.state.step >= 2 ? this.state.containers2 : null}</div>
+          <div className="container2" id="containers">{(this.state.step >= 2) && (this.state.step <= 5) ? this.state.containers2 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container3" id="containers">{this.state.step >= 3 ? this.state.containers3 : null}</div>
+          <div className="container3" id="containers">{(this.state.step >= 3) && (this.state.step <= 4)? this.state.containers3 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container4" id="containers">{this.state.step >= 4? this.state.containers4 : null}</div>
+          <div className="container4" id="containers">{(this.state.step >= 4) && (this.state.step <= 5)? this.state.containers4 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container5" id="containers">{this.state.step >= 5? this.state.containers5 : null}</div>
