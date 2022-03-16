@@ -162,4 +162,11 @@ export const steps = [
         "container": 1,
         "numInCon" : [5]
     },
+    {
+        "stepID":18,
+        "verify": 2,
+        "step": "Now take the minimum value in the first set and compare with the minimum number on the second set. Then drag the number to the last container and keep comparing untill all numbers are compared and merged. Click verify!",
+        "container": 1,
+        "numInCon" : [10]
+    },
 ]

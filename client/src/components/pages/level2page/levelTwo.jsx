@@ -18,7 +18,8 @@ let mergeCount = 0;
 let leftArray = [];
 let firstHalf = [];
 let secondHalf = [];
-let arrayHolder = [];
+let mergedArray = "";
+let numOfArrayHolder = [];
 let rightArr = [];
 //let countmerge = 0;
 //let buttons = [];
@@ -352,13 +353,16 @@ export default class LevelTwo extends React.Component {
       case 17:
         this.setState({ containers16: container });
         break;
+      case 18:
+        this.setState({ containers17: container });
+        break;
     }
   }
 
   //----------- handling the user clicking the next button----------------------
   incrStep() {
     // if it's not the last step, increase the count variable
-    if (count < 17) {
+    if (count < 18) {
       let con = "container";
       let conPointer;
       count++;
@@ -413,8 +417,10 @@ export default class LevelTwo extends React.Component {
       //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
       for (var i = 0; i < randomNum.length; i++) {
         numOfArray.push(randomNum[i]);
+        numOfArrayHolder.push(randomNum[i]);
       }
-
+      //set the merged array of the array generated
+      mergedArray = numOfArrayHolder.sort((a, b) => a - b).toString();
       //return the button with the number in the array
       let button = [];
 
@@ -571,9 +577,13 @@ export default class LevelTwo extends React.Component {
       // let correctOrder;
       let userString, ansString;
       userString = userArray.toString();
-      ansString = answerArray.sort((a, b) => a - b).toString();
+      if(steps[count - 1].stepID == 18){
+        ansString = mergedArray;
+      }else{
+        ansString = answerArray.sort((a, b) => a - b).toString();
+        //finalAnswerArray += ansString;
+      }
       finalAnswerArray += ansString;
-
       console.log("User Array: " + userString);
       console.log("answer Array: " + finalAnswerArray);
 
@@ -647,18 +657,6 @@ export default class LevelTwo extends React.Component {
       console.log("it is merging");
       console.log("cuurent step:" + currentStep);
     }
-
-    // //check if the current step is below 4, if so call verify split function, but if not call verify merge function
-    // if (currentStep < 4) {
-    //   this.verifySplit();
-    //   console.log("cuurent step:" + currentStep);
-    //   console.log("it is verifying");
-
-    // } else if (currentStep >= 4) {
-    //   this.verifyMerge();
-    //   console.log("it is merging");
-    //   console.log("cuurent step:" + currentStep);
-    // }
   }
 
   render() {
@@ -735,6 +733,9 @@ export default class LevelTwo extends React.Component {
         </div>
         <div className="flexbox">
           <div className="container16" id="containers">{this.state.step >= 16 ? this.state.containers16 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container17" id="containers">{this.state.step >= 17 ? this.state.containers17 : null}</div>
         </div>
         <div id="step"></div>
         <div id="verify"></div>
