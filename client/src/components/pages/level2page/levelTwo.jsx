@@ -8,11 +8,18 @@ import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
 import { useDrag } from 'react-dnd';
+//import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
 
 
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
+let mergeCount = 0;
+let leftArray = [];
+let firstHalf = [];
+let secondHalf = [];
+let arrayHolder = [];
+let rightArr = [];
 //let countmerge = 0;
 //let buttons = [];
 let userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
@@ -24,121 +31,8 @@ let correctOrder;
 let numOfArray = [];
 // let answerArray = "";
 
-//verify split method comments
-//keeping track of the containers
-//var userContainerList = [];
-//keeping track of the current values in the containers
-//var currentValues = [];
-
-//keeping track of the num of correct the user gets
-//var countTrue = 0;
-
-//var index = 0;
-//console.log("generate array button value: " + numOfArray);
-
-//console.log("num of containers: " + currentContainers);
-
-//getting a collection of all the boardcontainers currently on the screen
-
-//disregard dont delete
-//create variable names for each container present
-// for(var m = 0; m < currentContainers; m++){
-//   //creating an array to put current values inside the each of the userContainerList
-//   userContainerList[m] = [];
-// }
-
-// array of the users values
-//console.log("USER - ARRAY: "+ userValues); 
-// array of how many numbers the user put in each box, ordered from left to right
-//console.log("USER - # boxes: " + numNumbers); 
-
-// what the answer is supposed to be 
-//console.log("step: " + currentStep);
-// after step 4, starts merging, so the array needs to be in order
-//console.log("ANS - ARRAY: " + numOfArray);
-
-// for the answer to be right, then numNumbers needs to be the same as numOfArray
-// also, we need to find the number of numbers that should be in each box, depending on which step
-//console.log("number of containers: " + currentContainers);
-// let correctNoCont = [];  // array to hold the correct number of numbers needed in each container depending on the step
-
-// // divide number of numbers by number of containers to get how many are supposed to be in each box
 
 
-// if modulus is 0
-// max-min should give 0, otherwise the user is wrong
-
-// if modulus is not 0, then it wasn't a whole number
-// so max-min should give 1, otherwise the user is wrong
-
-
-// // if the modulus is 0, then it's a whole number, so push that number into the array for as many times as there are containers on the screen
-// if (decimalCheck === 0) {
-//   for (let i=0; i<currentContainers;i++) {
-//       correctNoCont.push(numsInCont);
-//   }
-//   console.log("ANS - # boxes: " + correctNoCont);
-
-//   // given there's 10 numbers, if the difference between max and min is more than 1, then the answer must not be correct (since numbers have to be split evenly)
-// } else {
-
-// }
-
-// //loop through all the containers to check 
-// for(var b = 0; b < currentContainers; b++){
-//   for(var c = 0; c < steps[currentStep-1].numInCon[b]; c++){ //in the js file for steps have ex under step 1 numberscontained : [5,5]
-//     if(boardContainers[b].children[c] != steps[currentStep-1].numInCon[b]){
-//      // console.log("BITCHHH you wrong afff");
-//       this.setState({feedback : "BITCHHH you wrong afff"});
-//     }
-//   //checking if the array stored is the same as the users array.
-//     if(numOfArray[index] == boardContainers[b].children[c].id){
-//       countTrue++;
-//       index++;
-//     }
-//   }
-// }
-
-// //set index to 0
-// index = 0;
-
-// //if counttrue equals 10 that means user got everything correct
-// if(countTrue == 10){
-//   //render the feedback text
-//   this.setState({feedback : "Yay you got it right"});
-// }
-//ReactDOM.render(<><text>Yay you got it right! Click next.</text></>, document.getElementById("feedback"));
-// }else{
-//   ReactDOM.render(<><text>You got it wrong my dude</text></>, document.getElementById("feedback"));
-// }
-
-// checkAns() {
-//   // randomly choosing if they're right or wrong for now
-//   let random = Math.random() * 2;
-//   if (random === 1) {
-//     ReactDOM.render(<text>you're correct!</text>, document.getElementById("feedback"));
-//   } else {
-//     ReactDOM.render(<text>you're wrong!</text>, document.getElementById("feedback"));
-//   }
-// };
-
-// getPrev() {
-//   let xReq = new XMLHttpRequest();              // creating an XMLHttp Request object
-//   xReq.onreadystatechange = showNext;              // when the state changes, display the generated numbers
-//   // first argument is HTTP method, second is URL to send req to, third is syn/async spec (true = async)
-//   xReq.open('GET', '/check-answer', true);   // submit request to generate 10 numbers from 1-20
-//   // send request
-//   xReq.send();
-// };
-
-// getNext() {
-//   let xReq = new XMLHttpRequest();              // creating an XMLHttp Request object
-//   xReq.onreadystatechange = showNext;              // when the state changes, display the generated numbers
-//   // first argument is HTTP method, second is URL to send req to, third is syn/async spec (true = async)
-//   xReq.open('GET', '/get-next', true);   // submit request to generate 10 numbers from 1-20
-//   // send request
-//   xReq.send();
-// };
 export default class LevelTwo extends React.Component {
 
   constructor(props) {
@@ -155,10 +49,19 @@ export default class LevelTwo extends React.Component {
       containers3: [],
       containers4: [],
       containers5: [],
-      incorrectSound: new Audio(incorrectSfx),
-      correctSound: new Audio(correctSfx),
       containers6: [],
       containers7: [],
+      containers8: [],
+      containers9: [],
+      containers10: [],
+      containers11: [],
+      containers12: [],
+      containers13: [],
+      containers14: [],
+      containers15: [],
+      containers16: [],
+      incorrectSound: new Audio(incorrectSfx),
+      correctSound: new Audio(correctSfx),
       previousContainer: [],
       //correctSplit: null,
       answer: ""
@@ -171,36 +74,20 @@ export default class LevelTwo extends React.Component {
   }
 
   verifySplit() {
+
+    var arrAns = [];
+    var arr;
     console.log("Verify Split");
 
-    // // ---------------------------   getting user input  ---------------------------
-
-    // //check what step the user is on
-    // var currentStep = this.state.step;
-
-    // //check how many containers there are for the current step
-    // var currentContainers = steps[currentStep].container;
-
-    // var userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
-    // var numNumbers = [];    // array to hold the number of numbers in each box, in order from left to right
-
-    // //getting all the board elements in the bottom container
-    // let bottomContainer = document.getElementsByClassName('nextcontainers');
-    // var boardContainers = bottomContainer[0].children;
-    // //var boardContainers = document.getElementsByClassName('board');
-    // console.log(boardContainers);
-    // //loop through the current containers to find what numbers are in the conatiner at index k
-    // for (var k = 0; k < currentContainers; k++) {
-    //   //looping through however many numbers are supposed to be in the currentContainers at index k
-    //   for (var h = 0; h < boardContainers[k].childElementCount; h++) {
-    //     //push the numbers in the currentValues by looking at boardcontainer at index k and the children associated with it
-    //     userValues.push(boardContainers[k].children[h].id);
-
-    //   }
-    //   // push the number of children (i.e. number of numbers) that each box has into the array
-    //   numNumbers.push(boardContainers[k].childElementCount);
+    //mergeSortAlgorithm(arrHolder, 0, 4, compareLArray, compareRArray, mergeCount, leftArray);
+    // console.log("The first step " + arr);
+    // for(let h = 0; h < arr.length; h++){
+    //   console.log(arr[h]);
     // }
+
+    //get the current containers
     var currentContainers = steps[this.state.step].container;
+    //get the user input
     this.getUserInput();
     // -----------------------  check correct split  ------------------------
     let correctSplit;
@@ -208,22 +95,22 @@ export default class LevelTwo extends React.Component {
 
     //find the total num in the current step
     let totalNum = 0;
-    for(var p = 0; p < steps[this.state.step].numInCon.length; p++){
+    for (var p = 0; p < steps[this.state.step].numInCon.length; p++) {
       totalNum = totalNum + steps[this.state.step].numInCon[p];
     }
     console.log("totol Num: " + totalNum);
     numsInCont = totalNum / currentContainers;
-
+    console.log("the number that was generated: " + numOfArray);
     //find the starting value
 
-    //find the answer
-    let ansString = [];
-    for(var k = 0; k < totalNum; k++){
-      ansString.push(numOfArray[k]);
-    }
-    ansString = ansString.toString();
+    //for(var k = 0; k < totalNum; k++){
+    //   ansString.push(numOfArray[k]);
+    //   console.log("answer at index " + k + " : " + ansString[k]);
+    // }
+    // ansString = ansString.toString();
     let difference;
     difference = Math.max(...numNumbers) - Math.min(...numNumbers);
+
     //------------------checking if split is correct--------------------
     // case 1: if the modulus is 0, then it's a whole number, so each box has an equal amount of numbers in it
     // thus, the difference in the max and min should be a 0
@@ -238,20 +125,80 @@ export default class LevelTwo extends React.Component {
       console.log(correctSplit);
       // this.setState({correctSplit: false});
     }
-
-    
     //console.log("was split evenly: " + correctSplit);
 
-
     // ---------------------   check correct order   -----------------------------
+    //if the current step is more than step 2 and less than 10 then call mergse sort algorithm for the first half
+    //if the current step is step 11 and more then call merge sort algorithm for the second half
+    let ansString = [];
+    console.log("the count is" + count);
+    if ((count > 2) && (count < 10)) {
+      for (var k = 0; k < 5; k++) {
+        arrAns.push(numOfArray[k]);
+        console.log("answer at index " + k + " : " + arrAns[k]);
+      }
+      //cut the array in half
+      mergeSortAlgorithm(arrAns, 0, 4, compareLArray, compareRArray, mergeCount, leftArray, rightArr);
+      //check which step you are on using count - 1 then according the the step, get the left array or the right array for the answer
+      switch (count - 1) {
+        case 2:
+        case 3:
+          ansString = getLArray(leftArray, (count - 3));
+          break;
+        case 6:
+          ansString = getRArray(rightArr, (count - 5));
+          break;
+      }
+      ansString = ansString.toString();
+      console.log("first if");
+    } else if((count > 10)) {
+       //cut the array in half but get the second half ( 10 equals the array size)
+      // get rid of the arrAns in the first half
+      for(var j = 0; j < 5; j++){
+        arrAns.pop();
+      }
+       for (var h = 5; h < 10; h++) {
+        arrAns.push(numOfArray[h]);
+      }
+
+      mergeSortAlgorithm(arrAns, 0, 4, compareLArray, compareRArray, mergeCount, leftArray, rightArr);
+      //check which step you are on using count - 1 then according the the step, get the left array or the right array for the answer
+      switch (count - 1) {
+        case 10:
+        case 11:
+          ansString = getLArray(leftArray, (count + 1));
+          break;
+        case 14:
+          ansString = getRArray(rightArr, (count-1));
+          break;
+      }
+      console.log("second if");
+      ansString = ansString.toString();
+    }
+    else if( (count == 1) || (count == 2)) {
+      for (var k = 0; k < totalNum; k++) {
+        ansString.push(numOfArray[k]);
+        console.log("answer at index " + k + " : " + ansString[k]);
+      }
+      ansString = ansString.toString();
+      console.log("third if");
+    } else {
+      for (var j = 5; j < 10; j++) {
+        ansString.push(numOfArray[j]);
+        console.log("answer at index " + j + " : " + ansString[j]);
+      }
+      console.log("fourth if");
+      ansString = ansString.toString();
+    }
     //let correctOrder;
     let userString;
-    // ansString = "";
+
+    //ansString = getLArray(rightArr, (count - 1)).toString();
     userString = userValues.toString();
     console.log("user Str: " + userString);
 
     // if it's not after the merging step, answer string is unsorted array 
-    
+
     // ansString = numOfArray.toString();
     console.log(" answer:" + ansString);
     // if it's after the merging step, the answer string is the sorted array
@@ -268,14 +215,14 @@ export default class LevelTwo extends React.Component {
       correctOrder = false;
     }
 
-    
+
     console.log("total num" + totalNum);
     console.log("was in order: " + ansString);
 
     // ------------------------  user feedback  ------------------------
     // if the user didn't drag all the numbers
     if (userValues.length < totalNum) {
-      document.getElementById('feedback').style.backgroundColor='red';
+      document.getElementById('feedback').style.backgroundColor = 'red';
       // Play incorrect sound if user response is wrong
       this.state.correctSound.pause();
       this.state.incorrectSound.play();
@@ -283,32 +230,32 @@ export default class LevelTwo extends React.Component {
       // if one of the boxes contains >1 more numbers than any of the other boxes
     } else {
       if (!correctSplit && !correctOrder) {
-        document.getElementById('feedback').style.backgroundColor='red';
+        document.getElementById('feedback').style.backgroundColor = 'red';
         // Play incorrect sound if user response is wrong
         this.state.correctSound.pause();
         this.state.incorrectSound.play();
         this.setState({ feedback: "please try again." });
       } else if (!correctOrder && correctSplit) {
-        document.getElementById('feedback').style.backgroundColor='red';
+        document.getElementById('feedback').style.backgroundColor = 'red';
         // Play incorrect sound if user response is wrong
         this.state.correctSound.pause();
         this.state.incorrectSound.play();
         this.setState({ feedback: "the numbers are not in the correct order. please try again." });
       } else if (correctOrder && !correctSplit) {
-        document.getElementById('feedback').style.backgroundColor='red';
+        document.getElementById('feedback').style.backgroundColor = 'red';
         // Play incorrect sound if user response is wrong
         this.state.correctSound.pause();
         this.state.incorrectSound.play();
         this.setState({ feedback: "the numbers are not split correctly. please try again." });
-      }else if (correctSplit && !correctOrder) {
-        document.getElementById('feedback').style.backgroundColor='red';
+      } else if (correctSplit && !correctOrder) {
+        document.getElementById('feedback').style.backgroundColor = 'red';
         // Play incorrect sound if user response is wrong
         this.state.correctSound.pause();
         this.state.incorrectSound.play();
         this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
       } else if (correctOrder && correctSplit) {
-        document.getElementById('feedback').style.backgroundColor='green';
-        document.getElementById('feedback').style.color='white';
+        document.getElementById('feedback').style.backgroundColor = 'green';
+        document.getElementById('feedback').style.color = 'white';
         // Play correct sound if user response is right
         this.state.incorrectSound.pause();
         this.state.correctSound.play();
@@ -378,20 +325,40 @@ export default class LevelTwo extends React.Component {
       case 8:
         this.setState({ containers7: container });
         break;
+      case 9:
+        this.setState({ containers8: container });
+        break;
+      case 10:
+        this.setState({ containers9: container });
+        break;
+      case 11:
+        this.setState({ containers10: container });
+        break;
+      case 12:
+        this.setState({ containers11: container });
+        break;
+      case 13:
+        this.setState({ containers12: container });
+        break;
+      case 14:
+        this.setState({ containers13: container });
+        break;
+      case 15:
+        this.setState({ containers14: container });
+        break;
+      case 16:
+        this.setState({ containers15: container });
+        break;
+      case 17:
+        this.setState({ containers16: container });
+        break;
     }
-    //this.setState({ containers: container });
-
-    //for the current container
-
-    //for the next container
-    //set the state of containers to the container array
-
   }
 
   //----------- handling the user clicking the next button----------------------
   incrStep() {
     // if it's not the last step, increase the count variable
-    if (count < 9) {
+    if (count < 17) {
       let con = "container";
       let conPointer;
       count++;
@@ -405,7 +372,7 @@ export default class LevelTwo extends React.Component {
         element.style.display = 'flex';
       });
 
-      document.getElementById('feedback').style.backgroundColor="white";
+      document.getElementById('feedback').style.backgroundColor = "white";
 
       this.setState({ feedback: " " });
       if (count > 1) {
@@ -417,34 +384,6 @@ export default class LevelTwo extends React.Component {
         //show the top container
         console.log(this.state.containers);
         console.log("prev cont: " + prevContainers);
-
-        // // ----------------------------------remove the children----------------------------------------------
-        // let bottomContainer = document.getElementsByClassName('nextcontainers');
-        // var boardContainers = bottomContainer[0].children;
-
-        // var h = 0;
-        // // //loop through the current containers to find what numbers are in the conatiner at index k
-        // for (var k = 0; k < prevContainers; k++) {
-        //   console.log(boardContainers[k].children.length)
-        //   //looping through to see if first child exist
-        //   while (boardContainers[k].firstChild) {
-        //     console.log(boardContainers[k].firstChild.textContent);
-        //     boardContainers[k].removeChild(boardContainers[k].firstChild);
-        //     h++;
-        //   }
-        //   h = 0;
-        // }
-
-        //--------------------------------bring them children back-----------------------------------------------
-        // let button = [];
-
-        // for (let num of numOfArray) {
-        //   button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
-        // }
-        // this.setState({buttons:button}, () => {
-        //   console.log(this.state.buttons);
-        // });
-
       }
     }
   }
@@ -468,7 +407,8 @@ export default class LevelTwo extends React.Component {
     this.setState({ buttons: [] }, () => {
       //create an array of random number
       numOfArray = [];
-
+      firstHalf = [];
+      secondHalf = [];
       const randomNum = RandomNumbersArray(10, 20, 1);
       //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
       for (var i = 0; i < randomNum.length; i++) {
@@ -481,41 +421,22 @@ export default class LevelTwo extends React.Component {
       for (let num of randomNum) {
         button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
       }
+      //get the first half
+      for (var k = 0; k < 5; k++) {
+        firstHalf.push(numOfArray[k]);
+      }
+      //get the second half
+      for (var k = 5; k < 10; k++) {
+        secondHalf.push(numOfArray[k]);
+      }
 
       let numstr = numOfArray.toString();
       this.setState({ answer: numstr });
       this.setState({ buttons: button });
       console.log("current array when generated: " + numOfArray);
+      console.log("the first half of the array:" + firstHalf );
+      console.log("the seconf half of the array:" + secondHalf );
     });
-
-    // //create an array of random number
-    // numOfArray = [];
-
-    // const randomNum = RandomNumbersArray(10, 20, 1);
-    // //setting the set stat of numOfArray to whatever randomNum array is so we have it on hand
-    // for (var i = 0; i < randomNum.length; i++) {
-    //   numOfArray.push(randomNum[i]);
-    // }
-
-    // //return the button with the number in the array
-    // let button = [];
-
-    // for (let num of randomNum) {
-    //   button.push(<Number id={num} className="number" draggable="true">{num}</Number>);
-    // }
-
-    // let numstr = numOfArray.toString();
-    // this.setState({ answer: numstr });
-    // this.setState({ buttons: button });
-    // console.log("current array when generated: " + numOfArray);
-    //console.log("merged array" + mergeSort(numOfArray));
-    // render the Number button components in the div called numbers
-    //ReactDOM.render(<></>, document.getElementById("numbers"));
-    // ReactDOM.render(<>
-    //   <Board className='board' id='1'></Board>
-    //   <Board className='board' id='2'></Board>
-    // </>, document.getElementById("containers"));
-    // render the check answer button so that users can check their answers
     ReactDOM.render(<button className="verifyBtn" onClick={this.verify}>Verify</button>, document.getElementById("verify"));
   };
 
@@ -576,7 +497,7 @@ export default class LevelTwo extends React.Component {
     let numsInCont;
     //find the total num in the current step
     let totalNum = 0;
-    for(var p = 0; p < steps[this.state.step].numInCon.length; p++){
+    for (var p = 0; p < steps[this.state.step].numInCon.length; p++) {
       totalNum = totalNum + steps[this.state.step].numInCon[p];
     }
     console.log("totol Num: " + totalNum);
@@ -603,15 +524,50 @@ export default class LevelTwo extends React.Component {
     let userArray = [];
     let answerArray = [];
     let finalAnswerArray = "";
+
+
     //looping through each container and seeing the elements inside the container
     for (var u = 0; u < numNumbers.length; u++) {
       for (var t = 0; t < numNumbers[u]; t++) {
         console.log("inside the " + u + "first container there are these user value: " + userValues[index]);
         userArray.push(userValues[index]);
-        answerArray.push(numOfArray[index]);
+        //answerArray.push(numOfArray[index]);
         index++;
       }
       //-----------------check order-----------------
+      //checking what step the merging is occuring and get the answer value at that correct index of the merge
+      switch (count - 1) {
+        case 4:
+        case 5:
+        case 8:
+          for (var k = 0; k < totalNum; k++) {
+            answerArray.push(firstHalf[k]);
+            console.log("answer at index " + k + " : " + answerArray[k]);
+          }
+          //finalAnswerArray = answerArray.toString();
+          break;
+        case 7:
+          for (var h = 3; h < 5; h++) {
+            answerArray.push(firstHalf[h]);
+            console.log("answer at index " + k + " : " + answerArray[h]);
+          }
+          //finalAnswerArray = answerArray.toString();
+          break;
+        case 12:
+        case 13:
+        case 16:
+          for (var k = 0; k < totalNum; k++) {
+            answerArray.push(secondHalf[k]);
+            console.log("answer at index " + k + " : " + answerArray[k]);
+          }
+          break;
+        case 15:
+          for (var h = 3; h < 5; h++) {
+            answerArray.push(secondHalf[h]);
+            console.log("answer at index " + k + " : " + answerArray[h]);
+          }
+      }
+
       // let correctOrder;
       let userString, ansString;
       userString = userArray.toString();
@@ -624,7 +580,7 @@ export default class LevelTwo extends React.Component {
 
       if (userString === ansString) {
         orderCount++;
-        if(orderCount == currentContainers){
+        if (orderCount == currentContainers) {
           correctOrder = true;
         }
         console.log("yay correct order");
@@ -641,31 +597,31 @@ export default class LevelTwo extends React.Component {
       // if the user didn't drag all the numbers
       if (userValues.length < totalNum) {
         this.setState({ feedback: "please finish ordering all numbers" });
-        document.getElementById('feedback').style.backgroundColor='red';
+        document.getElementById('feedback').style.backgroundColor = 'red';
         this.state.correctSound.pause();
         this.state.incorrectSound.play();
         // if one of the boxes contains >1 more numbers than any of the other boxes
       } else {
         if (!correctSplit && !correctOrder) {
           this.setState({ feedback: "please try again." });
-          document.getElementById('feedback').style.backgroundColor='red';
+          document.getElementById('feedback').style.backgroundColor = 'red';
           this.state.correctSound.pause();
-        this.state.incorrectSound.play();
+          this.state.incorrectSound.play();
         } else if (!correctOrder && correctSplit) {
-          document.getElementById('feedback').style.backgroundColor='red';
+          document.getElementById('feedback').style.backgroundColor = 'red';
           this.state.correctSound.pause();
-        this.state.incorrectSound.play();
+          this.state.incorrectSound.play();
           this.setState({ feedback: "the numbers are not in the correct order. please try again." });
         } else if (correctSplit && !correctOrder) {
-          document.getElementById('feedback').style.backgroundColor='red';
+          document.getElementById('feedback').style.backgroundColor = 'red';
           this.state.correctSound.pause();
-        this.state.incorrectSound.play();
+          this.state.incorrectSound.play();
           this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
         } else if (correctOrder && correctSplit) {
-          document.getElementById('feedback').style.backgroundColor='green';
-          document.getElementById('feedback').style.color='white';
+          document.getElementById('feedback').style.backgroundColor = 'green';
+          document.getElementById('feedback').style.color = 'white';
           this.state.correctSound.play();
-        this.state.incorrectSound.pause();
+          this.state.incorrectSound.pause();
           this.setState({ feedback: "correct!!!! click next to go to the next step" });
         };
       }
@@ -682,7 +638,7 @@ export default class LevelTwo extends React.Component {
     var currentStep = this.state.step;
 
     //check if verify is 1, if so it will go to verify split. If verify is 2, it will go to merge
-    if(steps[count - 1].verify == 1){
+    if (steps[count - 1].verify == 1) {
       this.verifySplit();
       console.log("cuurent step:" + currentStep);
       console.log("it is verifying");
@@ -733,25 +689,52 @@ export default class LevelTwo extends React.Component {
           <div className="container0" id="containers">{(this.state.step >= 0) ? this.state.containers0 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container1" id="containers">{this.state.step >= 1? this.state.containers1 : null}</div>
+          <div className="container1" id="containers">{this.state.step >= 1 ? this.state.containers1 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container2" id="containers">{(this.state.step >= 2) && (this.state.step <= 5) ? this.state.containers2 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container3" id="containers">{(this.state.step >= 3) && (this.state.step <= 4)? this.state.containers3 : null}</div>
+          <div className="container3" id="containers">{(this.state.step >= 3) && (this.state.step <= 4) ? this.state.containers3 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container4" id="containers">{(this.state.step >= 4) && (this.state.step <= 5)? this.state.containers4 : null}</div>
+          <div className="container4" id="containers">{(this.state.step >= 4) && (this.state.step <= 5) ? this.state.containers4 : null}</div>
         </div>
         <div className="flexbox">
-          <div className="container5" id="containers">{this.state.step >= 5? this.state.containers5 : null}</div>
+          <div className="container5" id="containers">{this.state.step >= 5 ? this.state.containers5 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container6" id="containers">{this.state.step >= 6 ? this.state.containers6 : null}</div>
         </div>
         <div className="flexbox">
           <div className="container7" id="containers">{this.state.step >= 7 ? this.state.containers7 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container8" id="containers">{this.state.step >= 8 ? this.state.containers8 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container9" id="containers">{this.state.step >= 9 ? this.state.containers9 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container10" id="containers">{this.state.step >= 10 ? this.state.containers10 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container11" id="containers">{this.state.step >= 11 ? this.state.containers11 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container12" id="containers">{this.state.step >= 12 ? this.state.containers12 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container13" id="containers">{this.state.step >= 13 ? this.state.containers13 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container14" id="containers">{this.state.step >= 14 ? this.state.containers14 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container15" id="containers">{this.state.step >= 15 ? this.state.containers15 : null}</div>
+        </div>
+        <div className="flexbox">
+          <div className="container16" id="containers">{this.state.step >= 16 ? this.state.containers16 : null}</div>
         </div>
         <div id="step"></div>
         <div id="verify"></div>
@@ -765,3 +748,211 @@ export default class LevelTwo extends React.Component {
 //   stepDiv.innerHTML = '<text>' + this.responseText + '</text><br><br><button href="/levelTwo/">click to restart</button>';
 // }
 
+// declare global variables
+
+//these 3 are all that get changed to update the array parameters
+var arraySize = 5;
+var arrayMax = 20;
+var arrayMin = 1;
+var firstCall = true;
+var levelArray = new Array(arraySize);
+var finalLevelArray = new Array(arraySize);
+var compareLArray;
+var compareRArray;
+var lArray = [];
+var rArray = [];
+var compareL;
+var compareR;
+
+
+/*--------------------------Functions----------------------------*/
+//---set left array-----
+function setLArray(compareLArray, leftArr) {
+  var lHolder = [];
+  for (let i = 0; i < compareLArray.length; i++) {
+    //set the left array to send
+    lHolder.push(compareLArray[i]);
+  }
+  leftArr.push(lHolder);
+  for(let i of leftArr){
+    console.log("Left Arr at " + i);
+  }
+}
+
+//---set right array-----
+function setRArray(compareRArray, rightArr) {
+  var rHolder = [];
+  for (let i = 0; i < compareRArray.length; i++) {
+    //set the left array to send
+    rHolder.push(compareRArray[i]);
+  }
+  console.log("the rHolder after set: " + rHolder);
+  rightArr.push(rHolder);
+  for(let i of rightArr){
+    console.log("Right Arr at " + i);
+  }
+  console.log("Right Arr" + rightArr);
+}
+
+//---get left array-----
+function getLArray(leftArr, count) {
+  console.log("the count is: " + count);
+  console.log("lHolder " + leftArr[count]);
+  return leftArr[count];
+}
+//---set right array-----
+function getRArray(rightArr, count) {
+  console.log("the count is: " + count);
+  console.log("rHolder " + rightArr[count]);
+  return rightArr[count];
+}
+
+function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compareRArray, mergeCount, leftArr, rightArr) {
+  console.log("The count is: " + mergeCount);
+  //if the start index has become equal or less than the end index then the merge sort is done
+  if (leftIndex >= rightIndex) {
+    return;
+  }//end of if 
+
+  //set the middle index
+  var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
+  var thisBlockSize;
+
+  //set variable and conditionals which check if the algorithm has moved on the the right side of the original split
+  //if it has it resets the first call
+  var newBlockCheck;
+
+  if ((arraySize % 2) == 0) {
+    newBlockCheck = (arraySize / 2) - 1;
+  }
+
+  else {
+    newBlockCheck = Math.ceil(arraySize / 2);
+  }
+
+  if (middleIndex == newBlockCheck) {
+    firstCall = true;
+  }
+
+  if (firstCall) {
+    thisBlockSize = arraySize - leftIndex;
+    firstCall = false;
+  }
+  else {
+    thisBlockSize = arraySize - (arraySize - (rightIndex + 1));
+  }
+
+  //declaring variables
+  var rightSideSize = rightIndex - middleIndex;
+  var leftSideSize = thisBlockSize - rightSideSize;
+
+  compareLArray = new Array(leftSideSize);
+  compareRArray = new Array(rightSideSize);
+
+  //setting the left side of the numbers to compare
+  for (let i = leftIndex, y = 0; i <= middleIndex; y++, i++) {
+    compareLArray[y] = array[i];
+  }
+  //set the left array
+  setLArray(compareLArray, leftArr);
+
+  //setting right side of the numbers to compare
+  for (let j = (middleIndex + 1), k = 0; j <= rightIndex; k++, j++) {
+    compareRArray[k] = array[j];
+  }
+  //outputing a split //, leftSideSize , rightSideSize
+  console.log("Splitting numbers: "); console.log(compareLArray); console.log("   "); console.log(compareRArray); console.log(" "); console.log(" ");
+
+  //recursively spliting the left side
+  //add count by 1
+  console.log("left count: " + mergeCount);
+  mergeCount = mergeCount + 1;
+  mergeSortAlgorithm(array, leftIndex, middleIndex, compareLArray, compareRArray, mergeCount, leftArr, rightArr);
+
+  //setting the left side of the numbers to compare
+  for (let i = leftIndex, y = 0; i <= middleIndex; y++, i++) {
+    compareLArray[y] = array[i];
+  }
+  //setLArray(compareLArray, leftArr);
+  //setting right side of the numbers to compare
+  for (let j = (middleIndex + 1), k = 0; j <= rightIndex; k++, j++) {
+    compareRArray[k] = array[j];
+  }
+  //set the right array
+  setRArray(compareRArray, rightArr);
+  console.log("right count: " + mergeCount);
+  mergeCount = mergeCount + 1;
+  //recursively merge sorting the right (end) side
+  mergeSortAlgorithm(array, middleIndex + 1, rightIndex, compareLArray, compareRArray, mergeCount, leftArr, rightArr);
+
+  //merging the array
+  mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray);
+}//end of the mergesortalgorithm function
+
+//merge function
+function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray) {
+  var lSize = middleIndex - leftIndex + 1;
+  var rSize = rightIndex - middleIndex;
+
+  var left = new Array(lSize);
+  var right = new Array(rSize);
+
+  for (var i = 0; i < lSize; i++) {
+    left[i] = array[leftIndex + i];
+  }
+
+  for (var j = 0; j < rSize; j++) {
+    right[j] = array[middleIndex + 1 + j];
+  }
+
+  var i = 0;
+  var j = 0;
+  var k = leftIndex;
+
+  while (i < lSize && j < rSize) {
+    console.log(" "); console.log(" "); console.log("Comparing: " + left[i] + " & " + right[j]);
+    if (left[i] <= right[j]) {
+      array[k] = left[i];
+      console.log("  --->  " + left[i] + " is smaller than or equal to " + right[j]);
+      console.log(" ");
+      console.log("Inserting " + left[i] + " to the array at index " + k);
+      console.log(" ");
+      console.log("The updated array looks like this: "); console.log(array, arraySize); console.log(" ");
+      i++;
+    }
+    else {
+      array[k] = right[j];
+      console.log("  --->  " + right[j] + " is smaller than " + left[i]);
+      console.log(" "); console.log("Inserting " + right[j] + " to the array at index " + k);
+      console.log(" "); console.log("The updated array looks like this: "); console.log(array, arraySize); console.log(" ");
+      j++;
+    }
+    k++;
+  }
+
+
+  console.log(" "); console.log("Inserting any remaining numbers from the left side:");
+  if (!(i < lSize)) {
+    console.log(" No numbers to add");
+  }
+  while (i < lSize) {
+    console.log(" " + left[i] + " at index " + k + ".");
+    array[k] = left[i];
+    i++;
+    k++;
+  }
+
+
+  console.log(" "); console.log(" "); console.log("Inserting any remaining numbers from the right side:");
+  if (!(j < rSize)) {
+    console.log(" No numbers to add")
+  }
+  while (j < rSize) {
+    console.log(" " + right[j] + " at index " + k + ".");
+    array[k] = right[j];
+    j++;
+    k++;
+  }
+
+  console.log(" "); console.log(" "); console.log("This is the array after the merge: "); console.log(array, arraySize); console.log(" "); console.log(" "); console.log(" ");
+}//end of the merge function
