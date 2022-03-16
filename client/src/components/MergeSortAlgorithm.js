@@ -25,7 +25,7 @@ process.stdout.write("Original Array to sort: "); print(levelArray, arraySize); 
 //call merge sort and print each step
 mergeSortAlgorithm(levelArray, 0, arraySize - 1, compareLArray, compareRArray);
 
-//print final array
+//print final arrayc
 console.log(""); console.log(""); process.stdout.write("This is the final sorted array: "); print(levelArray, arraySize);
 
 /*--------------------------Functions----------------------------*/

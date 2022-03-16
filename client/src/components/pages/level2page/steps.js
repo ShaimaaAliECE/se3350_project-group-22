@@ -99,7 +99,64 @@ export const steps = [
         "numInCon" : [2]
     }, 
     {
+        "stepID":9,
+        "verify": 2,
+        "step": "Take the minimum value in the front set and compare it with the minimum number on the other set and merge. Keep merging until all number has been merged. Click verify!",
+        "container": 1,
+        "numInCon" : [5]
+    },
+    //second half
+    {
         "stepID":10,
+        "verify": 1,
+        "step": "Divide the remaining half of the original array in half. Click verify!",
+        "container": 2,
+        "numInCon" : [3,2]
+    },
+    {
+        "stepID":11,
+        "verify": 1,
+        "step": "Divide the first half of the set in half again. Click verify!",
+        "container": 2,
+        "numInCon" : [2,1]
+    },
+    {
+        "stepID":12,
+        "verify": 1,
+        "step": "Divide the first half of the set in half. Click verify!",
+        "container": 2,
+        "numInCon" : [1,1]
+    },
+    {
+        "stepID":13,
+        "verify": 2,
+        "step": "Compare the 2 numbers and merge. Click verify!",
+        "container": 1,
+        "numInCon" : [2]
+    },
+    {
+        "stepID":14,
+        "verify": 2,
+        "step": "Take the minimum value in the front set and compare it with the minimum number on the other set and merge. Keep merging until all number has been merged. Click verify!",
+        "container": 1,
+        "numInCon" : [3]
+    },
+    {
+        "stepID":15,
+        "verify": 1,
+        "step": "Divide the second set of containers in half. Click verify!",
+        "container": 2,
+        "numInCon" : [1,1]
+    },
+    {
+        "stepID":16,
+        "verify": 2,
+        "step": "Compare the 2 numbers and merge. Click verify!",
+        "container": 1,
+        "numInCon" : [2]
+    }, 
+    {
+        "stepID":17,
         "verify": 2,
         "step": "Take the minimum value in the front set and compare it with the minimum number on the other set and merge. Keep merging until all number has been merged. Click verify!",
         "container": 1,

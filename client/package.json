@@ -8,6 +8,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@userfront/core": "^0.2.41",
+    "@userfront/react": "^0.2.22",
     "express": "^4.17.2",
     "html-to-react": "^1.4.8",
     "node": "^17.4.0",
