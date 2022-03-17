@@ -61,6 +61,7 @@ export default class LevelTwo extends React.Component {
       containers14: [],
       containers15: [],
       containers16: [],
+      containers17: [],
       incorrectSound: new Audio(incorrectSfx),
       correctSound: new Audio(correctSfx),
       previousContainer: [],
