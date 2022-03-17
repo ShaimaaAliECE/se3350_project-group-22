@@ -1,3 +1,8 @@
-.div[id="cont"]{
+.signupcont{
+    margin: auto;
+    width: 50%;
     align-items: center;
+    display: inline-block;
+    position: relative;
+    
 }
