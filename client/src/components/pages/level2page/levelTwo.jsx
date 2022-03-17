@@ -66,13 +66,83 @@ export default class LevelTwo extends React.Component {
       correctSound: new Audio(correctSfx),
       previousContainer: [],
       //correctSplit: null,
-      answer: ""
+      answer: "",
+      // for timer
+      time: {}, 
+      timerIsActive: false,
+      seconds: 0,
+      lastActive: 0
     };
 
     this.verify = this.verify.bind(this);
     this.verifyMerge = this.verifyMerge.bind(this);
     this.incrStep = this.incrStep.bind(this);
     this.getButtonNumbers = this.getButtonNumbers.bind(this);
+
+    // for timer
+    this.timer = 0;
+    this.startTimer = this.startTimer.bind(this);
+    this.countUp = this.countUp.bind(this);
+    this.clearTimer = this.clearTimer.bind(this);
+  }
+
+  // convert seconds to time
+  secondsToTime(secs){
+    let hours = Math.floor(secs / (60 * 60));
+
+    let minute_divisor = secs % (60 * 60);
+    let minutes = Math.floor(minute_divisor / 60);
+
+    let seconds_divisor = minute_divisor % 60;
+    let seconds = Math.ceil(seconds_divisor);
+
+    let obj = {
+      "h": hours,
+      "m": minutes,
+      "s": seconds
+    };
+    return obj;
+  }
+
+  // initialize timer
+  componentDidMount() {
+    let initialTime = this.secondsToTime(this.state.seconds);
+    this.setState({ time: initialTime });
+  }
+
+  // start timer
+  startTimer() {
+    if (!this.state.timerIsActive)
+    {
+      this.setState({timerIsActive: true});
+      this.timer = setInterval(this.countUp, 1000);  
+    }      
+  }
+
+  // count up
+  countUp() {
+    // Add one second, set state so a re-render happens.
+    let seconds = this.state.seconds + 1;
+    this.setState({
+      time: this.secondsToTime(seconds),
+      seconds: seconds,
+    });
+    // check if user was inactive for 5 minutes
+    if (this.state.seconds - this.state.lastActive > 300)
+    {
+      this.setState({lastActive: this.state.seconds});
+      alert("You have been logged out due to 5 minutes of inactivity");
+      console.log ("You have been logged out due to 5 minutes of inactivity");
+    }
+  }
+
+  clearTimer(){
+    clearInterval(this.timer);
+  }
+
+  // log the time user was last active at
+  setLastActive(){
+    this.setState({lastActive: this.state.seconds});
   }
 
   verifySplit() {
@@ -444,7 +514,7 @@ export default class LevelTwo extends React.Component {
       console.log("the first half of the array:" + firstHalf );
       console.log("the seconf half of the array:" + secondHalf );
     });
-    ReactDOM.render(<button className="verifyBtn" onClick={this.verify}>Verify</button>, document.getElementById("verify"));
+    ReactDOM.render(<button className="verifyBtn" onClick={() => {this.verify(); this.setLastActive()}}>Verify</button>, document.getElementById("verify"));
   };
 
   getUserInput() {
@@ -667,9 +737,10 @@ export default class LevelTwo extends React.Component {
           <h1>Level Two</h1>
         </div>
         <div className="nav">
-          <button className="backBtn" onClick={() => { this.decrStep(); this.getContainers() }}>back</button>
-          <button className="generateBtn" onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
-          <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
+          <button className="backBtn" onClick={() => { this.decrStep(); this.getContainers(); this.setLastActive() }}>back</button>
+          <button className="generateBtn" onClick={() => {this.getButtonNumbers(); this.startTimer(); this.setLastActive() }}>Generate 10 Numbers</button>          
+          <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive() }}>next</button>
+          Time Elapsed: {this.state.time.m}:{this.state.time.s}
         </div>
 
         <h3 className="text">{this.state.clicked ? "The Array that was generated" : null}</h3>
@@ -957,4 +1028,6 @@ function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, co
   }
 
   console.log(" "); console.log(" "); console.log("This is the array after the merge: "); console.log(array, arraySize); console.log(" "); console.log(" "); console.log(" ");
+  console.log("Total Time: " + this.state.time.m + ":" + this.state.time.s);
+  this.clearTimer();
 }//end of the merge function
