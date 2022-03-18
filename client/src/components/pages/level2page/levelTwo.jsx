@@ -7,7 +7,6 @@ import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
-import { useDrag } from 'react-dnd';
 //import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
 
 
@@ -21,18 +20,12 @@ let secondHalf = [];
 let mergedArray = "";
 let numOfArrayHolder = [];
 let rightArr = [];
-//let countmerge = 0;
-//let buttons = [];
 let userValues = [];    // array to hold the value of the numbers the user input in each box, in order from left to right
 let numNumbers = [];    // array to hold the number of numbers in each box, in order from left to right
-let correctSplit;
 let correctOrder;
 
 //declare a variable to keep track of the array.
 let numOfArray = [];
-// let answerArray = "";
-
-
 
 export default class LevelTwo extends React.Component {
 
@@ -65,7 +58,6 @@ export default class LevelTwo extends React.Component {
       incorrectSound: new Audio(incorrectSfx),
       correctSound: new Audio(correctSfx),
       previousContainer: [],
-      //correctSplit: null,
       answer: ""
     };
 
@@ -78,7 +70,6 @@ export default class LevelTwo extends React.Component {
   verifySplit() {
 
     var arrAns = [];
-    var arr;
     console.log("Verify Split");
 
     //mergeSortAlgorithm(arrHolder, 0, 4, compareLArray, compareRArray, mergeCount, leftArray);
@@ -150,6 +141,7 @@ export default class LevelTwo extends React.Component {
         case 6:
           ansString = getRArray(rightArr, (count - 5));
           break;
+        default:
       }
       ansString = ansString.toString();
       console.log("first if");
@@ -173,11 +165,12 @@ export default class LevelTwo extends React.Component {
         case 14:
           ansString = getRArray(rightArr, (count-1));
           break;
+          default:
       }
       console.log("second if");
       ansString = ansString.toString();
     }
-    else if( (count == 1) || (count == 2)) {
+    else if( (count === 1) || (count === 2)) {
       for (var k = 0; k < totalNum; k++) {
         ansString.push(numOfArray[k]);
         console.log("answer at index " + k + " : " + ansString[k]);
@@ -216,7 +209,6 @@ export default class LevelTwo extends React.Component {
     } else {
       correctOrder = false;
     }
-
 
     console.log("total num" + totalNum);
     console.log("was in order: " + ansString);
@@ -286,22 +278,17 @@ export default class LevelTwo extends React.Component {
         idHolder = i * 30; //literally you can do anything just not numbers from (1-10 or maybe 1-20 not sure)
         container.push(<div id={idHolder} className="board" ></div>);
       }
-
       this.setState({ previousContainer: container })
-
     }
     //checking how many containers are needed to push on top of the current containers
-
     // array to hold number of containers
     let container = [];
-
 
     for (let i = 0; i < numConts; i++) {
       idHolder = i * 30;  //literally you can do anything just not numbers from (1-10 or maybe 1-20 not sure)
       container.push(<Board id={idHolder} className="board" ></Board>);
     }
 
-    //getting the num of containers
     switch (steps[count - 1].stepID) {
       case 1:
         this.setState({ containers0: container });
@@ -357,6 +344,7 @@ export default class LevelTwo extends React.Component {
       case 18:
         this.setState({ containers17: container });
         break;
+        default:
     }
   }
 
@@ -382,7 +370,6 @@ export default class LevelTwo extends React.Component {
       this.setState({ feedback: " " });
       if (count > 1) {
         var currentStep = this.state.step;
-
         //gwt the num of containers in the previous step
         var prevContainers = steps[count - 2].container;
 
@@ -573,12 +560,14 @@ export default class LevelTwo extends React.Component {
             answerArray.push(secondHalf[h]);
             console.log("answer at index " + k + " : " + answerArray[h]);
           }
+          break;
+          default:
       }
 
       // let correctOrder;
       let userString, ansString;
       userString = userArray.toString();
-      if(steps[count - 1].stepID == 18){
+      if(steps[count - 1].stepID === 18){
         ansString = mergedArray;
       }else{
         ansString = answerArray.sort((a, b) => a - b).toString();
@@ -591,7 +580,7 @@ export default class LevelTwo extends React.Component {
 
       if (userString === ansString) {
         orderCount++;
-        if (orderCount == currentContainers) {
+        if (orderCount === currentContainers) {
           correctOrder = true;
         }
         console.log("yay correct order");
@@ -628,7 +617,15 @@ export default class LevelTwo extends React.Component {
           this.state.correctSound.pause();
           this.state.incorrectSound.play();
           this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
-        } else if (correctOrder && correctSplit) {
+        // if the user gets the final step of the algorithm correct, and successfully completes the level
+        } else if (correctOrder && correctSplit && (this.state.step === 17)) {
+          document.getElementById('feedback').style.backgroundColor = 'green';
+          document.getElementById('feedback').style.color = 'white';
+          this.state.correctSound.play();
+          this.state.incorrectSound.pause();
+          this.setState({ feedback: "correct!!!! congratulations!!!!!! :-D you've now completed level 2!!! feel free to redo this level to strengthen your skills, or go back to the home page and try level 3!!!!" });
+        // if it's the right order, right split, and it's not the final step of the algorithm
+        } else if (correctOrder && correctSplit &&(this.state.step !== 17)) {
           document.getElementById('feedback').style.backgroundColor = 'green';
           document.getElementById('feedback').style.color = 'white';
           this.state.correctSound.play();
@@ -649,7 +646,7 @@ export default class LevelTwo extends React.Component {
     var currentStep = this.state.step;
 
     //check if verify is 1, if so it will go to verify split. If verify is 2, it will go to merge
-    if (steps[count - 1].verify == 1) {
+    if (steps[count - 1].verify === 1) {
       this.verifySplit();
       console.log("cuurent step:" + currentStep);
       console.log("it is verifying");
@@ -671,19 +668,13 @@ export default class LevelTwo extends React.Component {
           <button className="generateBtn" onClick={this.getButtonNumbers}>Generate 10 Numbers</button>
           <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers() }}>next</button>
         </div>
-
-        <h3 className="text">{this.state.clicked ? "The Array that was generated" : null}</h3>
-        <div className="flexbox1">
-          <div id="answers">{this.state.clicked ? this.state.answer : null}</div>
-        </div>
-        <h3 className="text">{this.state.clicked ? "Drag the buttons below" : null}</h3>
+        <h3 className="text">{this.state.clicked ? `The generated array: ${this.state.clicked ? this.state.answer : null}` : null}</h3>
+        <div id="step"></div>
+        <div id="verify"></div>
+        <div id="feedback">{this.state.feedback}</div>
         <div className="flexbox1">
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
         </div>
-        {/* <div className="flexbox">
-          <div className="containers" id="containerss">{this.state.step > 0 ? this.state.buttons : null}</div>
-        </div> */}
-        <div id="feedback">{this.state.feedback}</div>
         <div className="flexbox">
           <div className="container0" id="containers">{(this.state.step >= 0) ? this.state.containers0 : null}</div>
         </div>
@@ -738,8 +729,6 @@ export default class LevelTwo extends React.Component {
         <div className="flexbox">
           <div className="container17" id="containers">{this.state.step >= 17 ? this.state.containers17 : null}</div>
         </div>
-        <div id="step"></div>
-        <div id="verify"></div>
       </div>
     );
   }
