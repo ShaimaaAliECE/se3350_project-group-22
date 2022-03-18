@@ -69,7 +69,7 @@ export default class SignupPage extends React.Component{
             </div>
             <ErrorMsg message={this.state.errorMsg}/>
             <form onSubmit={this.handleSubmit}>
-            <div id="signupcont">
+            <div className="signupcont">
               <label>
                 Full Name
                 <input
