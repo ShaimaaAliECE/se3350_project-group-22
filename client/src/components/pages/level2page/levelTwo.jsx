@@ -703,6 +703,10 @@ export default class LevelTwo extends React.Component {
           this.state.correctSound.pause();
           this.state.incorrectSound.play();
           this.setState({ feedback: "the numbers are not in the correct order. please try again." });
+          //incrementing incorrect count
+          incorrectCount++;
+          //set the incorrect attempt
+          this.setState({ incorrectAttempt: incorrectCount });
         } else if (correctSplit && !correctOrder) {
           document.getElementById('feedback').style.backgroundColor = 'red';
           this.state.correctSound.pause();
@@ -717,10 +721,6 @@ export default class LevelTwo extends React.Component {
           document.getElementById('feedback').style.color = 'white';
           this.state.correctSound.play();
           this.state.incorrectSound.pause();
-          //incrementing incorrect count
-          incorrectCount++;
-          //set the incorrect attempt
-          this.setState({ incorrectAttempt: incorrectCount });
           //if the last step is being verified then clear the timer and log the time
           if (steps[count - 1].stepID == 18) {
             console.log("Total Time: " + this.state.time.m + ":" + this.state.time.s);
