@@ -4,7 +4,11 @@ import Home from "./components/pages/homepage/home";
 import "./components/pages/homepage/home.css";
 import LevelOne from "./components/pages/level1page/levelPage"
 import LevelTwo from "./components/pages/level2page/levelTwo"
-import LevelThree from "./components/pages/level3page/levelThree"
+import LevelThree from "./components/pages/level3page/levelThree";
+import LoginPage from "./components/pages/loginpage/login";
+import SignupPage from "./components/pages/loginpage/signup";
+import AdminDashboard from "./components/pages/adminDash/adminDashboard";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,6 +16,7 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
+
 class App extends Component {
   render() {
     return (
@@ -21,6 +26,9 @@ class App extends Component {
           <Route path="/levelOne" element={<LevelOne/>}/>
           <Route path="/levelTwo" element={<LevelTwo/>}/>
           <Route path="/levelThree" element={<LevelThree/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/signup" element={<SignupPage/>}/>
+          <Route path="/dashboard" element={<AdminDashboard/>}/>
         </Routes>
       </Router>
     );

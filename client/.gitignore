@@ -9,7 +9,11 @@
 /coverage
 
 # production
+<<<<<<< HEAD
  
+=======
+# /build
+>>>>>>> 234af2fb926079ca9bdc17292c1847f0edd11bf1
 
 # misc
 .DS_Store
