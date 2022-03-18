@@ -76,6 +76,15 @@ class home extends Component {
               Level6
             </Link>
           </div>
+          <div>
+          <Link
+              to="/login/"
+              style={{ textDecoration: "none" }}
+              className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
+            >
+              Log In
+            </Link>
+          </div>
         </div>
       </div>
     );

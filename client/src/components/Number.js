@@ -1,30 +1,34 @@
-import React from 'react';
+import React from 'react'
+import './pages/level2page/level2.css';
 
+export default function Number(props) {
+    const dragStart = e =>{
+        const target = e.target;
+        //console.log("target:" + target.id)
+       // console.log("target class name:" + target.className)
+        // if(target.className == "number"){
+            e.dataTransfer.setData('num_id', target.id);
+        // }else{
+        //     e.dataTransfer.setData('num',null);
+        // }
+        
 
-export default class Number extends React.Component {
-    render() {
-        const dragStart = e => {
-            const target = e.target;
-            e.dataTransfer.setData('num_id',target.id);
-        }
-
-        const dragOver = e => {
-            e.stopPropogation();
-        }
-        return (
-                <button
-                    id={this.props.id}
-                    draggable = {this.props.draggable}
-                    onDragStart={dragStart}
-                    onDragOver ={dragOver}
-                    // changes the class of the button depending on which number is generated
-                    className={this.props.className}
-                    // handles clicking the button, calls the click event from parent component
-                    onClick={this.props.onClick}
-                >
-                    {this.props.id}
-                </button>
-
-        );
     }
+
+    const dragOver = e =>{
+        e.stopPropagation();
+    }
+    
+  return (
+    <button
+        id={props.id}
+        className={props.className}   
+        draggable={props.draggable}
+        onDragStart={dragStart}
+        onDragOver={dragOver}
+         
+    >
+        {props.children}
+    </button>
+  )
 }

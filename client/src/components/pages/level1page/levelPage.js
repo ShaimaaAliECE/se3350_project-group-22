@@ -7,8 +7,13 @@ import {
   nextStep4,
   nextStep5,
   nextStep6,
+  nextStep6Group2,
+  nextStep6Group3,
+  nextStep6Group4,
+  nextStep7Group2,
   nextStep7,
   nextStep8,
+  nextStep8Group2,
   nextStep9,
 } from "./levelOne";
 
@@ -311,19 +316,35 @@ export default class levelPage extends Component {
             />
             <div className="blockofnum">
               {/* <!--group 1 -- > */}
-              <input type="number" id="n1Step6" name="n1" size="1" readOnly />
-              <input type="number" id="n2Step6" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n1Step6"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step6"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
               <span style={{ display: "inline-block", width: "80px" }}></span>
               {/* <!--group 2 -- > */}
               <input type="number" id="n3Step6" name="n3" size="1" readOnly />
               <span style={{ display: "inline-block", width: "80px" }}></span>
-              {/* <!--group 3 -- > */}
+
               <input type="number" id="n4Step6" name="n4" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
               <input type="number" id="n5Step6" name="n5" size="1" readOnly />
 
               {/* <!--group 3 -- > */}
               <span style={{ display: "inline-block", width: "90px" }}></span>
               <input type="number" id="n6Step6" name="n1" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
               <input type="number" id="n7Step6" name="n2" size="1" readOnly />
               <span style={{ display: "inline-block", width: "90px" }}></span>
               {/* <!--
@@ -333,8 +354,300 @@ export default class levelPage extends Component {
               <span style={{ display: "inline-block", width: "80px" }}></span>
               {/* <!--group 5 -- > */}
               <input type="number" id="n9Step6" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
               {/* <!--group 7 -- > */}
               <input type="number" id="n10Step6" name="n2" size="1" readOnly />
+            </div>
+
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep6Group2}
+            />
+          </div>
+          {/* step 6 group2 */}
+          <span style={{ display: "inline-block", width: "100px" }}></span>
+          <div className="hide" id="step6Group2">
+            <input
+              type="text"
+              id="step62"
+              value="Step 7: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
+              size="100"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+              {/* <!--group 1 -- > */}
+              <input
+                type="number"
+                id="n1Step62"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step62"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 2 -- > */}
+              <input type="number" id="n3Step62" name="n3" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+
+              <input
+                type="number"
+                id="n4Step62"
+                name="n4"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n5Step62"
+                name="n5"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "90px" }}></span>
+              <input type="number" id="n6Step62" name="n1" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              <input type="number" id="n7Step62" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "90px" }}></span>
+              {/* <!--
+            group 4 -- > */}
+              <input type="number" id="n8Step62" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input type="number" id="n9Step62" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 7 -- > */}
+              <input type="number" id="n10Step62" name="n2" size="1" readOnly />
+            </div>
+
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep6Group3}
+            />
+          </div>
+
+          {/* step 6 group 3 */}
+          <span style={{ display: "inline-block", width: "100px" }}></span>
+          <div className="hide" id="step6Group3">
+            <input
+              type="text"
+              value="Step 8: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
+              size="100"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+              {/* <!--group 1 -- > */}
+              <input
+                type="number"
+                id="n1Step63"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step63"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 2 -- > */}
+              <input type="number" id="n3Step63" name="n3" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+
+              <input
+                type="number"
+                id="n4Step63"
+                name="n4"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n5Step63"
+                name="n5"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "90px" }}></span>
+              <input
+                type="number"
+                id="n6Step63"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n7Step63"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "90px" }}></span>
+              {/* <!--
+            group 4 -- > */}
+              <input type="number" id="n8Step63" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input type="number" id="n9Step63" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 7 -- > */}
+              <input type="number" id="n10Step63" name="n2" size="1" readOnly />
+            </div>
+
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep6Group4}
+            />
+          </div>
+
+          {/* step 6 group 4 */}
+          <span style={{ display: "inline-block", width: "100px" }}></span>
+          <div className="hide" id="step6Group4">
+            <input
+              type="text"
+              value="Step 9: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
+              size="100"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+              {/* <!--group 1 -- > */}
+              <input
+                type="number"
+                id="n1Step64"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step64"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 2 -- > */}
+              <input type="number" id="n3Step64" name="n3" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+
+              <input
+                type="number"
+                id="n4Step64"
+                name="n4"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n5Step64"
+                name="n5"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "90px" }}></span>
+              <input
+                type="number"
+                id="n6Step64"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n7Step64"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "90px" }}></span>
+              {/* <!--
+            group 4 -- > */}
+              <input type="number" id="n8Step64" name="n2" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input
+                type="number"
+                id="n9Step64"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              {/* <!--group 7 -- > */}
+              <input
+                type="number"
+                id="n10Step64"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
             </div>
 
             <input
@@ -344,14 +657,13 @@ export default class levelPage extends Component {
               onClick={nextStep7}
             />
           </div>
-
           {/* < !--step 7 -- > */}
           <span style={{ display: "inline-block", width: "100px" }}></span>
 
           <div className="hide" id="showStep7">
             <input
               type="text"
-              id="step7"
+              value="Step 10: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
               size="125"
               style={{
                 flex: 1,
@@ -368,9 +680,30 @@ export default class levelPage extends Component {
             group 1 -- > */}
 
             <div className="blockofnum">
-              <input type="number" id="n1Step7" name="n1" size="1" readOnly />
-              <input type="number" id="n2Step7" name="n2" size="1" readOnly />
-              <input type="number" id="n3Step7" name="n3" size="1" readOnly />
+              <input
+                type="number"
+                id="n1Step7"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step7"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n3Step7"
+                name="n3"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
               {/* <!--group 2 -- > */}
 
               <span style={{ display: "inline-block", width: "80px" }}></span>
@@ -382,6 +715,7 @@ export default class levelPage extends Component {
               <span style={{ display: "inline-block", width: "100px" }}></span>
               <input type="number" id="n6Step7" name="n1" size="1" readOnly />
               <input type="number" id="n7Step7" name="n2" size="1" readOnly />
+              <span style={{ display: "inline-block", width: "80px" }}></span>
               <input type="number" id="n8Step7" name="n2" size="1" readOnly />
               <span style={{ display: "inline-block", width: "40px" }}></span>
               {/* <!--
@@ -397,16 +731,17 @@ export default class levelPage extends Component {
               type="button"
               className="nextStep"
               value="Next Step"
-              onClick={nextStep8}
+              onClick={nextStep7Group2}
             />
           </div>
 
-          {/* < !--step 8 -- > */}
+          {/* step 7 group 2 */}
           <span style={{ display: "inline-block", width: "100px" }}></span>
-          <div className="hide" id="showStep8">
+
+          <div className="hide" id="showStep7Group2">
             <input
               type="text"
-              id="step8"
+              value="Step 11: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
               size="125"
               style={{
                 flex: 1,
@@ -423,11 +758,145 @@ export default class levelPage extends Component {
             group 1 -- > */}
 
             <div className="blockofnum">
-              <input type="number" id="n1Step8" name="n1" size="1" readOnly />
-              <input type="number" id="n2Step8" name="n2" size="1" readOnly />
-              <input type="number" id="n3Step8" name="n3" size="1" readOnly />
-              <input type="number" id="n4Step8" name="n4" size="1" readOnly />
-              <input type="number" id="n5Step8" name="n5" size="1" readOnly />
+              <input
+                type="number"
+                id="n1Step72"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step72"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n3Step72"
+                name="n3"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              {/* <!--group 2 -- > */}
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 3 -- > */}
+              <input type="number" id="n4Step72" name="n4" size="1" readOnly />
+              <input type="number" id="n5Step72" name="n5" size="1" readOnly />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+              <input
+                type="number"
+                id="n6Step72"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n7Step72"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n8Step72"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <span style={{ display: "inline-block", width: "40px" }}></span>
+              {/* <!--
+            group 4 -- > */}
+
+              <span style={{ display: "inline-block", width: "80px" }}></span>
+              {/* <!--group 5 -- > */}
+              <input type="number" id="n9Step72" name="n2" size="1" readOnly />
+              {/* <!--group 7 -- > */}
+              <input type="number" id="n10Step72" name="n2" size="1" readOnly />
+            </div>
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep8}
+            />
+          </div>
+
+          {/* < !--step 8 -- > */}
+          <span style={{ display: "inline-block", width: "100px" }}></span>
+          <div className="hide" id="showStep8">
+            <input
+              type="text"
+              value="Step 12: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
+              size="125"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            {/* < !-- 
+   < span style = "display:inline-block; width: 50px;" ></span >
+            group 1 -- > */}
+
+            <div className="blockofnum">
+              <input
+                type="number"
+                id="n1Step8"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n2Step8"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n3Step8"
+                name="n3"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n4Step8"
+                name="n4"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n5Step8"
+                name="n5"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
 
               {/* <!--group 3 -- > */}
               <span style={{ display: "inline-block", width: "180px" }}></span>
@@ -438,6 +907,123 @@ export default class levelPage extends Component {
               <input type="number" id="n9Step8" name="n2" size="1" readOnly />
               {/* <!--group 7 -- > */}
               <input type="number" id="n10Step8" name="n2" size="1" readOnly />
+            </div>
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep8Group2}
+            />
+          </div>
+
+          {/* step 8 group 2 */}
+          <span style={{ display: "inline-block", width: "100px" }}></span>
+          <div className="hide" id="showStep8Group2">
+            <input
+              type="text"
+              value="Step 13: Merge the numbers that are ready to be merged into pairs while recusively ordering them in ascending order. The merged numbers are in green."
+              size="125"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            {/* < !-- 
+   < span style = "display:inline-block; width: 50px;" ></span >
+            group 1 -- > */}
+
+            <div className="blockofnum">
+              <input
+                type="number"
+                id="n1Step82"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n2Step82"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n3Step82"
+                name="n3"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n4Step82"
+                name="n4"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n5Step82"
+                name="n5"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              {/* <!--group 3 -- > */}
+              <span style={{ display: "inline-block", width: "180px" }}></span>
+              <input
+                type="number"
+                id="n6Step82"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n7Step82"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n8Step82"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+
+              <input
+                type="number"
+                id="n9Step82"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              {/* <!--group 7 -- > */}
+              <input
+                type="number"
+                id="n10Step82"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
             </div>
             <input
               type="button"
@@ -469,18 +1055,88 @@ export default class levelPage extends Component {
             group 1 -- > */}
 
             <div className="blockofnum">
-              <input type="number" id="n1Step9" name="n1" size="1" readOnly />
-              <input type="number" id="n2Step9" name="n2" size="1" readOnly />
-              <input type="number" id="n3Step9" name="n3" size="1" readOnly />
-              <input type="number" id="n4Step9" name="n4" size="1" readOnly />
-              <input type="number" id="n5Step9" name="n5" size="1" readOnly />
-              <input type="number" id="n6Step9" name="n1" size="1" readOnly />
-              <input type="number" id="n7Step9" name="n2" size="1" readOnly />
-              <input type="number" id="n8Step9" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n1Step9"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n2Step9"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n3Step9"
+                name="n3"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n4Step9"
+                name="n4"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n5Step9"
+                name="n5"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n6Step9"
+                name="n1"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n7Step9"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
+              <input
+                type="number"
+                id="n8Step9"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
 
-              <input type="number" id="n9Step9" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n9Step9"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
               {/* //    <!--group 7 -- > */}
-              <input type="number" id="n10Step9" name="n2" size="1" readOnly />
+              <input
+                type="number"
+                id="n10Step9"
+                name="n2"
+                size="1"
+                style={{ backgroundColor: "green" }}
+                readOnly
+              />
             </div>
             {/* <input type="button" value="Restart" onClick={Next} /> */}
           </div>
