@@ -781,9 +781,7 @@ export default class LevelTwo extends React.Component {
         <div className="flexbox1">
           <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
         </div>
-        {/* <div className="flexbox">
-          <div className="containers" id="containerss">{this.state.step > 0 ? this.state.buttons : null}</div>
-        </div> */}
+        
         <div id="feedback">{this.state.feedback}</div>
         <div className="flexbox">
           <div className="container0" id="containers">{(this.state.step >= 0) ? this.state.containers0 : null}</div>
