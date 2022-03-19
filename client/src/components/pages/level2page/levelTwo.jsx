@@ -7,9 +7,6 @@ import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
-//import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
-
-
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
