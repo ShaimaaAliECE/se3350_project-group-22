@@ -3,7 +3,7 @@ const res = require("express/lib/response");
 const path = require("path");
 const dbo = require("./db/conn"); //database connection
 const cors = require("cors");
-
+const UserModel = require("./models/user");
 const app = express(); // create express app
 
 require("dotenv").config({ path: "./config.env" });
@@ -17,8 +17,21 @@ app.use(express.static("../../client")); // adding middleware
 app.use(cors());
 app.use(express.json());
 
-app.get("/", function (req, res) {
+app.get("/", async (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
+
+  // Example of storing data into the database!!
+  const user = new UserModel({ 
+    userName: "Andrew",
+    timeRequired: 2,
+  });
+  try {
+    await user.save();
+  } catch (err) {
+    console.log(err);
+  }
+
+  
 });
 
 app.use((req, res, next) => {
