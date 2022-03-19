@@ -134,7 +134,7 @@ export default class LevelTwo extends React.Component {
     });
     
     // check if user was inactive for 5 minutes
-    if (this.state.seconds - this.state.lastActive > 5)
+    if (this.state.seconds - this.state.lastActive > 300)
     {
       // set exitLevel state to true so that user will be returned to home
       this.setState({lastActive: this.state.seconds});      
@@ -751,7 +751,7 @@ export default class LevelTwo extends React.Component {
           <button className="generateBtn" onClick={() => {this.getButtonNumbers(); this.startTimer(); this.setLastActive() }}>Generate 10 Numbers</button>          
           <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive() }}>next</button>
           Time Elapsed: {this.state.time.m}:{this.state.time.s}
-          {/* return use to home after 5 minutes of inactivity using state*/}
+          {/* return user to home after 5 minutes of inactivity using state*/}
           {exitLevel && <Navigate to="/" replace={true}/>} 
         </div>
 
