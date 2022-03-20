@@ -357,28 +357,78 @@ export function nextStep3C10()
   var show = document.getElementById("showStep3c10");
   show.classList.toggle("show");
 
-  var n1c4 = document.getElementById("num1c6");
-   var n2c4 = document.getElementById("num2c6");
-   var n3c4 = document.getElementById("num3c6");
-  var n4c4 = document.getElementById("num4c7");
-  var n5c4 = document.getElementById("num5c7");
+  var n1c4 = document.getElementById("n1c10");
+   var n2c4 = document.getElementById("n2c10");
+   var n3c4 = document.getElementById("n3c10");
+  var n4c4 = document.getElementById("n4c10");
+  var n5c4 = document.getElementById("n5c10");
+    var n6c4 = document.getElementById("n6c10");
+   var n7c4 = document.getElementById("n7c10");
+   var n8c4 = document.getElementById("n8c10");
+  var n9c4 = document.getElementById("n9c10");
+  var n10c4 = document.getElementById("n10c10");
 
-   var n1c = document.getElementById("num1c9");
-   var n2c = document.getElementById("num2c9");
-     var n3c = document.getElementById("num3c9");
-   var n4c = document.getElementById("num4c9");
-  var n5c = document.getElementById("num5c9");
+   n1c4.value = document.getElementById("num1c9").value;
+  n2c4.value = document.getElementById("num2c9").value;
+  n3c4.value = document.getElementById("num3c9").value;
+   n4c4.value = document.getElementById("num4c9").value;
+  n5c4.value = document.getElementById("num5c9").value;
 
- //place them all in an array into groups
-  var merge1 = [n1c4.value, n2c4.value, n3c4.value,n4c4.value, n5c4.value];
-  merge1.sort(function (a, b) {
-    return b - a;
-  });; 
-   n1c.value = merge1[4]; 
-   n2c.value = merge1[3]; 
-   n3c.value = merge1[2]; 
-  n4c.value = merge1[1]; 
-  n5c.value = merge1[0]; 
+  n6c4.value = document.getElementById("n6").value;
+  n7c4.value = document.getElementById("n7").value;
+  n8c4.value = document.getElementById("n8").value;
+   n9c4.value = document.getElementById("n9").value;
+  n10c4.value = document.getElementById("n10").value;
+
+ 
+}
+
+// step 4 c1 
+export function nextStep4C1()
+{
+   var step2 = document.getElementById("step4c1");
+  step2.value = "Split the selected array as evenly as possible. Select the left subarray.";
+  var show = document.getElementById("showStep4c1");
+  show.classList.toggle("show");
+
+ 
+    var n6c = document.getElementById("n6c41");
+   var n7c = document.getElementById("n7c42");
+   var n8c = document.getElementById("n8c43");
+  var n9c = document.getElementById("n9c44");
+  var n10c = document.getElementById("n10c45");
+
+   n6c.value = document.getElementById("n6c10").value;
+   n7c.value = document.getElementById("n7c10").value;
+   n8c.value = document.getElementById("n8c10").value;
+  n9c.value = document.getElementById("n9c10").value;
+  n10c.value = document.getElementById("n10c10").value;
+
+  
+}
+
+//step 4 c2 
+export function nextStep4C2()
+{
+   var step2 = document.getElementById("step4c1");
+  step2.value = "Split the selected array as evenly as possible. Select the left subarray.";
+  var show = document.getElementById("showStep4c1");
+  show.classList.toggle("show");
+
+ 
+    var n6c = document.getElementById("n6c41");
+   var n7c = document.getElementById("n7c42");
+   var n8c = document.getElementById("n8c43");
+  var n9c = document.getElementById("n9c44");
+  var n10c = document.getElementById("n10c45");
+
+   n6c.value = document.getElementById("n6c10").value;
+   n7c.value = document.getElementById("n7c10").value;
+   n8c.value = document.getElementById("n8c10").value;
+  n9c.value = document.getElementById("n9c10").value;
+  n10c.value = document.getElementById("n10c10").value;
+
+  
 }
 export function nextStep3() {
   var show = document.getElementById("showStep3");

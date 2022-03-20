@@ -12,7 +12,9 @@ import {
   nextStep3C6,
   nextStep3C7,
   nextStep3C9,
+  nextStep3C10,
   nextStep3C8,
+  nextStep4C1,
   nextStep4,
   nextStep5,
   nextStep6,
@@ -585,11 +587,96 @@ export default class levelPage extends Component {
 
        
        <span style={{ display: "inline-block", width: "200px" }}></span>
-              <input type="number" id="n6c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
-              <input type="number" id="n7c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
-              <input type="number" id="n8c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
-              <input type="number" id="n9c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
-              <input type="number" id="n10c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n6c10" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n7c10" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n8c10" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n9c10" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n10c10" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+
+              
+            </div>
+
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep4C1}
+            />
+              </div>
+                 {/* step 4 c 1 */}
+                <div className="hide" id="showStep4c1">
+            <input
+              type="text"
+              id="step4c1"
+              name="step2"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            <div className="blockofnum">
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "80px" }}></span>
+
+
+       
+       <span style={{ display: "inline-block", width: "200px" }}></span>
+              <input type="number" id="n6c41" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n7c42" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n8c43" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+              <input type="number" id="n9c44" name="n2" size="1"  readOnly />
+              <input type="number" id="n10c45" name="n2" size="1" readOnly />
+
+              
+            </div>
+
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep4C2}
+            />
+          </div>
+        
+              {/* step 4 c2 */}
+              <div className="hide" id="showStep4c2">
+            <input
+              type="text"
+              id="step4c2"
+              name="step2"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            <div className="blockofnum">
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "80px" }}></span>
+
+
+       
+       <span style={{ display: "inline-block", width: "200px" }}></span>
+              <input type="number" id="n6c41" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+                  <input type="number" id="n7c42" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+                  <span style={{ display: "inline-block", width: "50px" }}></span>
+              <input type="number" id="n8c43" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+  <span style={{ display: "inline-block", width: "100px" }}></span>
 
               
             </div>
@@ -600,10 +687,12 @@ export default class levelPage extends Component {
               value="Next Step"
               onClick={nextStep3C}
             />
-          </div>
+              </div>
+              
             </div>
 
-           
+         
+            
           {/* // < !--Step 3: --> */}
           <span style={{ display: "inline-block", width: "100px" }}></span>
           <div className="hide" id="showStep3">
