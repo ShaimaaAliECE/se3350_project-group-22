@@ -39,7 +39,7 @@ export function Random() {
   var step = document.getElementById("step1");
 
   document.getElementById("step1").value =
-    "Step1: A set of 10 numbers is randomly generated!";
+    "A set of 10 numbers is randomly generated!";
 }
 
 function RandomNumbersArray(size, max, min) {
@@ -80,7 +80,7 @@ export function Next() {
   show.classList.toggle("show");
 
   var step2 = document.getElementById("step2");
-  step2.value = "Step2: Evenly split the array as much as possible. Select the first group";
+  step2.value = "Evenly split the array as much as possible. Select the first group";
 
   var numbers = document.getElementById("n1");
   var n2 = document.getElementById("n2");
@@ -564,7 +564,56 @@ n10c.value = document.getElementById("n410c7").value;
 
 }
 
+export function nextStep4C9()
+{
+   var step2 = document.getElementById("step4c9");
+  step2.value = "Merge the selected array back together in sorted order. ";
+  var show = document.getElementById("showStep4c9");
+  show.classList.toggle("show");
 
+
+var n9c = document.getElementById("n49c8");
+var n10c = document.getElementById("n410c8");
+  
+var n9c9 = document.getElementById("n49c9");
+  var n9c10 = document.getElementById("n410c9");
+  
+  //sort the numbers 
+   var merge1 = [n9c.value, n10c.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });; 
+
+  n9c9.value = merge1[1]; 
+  n9c10.value = merge1[0]; 
+
+}
+
+//merge the array together 
+export function nextStep4C9()
+{
+   var step2 = document.getElementById("step4c9");
+  step2.value = "Merge the selected array back together in sorted order. ";
+  var show = document.getElementById("showStep4c9");
+  show.classList.toggle("show");
+
+
+var n9c = document.getElementById("n49c8");
+var n10c = document.getElementById("n410c8");
+  
+var n9c9 = document.getElementById("n49c9");
+  var n9c10 = document.getElementById("n410c9");
+  
+  //sort the numbers 
+   var merge1 = [n9c.value, n10c.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });; 
+
+  n9c9.value = merge1[1]; 
+  n9c10.value = merge1[0]; 
+
+}
 
 export function nextStep3() {
   var show = document.getElementById("showStep3");
