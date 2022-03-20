@@ -43,7 +43,7 @@ body {
 }
 
 .choiceBttn {
-  background-color: #1f0325; /* Green */
+  background-color: #1f0325;
   border: none;
   color: white;
   padding: 15px 20px;
@@ -60,7 +60,7 @@ body {
   text-align: center;
 }
 
-.instructionHeader {
+.instructions {
   text-align: center;
   font-family: "Courier New", Courier, monospace;
 }
@@ -92,12 +92,54 @@ body {
   Overflow-x:scroll;
 }
 
-
+.correctText {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(15, 158, 10);
+  background-color: rgb(176, 206, 164)
+}
  
 
+.wrongText {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(167, 8, 8);
+  background-color: #ffa099;
+}
 
 
+.addBox {
+    background-color: #1f0325;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    padding: 2px 6px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 400;
+}
 
+
+.groupTableStyle {
+  height: 10 px;
+  margin-left: auto;
+  margin-right: auto;
+  Overflow-x:scroll;
+}
+
+.groupArrayCells {
+  font-family: "Courier New", Courier, monospace; 
+  height: 20px;
+  width: 20px;
+  background-color: #b6b6b6;
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: center;
+
+
+}
 
 
 

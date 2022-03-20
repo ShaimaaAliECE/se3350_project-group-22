@@ -6,7 +6,7 @@
 import wrongaudio from "../../../sounds/wrong.mp3";
 import correctaudio from "../../../sounds/correct.mp3";
 
-var allSplit = false;
+
 var size = 20;
 var max = 50;
 var min = 1;
@@ -25,68 +25,11 @@ export function Start() {
     BuildArrayTable();
 
     //show the first step header
-    document.getElementById("instructionHeader").classList.remove("hidden");
-    document.getElementById("choiceinstructionHeader").classList.remove("hidden");
+    document.getElementById("toptext").classList.remove("hidden");
+    document.getElementById("bottomtext").classList.remove("hidden");
     document.getElementById("choiceBttns").classList.remove("hidden");
-
-    //show array in table
-
-
-
-    //
-   
   
 }//end of start function
-
-
-function BuildArrayTable() {
-    var table = document.getElementById("BaseArrayTable");
-    var j = 1;
-    var rows = [];
-    var cells = [];
-    
-    for( var i = 0; i < j; i++ )
-    {
-        rows[i] = table.insertRow(i);
-        cells[i] = [];
-
-        for( var x = 0; x < size ; x++ )
-        {
-            cells[i][x] = document.createElement("td");
-            cells[i][x].classList.add("BaseArrayCells");
-            cells[i][x].innerHTML = numbersArray[x];
-            rows[rows.length - 1].appendChild(cells[i][x]);
-        }
-    }
-}
-  
-export function SplitChoice() {
-    if(allSplit) {
-        //wrong answer
-        //wrongaudio.play();
-
-    }
-    else{
-        //right answer
-        //correctaudio.play();
-        document.getElementById("choiceinstructionHeader").classList.add("hidden");
-        document.getElementById("choiceBttns").classList.add("hidden");
-        document.getElementById("choicefeedbackHeader").value = "Correct Answer";
-    }
-}
-
-export function MergeChoice() {  
-    if(allSplit) {
-        //right answer
-        //correctaudio.play();
-        document.getElementById("choiceinstructionHeader").classList.add("hidden");
-        document.getElementById("choiceBttns").classList.add("hidden");        
-    }
-    else{
-       //wrong answer
-       //wrongaudio.play();
-    }
-}
 
 
 /* ************* Backend Functions - no need to export ************** */
@@ -124,3 +67,24 @@ export function MergeChoice() {
     }
     return false;
   }
+
+  function BuildArrayTable() {
+    var table = document.getElementById("BaseArrayTable");
+    var j = 1;
+    var rows = [];
+    var cells = [];
+    
+    for( var i = 0; i < j; i++ )
+    {
+        rows[i] = table.insertRow(i);
+        cells[i] = [];
+
+        for( var x = 0; x < size ; x++ )
+        {
+            cells[i][x] = document.createElement("td");
+            cells[i][x].classList.add("BaseArrayCells");
+            cells[i][x].innerHTML = numbersArray[x];
+            rows[rows.length - 1].appendChild(cells[i][x]);
+        }
+    }
+}
