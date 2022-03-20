@@ -236,19 +236,25 @@ export function nextStep3C5()
 //next step c6 (slect right subarray)
 export function nextStep3C6()
 {
-   var step2 = document.getElementById("step3c5");
-  step2.value = "Merge the array in sorted order.";
-  var show = document.getElementById("showstep3c5");
+   var step2 = document.getElementById("step3c6");
+  step2.value = "Select the right subarray.";
+  var show = document.getElementById("showStep3c6");
   show.classList.toggle("show");
 
     //initialize the numbers 
-  var n1c4 = document.getElementById("num1c4");
-  var n2c4 = document.getElementById("num2c4");
-  var n3c4 = document.getElementById("num3c4"); 
+  var n1c4 = document.getElementById("num1c5");
+  var n2c4 = document.getElementById("num2c5");
+  var n3c4 = document.getElementById("num3c5"); 
+  var n4c4 = document.getElementById("num4c");
+  var n5c4 = document.getElementById("num5c");
 
-  var n1c = document.getElementById("num1c5");
- var n2c = document.getElementById("num2c5");
- var n3c = document.getElementById("num3c5");
+
+   var n1c = document.getElementById("num1c6");
+   var n2c = document.getElementById("num2c6");
+   var n3c = document.getElementById("num3c6");
+   var n4c = document.getElementById("num4c6");
+  var n5c = document.getElementById("num5c6");
+  
    //place them all in an array into groups
   var merge1 = [n1c4.value, n2c4.value, n3c4.value];
   merge1.sort(function (a, b) {
@@ -258,10 +264,122 @@ export function nextStep3C6()
   n1c.value = merge1[2]; 
   n2c.value = merge1[1]; 
   n3c.value = merge1[0]; 
+  n4c.value = n4c4.value; 
+  n5c.value = n5c4.value; 
   console.log("sorted:" + merge1[2], merge1[1],merge1[0] ); 
 
 }
 
+//steps c7 
+export function nextStep3C7()
+{
+   var step2 = document.getElementById("step3c7");
+  step2.value = "Split the array as evenly as possible.";
+  var show = document.getElementById("showStep3c7");
+  show.classList.toggle("show");
+
+
+  var n4c4 = document.getElementById("num4c6");
+  var n5c4 = document.getElementById("num5c6");
+
+
+   var n4c = document.getElementById("num4c7");
+  var n5c = document.getElementById("num5c7");
+
+ 
+  n4c.value = n4c4.value; 
+  n5c.value = n5c4.value; 
+  
+}
+
+//merge the selected array back together in sorted order 
+export function nextStep3C8()
+{
+   var step2 = document.getElementById("step3c8");
+  step2.value = "Merge the selected array back together in sorted order. ";
+  var show = document.getElementById("showStep3c8");
+  show.classList.toggle("show");
+
+
+  var n4c4 = document.getElementById("num4c7");
+  var n5c4 = document.getElementById("num5c7");
+
+   var n4c = document.getElementById("num4c8");
+  var n5c = document.getElementById("num5c8");
+
+ //place them all in an array into groups
+  var merge1 = [n4c4.value, n5c4.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });; 
+  
+  n4c.value = merge1[1]; 
+  n5c.value = merge1[0]; 
+}
+
+//fucntion c9 
+ export function nextStep3C9()
+{
+   var step2 = document.getElementById("step3c9");
+  step2.value = "Merge the selected array back together in sorted order. ";
+  var show = document.getElementById("showStep3c9");
+  show.classList.toggle("show");
+
+  var n1c4 = document.getElementById("num1c6");
+   var n2c4 = document.getElementById("num2c6");
+   var n3c4 = document.getElementById("num3c6");
+  var n4c4 = document.getElementById("num4c7");
+  var n5c4 = document.getElementById("num5c7");
+
+   var n1c = document.getElementById("num1c9");
+   var n2c = document.getElementById("num2c9");
+     var n3c = document.getElementById("num3c9");
+   var n4c = document.getElementById("num4c9");
+  var n5c = document.getElementById("num5c9");
+
+ //place them all in an array into groups
+  var merge1 = [n1c4.value, n2c4.value, n3c4.value,n4c4.value, n5c4.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });; 
+   n1c.value = merge1[4]; 
+   n2c.value = merge1[3]; 
+   n3c.value = merge1[2]; 
+  n4c.value = merge1[1]; 
+  n5c.value = merge1[0]; 
+}
+
+//fucntion c10 
+export function nextStep3C10()
+{
+   var step2 = document.getElementById("step3c10");
+  step2.value = "Select the right subarray. ";
+  var show = document.getElementById("showStep3c10");
+  show.classList.toggle("show");
+
+  var n1c4 = document.getElementById("num1c6");
+   var n2c4 = document.getElementById("num2c6");
+   var n3c4 = document.getElementById("num3c6");
+  var n4c4 = document.getElementById("num4c7");
+  var n5c4 = document.getElementById("num5c7");
+
+   var n1c = document.getElementById("num1c9");
+   var n2c = document.getElementById("num2c9");
+     var n3c = document.getElementById("num3c9");
+   var n4c = document.getElementById("num4c9");
+  var n5c = document.getElementById("num5c9");
+
+ //place them all in an array into groups
+  var merge1 = [n1c4.value, n2c4.value, n3c4.value,n4c4.value, n5c4.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });; 
+   n1c.value = merge1[4]; 
+   n2c.value = merge1[3]; 
+   n3c.value = merge1[2]; 
+  n4c.value = merge1[1]; 
+  n5c.value = merge1[0]; 
+}
 export function nextStep3() {
   var show = document.getElementById("showStep3");
   show.classList.toggle("show");
