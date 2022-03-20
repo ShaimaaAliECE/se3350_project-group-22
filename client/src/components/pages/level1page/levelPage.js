@@ -957,13 +957,97 @@ export default class levelPage extends Component {
               type="button"
               className="nextStep"
               value="Next Step"
-              onClick={nextStep4C8}
+              onClick={nextStep4C9}
             />
               </div>
+
+              {/* 4 c9  */}
+               <div className="hide" id="showStep4c9">
+            <input
+              type="text"
+              id="step4c9"
+              name="step2"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            <div className="blockofnum">
+                         <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "80px" }}></span>
+
+
+       
+       <span style={{ display: "inline-block", width: "200px" }}></span>
+      <span style={{ display: "inline-block", width: "180px" }}></span>
+              <span style={{ display: "inline-block", width: "50px" }}></span>
+                  <input type="number" id="n49c9" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+ 
+              <input type="number" id="n410c9" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              
             </div>
 
-         
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep4C10}
+            />
+              </div>
+
+              {/* step c10 merge the five all together  */}
+                  <div className="hide" id="showStep4c10">
+            <input
+              type="text"
+              id="step4c10"
+              name="step2"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            <div className="blockofnum">
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "100px" }}></span>
+                  <span style={{ display: "inline-block", width: "80px" }}></span>
+
+
+       
+       <span style={{ display: "inline-block", width: "200px" }}></span>
+              <input type="number" id="n6c410" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n7c420" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n8c430" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n9c440" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n10c450" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+
+              
+            </div>
+
+            <input
+                  type="button"
+                  className="nextStep"
+                  value="Next Step"
+                  onClick={nextStep9}
             
+                />
+              </div>
+              
+           
+
+         
           {/* // < !--Step 3: --> */}
           <span style={{ display: "inline-block", width: "100px" }}></span>
           <div className="hide" id="showStep3">
@@ -1964,7 +2048,8 @@ export default class levelPage extends Component {
               />
             </div>
             {/* <input type="button" value="Restart" onClick={Next} /> */}
-            </div>
+              </div>
+               </div>
                </div>
         </form>
         <div className="footer"></div>
