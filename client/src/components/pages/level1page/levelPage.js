@@ -1006,7 +1006,7 @@ export default class levelPage extends Component {
                   <div className="hide" id="showStep4c10">
             <input
               type="text"
-              id="step4c1"
+              id="step4c10"
               name="step2"
               size="80"
               style={{
@@ -1027,28 +1027,27 @@ export default class levelPage extends Component {
 
        
        <span style={{ display: "inline-block", width: "200px" }}></span>
-              <input type="number" id="n6c41" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
-              <input type="number" id="n7c42" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
-              <input type="number" id="n8c43" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
-              <span style={{ display: "inline-block", width: "50px" }}></span>
-              <input type="number" id="n9c44" name="n2" size="1"  readOnly />
-              <input type="number" id="n10c45" name="n2" size="1" readOnly />
+              <input type="number" id="n6c410" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n7c420" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n8c430" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n9c440" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n10c450" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
 
               
             </div>
 
             <input
-              type="button"
-              className="nextStep"
-              value="Next Step"
-              onClick={nextStep4C2}
-            />
+                  type="button"
+                  className="nextStep"
+                  value="Next Step"
+                  onClick={nextStep9}
+            
+                />
               </div>
               
-            </div>
+           
 
          
-            
           {/* // < !--Step 3: --> */}
           <span style={{ display: "inline-block", width: "100px" }}></span>
           <div className="hide" id="showStep3">
@@ -2049,7 +2048,8 @@ export default class levelPage extends Component {
               />
             </div>
             {/* <input type="button" value="Restart" onClick={Next} /> */}
-            </div>
+              </div>
+               </div>
                </div>
         </form>
         <div className="footer"></div>

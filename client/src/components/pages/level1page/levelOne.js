@@ -590,28 +590,40 @@ var n9c9 = document.getElementById("n49c9");
 }
 
 //merge the array together 
-export function nextStep4C9()
+export function nextStep4C10()
 {
-   var step2 = document.getElementById("step4c9");
+   var step2 = document.getElementById("step4c10");
   step2.value = "Merge the selected array back together in sorted order. ";
-  var show = document.getElementById("showStep4c9");
+  var show = document.getElementById("showStep4c10");
   show.classList.toggle("show");
 
 
-var n9c = document.getElementById("n49c8");
-var n10c = document.getElementById("n410c8");
+  var n6c1 = document.getElementById("n6c410");
+var n7c1 = document.getElementById("n7c420");
+var n8c1 = document.getElementById("n8c430");
+var n9c1 = document.getElementById("n9c440");
+  var n10c1 = document.getElementById("n10c450");
   
-var n9c9 = document.getElementById("n49c9");
-  var n9c10 = document.getElementById("n410c9");
+var n6 = document.getElementById("n6");
+var n7 = document.getElementById("n7");
+var n8  = document.getElementById("n8");
+var n9 = document.getElementById("n9");
+var n10 = document.getElementById("n10");
   
+
   //sort the numbers 
-   var merge1 = [n9c.value, n10c.value];
+   var merge1 = [n6.value, n7.value, n8.value, n9.value, n10.value];
   merge1.sort(function (a, b) {
     return b - a;
   });; 
 
-  n9c9.value = merge1[1]; 
-  n9c10.value = merge1[0]; 
+  n6c1.value = merge1[4]; 
+  n7c1.value = merge1[3]; 
+  n8c1.value = merge1[2]; 
+  n9c1.value = merge1[1];
+  n10c1.value = merge1[0]; 
+
+  console.log(merge1[4], merge1[3], merge1[2], merge1[1], merge1[0])
 
 }
 
@@ -1128,7 +1140,7 @@ export function nextStep9() {
 
   var step7 = document.getElementById("step9");
   step7.value =
-    "Step 14: Merge the 2 groups together in ascending order. This is the end of the algorithm";
+    " Merge the 2 groups together in ascending order. This is the end of the algorithm";
 
   // intialize the numbers value
   var n1 = document.getElementById("n1Step9");
@@ -1143,16 +1155,16 @@ export function nextStep9() {
   var n10 = document.getElementById("n10Step9");
 
   // intialize the numbers value
-  var n19 = document.getElementById("n1Step8");
-  var n29 = document.getElementById("n2Step8");
-  var n39 = document.getElementById("n3Step8");
-  var n49 = document.getElementById("n4Step8");
-  var n59 = document.getElementById("n5Step8");
-  var n69 = document.getElementById("n6Step8");
-  var n79 = document.getElementById("n7Step8");
-  var n89 = document.getElementById("n8Step8");
-  var n99 = document.getElementById("n9Step8");
-  var n109 = document.getElementById("n10Step8");
+  var n19 = document.getElementById("n1c10");
+  var n29 = document.getElementById("n2c10");
+  var n39 = document.getElementById("n3c10");
+  var n49 = document.getElementById("n4c10");
+  var n59 = document.getElementById("n5c10");
+  var n69 = document.getElementById("n6c410");
+  var n79 = document.getElementById("n7c420");
+  var n89 = document.getElementById("n8c430");
+  var n99 = document.getElementById("n9c440");
+  var n109 = document.getElementById("n10c450");
 
   //merge the 10 numbers together
   var merge1 = [
