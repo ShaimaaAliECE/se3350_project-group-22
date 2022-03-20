@@ -526,30 +526,46 @@ var n8c3 = document.getElementById("n48c5");
 //select the right subarray again 
 export function nextStep4C7()
 {
-   var step2 = document.getElementById("step4c6");
+   var step2 = document.getElementById("step4c7");
   step2.value = "Merge the selected array back together in sorted order. Select the right subarray. ";
-  var show = document.getElementById("showStep4c6");
+  var show = document.getElementById("showStep4c7");
   show.classList.toggle("show");
 
+var n6c = document.getElementById("n46c7");
+var n7c = document.getElementById("n47c7");
+var n8c = document.getElementById("n48c7");
+var n9c = document.getElementById("n49c7");
+var n10c = document.getElementById("n410c7");
   
-var n6c = document.getElementById("n46c6");
-var n7c = document.getElementById("n47c6");
-var n8c = document.getElementById("n48c6");
-  
+n6c.value = document.getElementById("n46c6").value;
+n7c.value = document.getElementById("n47c6").value;
+n8c.value = document.getElementById("n48c6").value;
+n9c.value = document.getElementById("n9c44").value;
+n10c.value = document.getElementById("n10c45").value;
 
-var n6c3 = document.getElementById("n46c5");
-var n7c3 = document.getElementById("n47c5");
-var n8c3 = document.getElementById("n48c5");
-
-  var merge1 = [n6c3.value, n7c3.value, n8c3.value];
-  merge1.sort(function (a, b) {
-    return b - a;
-  });; 
-   n6c.value = merge1[2]; 
-  n7c.value = merge1[1];
-  n8c.value = merge1[0];
  
 }
+
+//split the array as evenly as possible 
+export function nextStep4C8()
+{
+   var step2 = document.getElementById("step4c8");
+  step2.value = "Continue splitting the array as much as possible.";
+  var show = document.getElementById("showStep4c8");
+  show.classList.toggle("show");
+
+
+var n9c = document.getElementById("n49c8");
+var n10c = document.getElementById("n410c8");
+  
+
+n9c.value = document.getElementById("n49c7").value;
+n10c.value = document.getElementById("n410c7").value;
+
+}
+
+
+
 export function nextStep3() {
   var show = document.getElementById("showStep3");
   show.classList.toggle("show");
