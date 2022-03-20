@@ -357,29 +357,215 @@ export function nextStep3C10()
   var show = document.getElementById("showStep3c10");
   show.classList.toggle("show");
 
-  var n1c4 = document.getElementById("num1c6");
-   var n2c4 = document.getElementById("num2c6");
-   var n3c4 = document.getElementById("num3c6");
-  var n4c4 = document.getElementById("num4c7");
-  var n5c4 = document.getElementById("num5c7");
+  var n1c4 = document.getElementById("n1c10");
+   var n2c4 = document.getElementById("n2c10");
+   var n3c4 = document.getElementById("n3c10");
+  var n4c4 = document.getElementById("n4c10");
+  var n5c4 = document.getElementById("n5c10");
+    var n6c4 = document.getElementById("n6c10");
+   var n7c4 = document.getElementById("n7c10");
+   var n8c4 = document.getElementById("n8c10");
+  var n9c4 = document.getElementById("n9c10");
+  var n10c4 = document.getElementById("n10c10");
 
-   var n1c = document.getElementById("num1c9");
-   var n2c = document.getElementById("num2c9");
-     var n3c = document.getElementById("num3c9");
-   var n4c = document.getElementById("num4c9");
-  var n5c = document.getElementById("num5c9");
+   n1c4.value = document.getElementById("num1c9").value;
+  n2c4.value = document.getElementById("num2c9").value;
+  n3c4.value = document.getElementById("num3c9").value;
+   n4c4.value = document.getElementById("num4c9").value;
+  n5c4.value = document.getElementById("num5c9").value;
 
- //place them all in an array into groups
-  var merge1 = [n1c4.value, n2c4.value, n3c4.value,n4c4.value, n5c4.value];
+  n6c4.value = document.getElementById("n6").value;
+  n7c4.value = document.getElementById("n7").value;
+  n8c4.value = document.getElementById("n8").value;
+   n9c4.value = document.getElementById("n9").value;
+  n10c4.value = document.getElementById("n10").value;
+
+ 
+}
+
+// step 4 c1 
+export function nextStep4C1()
+{
+   var step2 = document.getElementById("step4c1");
+  step2.value = "Split the selected array as evenly as possible. Select the left subarray.";
+  var show = document.getElementById("showStep4c1");
+  show.classList.toggle("show");
+
+ 
+    var n6c = document.getElementById("n6c41");
+   var n7c = document.getElementById("n7c42");
+   var n8c = document.getElementById("n8c43");
+  var n9c = document.getElementById("n9c44");
+  var n10c = document.getElementById("n10c45");
+
+   n6c.value = document.getElementById("n6c10").value;
+   n7c.value = document.getElementById("n7c10").value;
+   n8c.value = document.getElementById("n8c10").value;
+  n9c.value = document.getElementById("n9c10").value;
+  n10c.value = document.getElementById("n10c10").value;
+
+  
+}
+
+//step 4 c2 
+export function nextStep4C2()
+{
+   var step2 = document.getElementById("step4c2");
+  step2.value = "Split the selected array as evenly as possible. Select the left subarray.";
+  var show = document.getElementById("showStep4c2");
+  show.classList.toggle("show");
+
+ 
+    var n6c = document.getElementById("n46c2");
+   var n7c = document.getElementById("n47c2");
+   var n8c = document.getElementById("n48c2");
+
+
+   n6c.value = document.getElementById("n6c10").value;
+   n7c.value = document.getElementById("n7c10").value;
+   n8c.value = document.getElementById("n8c10").value;
+
+}
+
+//step 4 c 3
+//step 4 c2 
+export function nextStep4C3()
+{
+   var step2 = document.getElementById("step4c3");
+  step2.value = "Continue splitting the array as evenly as possible.";
+  var show = document.getElementById("showStep4c3");
+  show.classList.toggle("show");
+
+ 
+  var n6c = document.getElementById("n46c3");
+   var n7c = document.getElementById("n47c3");
+
+   n6c.value = document.getElementById("n6c10").value;
+   n7c.value = document.getElementById("n7c10").value;
+   
+  
+
+}
+
+//fucntion 4 c4 
+export function nextStep4C4()
+{
+   var step2 = document.getElementById("step4c4");
+  step2.value = "Merge the selected array back together in sorted order.";
+  var show = document.getElementById("showStep4c4");
+  show.classList.toggle("show");
+
+ 
+   var n6c = document.getElementById("n46c4");
+   var n7c = document.getElementById("n47c4");
+
+  var n6c3 = document.getElementById("n46c3");
+  var n7c3 = document.getElementById("n47c3");
+
+
+   var merge1 = [n6c3.value, n7c3.value];
   merge1.sort(function (a, b) {
     return b - a;
   });; 
-   n1c.value = merge1[4]; 
-   n2c.value = merge1[3]; 
-   n3c.value = merge1[2]; 
-  n4c.value = merge1[1]; 
-  n5c.value = merge1[0]; 
+   n6c.value = merge1[1]; 
+   n7c.value = merge1[0]; 
+  
 }
+
+// fucntion c5 select the right subarray
+export function nextStep4C5()
+{
+   var step2 = document.getElementById("step4c5");
+  step2.value = "Merge the selected array back together in sorted order. Select the right subarray. ";
+  var show = document.getElementById("showStep4c5");
+  show.classList.toggle("show");
+
+
+var n6c3 = document.getElementById("n46c5");
+var n7c3 = document.getElementById("n47c5");
+var n8c3 = document.getElementById("n48c5");
+  
+  
+  n6c3.value = document.getElementById("n46c4").value;
+  n7c3.value = document.getElementById("n47c4").value;
+  n8c3.value = document.getElementById("n48c2").value;
+
+  
+  
+}
+
+
+//function since we no longer can cplit the array merge the array 
+export function nextStep4C6()
+{
+   var step2 = document.getElementById("step4c6");
+  step2.value = "Merge the selected array back together in sorted order. Select the right subarray. ";
+  var show = document.getElementById("showStep4c6");
+  show.classList.toggle("show");
+
+  
+var n6c = document.getElementById("n46c6");
+var n7c = document.getElementById("n47c6");
+var n8c = document.getElementById("n48c6");
+  
+
+var n6c3 = document.getElementById("n46c5");
+var n7c3 = document.getElementById("n47c5");
+var n8c3 = document.getElementById("n48c5");
+
+  var merge1 = [n6c3.value, n7c3.value, n8c3.value];
+  merge1.sort(function (a, b) {
+    return b - a;
+  });; 
+   n6c.value = merge1[2]; 
+  n7c.value = merge1[1];
+  n8c.value = merge1[0];
+ 
+}
+
+//select the right subarray again 
+export function nextStep4C7()
+{
+   var step2 = document.getElementById("step4c7");
+  step2.value = "Merge the selected array back together in sorted order. Select the right subarray. ";
+  var show = document.getElementById("showStep4c7");
+  show.classList.toggle("show");
+
+var n6c = document.getElementById("n46c7");
+var n7c = document.getElementById("n47c7");
+var n8c = document.getElementById("n48c7");
+var n9c = document.getElementById("n49c7");
+var n10c = document.getElementById("n410c7");
+  
+n6c.value = document.getElementById("n46c6").value;
+n7c.value = document.getElementById("n47c6").value;
+n8c.value = document.getElementById("n48c6").value;
+n9c.value = document.getElementById("n9c44").value;
+n10c.value = document.getElementById("n10c45").value;
+
+ 
+}
+
+//split the array as evenly as possible 
+export function nextStep4C8()
+{
+   var step2 = document.getElementById("step4c8");
+  step2.value = "Continue splitting the array as much as possible.";
+  var show = document.getElementById("showStep4c8");
+  show.classList.toggle("show");
+
+
+var n9c = document.getElementById("n49c8");
+var n10c = document.getElementById("n410c8");
+  
+
+n9c.value = document.getElementById("n49c7").value;
+n10c.value = document.getElementById("n410c7").value;
+
+}
+
+
+
 export function nextStep3() {
   var show = document.getElementById("showStep3");
   show.classList.toggle("show");
