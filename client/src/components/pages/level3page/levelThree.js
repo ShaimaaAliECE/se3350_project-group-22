@@ -2570,7 +2570,7 @@ export default class LevelThree extends Component {
               </div>
             )}
           </Droppable>
-        </DragDropContext> */}
+        </DragDropContext> 
       </div>
     );
   }

@@ -4,6 +4,15 @@ import {
   Random,
   Next,
   nextStep3,
+  nextStep3C,
+  nextStep3C2,
+  nextStep3C3,
+  nextStep3C4,
+  nextStep3C5,
+  nextStep3C6,
+  nextStep3C7,
+  nextStep3C9,
+  nextStep3C8,
   nextStep4,
   nextStep5,
   nextStep6,
@@ -117,28 +126,484 @@ export default class levelPage extends Component {
             />
 
             <div className="blockofnum">
-              <input type="number" id="n1" name="n1" size="1" readOnly />
-              <input type="number" id="n2" name="n2" size="1" readOnly />
-              <input type="number" id="n3" name="n3" size="1" readOnly />
-              <input type="number" id="n4" name="n4" size="1" readOnly />
-              <input type="number" id="n5" name="n2" size="1" readOnly />
+              <input type="number" id="n1" name="n1" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n2" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n3" name="n3" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n4" name="n4" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="n5" name="n2" size="1" style={{ backgroundColor: "red" }} readOnly />
 
-              <span style={{ display: "inline-block", width: "200px" }}></span>
-
+       
+       <span style={{ display: "inline-block", width: "200px" }}></span>
               <input type="number" id="n6" name="n2" size="1" readOnly />
               <input type="number" id="n7" name="n2" size="1" readOnly />
               <input type="number" id="n8" name="n2" size="1" readOnly />
               <input type="number" id="n9" name="n2" size="1" readOnly />
               <input type="number" id="n10" name="n2" size="1" readOnly />
+
+              
             </div>
 
             <input
               type="button"
               className="nextStep"
               value="Next Step"
-              onClick={nextStep3}
+              onClick={nextStep3C}
             />
           </div>
+
+          {/* step 3 comparison  */}
+          {/* // < !--Step 3: --> */}
+          
+          <div className="hide" id="showStep3Comparison">
+      
+            <input
+              type="text"
+              id="step3c"
+              name="step3c"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+
+              <input type="number" id="num1c" name="num1c" size="1" style={{ backgroundColor: "red" }}readOnly />
+              <input type="number" id="num2c" name="num2c" size="1" style={{ backgroundColor: "red" }}readOnly />
+              <input type="number" id="num3c" name="num3c" size="1" style={{ backgroundColor: "red" }}readOnly />
+
+              <span style={{ display: "inline-block", width: "70px" }}></span>
+
+              <input type="number" id="num4c" name="num4c" size="1" readOnly />
+              <input type="number" id="num5c" name="num5c" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+
+
+                 
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C2}
+            />
+          </div>
+          {/* next step 3 comparison 2 */}
+            <div className="hide" id="showstep3c2">
+                 <input
+              type="text"
+              id="step3c2"
+              name="step3c2"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+              <div className="blockofnum">
+              <input type="number" id="num1c2" name="num1c2" size="1" style={{ backgroundColor: "red" }} readOnly />
+              <input type="number" id="num2c2" name="num2c2" size="1"style={{ backgroundColor: "red" }} readOnly />
+               <span style={{ display: "inline-block", width: "60px" }}></span>
+              <input type="number" id="num3c2" name="num3c2" size="1"  readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+              
+               <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C3}
+                />
+                </div>
+            </div>
+            
+            {/* //step 3 c 3 */}
+            <div className="hide" id="showstep3c3">
+               <input
+              type="text"
+              id="step3c3"
+              name="step3c3"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            /> 
+              <div className="blockofnum">
+                <input type="number" id="num1c3" name="num1c2" size="1" style={{ backgroundColor: "green" }} readOnly />
+                <span style={{ display: "inline-block", width: "30px" }}></span>
+              <input type="number" id="num2c3" name="num2c2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              
+<span style={{ display: "inline-block", width: "100px" }}></span>
+               
+         <span style={{ display: "inline-block", width: "100px" }}></span>
+                <span style={{ display: "inline-block", width: "100px" }}></span>
+                         <span style={{ display: "inline-block", width: "100px" }}></span>
+<span style={{ display: "inline-block", width: "100px" }}></span>
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+              
+               <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C4}
+                />
+                </div>
+            </div>
+   
+            {/* step 3 c four  */}
+           <div className="hide" id="showstep3c4">
+                 <input
+              type="text"
+              id="step3c4"
+              name="step3c4"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+              <div className="blockofnum">
+              <input type="number" id="num1c4" name="num1c2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="num2c4" name="num2c2" size="1"style={{ backgroundColor: "green" }} readOnly />
+               <span style={{ display: "inline-block", width: "60px" }}></span>
+              <input type="number" id="num3c4" name="num3c2" size="1" style={{ backgroundColor: "red" }} readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+              
+               <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C5}
+                />
+                </div>
+            </div>
+            
+            {/* step 3 c5 */}
+             <div className="hide" id="showstep3c5">
+                 <input
+              type="text"
+              id="step3c5"
+              name="step3c5"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+              <div className="blockofnum">
+              <input type="number" id="num1c5" name="num1c2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="num2c5" name="num2c2" size="1"style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="num3c5" name="num3c2" size="1" style={{ backgroundColor: "green" }} readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+              
+               <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C6}
+                />
+                </div>
+            </div>
+            {/* // step c 6  */}
+            <div className="hide" id="showStep3c6">
+      
+            <input
+              type="text"
+              id="step3c6"
+              name="step3c6"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+
+              <input type="number" id="num1c6" name="num1c6" size="1" readOnly />
+              <input type="number" id="num2c6" name="num2c6" size="1" readOnly />
+              <input type="number" id="num3c6" name="num3c6" size="1" readOnly />
+
+              <span style={{ display: "inline-block", width: "70px" }}></span>
+
+              <input type="number" id="num4c6" name="num4c6" size="1" style={{ backgroundColor: "red" }}readOnly />
+              <input type="number" id="num5c6" name="num5c6" size="1" style={{ backgroundColor: "red" }}readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+
+
+                 
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C7}
+            />
+              </div>
+            </div>
+            
+            {/* step c 7 */}
+            <div className="hide" id="showStep3c7">
+      
+            <input
+              type="text"
+              id="step3c7"
+              name="step3c7"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+ <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+              
+              <span style={{ display: "inline-block", width: "70px" }}></span>
+
+              <input type="number" id="num4c7" name="num4c6" size="1" readOnly />
+               <span style={{ display: "inline-block", width: "70px" }}></span>
+                <input type="number" id="num5c7" name="num5c6" size="1"  readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+
+
+                 
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C8}
+            />
+              </div>
+            </div>
+
+            {/* step c8 */}
+            <div className="hide" id="showStep3c8">
+      
+            <input
+              type="text"
+              id="step3c8"
+              name="step3c8"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+ <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+              
+              <span style={{ display: "inline-block", width: "70px" }}></span>
+
+              <input type="number" id="num4c8" name="num4c8" size="1" style={{ backgroundColor: "green" }}readOnly />
+                <input type="number" id="num5c8" name="num5c8" size="1" style={{ backgroundColor: "green" }} readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+
+
+                 
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C9}
+            />
+              </div>
+            </div>
+            
+            {/* step c 9  */}
+            <div className="hide" id="showStep3c9">
+      
+            <input
+              type="text"
+              id="step3c9"
+              name="step3c9"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+            <div className="blockofnum">
+
+              <input type="number" id="num1c9" name="num1c6" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="num2c9" name="num2c6" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="num3c9" name="num3c6" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="num4c9" name="num4c6" size="1" style={{ backgroundColor: "green" }}readOnly />
+              <input type="number" id="num5c9" name="num5c6" size="1" style={{ backgroundColor: "green" }}readOnly />
+
+              <span style={{ display: "inline-block", width: "100px" }}></span>
+
+               <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "100px" }}></span>
+
+                 <span style={{ display: "inline-block", width: "50px" }}></span>
+
+
+                 
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C10}
+            />
+              </div>
+               {/* //step c10 */}
+               <div className="hide" id="showStep3c10">
+            <input
+              type="text"
+              id="step3c10"
+              name="step2"
+              size="80"
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 50,
+                color: "#FFF",
+                textAlignVertical: "top", // android fix for centering it at the top-left corner
+              }}
+              readOnly
+            />
+
+            <div className="blockofnum">
+              <input type="number" id="n1c10" name="n1" size="1"  readOnly />
+              <input type="number" id="n2c10" name="n2" size="1"  readOnly />
+              <input type="number" id="n3c10" name="n3" size="1" readOnly />
+              <input type="number" id="n4c10" name="n4" size="1"  readOnly />
+              <input type="number" id="n5c10" name="n2" size="1" readOnly />
+
+       
+       <span style={{ display: "inline-block", width: "200px" }}></span>
+              <input type="number" id="n6c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n7c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n8c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n9c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+              <input type="number" id="n10c10" name="n2" size="1" style={{ backgroundColor: "green" }} readOnly />
+
+              
+            </div>
+
+            <input
+              type="button"
+              className="nextStep"
+              value="Next Step"
+              onClick={nextStep3C}
+            />
+          </div>
+            </div>
+
+           
           {/* // < !--Step 3: --> */}
           <span style={{ display: "inline-block", width: "100px" }}></span>
           <div className="hide" id="showStep3">
@@ -1139,10 +1604,12 @@ export default class levelPage extends Component {
               />
             </div>
             {/* <input type="button" value="Restart" onClick={Next} /> */}
-          </div>
+            </div>
+               </div>
         </form>
         <div className="footer"></div>
       </div>
+        
     );
   }
 }
