@@ -7,6 +7,7 @@ import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
+import { Link } from "react-router-dom";
 //import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
 
 
@@ -770,6 +771,7 @@ export default class LevelTwo extends React.Component {
     return (
       <div id="main">
         <div className="head">
+          <Link to="/"><button>Home</button></Link> <button onClick={()=>{window.location.reload();}}>Restart</button>
           <h1>Level Two</h1>
         </div>
         <div className="nav">

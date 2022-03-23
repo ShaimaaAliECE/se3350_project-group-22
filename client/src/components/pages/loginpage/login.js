@@ -46,6 +46,7 @@ export default class LoginPage extends React.Component {
         return (
             <div id="main">
                 <div className="head">
+                <Link to="/"><button>Home</button></Link>
                     <h1>Admin Login Page</h1>
                 </div>
                 <div>
