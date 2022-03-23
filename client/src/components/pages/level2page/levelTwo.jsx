@@ -94,6 +94,10 @@ export default class LevelTwo extends React.Component {
 
     let seconds_divisor = minute_divisor % 60;
     let seconds = Math.ceil(seconds_divisor);
+    // function to add the leading zeros
+    if (seconds < 10){
+        seconds = "0" + seconds.toString();
+    }
 
     let obj = {
       "h": hours,
