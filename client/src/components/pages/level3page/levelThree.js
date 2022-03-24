@@ -7,7 +7,7 @@ import Number from '../../Number';
 import Board from "../../Board.js";
 import '../level2page/level2.css';
 import { steps } from "./level3Steps";
-import { Link } from "react-router-dom";
+import { Route, Navigate, Link } from "react-router-dom";
 
 // declare var to keep track of the step we're on, and start on step one.
 
@@ -69,7 +69,8 @@ export default class LevelTwo extends React.Component {
       time: {},
       timerIsActive: false,
       seconds: 0,
-      lastActive: 0
+      lastActive: 0,
+      exitLevel: false
     };
 
     this.verify = this.verify.bind(this);
@@ -130,9 +131,10 @@ export default class LevelTwo extends React.Component {
     });
     // check if user was inactive for 5 minutes
     if (this.state.seconds - this.state.lastActive > 300) {
+      // set exitLevel state to true so that user will be returned to home
       this.setState({ lastActive: this.state.seconds });
-      alert("You have been logged out due to 5 minutes of inactivity");
-      console.log("You have been logged out due to 5 minutes of inactivity");
+      alert("You will be returned to home due to 5 minutes of inactivity");
+      this.setState({ exitLevel: true });
     }
   }
 
@@ -812,6 +814,8 @@ export default class LevelTwo extends React.Component {
           <button className="generateBtn" onClick={() => { this.getButtonNumbers(); this.startTimer(); this.setLastActive() }}>Generate 10 Numbers</button>
           <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive() }}>next</button>
           Time Elapsed: {this.state.time.m}:{this.state.time.s}
+          {/* return user to home after 5 minutes of inactivity using state*/}
+          {this.state.exitLevel && <Navigate to="/" replace={true} />}
         </div>
         <h3 className="text">{this.state.clicked ? `The generated array: ${this.state.clicked ? this.state.answer : null}` : null}</h3>
         <div id="step"></div>
