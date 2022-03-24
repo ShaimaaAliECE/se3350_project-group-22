@@ -909,6 +909,7 @@ export default class LevelFour extends Component {
 </div> {/* end of nexthidden*/}
                         
             <div id= "next" className="centerdiv hidden">
+
                     <div><br></br></div>
                     <input 
                         type="button"
