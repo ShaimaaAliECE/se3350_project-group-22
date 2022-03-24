@@ -3,6 +3,7 @@ import incorrectSfx from "../../../sounds/wrong.mp3";
 import correctSfx from "../../../sounds/correct.mp3";
 import style from "./levelThree.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import {Link} from "react-router-dom";
 
 import {
   Random,
@@ -175,11 +176,12 @@ export default class LevelThree extends Component {
           <h1>Level 3: MergeSort Algorithm</h1>
         </div>
         <div className="functions">
-          <button className="home">Home</button>
+        <Link to="/"><button className="home">Home</button></Link> 
           <span style={{ display: "inline-block", width: "20px" }}></span>
 
           <span style={{ display: "inline-block", width: "20px" }}></span>
-          <button className="restart">Restart</button>
+
+           <button onClick={()=>{window.location.reload();}} className="restart">Restart</button>
           <span style={{ display: "inline-block", width: "20px" }}></span>
           <button className="quit">Quit</button>
         </div>
@@ -2261,8 +2263,7 @@ export default class LevelThree extends Component {
 
             <input type="number" id="n7CM10" name="n2" size="1" readOnly />
 
-            {/* <!--
-  group 4 -- > */}
+            {/* <!--  group 4 -- > */}
             <input type="number" id="n8CM10" name="n2" size="1" readOnly />
 
             {/* <!--group 5 -- > */}
