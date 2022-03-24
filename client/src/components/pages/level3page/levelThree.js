@@ -763,23 +763,23 @@ export default class LevelTwo extends React.Component {
     }
     //--------------------prompt box-------------------------------
     //if user has 3 incorrect attempt prompt the user to 
-    if (this.state.incorrectAttempt == 3) {
+    if (this.state.incorrectAttempt === 3) {
       let userNotFinished = true;
       //looping through the prompt box so that if the user makes a mistake it will prompt again until the user has correctly inputted the correct option
       while (userNotFinished) {
         let option = prompt("Please enter your option (if you clicked cancel, it will redirect you to homepage):\nOption 1: Restart the same level \nOption 2: Go back to any of the previous levels \nOption 3: Switch to the latest level with another algorithm \nOption 4: Quit the game", "1");
-        if (option == null || option == 4) {//if user cancels or picks option 4 to quit the game, it will redirect to the home page
+        if (option == null || parseInt(option) === 4) {//if user cancels or picks option 4 to quit the game, it will redirect to the home page
           userNotFinished = false;
           window.location = '/';
-        } else if (option == 1) { //if user picks option 1
+        } else if (parseInt(option) === 1) { //if user picks option 1
           userNotFinished = false;
           window.location.reload();
-        } else if (option == 2) { //if user picks option 2 to go to any of the previous levels
+        } else if (parseInt(option) === 2) { //if user picks option 2 to go to any of the previous levels
           let level = prompt("Which level?\n(Options: Level 1 (enter: 1) or Level 2 (enter: 2))");
-          if (level == 1) {
+          if (parseInt(level) === 1) {
             userNotFinished = false;
             window.location = "/LevelOne";
-          } else if (level == 2) {
+          } else if (parseInt(level) === 2) {
             userNotFinished = false;
             window.location = '/LevelTwo';
           } else if (level > 2) {
@@ -787,18 +787,15 @@ export default class LevelTwo extends React.Component {
             alert("You are not able to currently access future levels. You will be redirected to the previous level.");
             window.location = '/LevelTwo';
           }
-        } else if (option == 3) { //if user picks option 3 to go to the latest level of another algorithm
+        } else if (parseInt(option) === 3) { //if user picks option 3 to go to the latest level of another algorithm
           userNotFinished = false;
           alert("Latest level of another algorithm is currently in the making! You will be directed to home!");
           window.location = '/';
-          
-        }else { //if user incorrectly inputted the wrong option
+        } else { //if user incorrectly inputted the wrong option
           userNotFinished = true;
           alert("Incorrect input, try again!");
         }
       }
-
-
     }
   }
 
