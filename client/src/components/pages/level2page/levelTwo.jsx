@@ -8,6 +8,9 @@ import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
 import { Route, Navigate, Link} from "react-router-dom";
+
+import { useDrag } from 'react-dnd';
+
 //import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
 
 
@@ -33,7 +36,10 @@ let incorrectCount = 0;
 
 
 
+
 export default class LevelTwo extends React.Component {
+
+  
 
   constructor(props) {
     super(props);
@@ -71,7 +77,8 @@ export default class LevelTwo extends React.Component {
       time: {},
       timerIsActive: false,
       seconds: 0,
-      lastActive: 0
+      lastActive: 0,
+      exitLevel: false
     };
 
     this.verify = this.verify.bind(this);
@@ -130,18 +137,22 @@ export default class LevelTwo extends React.Component {
       time: this.secondsToTime(seconds),
       seconds: seconds,
     });
+    
     // check if user was inactive for 5 minutes
-    if (this.state.seconds - this.state.lastActive > 300) {
-      this.setState({ lastActive: this.state.seconds });
-      alert("You have been logged out due to 5 minutes of inactivity");
-      console.log("You have been logged out due to 5 minutes of inactivity");
-      return(<Route path="*" element={<Navigate to ="/" />}/>);
+    if (this.state.seconds - this.state.lastActive > 300)
+    {
+      // set exitLevel state to true so that user will be returned to home
+      this.setState({lastActive: this.state.seconds});      
+      alert("You will be returned to home due to 5 minutes of inactivity");
+      this.setState({exitLevel: true});
     }
   }
 
   clearTimer() {
     clearInterval(this.timer);
   }
+
+  
 
   // log the time user was last active at
   setLastActive() {
@@ -769,6 +780,7 @@ export default class LevelTwo extends React.Component {
   }
 
   render() {
+    const exitLevel = this.state.exitLevel;
     return (
       <div id="main">
         <div className="head">
@@ -781,7 +793,8 @@ export default class LevelTwo extends React.Component {
           <button className="generateBtn" onClick={() => { this.getButtonNumbers(); this.startTimer(); this.setLastActive() }}>Generate 10 Numbers</button>
           <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive() }}>next</button>
           Time Elapsed: {this.state.time.m}:{this.state.time.s}
-
+          {/* return user to home after 5 minutes of inactivity using state*/}
+          {exitLevel && <Navigate to="/" replace={true}/>} 
         </div>
         <h3 className="text">{this.state.clicked ? `The generated array: ${this.state.clicked ? this.state.answer : null}` : null}</h3>
         <div id="step"></div>

@@ -1,0 +1,52 @@
+<table id="BaseArrayTable" class="BaseTableStyle">
+                            </table>
+                            <div><br></br></div>
+
+                            <table id="testTable" class="BaseTableStyle">
+                                <td class="BaseArrayCells" draggable="true">testinf</td>
+                            </table>
+                            <div><br></br></div>
+
+
+
+                            <div id="stepstablehidden"> {/*hide everything below to show next step */}
+                                <div id="stepstable" class="centerdiv hidden">
+                                    <table id="stepstable" class="stepsTableFormat">
+                                        <td class="steptablecells centerdiv">
+                                            <div id="splitArray" class="centerdiv">
+                                                <table class="buttonsTableStyle">
+                                                    <td width="5%" class="buttonsArrayCells">
+                                                        <div class="groupboxdiv"> 
+                                                            <input 
+                                                                type="button"
+                                                                value="+"
+                                                                id= "addgroupbutton"
+                                                                class="groupBox"
+                                                                onClick={addgroup}
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="buttonsArrayCells">
+                                                        <table id="splitArrayTable" class="groupTableStyle">
+                                                            <tr id="1row"><td class="groupArrayCells"></td></tr>
+                                                        </table>
+                                                    </td>
+
+                                                    <td width="5%" class="buttonsArrayCells">
+                                                        <div class="groupboxdivright"> 
+                                                            <input 
+                                                                type="button"
+                                                                value="-"
+                                                                id= "subgroupbutton"
+                                                                class="groupBox"
+                                                                onClick={subgroup}
+                                                            />
+                                                        </div>
+                                                    </td>{/*for sub button cell*/}
+                                                </table> {/*for tablebuttons */}
+                                            </div>{/*for splitarray */}
+                                        </td>{/*for stepstable cells*/}
+                                    </table>{/*for stepstable */}
+                                </div> {/*for stepstable */}
+                            </div> {/*for stepstablehidden */}
