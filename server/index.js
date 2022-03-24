@@ -21,17 +21,16 @@ app.get("/", async (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 
   // Example of storing data into the database!!
-  const user = new UserModel({ 
+  const user = new UserModel({
     userName: "Andrew",
     timeRequired: 2,
+    checkCompletion: true,
   });
   try {
     await user.save();
   } catch (err) {
     console.log(err);
   }
-
-  
 });
 
 app.use((req, res, next) => {
@@ -71,6 +70,17 @@ app.get("/generate-numbers", (req, res, next) => {
 // handles verifying the user's input
 app.get("/check-answer", (req, res, next) => {
   res.send("<p>wrong</p>");
+});
+
+app.post("/submitTime", (req, res) => {
+  var newUser = new UserModel(req.body);
+  UserModel.save((err, doc) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
+  });
 });
 
 // starting server on the same port as the react app
