@@ -145,6 +145,21 @@ export default class LevelTwo extends React.Component {
     this.setState({ lastActive: this.state.seconds });
   }
 
+  submitResult = e => {        
+      e.preventDefault();
+      return fetch('/submitTime', {
+      method: 'POST',      
+      headers: { 'Content-Type': 'application/json' },   
+      body: JSON.stringify({userName: "Andrew", timeRequired: this.state.seconds,
+      checkCompletion: true,}), 
+    });
+    
+    //const body = await response.text();
+    //alert (body);
+    //this.setState({ responseToPost: body });    
+  };
+  
+
   verifySplit() {
 
     var arrAns = [];
@@ -801,8 +816,8 @@ export default class LevelTwo extends React.Component {
           <div className="nav">
             Incorrect Attempts: {this.state.incorrectAttempt}
             <button className="backBtn" onClick={() => { this.decrStep(); this.getContainers(); this.setLastActive() }}>back</button>
-            <button className="generateBtn" onClick={() => { this.getButtonNumbers(); this.startTimer(); this.setLastActive() }}>Generate 10 Numbers</button>
-            <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive() }}>next</button>
+            <button className="generateBtn" onClick={() => { this.getButtonNumbers(); this.startTimer(); this.setLastActive(); this.submitResult() }}>Generate 10 Numbers</button>
+            <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive(); this.submitResult() }}>next</button>
             Time Elapsed: {this.state.time.m}:{this.state.time.s}
             {/* return user to home after 5 minutes of inactivity using state*/}
             {exitLevel && <Navigate to="/" replace={true} />}
