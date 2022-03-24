@@ -584,6 +584,12 @@ export default class LevelFour extends Component {
                 <div id= "toptext" class="instructions hidden">
                     <h3>{ this.state.toptext} </h3>
                 </div>
+
+
+                <table id="BaseArrayTable" class="BaseTableStyle">
+                </table>
+                <div><br></br></div>
+
             </div>
 
             <Droppable droppableId="TopDropBoxDropID" direction="horizontal">
@@ -808,6 +814,7 @@ export default class LevelFour extends Component {
 </div> {/* end of nexthidden*/}
                         
             <div id= "next" className="centerdiv hidden">
+
                     <div><br></br></div>
                     <input 
                         type="button"
