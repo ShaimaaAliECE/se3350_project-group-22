@@ -55,7 +55,7 @@ class home extends Component {
               Level3
             </Link>
             <Link
-              to="/4test/"
+              to="/levelFour/"
               style={{ textDecoration: "none" }}
               className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
             >

@@ -5,12 +5,14 @@
 //element.remove();
 import wrongaudio from "../../../sounds/wrong.mp3";
 import correctaudio from "../../../sounds/correct.mp3";
+import { Draggable } from "react-beautiful-dnd";
 
 
 var size = 20;
 var max = 50;
 var min = 1;
 var numbersArray = new Array(size);
+var numOfGroups =1;
 
 
 export function Start() {
@@ -31,6 +33,21 @@ export function Start() {
   
 }//end of start function
 
+
+export function addgroup() {
+    var row = document.getElementById("1row");
+    var x = row.insertCell(-1);
+    x.classList.add("groupArrayCells");
+    //x.setAttribute(ondrop, drop(event));
+    //x.ondrop="drop(event)" ondragover="allowDrop(event)"
+    numOfGroups++;
+}//end of addgroup
+
+export function subgroup() {
+    var row = document.getElementById("1row");
+    row.deleteCell(0);
+    numOfGroups--;
+}//end of addgroup
 
 /* ************* Backend Functions - no need to export ************** */
 
@@ -83,6 +100,7 @@ export function Start() {
         {
             cells[i][x] = document.createElement("td");
             cells[i][x].classList.add("BaseArrayCells");
+            //cells[i][x].setAttribute(draggable, true);
             cells[i][x].innerHTML = numbersArray[x];
             rows[rows.length - 1].appendChild(cells[i][x]);
         }

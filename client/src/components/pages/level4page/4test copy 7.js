@@ -15,11 +15,8 @@ var size = 20;
 var max = 50;
 var min = 1;
 var numbersArray = new Array(size);
-var numOfGroups = 6;
+var numOfGroups = 1;
 var numOfItems=0;
-
-
-var listOfDropfBoxIds;
 
 numbersArray = RandomNumbersArray(size, max, min);
 
@@ -52,7 +49,6 @@ const DropBox = styled.div`
     background: ${(props) => (props.isDraggingOver ? '#e991dd' : '#faddf6')};
     text-align: center;
     vertical-align: middle;
-    border: 2px;
     height: 40px;
 `;
 
@@ -131,27 +127,14 @@ function Start() {
   
 }//end of start function
 
-const getItems = (size) => {
-    
-    var x = Array.from({ length: size }, (v, k) => k).map(k => ({
-        id: `toparrayitem-${k}`,
-        content: `${numbersArray[k]}`,
-    }));
-    
-    numOfItems = size;
-
-    return x;
-}
+const getItems = (size) => Array.from({ length: size }, (v, k) => k).map(k => ({
+    id: `toparrayitem-${k}`,
+    content: `${numbersArray[k]}`,
+  }));
 
 
 //a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
-    console.log("in reorder");
-    console.log(startIndex);
-    console.log(endIndex);
-    console.log(list);
-
-
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
@@ -160,12 +143,6 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 const copy = (source, destination, droppableSource, droppableDestination) => {
-    console.log("in copy");
-    console.log(source);
-    console.log(destination);
-    console.log(droppableSource);
-    console.log(droppableDestination);
-
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const item = sourceClone[droppableSource.index];
@@ -175,13 +152,6 @@ const copy = (source, destination, droppableSource, droppableDestination) => {
 };
 
 const move = (source, destination, droppableSource, droppableDestination) => {
-    console.log("in move");
-    console.log(source);
-    console.log(destination);
-    console.log(droppableSource);
-    console.log(droppableDestination);
-
-
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -197,185 +167,144 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 const arraynumberslist = getItems(size);
 
-function updateDropGroups() {
-    return Array.from({ length: numOfGroups }, (v, k) => k).map(k => ({
-        droppableId: `boxdropid-${k}`,
-        content: [],
-      }));
-}
+
 
 export default class LevelFour extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             feedbacktext: "",
             toptext: ("A set of "+ size +" numbers has been randomly generated"),
-            bottomtext: "Should the array be split or merged next?", 
+            bottomtext: "Should the array be split or merged next?",
 
             topArrayItems: getItems(size),
-
-            boxstateids : updateDropGroups(),
         };
         this.onDragEnd = this.onDragEnd.bind(this);
     }
 
-    onDragEnd = (result) =>  {
-        
-        const { source, destination } = result;
-
-        // console.log("elementidnumber");
-        // console.log(elementidnumber);
-
-        // console.log("useriscorrect");
-        // console.log(useriscorrect);
-
-        // console.log("allSplit" );
-        // console.log(allSplit );
-
-        // console.log("wasSplitStep");
-        // console.log(wasSplitStep);
-
-        // console.log("incorrectCount");
-        // console.log(incorrectCount);
-
-        // console.log("size");
-        // console.log(size);
-
-        // console.log("max");
-        // console.log(max);
-
-        // console.log("min");
-        // console.log(min);
-
-        // console.log("numOfGroups");
-        // console.log(numOfGroups);
-
-        // console.log("numOfItems");
-        // console.log(numOfItems);
-     
-        console.log("source:");
-        console.log(source);
-
-        console.log("destination:");
-        console.log(destination);
-
-        console.log("result:");
-        console.log(result);
-
-        // console.log("this.state.topArrayItems:");
-        // console.log(this.state.topArrayItems);
-
-        // console.log("id tests:")
-        
-        // console.log("this.state.topArrayItems[3].content:")
-        // console.log(this.state.boxstateids[3].droppableId); 
-
-
-        console.log("aougfibdhjcanlaifhu");
-        var helpme = Object.keys((this.state.boxstateids));
-        console.log(helpme);
-        console.log(this.state.boxstateids.length);
-        console.log(this.setDropIdArray());
-        console.log(this.state.boxstateids[0].content.length );
-
-
-
-        listOfDropfBoxIds = new Array(this.state.boxstateids.length);
-        
-        for(let i=0;i<this.state.boxstateids.length;i++) {
-
-            listOfDropfBoxIds[i] = this.state.boxstateids[i].droppableId;
-
-        }
-
-
-        // dropped outside the list
-        if (!destination) {
-            console.log("here: !dest");
-          return;
-        }
-            
-
-        else if(source.droppableId === destination.droppableId ) {
-            console.log("here: ===");
-
-            var toReorder;
-
-            console.log(destination.droppableId);
-            
-            if(destination.droppableId === 'TopDropBoxDropID') {
-                toReorder = this.state.topArrayItems
-            }
-            
-            else {
-                for (let i = 0; i<numOfGroups;i++){
-                    if(this.state.boxstateids[i].droppableId === destination.droppableId ) {
-                        toReorder = this.state.boxstateids[i].content;
-                        console.log("this is reorder passed: "+this.state.boxstateids[i].content);
-                    }
-                }
-            }
-
-            this.setState({
-                [destination.droppableId]: reorder(
-                    toReorder,
-                    source.index,
-                    destination.index
-                )
-            });
-        }
-        
-        else if(source.droppableId === 'TopDropBoxDropID') {
-            console.log("here: topdboxid");
-            var toReorder;
-            
-            
-            for (let i = 0; i<numOfGroups;i++){
-                if(this.state.boxstateids[i].droppableId === destination.droppableId ) {
-                    toReorder = this.state.boxstateids[i].content;
-                    console.log("this is reorder passed: "+this.state.boxstateids[i].content);
-                }
-            }
-
-            this.setState({
-                [destination.droppableId]: copy(
-                    arraynumberslist,
-                    toReorder,
-                    source,
-                    destination
-                )
-            });
-        }
-        
-        else {
-            console.log("here: default");
-            this.setState(
-                move(
-                    this.groups[source.droppableId],
-                    this.groups[destination.droppableId],
-                    source,
-                    destination
-                )
-            );
-        } 
+    state = {
+        [(numOfGroups++).toString()]: []
     };
 
-
-
-    setDropIdArray = () => {
-
-        listOfDropfBoxIds = new Array(this.state.boxstateids.length);
+    onDragEnd = (result) =>  {
         
-        for(let i=0;i<this.state.boxstateids.length;i++) {
+        // const { source, destination } = result;
+        const source = result.source;
+        const destination = result.destination;
+        
+        // //TopDropBoxDropID - expected value
+        // console.log(destination.droppableId);
+        
+        // //TopDropBoxDropID - expected value
+        // console.log(source.droppableId);
+        
+        // //undefined ???
+        // console.log(this.state[source.droppableId]);
+        
+        // //the array of items - expected value --- this should be what undefineds are
+        // console.log(this.state.topArrayItems);
 
-            listOfDropfBoxIds[i] = this.state.boxstateids[i].droppableId;
+        // //undefined??
+        // console.log(this.state[source.droppableId]);
+
+        // //undefined??
+        // console.log(this.state[destination.droppableId]);
+
+        // //index pulled from and droppableid pulled from
+        // console.log(source);
+
+        // //index placed at and dropppableid placed into
+        // console.log(destination);
+        
+        // dropped outside the list
+        if (!destination) {
+          return;
+        }
+
+        else if(destination.droppableId === source.droppableId) {
+
+            const topArrayItems = reorder(
+                this.state.topArrayItems,
+                result.source.index,
+                result.destination.index
+            );
+        
+            this.setState({
+                topArrayItems,
+            });
 
         }
 
-        return listOfDropfBoxIds;
+        else if(destination.droppableId === 'dropbox1') {
+            
+            const topArrayItems = move(
+                this.state[source.droppableId],
+                this.state[destination.droppableId],
+                source,
+                destination
+            );
+            this.setState({
+                topArrayItems,
+            });
+        }
 
-    }
+        // else if(source.droppableId === destination.droppableI ) {
+           
+        //         // const items = reorder(state[source.droppableId], source.index, destination.index);
+        //         // const newState = [...state];
+        //         // newState[source.droppableId] = items;
+        //         // setState(newState);
+
+
+        //     this.setState({
+        //         [destination.droppableId]: reorder(
+        //             this.state[source.droppableId],
+        //             source.index,
+        //             destination.index
+        //         )
+        //     });
+        // }
+        
+        // else if(source.droppableId === 'TopDropBoxDropID') {
+        //     //     this.setState({
+        //     //         [destination.droppableId]: copy(
+        //     //             topArrayItems,
+        //     //             this.state[destination.droppableId],
+        //     //             source,
+        //     //             destination
+        //     //         )
+        //     //     });
+        //     //    } 
+
+        //     this.setState({
+        //         [destination.droppableId]: copy(
+        //             arraynumberslist,
+        //             this.state[destination.droppableId],
+        //             source,
+        //             destination
+        //         )
+        //     });
+        // }
+        
+        // else {
+        //         // const result = move(state[source.droppableId], state[destination.droppableId], source, destination);
+        //         // const newState = [...state];
+        //         // newState[source.droppableId] = result[source.droppableId];
+        //         // newState[destination.droppableId] = result[destination.droppableId];
+          
+        //         // setState(newState.filter(group => group.length));
+
+        //         this.setState(
+        //             move(
+        //                 this.state[source.droppableId],
+        //                 this.state[destination.droppableId],
+        //                 source,
+        //                 destination
+        //             )
+        //         );
+
+        // } 
+    };
     
 
     playSound = () => {
@@ -584,15 +513,9 @@ export default class LevelFour extends Component {
                 <div id= "toptext" class="instructions hidden">
                     <h3>{ this.state.toptext} </h3>
                 </div>
-
-
-                <table id="BaseArrayTable" class="BaseTableStyle">
-                </table>
-                <div><br></br></div>
-
             </div>
 
-            <Droppable droppableId="TopDropBoxDropID" direction="horizontal">
+            <Droppable droppableId="TopDropBoxDropID" direction="horizontal" isDropDisabled={true}>
                 {(provided, snapshot) => (
 
                     <div id="TopArrayHidden" class = "hidden">
@@ -613,8 +536,7 @@ export default class LevelFour extends Component {
                                                 {number.content}
                                 
                                         
-                                            </ArrayElement>
-                                            {snapshot.isDragging && (
+                                            </ArrayElement>{snapshot.isDragging && (
                                                 <Clone>{number.content}</Clone>
                                             )}
 
@@ -649,112 +571,27 @@ export default class LevelFour extends Component {
                                     </td>
                                 
                                     <td class="buttonsArrayCells">
-
-
-                                        <Droppable droppableId="boxdropid-10" direction="horizontal">
-                                                        {(provided, snapshot) => (
-                                                            <DropBox ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
-                                                                {arraynumberslist.map((number, index) => (
-                
-                                                                    <Draggable key={number.id} draggableId={"secondlvele"+number.id} index={index}>
-                                                                        {(provided, snapshot) => ( 
-
-                                                                            <React.Fragment>
-                                                                                <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
-                                                                                    
-                                                                                    
-                                                                                    {number.content}
-                                                                    
-                                                                            
-                                                                                </ArrayElement>
-                                                                                {snapshot.isDragging && (
-                                                                                    <Clone>{number.content}</Clone>
-                                                                                )}
-
-                                                                            </React.Fragment>
-                                                                        )}
-                                                                    </Draggable>
-                                                                ))} {provided.placeholder}
-                                                                                                
-                                                            </DropBox>
-                                                        )}
-                                        </Droppable>
                                         
-                                        {this.setDropIdArray().map((list, i) => (
-                                            
-                                            <Droppable key={list} droppableId={listOfDropfBoxIds[list]}>
+                                        {/* {Object.keys(this.state).map((list, i) => (
+                                            <Droppable key={list} droppableId={list}>
                                                 {(provided, snapshot) => (
-
-                                                    <DropBox id={"dropboxid-"+numOfGroups} ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
-
-                                                        {this.state.boxstateids[list].content.length ? this.state.boxstateids[list].content.map((item, index) => (
-                                                                    
+                                                    <DropBox id={"dropboxid-"+numOfGroups} innerRef={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
+                                                        {this.state[list].length ? this.state[list].map((item, index) => (
                                                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                                                         {(provided, snapshot) => (
-                                                                            
-                                                                            
-                                                                            <ArrayElement ref={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                                                            <ArrayElement innerRef={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
                                                                                 
-                                                                                {list.content}
+                                                                                {item.content}
                                                                                 
                                                                             </ArrayElement>
-
-
                                                                         )}
                                                                     </Draggable>
-
                                                                 )): !provided.placeholder && (<Notice>Drop items here</Notice>)}
-
                                                         {provided.placeholder}
                                                     </DropBox>
-
                                                 )}
                                             </Droppable>
-                                            
-                                        ))}
-
-                                    {/* {this.state.boxstateids.map(id, content) => (
-
-
-
-                                    ))} */}
-
-                                        {/* <Droppable droppableId="TopDropBoxDropI2D" direction="horizontal">
-                                            {(provided, snapshot) => (
-
-                                                <div id="TopArrayHidden" class = "hidden">
-                                                    
-                                                    
-                                                    <TopDropBox id="topArrayBox" ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
-                                                        
-                                                        
-                                                        {arraynumberslist.map((number, index) => (
-                                            
-                                                            <Draggable key={number.id} draggableId={number.id} index={index}>
-                                                                {(provided, snapshot) => ( 
-
-                                                                    <React.Fragment>
-                                                                        <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
-                                                                            
-                                                                            
-                                                                            {number.content}
-                                                            
-                                                                    
-                                                                        </ArrayElement>
-                                                                        {snapshot.isDragging && (
-                                                                            <Clone>{number.content}</Clone>
-                                                                        )}
-
-                                                                    </React.Fragment>
-                                                                )}
-                                                            </Draggable>
-                                                        ))} {provided.placeholder}
-                                                    </TopDropBox>
-
-
-                                                </div>
-                                            )}
-                                        </Droppable> */}
+                                        ))} */}
 
                                     </td>
 
@@ -775,6 +612,30 @@ export default class LevelFour extends Component {
                     </table>{/*for stepstable */}
                 </div> {/*for stepstable */}
             </div>{/* for stepstablehidden */}
+
+
+{/* 
+                                        {Object.keys(this.state).map((list, i) => (
+                                            <Droppable key={list} droppableId={list}>
+                                                {(provided, snapshot) => (
+                                                    <DropBox id={"dropboxid-"+numOfGroups} innerRef={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
+                                                        {this.state[list].length ? this.state[list].map((item, index) => (
+                                                                    <Draggable key={item.id} draggableId={item.id} index={index}>
+                                                                        {(provided, snapshot) => (
+                                                                            <ArrayElement innerRef={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                                                                
+                                                                                {item.content}
+                                                                                
+                                                                            </ArrayElement>
+                                                                        )}
+                                                                    </Draggable>
+                                                                )): !provided.placeholder && (<Notice>Drop items here</Notice>)}
+                                                        {provided.placeholder}
+                                                    </DropBox>
+                                                )}
+                                            </Droppable>
+                                        ))} */}
+
 
 
                            
@@ -814,7 +675,6 @@ export default class LevelFour extends Component {
 </div> {/* end of nexthidden*/}
                         
             <div id= "next" className="centerdiv hidden">
-
                     <div><br></br></div>
                     <input 
                         type="button"
