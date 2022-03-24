@@ -8,12 +8,8 @@ import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
 import { Route, Navigate, Link} from "react-router-dom";
-
 import { useDrag } from 'react-dnd';
-
 //import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
-
-
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
@@ -33,14 +29,7 @@ let numOfArray = [];
 
 //keeping track of users incorrect attempts
 let incorrectCount = 0;
-
-
-
-
 export default class LevelTwo extends React.Component {
-
-  
-
   constructor(props) {
     super(props);
     this.state = {
@@ -151,8 +140,6 @@ export default class LevelTwo extends React.Component {
   clearTimer() {
     clearInterval(this.timer);
   }
-
-  
 
   // log the time user was last active at
   setLastActive() {
@@ -743,7 +730,7 @@ export default class LevelTwo extends React.Component {
           this.state.correctSound.play();
           this.state.incorrectSound.pause();
           //if the last step is being verified then clear the timer and log the time
-          if (steps[count - 1].stepID == 18) {
+          if (steps[count - 1].stepID === 18) {
             console.log("Total Time: " + this.state.time.m + ":" + this.state.time.s);
             this.clearTimer();
             this.setState({ feedback: "Correct!!!You have finished level 2" });
@@ -776,7 +763,21 @@ export default class LevelTwo extends React.Component {
 
     }
 
-
+        //--------------------prompt box-------------------------------
+    //if user has 3 incorrect attempt prompt the user to 
+    if (this.state.incorrectAttempt === 3) {
+      let option = prompt("Please enter your option(if you clicked cancel, it will redirect you to homepage):\nOption 1: Restart the same level \nOption 2: Go back to any of the previous levels \nOption 3: Switch to the latest level with another algorithm \nOption 4: Quit the game", "1");
+      if(option == null || option === 4){//if user cancels or picks option 4 to quit the game, it will redirect to the home page
+        window.location = '/';
+      } else if(option === 1){ //if user picks option 1
+        window.location.reload();
+      } else if(option === 2){ //if user picks option 2 to go to the previous level
+        window.location = '/levelOne';
+      } else if(option === 3){ //if user picks option 3 to go to the latest level of another algorithm
+        alert("Latest level of another algorithm is currently in the making! You will be directed to home!");
+        window.location = '/';
+      }
+    }
   }
 
   render() {
