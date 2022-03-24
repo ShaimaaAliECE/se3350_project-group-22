@@ -763,15 +763,7 @@ export default class LevelFour extends Component {
                 <div id= "toptext" class="instructions hidden">
                     <h3>{ this.state.toptext} </h3>
                 </div>
-<<<<<<< Updated upstream
-=======
 
-
-                {/* <table id="BaseArrayTable" class="BaseTableStyle">
-                </table> */}
-                <div><br></br></div>
-
->>>>>>> Stashed changes
             </div>
 
             <Droppable droppableId="TopDropBoxDropID" direction="horizontal" isDropDisabled={true}>
