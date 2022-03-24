@@ -759,7 +759,6 @@ export default class LevelTwo extends React.Component {
     //--------------------prompt box-------------------------------
     //if user has 3 incorrect attempt prompt the user to 
     if (this.state.incorrectAttempt == 3) {
-      let text;
       let option = prompt("Please enter your option(if you clicked cancel, it will redirect you to homepage):\nOption 1: Restart the same level \nOption 2: Go back to any of the previous levels \nOption 3: Switch to the latest level with another algorithm \nOption 4: Quit the game", "1");
       if(option == null || option == 4){//if user cancels or picks option 4 to quit the game, it will redirect to the home page
         window.location = '/';
