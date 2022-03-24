@@ -163,6 +163,8 @@ padding-left: 10px;
   text-align: center;
   vertical-align: middle;
   height: 40px;
+
+  border: 2px rgb(174, 173, 173);
 }
 
 .stepsTableFormat {
