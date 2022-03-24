@@ -764,12 +764,6 @@ export default class LevelFour extends Component {
                     <h3>{ this.state.toptext} </h3>
                 </div>
 
-
-                <table id="BaseArrayTable" class="BaseTableStyle">
-                </table>
-                <div><br></br></div>
-
-
             </div>
 
             <Droppable droppableId="TopDropBoxDropID" direction="horizontal" isDropDisabled={true}>
