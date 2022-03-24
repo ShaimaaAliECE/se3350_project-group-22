@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import "./levelFour.css";
-import { Link } from "react-router-dom";
+import { Route, Navigate, Link } from "react-router-dom";
 import styled from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
@@ -371,8 +371,82 @@ export default class LevelFour extends Component {
             topArrayItems: getItems(size),
 
             boxstateids : updateDropGroups(),
+            // for timer
+            time: {},
+            timerIsActive: false,
+            seconds: 0,
+            lastActive: 0,
+            exitLevel: false
         };
         this.onDragEnd = this.onDragEnd.bind(this);
+        // for timer
+        this.timer = 0;
+        this.startTimer = this.startTimer.bind(this);
+        this.countUp = this.countUp.bind(this);
+        this.clearTimer = this.clearTimer.bind(this);
+    }
+
+    // convert seconds to time
+    secondsToTime(secs) {
+        let hours = Math.floor(secs / (60 * 60));
+
+        let minute_divisor = secs % (60 * 60);
+        let minutes = Math.floor(minute_divisor / 60);
+
+        let seconds_divisor = minute_divisor % 60;
+        let seconds = Math.ceil(seconds_divisor);
+        // function to add the leading zeros
+        if (seconds < 10) {
+        seconds = "0" + seconds.toString();
+        }
+
+        let obj = {
+        "h": hours,
+        "m": minutes,
+        "s": seconds
+        };
+        return obj;
+    }
+
+    // initialize timer
+    componentDidMount() {
+        let initialTime = this.secondsToTime(this.state.seconds);
+        this.setState({ time: initialTime });
+    }
+
+    // start timer
+    startTimer() {
+        if (!this.state.timerIsActive) {
+        this.setState({ timerIsActive: true });
+        this.timer = setInterval(this.countUp, 1000);
+        }
+    }
+
+    // count up
+    countUp() {
+        // Add one second, set state so a re-render happens.
+        let seconds = this.state.seconds + 1;
+        this.setState({
+        time: this.secondsToTime(seconds),
+        seconds: seconds,
+        });
+
+        // check if user was inactive for 5 minutes
+        if (this.state.seconds - this.state.lastActive > 300) {
+        // set exitLevel state to true so that user will be returned to home
+        this.setState({ lastActive: this.state.seconds });
+        alert("You will be returned to home due to 5 minutes of inactivity");
+        this.setState({ exitLevel: true });
+        }
+    }
+
+    clearTimer() {
+        clearInterval(this.timer);
+    }
+
+    // log the time user was last active at
+    setLastActive() {
+        this.setState({ lastActive: this.state.seconds });
     }
 
     onDragEnd = (result) =>  {
@@ -741,6 +815,9 @@ export default class LevelFour extends Component {
                     <a href="#about">Quit</a>
                     <c href="#level4">Restart</c>
                     <a href="#home">Home</a>
+                    <b>Time Elapsed: {this.state.time.m}:{this.state.time.s}</b>
+                    {/* return user to home after 5 minutes of inactivity using state*/}
+                    {this.state.exitLevel && <Navigate to="/" replace={true} />}
                 </div> {/*end of navbar */}
 
                 <div id= "startHeader" class="instructions">
@@ -752,7 +829,7 @@ export default class LevelFour extends Component {
                         type="button"
                         className="choiceBttn"
                         value="Start"
-                        onClick={Start}
+                        onClick={() => { Start(); this.startTimer(); this.setLastActive() }}
                     />
                 </div>
 
@@ -817,7 +894,7 @@ export default class LevelFour extends Component {
                                                 value="+"
                                                 id= "addgroupbutton"
                                                 class="groupBox"
-                                                onClick={this.addList} 
+                                                onClick={() => { this.addList(); this.setLastActive() }}
                                             />
                                         </div>
                                     </td>
@@ -860,7 +937,7 @@ export default class LevelFour extends Component {
                                                 value="-"
                                                 id= "subgroupbutton"
                                                 class="groupBox"
-                                                onClick={subgroup}
+                                                onClick={() => { subgroup(); this.setLastActive() }}
                                             />
                                         </div>
                                     </td>{/*for sub button cell*/}
@@ -883,7 +960,7 @@ export default class LevelFour extends Component {
                     value="Split"
                     id= "splitchoicebttn" 
                     class="choiceBttn"
-                    onClick={this.SplitChoice}
+                    onClick={() => { this.SplitChoice(); this.setLastActive() }}
                     />
 
                            
@@ -892,7 +969,7 @@ export default class LevelFour extends Component {
                     id= "mergechoicebttn"
                     class="choiceBttn"
                     value="Merge"
-                    onClick={this.MergeChoice}
+                    onClick={() => { this.MergeChoice(); this.setLastActive() }}
                 />
             </div>
 
@@ -902,7 +979,7 @@ export default class LevelFour extends Component {
                     value="Check Answer"
                     id= "checkanswerbttn" 
                     class="choiceBttn"
-                    onClick={this.CheckAnswer}
+                    onClick={() => { this.CheckAnswer(); this.setLastActive() }}
                     />
             </div>
 
@@ -916,7 +993,7 @@ export default class LevelFour extends Component {
                         value="Next"
                         id= "nextbttn" 
                         class="choiceBttn"
-                        onClick={this.Next}
+                        onClick={() => { this.Next(); this.setLastActive() }}
                     />
             </div> 
 
