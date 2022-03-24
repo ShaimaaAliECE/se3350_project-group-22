@@ -7,7 +7,7 @@ import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
-import { Link } from "react-router-dom";
+import { Route, Navigate, Link} from "react-router-dom";
 //import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
 
 
@@ -135,6 +135,7 @@ export default class LevelTwo extends React.Component {
       this.setState({ lastActive: this.state.seconds });
       alert("You have been logged out due to 5 minutes of inactivity");
       console.log("You have been logged out due to 5 minutes of inactivity");
+      return(<Route path="*" element={<Navigate to ="/" />}/>);
     }
   }
 
