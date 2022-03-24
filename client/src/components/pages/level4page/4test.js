@@ -305,6 +305,7 @@ export default class LevelFour extends Component {
 
                                                                             </React.Fragment>
                                                                         )}
+                                                                    </Draggable>
                                                                 ))} {provided.placeholder}
                                                                                                 
                                                             </DropBox>
