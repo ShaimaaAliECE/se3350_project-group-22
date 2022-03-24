@@ -253,7 +253,199 @@ export default class LevelFour extends Component {
                 </table>
                 <div><br></br></div>
 
+<<<<<<< Updated upstream
                 <div id= "next" className="centerdiv hidden">
+=======
+
+                    </div>
+                )}
+            </Droppable>
+
+<div id="nexthidden">
+            <div id="stepstablehidden"> {/*hide everything below to show next step */}
+                <div id="stepstable" class="centerdiv hidden">
+                    <table id="stepstable" class="stepsTableFormat">
+                        <td class="steptablecells centerdiv">
+                            <div id="splitArray" class="centerdiv">
+                                <table class="buttonsTableStyle">
+                                    <td width="5%" class="buttonsArrayCells">
+                                        <div class="groupboxdivleft"> 
+                                            <input 
+                                                type="button"
+                                                value="+"
+                                                id= "addgroupbutton"
+                                                class="groupBox"
+                                                onClick={addgroup} 
+                                            />
+                                        </div>
+                                    </td>
+                                
+                                    <td class="buttonsArrayCells">
+
+
+                                        <Droppable droppableId="boxdropid-10" direction="horizontal">
+                                                        {(provided, snapshot) => (
+                                                            <DropBox ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
+                                                                {arraynumberslist.map((number, index) => (
+                
+                                                                    <Draggable key={number.id} draggableId={"secondlvele"+number.id} index={index}>
+                                                                        {(provided, snapshot) => ( 
+
+                                                                            <React.Fragment>
+                                                                                <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                                                                    
+                                                                                    
+                                                                                    {number.content}
+                                                                    
+                                                                            
+                                                                                </ArrayElement>
+                                                                                {snapshot.isDragging && (
+                                                                                    <Clone>{number.content}</Clone>
+                                                                                )}
+
+                                                                            </React.Fragment>
+                                                                        )}
+                                                                ))} {provided.placeholder}
+                                                                                                
+                                                            </DropBox>
+                                                        )}
+                                        </Droppable>
+                                        
+                                        {/* {this.setDropIdArray().map((list, i) => (
+                                            
+                                            <Droppable key={list} droppableId={listOfDropfBoxIds[list]}>
+                                                {(provided, snapshot) => (
+
+                                                    <DropBox id={"dropboxid-"+numOfGroups} ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
+
+                                                        {this.state.boxstateids[list].content.length ? this.state.boxstateids[list].content.map((item, index) => (
+                                                                    
+                                                                    <Draggable key={item.id} draggableId={item.id} index={index}>
+                                                                        {(provided, snapshot) => (
+                                                                            
+                                                                            
+                                                                            <ArrayElement ref={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                                                                
+                                                                                {list.content}
+                                                                                
+                                                                            </ArrayElement>
+
+
+                                                                        )}
+                                                                    </Draggable>
+
+                                                                )): !provided.placeholder && (<Notice>Drop items here</Notice>)}
+
+                                                        {provided.placeholder}
+                                                    </DropBox>
+
+                                                )}
+                                            </Droppable>
+                                            
+                                        ))} */}
+
+                                    {/* {this.state.boxstateids.map(id, content) => (
+
+
+
+                                    ))} */}
+
+                                        {/* <Droppable droppableId="TopDropBoxDropI2D" direction="horizontal">
+                                            {(provided, snapshot) => (
+
+                                                <div id="TopArrayHidden" class = "hidden">
+                                                    
+                                                    
+                                                    <TopDropBox id="topArrayBox" ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
+                                                        
+                                                        
+                                                        {arraynumberslist.map((number, index) => (
+                                            
+                                                            <Draggable key={number.id} draggableId={number.id} index={index}>
+                                                                {(provided, snapshot) => ( 
+
+                                                                    <React.Fragment>
+                                                                        <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                                                            
+                                                                            
+                                                                            {number.content}
+                                                            
+                                                                    
+                                                                        </ArrayElement>
+                                                                        {snapshot.isDragging && (
+                                                                            <Clone>{number.content}</Clone>
+                                                                        )}
+
+                                                                    </React.Fragment>
+                                                                )}
+                                                            </Draggable>
+                                                        ))} {provided.placeholder}
+                                                    </TopDropBox>
+
+
+                                                </div>
+                                            )}
+                                        </Droppable> */}
+
+                                    </td>
+
+                                    <td width="5%" class="buttonsArrayCells">
+                                        <div class="groupboxdivright"> 
+                                            <input 
+                                                type="button"
+                                                value="-"
+                                                id= "subgroupbutton"
+                                                class="groupBox"
+                                                onClick={subgroup}
+                                            />
+                                        </div>
+                                    </td>{/*for sub button cell*/}
+                                </table> {/*for tablebuttons */}
+                            </div>{/*for splitarray */}
+                        </td>{/*for stepstable cells*/}
+                    </table>{/*for stepstable */}
+                </div> {/*for stepstable */}
+            </div>{/* for stepstablehidden */}
+
+
+                           
+            <div id= "bottomtext" class="instructions hidden">
+                <h3>{this.state.bottomtext}</h3>
+            </div>
+
+            <div id= "choiceBttns" className="centerdiv hidden">
+                <input 
+                    type="button"
+                    value="Split"
+                    id= "splitchoicebttn" 
+                    class="choiceBttn"
+                    onClick={this.SplitChoice}
+                    />
+
+                           
+                <input
+                    type="button"
+                    id= "mergechoicebttn"
+                    class="choiceBttn"
+                    value="Merge"
+                    onClick={this.MergeChoice}
+                />
+            </div>
+
+            <div id= "checkanswerBttn" className="centerdiv hidden">
+                <input 
+                    type="button"
+                    value="Check Answer"
+                    id= "checkanswerbttn" 
+                    class="choiceBttn"
+                    onClick={this.CheckAnswer}
+                    />
+            </div>
+
+</div> {/* end of nexthidden*/}
+                        
+            <div id= "next" className="centerdiv hidden">
+>>>>>>> Stashed changes
                     <div><br></br></div>
                     <input 
                         type="button"
