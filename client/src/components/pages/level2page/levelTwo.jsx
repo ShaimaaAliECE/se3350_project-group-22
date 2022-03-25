@@ -7,13 +7,9 @@ import Number from '../../Number';
 import Board from "../../Board.js";
 import './level2.css';
 import { steps } from "./steps";
-import { Route, Navigate, Link} from "react-router-dom";
-
+import { Route, Navigate, Link } from "react-router-dom";
 import { useDrag } from 'react-dnd';
-
 //import {mergeSortAlgorithm, mergeArray, getLArray} from './mergeSortLevel2';
-
-
 
 // declare var to keep track of the step we're on, and start on step one.
 let count = 0;
@@ -33,14 +29,7 @@ let numOfArray = [];
 
 //keeping track of users incorrect attempts
 let incorrectCount = 0;
-
-
-
-
 export default class LevelTwo extends React.Component {
-
-  
-
   constructor(props) {
     super(props);
     this.state = {
@@ -103,8 +92,8 @@ export default class LevelTwo extends React.Component {
     let seconds_divisor = minute_divisor % 60;
     let seconds = Math.ceil(seconds_divisor);
     // function to add the leading zeros
-    if (seconds < 10){
-        seconds = "0" + seconds.toString();
+    if (seconds < 10) {
+      seconds = "0" + seconds.toString();
     }
 
     let obj = {
@@ -137,14 +126,13 @@ export default class LevelTwo extends React.Component {
       time: this.secondsToTime(seconds),
       seconds: seconds,
     });
-    
+
     // check if user was inactive for 5 minutes
-    if (this.state.seconds - this.state.lastActive > 300)
-    {
+    if (this.state.seconds - this.state.lastActive > 300) {
       // set exitLevel state to true so that user will be returned to home
-      this.setState({lastActive: this.state.seconds});      
+      this.setState({ lastActive: this.state.seconds });
       alert("You will be returned to home due to 5 minutes of inactivity");
-      this.setState({exitLevel: true});
+      this.setState({ exitLevel: true });
     }
   }
 
@@ -152,12 +140,25 @@ export default class LevelTwo extends React.Component {
     clearInterval(this.timer);
   }
 
-  
-
   // log the time user was last active at
   setLastActive() {
     this.setState({ lastActive: this.state.seconds });
   }
+
+  submitResult = e => {        
+      e.preventDefault();
+      return fetch('/submitTime', {
+      method: 'POST',      
+      headers: { 'Content-Type': 'application/json' },   
+      body: JSON.stringify({userName: "Andrew", timeRequired: this.state.seconds,
+      checkCompletion: true,}), 
+    });
+    
+    //const body = await response.text();
+    //alert (body);
+    //this.setState({ responseToPost: body });    
+  };
+  
 
   verifySplit() {
 
@@ -245,7 +246,7 @@ export default class LevelTwo extends React.Component {
         case 14:
           ansString = getRArray(rightArr, (count - 1));
           break;
-          default:
+        default:
       }
       console.log("second if");
       ansString = ansString.toString();
@@ -440,7 +441,7 @@ export default class LevelTwo extends React.Component {
       case 18:
         this.setState({ containers17: container });
         break;
-        default:
+      default:
     }
   }
 
@@ -657,7 +658,7 @@ export default class LevelTwo extends React.Component {
             console.log("answer at index " + k + " : " + answerArray[h]);
           }
           break;
-          default:
+        default:
       }
 
       // let correctOrder;
@@ -729,21 +730,21 @@ export default class LevelTwo extends React.Component {
           //set the incorrect attempt
           this.setState({ incorrectAttempt: incorrectCount });
           this.setState({ feedback: "the numbers are in the correct order but they need to be split as evenly as possible. please try again." });
-        // if the user gets the final step of the algorithm correct, and successfully completes the level
+          // if the user gets the final step of the algorithm correct, and successfully completes the level
         } else if (correctOrder && correctSplit && (this.state.step === 17)) {
           document.getElementById('feedback').style.backgroundColor = 'green';
           document.getElementById('feedback').style.color = 'white';
           this.state.correctSound.play();
           this.state.incorrectSound.pause();
           this.setState({ feedback: "correct!!!! congratulations!!!!!! :-D you've now completed level 2!!! feel free to redo this level to strengthen your skills, or go back to the home page and try level 3!!!!" });
-        // if it's the right order, right split, and it's not the final step of the algorithm
-        } else if (correctOrder && correctSplit &&(this.state.step !== 17)) {
+          // if it's the right order, right split, and it's not the final step of the algorithm
+        } else if (correctOrder && correctSplit && (this.state.step !== 17)) {
           document.getElementById('feedback').style.backgroundColor = 'green';
           document.getElementById('feedback').style.color = 'white';
           this.state.correctSound.play();
           this.state.incorrectSound.pause();
           //if the last step is being verified then clear the timer and log the time
-          if (steps[count - 1].stepID == 18) {
+          if (steps[count - 1].stepID === 18) {
             console.log("Total Time: " + this.state.time.m + ":" + this.state.time.s);
             this.clearTimer();
             this.setState({ feedback: "Correct!!!You have finished level 2" });
@@ -776,91 +777,116 @@ export default class LevelTwo extends React.Component {
 
     }
 
-
+    //--------------------prompt box-------------------------------
+    //if user has 3 incorrect attempt prompt the user to 
+    if (this.state.incorrectAttempt === 3) {
+      let userNotFinished = true;
+      //looping through the prompt box so that if the user makes a mistake it will prompt again until the user has correctly inputted the correct option
+      while (userNotFinished) {
+        let option = prompt("Please enter your option (if you clicked cancel, it will redirect you to homepage):\nOption 1: Restart the same level \nOption 2: Go back to the previous level \nOption 3: Switch to the latest level with another algorithm \nOption 4: Quit the game", "1");
+        if (option == null || parseInt(option) === 4) {   //if user cancels or picks option 4 to quit the game, it will redirect to the home page
+          window.location = '/';
+          userNotFinished = false;
+        } else if (parseInt(option) === 1) { //if user picks option 1
+          window.location.reload();
+          userNotFinished = false;
+        } else if (parseInt(option) === 2) { //if user picks option 2 to go to the previous level
+          window.location = "/LevelOne";
+          userNotFinished = false;
+        } else if (parseInt(option) === 3) { //if user picks option 3 to go to the latest level of another algorithm
+          alert("Latest level of another algorithm is currently in the making! You will be directed to home!");
+          window.location = '/';
+          userNotFinished = false;
+        } else {  //if user incorrectly inputted the wrong option
+          userNotFinished = true;
+          alert("Incorrect input, try again!");
+        }
+      }
+    }
   }
 
-  render() {
-    const exitLevel = this.state.exitLevel;
-    return (
-      <div id="main">
-        <div className="head">
-          <Link to="/"><button>Home</button></Link> <button onClick={()=>{window.location.reload();}}>Restart</button>
-          <h1>Level Two</h1>
+    render() {
+      const exitLevel = this.state.exitLevel;
+      return (
+        <div id="main">
+          <div className="head">
+            <Link to="/"><button>Home</button></Link> <button onClick={() => { window.location.reload(); }}>Restart</button>
+            <h1>Level Two</h1>
+          </div>
+          <div className="nav">
+            Incorrect Attempts: {this.state.incorrectAttempt}
+            <button className="backBtn" onClick={() => { this.decrStep(); this.getContainers(); this.setLastActive() }}>back</button>
+            <button className="generateBtn" onClick={() => { this.getButtonNumbers(); this.startTimer(); this.setLastActive(); this.submitResult() }}>Generate 10 Numbers</button>
+            <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive(); this.submitResult() }}>next</button>
+            Time Elapsed: {this.state.time.m}:{this.state.time.s}
+            {/* return user to home after 5 minutes of inactivity using state*/}
+            {exitLevel && <Navigate to="/" replace={true} />}
+          </div>
+          <h3 className="text">{this.state.clicked ? `The generated array: ${this.state.clicked ? this.state.answer : null}` : null}</h3>
+          <div id="step"></div>
+          <div id="verify"></div>
+          <div id="feedback">{this.state.feedback}</div>
+          <div className="flexbox1">
+            <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container0" id="containers">{(this.state.step >= 0) ? this.state.containers0 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container1" id="containers">{this.state.step >= 1 ? this.state.containers1 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container2" id="containers">{(this.state.step >= 2) && (this.state.step <= 5) ? this.state.containers2 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container3" id="containers">{(this.state.step >= 3) && (this.state.step <= 4) ? this.state.containers3 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container4" id="containers">{(this.state.step >= 4) && (this.state.step <= 5) ? this.state.containers4 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container5" id="containers">{this.state.step >= 5 ? this.state.containers5 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container6" id="containers">{this.state.step >= 6 ? this.state.containers6 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container7" id="containers">{this.state.step >= 7 ? this.state.containers7 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container8" id="containers">{this.state.step >= 8 ? this.state.containers8 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container9" id="containers">{this.state.step >= 9 ? this.state.containers9 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container10" id="containers">{this.state.step >= 10 ? this.state.containers10 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container11" id="containers">{this.state.step >= 11 ? this.state.containers11 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container12" id="containers">{this.state.step >= 12 ? this.state.containers12 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container13" id="containers">{this.state.step >= 13 ? this.state.containers13 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container14" id="containers">{this.state.step >= 14 ? this.state.containers14 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container15" id="containers">{this.state.step >= 15 ? this.state.containers15 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container16" id="containers">{this.state.step >= 16 ? this.state.containers16 : null}</div>
+          </div>
+          <div className="flexbox">
+            <div className="container17" id="containers">{this.state.step >= 17 ? this.state.containers17 : null}</div>
+          </div>
         </div>
-        <div className="nav">
-          Incorrect Attempts: {this.state.incorrectAttempt}
-          <button className="backBtn" onClick={() => { this.decrStep(); this.getContainers(); this.setLastActive() }}>back</button>
-          <button className="generateBtn" onClick={() => { this.getButtonNumbers(); this.startTimer(); this.setLastActive() }}>Generate 10 Numbers</button>
-          <button className="nextBtn" onClick={() => { this.incrStep(); this.getContainers(); this.setLastActive() }}>next</button>
-          Time Elapsed: {this.state.time.m}:{this.state.time.s}
-          {/* return user to home after 5 minutes of inactivity using state*/}
-          {exitLevel && <Navigate to="/" replace={true}/>} 
-        </div>
-        <h3 className="text">{this.state.clicked ? `The generated array: ${this.state.clicked ? this.state.answer : null}` : null}</h3>
-        <div id="step"></div>
-        <div id="verify"></div>
-        <div id="feedback">{this.state.feedback}</div>
-        <div className="flexbox1">
-          <div id="numbers">{this.state.clicked ? this.state.buttons : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container0" id="containers">{(this.state.step >= 0) ? this.state.containers0 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container1" id="containers">{this.state.step >= 1 ? this.state.containers1 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container2" id="containers">{(this.state.step >= 2) && (this.state.step <= 5) ? this.state.containers2 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container3" id="containers">{(this.state.step >= 3) && (this.state.step <= 4) ? this.state.containers3 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container4" id="containers">{(this.state.step >= 4) && (this.state.step <= 5) ? this.state.containers4 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container5" id="containers">{this.state.step >= 5 ? this.state.containers5 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container6" id="containers">{this.state.step >= 6 ? this.state.containers6 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container7" id="containers">{this.state.step >= 7 ? this.state.containers7 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container8" id="containers">{this.state.step >= 8 ? this.state.containers8 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container9" id="containers">{this.state.step >= 9 ? this.state.containers9 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container10" id="containers">{this.state.step >= 10 ? this.state.containers10 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container11" id="containers">{this.state.step >= 11 ? this.state.containers11 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container12" id="containers">{this.state.step >= 12 ? this.state.containers12 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container13" id="containers">{this.state.step >= 13 ? this.state.containers13 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container14" id="containers">{this.state.step >= 14 ? this.state.containers14 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container15" id="containers">{this.state.step >= 15 ? this.state.containers15 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container16" id="containers">{this.state.step >= 16 ? this.state.containers16 : null}</div>
-        </div>
-        <div className="flexbox">
-          <div className="container17" id="containers">{this.state.step >= 17 ? this.state.containers17 : null}</div>
-        </div>
-      </div>
-    );
+      );
+    }
   }
-}
 
 // declare global variables
 
