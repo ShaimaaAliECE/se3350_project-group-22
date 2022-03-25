@@ -1,88 +1,226 @@
-import React, { Component, useState } from "react";
+import React, { Component, useRef} from "react";
 import "./levelFour.css";
 import { Route, Navigate, Link } from "react-router-dom";
 import styled from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-var elementidnumber = 0;
+var size = 10;
+var max = 50;
+var min = 1;
 
-var useriscorrect = false;
+var numbersArray = new Array(size);
+numbersArray = RandomNumbersArray(size, max, min);
+
+const getItems = (size) => {
+    
+    var x = Array.from({ length: size }, (v, k) => k).map(k => ({
+        id: `toparrayitem-${k}`,
+        content: `${numbersArray[k]}`,
+    }));
+    return x;
+}
+
+
+
+const arraynumberslist = getItems(size);
+
+var wascontenterror = false;
+
+var arraySize = size;
+var arrayMax = max;
+var arrayMin = min;
+
+var firstCall = true;
+var levelArray = new Array(arraySize);
+var finalLevelArray = new Array(arraySize);
+var compareLArray;
+var compareRArray;
+var compareL;
+var compareR;
+var reminaingLArray;
+var remainingRArray;
+
+
+var middleIndextotal = 0 + parseInt(((arraySize - 1) - 0) / 2);
+
+//define array/get random numbers
+levelArray = arraynumberslist;
+
+var elementidnumber = 0;
+var useriscorrect = true;
 var allSplit = false;
 var wasSplitStep = false;
 var incorrectCount = 0;
 
-var size = 10;
-var max = 50;
-var min = 1;
-var numbersArray = new Array(size);
-
-var arrayforgroupinfo = [[]];
+var arrayforgroupinfo = [];
 var stepnum = 0;
-var currentgroupcount = 0;
-var currentgroupitemcount = 0;
+var currentitemcount = 0;
 
 
-var groupitemboxcontent = "";
-var groupboxcontent = "";
+var currentstepcheck = 0;
+var mergestepcurrentstep = 0;
+var hasHitStep = false;
+var mergesortstepresult = [];
 
-function addgroup() {
+var boxcontent = "";
 
-    currentgroupcount++;
-    currentgroupitemcount = 0;
+var leftIndex = 0;
+var rightIndex = arraySize-1;
+var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
 
-    arrayforgroupinfo[parseInt(stepnum)][parseInt(currentgroupcount)] = currentgroupitemcount;
+
+var array= [];
+
+for (var i = 0; i <arraynumberslist.length; i++) {
+    array[i] = arraynumberslist[i];
+}
+
+
+var isonleft = true;
+
+var isfirst = true;
+
+var splits = [[]];
+
+var stepnum = 0;
+
+var rightsideSave = [];
+var leftsideSave = [];
+
+var numoflsplits = 0;
+
+function splitcheck () {
+    var lengths = findDim(splits);
+
+    if (middleIndextotal % 2 === 0) {
+        numoflsplits = middleIndextotal ;
+    }
+    else {
+        numoflsplits = middleIndextotal + 1;
+    }
+    
+    
+    if(isfirst) {
+        
+        for (let x=0;x <= middleIndex;x++){
+            splits[stepnum][x] = array[x];
+        }
+       
+        splits[stepnum][middleIndex+1] = "split";
+
+        for (let x = middleIndex+1, y = 0;x< array.length;y++,x++){
+            rightsideSave[y] = array[x];
+        }
+    
+        for (let x = middleIndex+1, y = middleIndex+2;x< array.length;y++,x++){
+            splits[stepnum][y] = array[x];
+        }
+
+        isfirst = false;
+    }
+
+    lengths = findDim(splits);
+    
+    splits.push([]);
+
+    for(let x = 0; x < lengths[1]; x++){
+        
+        splits[stepnum+1][x] = splits[stepnum][x];
+    }
+    
+    while(numoflsplits > 0) {
+        
+        lengths = findDim(splits);
+        var lengthx = lengths[1]+1;
+        stepnum++;
+        splits.push([]);
+        
+        rightIndex = middleIndex;
+        leftIndex = 0;
+        middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
+       
+        for(let x = 0; x < lengths[1]; x++){
+        
+            array[x] = splits[stepnum][x];
+        }
+
+     
+    
+        for (let x=0 ;x <= middleIndex; x++){
+            
+            splits[stepnum][x] = array[x];
+
+        }
+        
+        splits[stepnum][middleIndex+1] = "split";
+    
+        for (let x = middleIndex+1, y = middleIndex+2;x< array.length;y++,x++){
+    
+            splits[stepnum][y] = array[x];
+        }
+
+        numoflsplits--;
+        
+        for(let x = 0; x < lengthx; x++){
+        
+            splits[stepnum+1][x] = splits[stepnum][x];
+        }
+    }
+
+console.log(splits);
+
+return splits;
+}
+
+function findDim(a){
+    var mainLen = 0;
+    var subLen = 0;
+
+    mainLen = a.length;
+
+    for(var i=0; i < mainLen; i++){
+        var len = a[i].length;
+        subLen = (len > subLen ? len : subLen);
+    }
+
+    return [mainLen, subLen];
+};
+
+function additembox() {
+
+    currentitemcount++;
+
+    arrayforgroupinfo[parseInt(stepnum)] = currentitemcount;
 
     var row = document.getElementById(("stepnumber-"+stepnum));
     var x = row.insertCell(-1);
-    x.classList.add("groupArrayCells");
-    var thisid = ("step"+stepnum+"-group-"+currentgroupcount);
+    var thisid = ("step"+stepnum+"-group-"+currentitemcount);
     x.setAttribute("id", thisid);
 
     
-    //groupboxcontent = "<input type=\"button\" value=\"+\" id= \"plusitem-s\"+stepnum+\"-g\"+currentgroupcount\"  class=\"groupBoxadditem\" onClick={this.addGroupItem} /><input id =\"box-s\"+stepnum+\"-g\"+currentgroupcount+\"-i0\" type=\"number\" />";
+    boxcontent= "<input class =\"itembox\" id =\"s";
+    boxcontent = boxcontent + stepnum;
+    boxcontent = boxcontent +"-i";
+    boxcontent = boxcontent +currentitemcount;
+    boxcontent = boxcontent+ "\" type=\"text\"/>";
+ 
+    x.insertAdjacentHTML("afterbegin", boxcontent);
 
-
-    groupboxcontent= "<input type=\"button\" value=\"+\" id= \"plusitem-s0-g1\"  class=\"groupBoxadditem\" onClick={this.addGroupItem.bind(this,\"plusitem-s\"+stepnum+\"-g\"+currentgroupcount)}  /> <input id =\"box-s0-g0-i1\" type=\"number\"/>"
-    
-    
-    x.insertAdjacentHTML("afterbegin", groupboxcontent);
 }//end of addgroup
 
-function subgroup() {
-    currentgroupcount--;
-    var row = document.getElementById(("stepnumber-"+stepnum));
-    row.deleteCell(0);
-
+function subitembox() {
+    if(currentitemcount >= 0){
+        currentitemcount--;
+        var row = document.getElementById(("stepnumber-"+stepnum));
+        row.deleteCell(currentitemcount+1);
+    }
 }//end of subgroup
 
-function getidnum(str) {
-    return str.split('-g')[1];
-}
-
-// function addGroupItem (){
-      
-//     //var currentgrouptoaddto = parseInt(id.currentTarget.id.substring(12));
-
-//     console.log("here");
-   
-   
-//     // currentgroupcount = arrayforgroupinfo[stepnum][currentgrouptoaddto].length;
-//     // currentgroupitemcount++;
-    
-//     // groupitemboxcontent = "<input id =\"box-s"+stepnum+"-g"+currentgrouptoaddto+"-"+currentgroupitemcount+"\" type=\"number\"></input>"
-
-//     // arrayforgroupinfo[stepnum][currentgrouptoaddto][currentgroupitemcount] = "x";
-
-//     // var group = document.getElementById(("step1-group-1"));
-//     // group.insertAdjacentHTML("beforeend", groupitemboxcontent);
-
-// }
-
-numbersArray = RandomNumbersArray(size, max, min);
  
 const ArrayElement = styled.div`
     border: 1px ${props => (props.isDragging ? 'dashed #000' : 'solid #999')};
-    background: ${(props) => (props.isDragging ? '#e991dd' : '#e2b4ee')};
+    background: ${(props) => (props.isDragging ? '#e991dd' : '#ffebfc')};
+    color: '#e2b4ee';
     font-family: "Courier New", Courier, monospace;
     padding: 5px;
     text-align: center;
@@ -92,16 +230,6 @@ const ArrayElement = styled.div`
  
 `;
 
-const DropBox = styled.div`
-    background: ${(props) => (props.isDraggingOver ? '#e991dd' : '#faddf6')};
-    text-align: center;
-    vertical-align: middle;
-    height: 40px;
-    display: flex;
-    margin: 3px;
-    border: 1px solid #9e9e9e;
-  
-`;
 
 const TopDropBox = styled.div`
     text-align: center;
@@ -164,162 +292,170 @@ function Start() {
   
 }//end of start function
 
-const getItems = (size) => {
-    
-    var x = Array.from({ length: size }, (v, k) => k).map(k => ({
-        id: `toparrayitem-${k}`,
-        content: `${numbersArray[k]}`,
-    }));
-    return x;
-}
+function print(array, size) {
+    for (var i = 0; i < size; i++){
+        console.log("["+array[i] + "]");
+    }
+}//end of print function
 
-// function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compareRArray) {
-//     //if the start index has become equal or less than the end index then the merge sort is done
-//     if(leftIndex >= rightIndex) {
-//         return;
-//     }//end of if 
-    
-//     //set the middle index
-//     var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
-//     var thisBlockSize;
-    
-//     //set variable and conditionals which check if the algorithm has moved on the the right side of the original split
-//     //if it has it resets the first call
-//     var newBlockCheck;
-    
-//     if((arraySize % 2)==0){
-//         newBlockCheck = (arraySize/2)-1;
-//     }
 
-//     else{
-//         newBlockCheck = Math.ceil(arraySize/2); 
-//     }
-
-//     if(middleIndex == newBlockCheck) {
-//         firstCall = true;
-//     }
-
-//     if(firstCall){
-//         thisBlockSize = arraySize - leftIndex;
-//         firstCall = false;
-//     }
-//     else {
-//         thisBlockSize = arraySize - (arraySize -(rightIndex+1));
-//     }
+function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compareRArray) {
+    //if the start index has become equal or less than the end index then the merge sort is done
+    if(leftIndex >= rightIndex) {
+        return;
+    }//end of if 
     
-//     //declaring variables
-//     var rightSideSize = rightIndex - middleIndex;
-//     var leftSideSize = thisBlockSize - rightSideSize;
+    //set the middle index
+    var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
+    var thisBlockSize;
     
-//     compareLArray = new Array(leftSideSize);
-//     compareRArray = new Array(rightSideSize);
-
-//     //setting the left side of the numbers to compare
-//     for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
-//         compareLArray[y] = array[i];
-//     }
+    //set variable and conditionals which check if the algorithm has moved on the the right side of the original split
+    //if it has it resets the first call
+    var newBlockCheck;
     
-//     //setting right side of the numbers to compare
-//     for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
-//         compareRArray[k] = array[j];
-//     }
+    if((arraySize % 2)==0){
+        newBlockCheck = (arraySize/2)-1;
+    }
 
-//     //outputing a split
-//     process.stdout.write("Splitting numbers: "); print(compareLArray, leftSideSize); process.stdout.write("   "); print(compareRArray, rightSideSize); console.log(" "); console.log(" ");
+    else{
+        newBlockCheck = Math.ceil(arraySize/2); 
+    }
 
-//     //recursively spliting the left side
-//     mergeSortAlgorithm(array, leftIndex, middleIndex, compareLArray, compareRArray);
+    if(middleIndex == newBlockCheck) {
+        firstCall = true;
+    }
+
+    if(firstCall){
+        thisBlockSize = arraySize - leftIndex;
+        firstCall = false;
+    }
+    else {
+        thisBlockSize = arraySize - (arraySize -(rightIndex+1));
+    }
     
-//     //setting the left side of the numbers to compare
-//     for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
-//         compareLArray[y] = array[i];
-//     }
+    //declaring variables
+    var rightSideSize = rightIndex - middleIndex;
+    var leftSideSize = thisBlockSize - rightSideSize;
+    
+    compareLArray = new Array(leftSideSize);
+    compareRArray = new Array(rightSideSize);
 
-//     //setting right side of the numbers to compare
-//     for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
-//         compareRArray[k] = array[j];
-//     }
+    //setting the left side of the numbers to compare
+    for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
+        compareLArray[y] = array[i];
+    }
+    
+    //setting right side of the numbers to compare
+    for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
+        compareRArray[k] = array[j];
+    }
+
+    mergestepcurrentstep++;
+    if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
+        hasHitStep = true;
+        for (let j = 0;j < arraySize; j++){
+            mergesortstepresult = array[j];
+        }
+    }
+
+
+    console.log (compareLArray);
+    //console.log("Splitting numbers: "); print(compareLArray, leftSideSize); console.log("   "); print(compareRArray, rightSideSize); console.log(" "); console.log(" ");
+
+    //recursively spliting the left side
+    mergeSortAlgorithm(array, leftIndex, middleIndex, compareLArray, compareRArray);
+    
+    //setting the left side of the numbers to compare
+    for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
+        compareLArray[y] = array[i];
+    }
+
+    //setting right side of the numbers to compare
+    for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
+        compareRArray[k] = array[j];
+    }
    
-//     //recursively merge sorting the right (end) side
-//     mergeSortAlgorithm(array, middleIndex + 1, rightIndex, compareLArray, compareRArray);
+    mergestepcurrentstep++;
+    if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
+        hasHitStep=true;
+       for (let j = 0;j < arraySize; j++){
+           mergesortstepresult = array[j];
+       }
+    }
+    //recursively merge sorting the right (end) side
+    mergeSortAlgorithm(array, middleIndex + 1, rightIndex, compareLArray, compareRArray);
     
-//     //merging the array
-//     mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray);
-// }//end of the mergesortalgorithm function
+    //merging the array
+    mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray);
+}//end of the mergesortalgorithm function
 
-// //merge function
-// function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray) {
-//     var lSize = middleIndex - leftIndex + 1;
-//     var rSize = rightIndex - middleIndex;
+//merge function
+function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray) {
+    var lSize = middleIndex - leftIndex + 1;
+    var rSize = rightIndex - middleIndex;
 
-//     var left = new Array(lSize); 
-//     var right = new Array(rSize);
+    var left = new Array(lSize); 
+    var right = new Array(rSize);
 
-//     for (var i = 0; i < lSize; i++) {
-//         left[i] = array[leftIndex + i];
-//     }
+    for (var i = 0; i < lSize; i++) {
+        left[i] = array[leftIndex + i];
+    }
 
-//     for (var j = 0; j < rSize; j++) {
-//         right[j] = array[middleIndex + 1 + j];
-//     }
+    for (var j = 0; j < rSize; j++) {
+        right[j] = array[middleIndex + 1 + j];
+    }
 
-//     var i = 0;
-//     var j = 0;
-//     var k = leftIndex;
+    var i = 0;
+    var j = 0;
+    var k = leftIndex;
 
-//     while (i < lSize && j < rSize) {
-//         console.log(" "); console.log(" "); process.stdout.write("Comparing: " + left[i] + " & "+ right[j]);
-//         if (left[i] <= right[j]) {
-//             array[k] = left[i];
-//             console.log("  --->  "+left[i]+" is smaller than or equal to "+right[j]);
-//             console.log(" ");
-//             console.log("Inserting "+left[i]+" to the array at index "+k);
-//             console.log(" ");
-//             process.stdout.write("The updated array looks like this: "); print(array,arraySize); console.log(" ");
-//             i++;
-//         }
-//         else {
-//             array[k] = right[j];
-//             console.log("  --->  "+right[j]+" is smaller than "+left[i]);
-//             console.log(" "); console.log("Inserting "+right[j]+" to the array at index "+k);
-//             console.log(" "); process.stdout.write("The updated array looks like this: "); print(array,arraySize); console.log(" ");
-//             j++;
-//         }
-//         k++;
-//     }
-
-    
-//     console.log(" "); process.stdout.write("Inserting any remaining numbers from the left side:"); 
-//     if (!(i < lSize)){
-//         process.stdout.write(" No numbers to add");
-//     }
-//     while (i < lSize) {
-//         process.stdout.write(" "+left[i]+" at index "+k+".");
-//         array[k] = left[i];
-//         i++;
-//         k++;
-//     }
+    while (i < lSize && j < rSize) {
+        console.log(" "); console.log(" "); console.log("Comparing: " + left[i] + " & "+ right[j]);
+        if (left[i] <= right[j]) {
+            array[k] = left[i];
+            console.log("  --->  "+left[i]+" is smaller than or equal to "+right[j]);
+            console.log(" ");
+            console.log("Inserting "+left[i]+" to the array at index "+k);
+            console.log(" ");
+            console.log("The updated array looks like this: "); print(array,arraySize); console.log(" ");
+            i++;
+        }
+        else {
+            array[k] = right[j];
+            console.log("  --->  "+right[j]+" is smaller than "+left[i]);
+            console.log(" "); console.log("Inserting "+right[j]+" to the array at index "+k);
+            console.log(" "); console.log("The updated array looks like this: "); print(array,arraySize); console.log(" ");
+            j++;
+        }
+        k++;
+    }
 
     
-//     console.log(" "); console.log(" "); process.stdout.write("Inserting any remaining numbers from the right side:"); 
-//     if (!(j < rSize)){
-//         process.stdout.write(" No numbers to add")
-//     }
-//     while (j < rSize) {
-//         process.stdout.write(" "+right[j]+" at index "+k+".");
-//         array[k] = right[j];
-//         j++;
-//         k++;
-//     }
+    console.log(" "); console.log("Inserting any remaining numbers from the left side:"); 
+    if (!(i < lSize)){
+        console.log(" No numbers to add");
+    }
+    while (i < lSize) {
+        console.log(" "+left[i]+" at index "+k+".");
+        array[k] = left[i];
+        i++;
+        k++;
+    }
+
     
-//     console.log(" "); console.log(" "); process.stdout.write("This is the array after the merge: "); print(array, arraySize); console.log(" "); console.log(" "); console.log(" ");
-// }//end of the merge function
-
-
-//a little function to help us with reordering the result
-
-const arraynumberslist = getItems(size);
-
+    console.log(" "); console.log(" "); console.log("Inserting any remaining numbers from the right side:"); 
+    if (!(j < rSize)){
+        console.log(" No numbers to add")
+    }
+    while (j < rSize) {
+        console.log(" "+right[j]+" at index "+k+".");
+        array[k] = right[j];
+        j++;
+        k++;
+    }
+    
+    console.log(" "); console.log(" "); console.log("This is the array after the merge: "); print(array, arraySize); console.log(" "); console.log(" "); console.log(" ");
+}//end of the merge function
 export default class LevelFour extends Component {
     constructor(props) {
         super(props);
@@ -328,11 +464,12 @@ export default class LevelFour extends Component {
             feedbacktext: "",
             toptext: ("A set of "+ size +" numbers has been randomly generated"),
             bottomtext: "Should the array be split or merged next?", 
-
+            toptext2: "",
             topArrayItems: getItems(size),
 
 
         };
+
         this.onDragEnd = this.onDragEnd.bind(this);
         // for timer
         this.timer = 0;
@@ -418,7 +555,6 @@ export default class LevelFour extends Component {
         var group = document.getElementById(("step"+stepnum+"-group-"+currentgrouptoaddto));
        
         group.insertAdjacentHTML("beforeend", groupitemboxcontent);
-
     }
 
     onDragEnd = (result) =>  {
@@ -498,6 +634,19 @@ export default class LevelFour extends Component {
         document.getElementById("bottomtext").classList.add("hidden");
     }
 
+    notANumber  = () => {
+
+         document.getElementById("nexthidden").classList.add("hidden");
+         document.getElementById("next").classList.remove("hidden");
+
+         document.getElementById("NANwarning").classList.remove("hidden");
+         
+        
+         document.getElementById("toptext").classList.add("hidden");
+         document.getElementById("toptext2").classList.add("hidden");
+         
+    }
+
     nextSplit = () => {
         //hide next button and feedback bar
         document.getElementById("next").classList.add("hidden");
@@ -511,8 +660,13 @@ export default class LevelFour extends Component {
 
         //set top text to instruction
         document.getElementById("toptext").classList.remove("hidden");
-        this.ReplaceTopTextFunction("Next, Drag and Drop the numbers from the array into the correct groups");
+        this.ReplaceTopTextFunction("Next, enter the numbers from the array into the correct groups. Leave a blank box to indicate a split");
         
+        //set top text to instruction
+        document.getElementById("toptext2").classList.remove("hidden");
+        this.ReplaceTopTextFunction("Leave a blank box to indicate a split");
+        
+
         //show check answer button
         document.getElementById("checkanswerBttn").classList.remove("hidden");
         this.ReplaceBottomTextFunction("Click the check answer button when finished");
@@ -548,6 +702,11 @@ export default class LevelFour extends Component {
     }
 
     Next = () =>{
+        if(wascontenterror){
+            document.getElementById("NANwarning").classList.add("hidden");
+            this.TryAgain();
+        }
+
         if(!useriscorrect){
             this.TryAgain();
         }
@@ -598,6 +757,11 @@ export default class LevelFour extends Component {
         this.setState({ toptext : NewText});
     }
 
+    ReplaceTopTextFunction = (text) =>{
+        var NewText = text;
+        this.setState({ toptext2 : NewText});
+    }
+
     ReplaceBottomTextFunction = (text) =>{
         var NewText = text;
         this.setState({ bottomtext : NewText});
@@ -605,7 +769,60 @@ export default class LevelFour extends Component {
 
     CheckAnswer = () => {
 
+        var answerArray=[];
+
+        for (var j = 0; j <= currentitemcount; j++) {
+
+            if(document.getElementById(("s"+stepnum+"-i"+j)).value === "") {
+                answerArray[j] = "";
+            }
+            else if (isNaN(parseInt(document.getElementById(("s"+stepnum+"-i"+j)).value))) {
+                //show warning for not numbers
+                wascontenterror = true;
+                this.notANumber();
+             }
+
+            else {
+                answerArray[j] = document.getElementById(("s"+stepnum+"-i"+j)).value;
+            } 
+        }
+
+        var thislevelArray = [];
+
+        for (var i = 0; i <arraynumberslist.length; i++) {
+            thislevelArray[i] = arraynumberslist[i];
+        }
+
+
+        mergeSortAlgorithm(thislevelArray, 0, arraySize - 1, compareLArray, compareRArray);
+
+        var splitsx = splitcheck();
+
+        var splitcountchecker= 0;
+        for (i=0; i< answerArray.length;i++){
+            //not at a split
+            if(splitsx[stepnum][i] !== "split") {
+                if(answerArray[i] !== thislevelArray[i+splitcountchecker]){
+                    useriscorrect=false;
+                }
+            }
+            
+            //is at a split
+            else {
+                splitcountchecker++;
+                if (answerArray[i] !== ""){
+                    useriscorrect=false;
+                }
+            } 
+
+
+        }
+        
+        //go to next step-- make all cells in top uneditable
+
     };
+
+
 
     render() {
         return (<div><DragDropContext onDragEnd={this.onDragEnd}><div id="root">{/* enclosing div*/}
@@ -641,6 +858,16 @@ export default class LevelFour extends Component {
                     <h3>{ this.state.toptext} </h3>
                 </div>
 
+                <div id= "toptext2" class="instructions hidden">
+                    <h3>{ this.state.toptext2} </h3>
+                </div>
+
+                <div id= "NANwarning" class="hidden">
+                    <h3 class="nanwarning">One or more of your inputs is not a number</h3><h3></h3>
+                    <h3 class="nanwarning">Try again!</h3>
+                    
+                </div>
+
             </div>
 <div id=" top array stuff">
             <Droppable droppableId="TopDropBoxDropID" direction="horizontal" isDropDisabled={true}>
@@ -658,13 +885,13 @@ export default class LevelFour extends Component {
                                     {(provided, snapshot) => ( 
 
                                         <React.Fragment>
-                                            <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                            <div class="arrayElement" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
                                                 
                                                 
                                                 {number.content}
                                 
                                         
-                                            </ArrayElement>
+                                            </div>
                                             {snapshot.isDragging && (
                                                 <Clone>{number.content}</Clone>
                                             )}
@@ -680,13 +907,36 @@ export default class LevelFour extends Component {
                 )}
             </Droppable>
 </div>
+
 <div id="nexthidden">
 
             <div id="stepstablehidden"> {/*hide everything below to show next step */}
                 <div id="stepstable" class="centerdiv hidden">
-                    <table id="stepstable" class="stepsTableFormat">
-                    <tr>
+                    
+                    <table class="buttonsTableStyle">
+                        <td width="5%" class="buttonsArrayCells">
+                            <div class="groupboxdivleft"> 
+                                <input 
+                                    type="button"
+                                    value="+"
+                                    id= "addgroupbutton"
+                                    class="groupBox"
+                                    onClick={additembox} 
+                                />
+                            </div>
+                        </td>
                         
+                        <td class="itembigtablecells">
+                            <div>   
+                                <table class="itemsTableStyle">
+                                    <tr id="stepnumber-0">
+                                        <td>
+                                            <input class="itembox" id ="s0-i0" type="text"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
                         
                          <td class="steptablecells centerdiv">
                             <div id="splitArray" class="centerdiv">
