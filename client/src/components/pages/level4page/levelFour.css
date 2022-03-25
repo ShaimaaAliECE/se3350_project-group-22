@@ -58,7 +58,7 @@ body {
   font-weight: 800;
 }
 
-input:hover {
+input[type=button]:hover{
   background-color: #b43fd1;
 }
 
@@ -146,10 +146,11 @@ padding-left: 10px;
 .groupArrayCells {
   background-color: #faddf6;
   border: 2px solid rgb(184, 184, 184);
-  text-align: center;
+  align-content: center;
   padding: 0.5rem;
   vertical-align: middle;
   height: 40px;
+  text-align: center;
 }
 
 .buttonsTableStyle {
@@ -163,8 +164,6 @@ padding-left: 10px;
   text-align: center;
   vertical-align: middle;
   height: 40px;
-
-  border: 2px rgb(174, 173, 173);
 }
 
 .stepsTableFormat {
@@ -181,8 +180,37 @@ padding-left: 10px;
   vertical-align: middle;
 }
 
-/* On mouse-over */
 .btn:hover {
   background: #eee;
 }
 
+.additembttn:hover {
+
+  background: #eee;
+
+}
+
+.groupBoxadditem {
+  background-color: #eca6ff;
+  color: white;
+  border: none;
+  margin: 3px;
+  text-align: center;
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 200;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.input[type=number] {
+  color: rgb(9, 18, 139);
+  margin-right: 20px;
+  
+}
