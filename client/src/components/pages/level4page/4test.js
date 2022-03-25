@@ -1,86 +1,247 @@
-import React, { Component, useState } from "react";
+import React, { Component, useRef} from "react";
 import "./levelFour.css";
-import { Link } from "react-router-dom";
+import { Route, Navigate, Link } from "react-router-dom";
 import styled from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-var elementidnumber =0;
+var size = 10;
+var max = 50;
+var min = 1;
 
-var useriscorrect = false;
+var numbersArray = new Array(size);
+numbersArray = RandomNumbersArray(size, max, min);
+
+const getItems = (size) => {
+    
+    var x = Array.from({ length: size }, (v, k) => k).map(k => ({
+        id: `toparrayitem-${k}`,
+        content: `${numbersArray[k]}`,
+    }));
+    return x;
+}
+
+
+
+const arraynumberslist = getItems(size);
+
+var wascontenterror = false;
+
+var arraySize = size;
+var arrayMax = max;
+var arrayMin = min;
+
+var firstCall = true;
+var levelArray = new Array(arraySize);
+var finalLevelArray = new Array(arraySize);
+var compareLArray;
+var compareRArray;
+var compareL;
+var compareR;
+var reminaingLArray;
+var remainingRArray;
+
+
+var middleIndextotal = 0 + parseInt(((arraySize - 1) - 0) / 2);
+
+//define array/get random numbers
+levelArray = arraynumberslist;
+
+var elementidnumber = 0;
+var useriscorrect = true;
 var allSplit = false;
 var wasSplitStep = false;
 var incorrectCount = 0;
 
-var size = 20;
-var max = 50;
-var min = 1;
-var numbersArray = new Array(size);
-var numOfGroups = 6;
-var numOfItems=0;
+var arrayforgroupinfo = [];
+var stepnum = 0;
+var currentitemcount = 0;
 
 
-var listOfDropfBoxIds;
+var currentstepcheck = 0;
+var mergestepcurrentstep = 0;
+var hasHitStep = false;
+var mergesortstepresult = [];
 
-numbersArray = RandomNumbersArray(size, max, min);
+var boxcontent = "";
 
-const Notice = styled.div`
-    /* display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    padding: 0.5rem;
-    margin: 0 0.5rem 0.5rem;
-    border: 1px solid transparent;
-    line-height: 1.5;
-    color: #aaa; */
-`;
+var leftIndex = 0;
+var rightIndex = arraySize-1;
+var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
+
+
+var array= [];
+
+for (var i = 0; i <arraynumberslist.length; i++) {
+    array[i] = arraynumberslist[i];
+}
+
+
+var isonleft = true;
+
+var isfirst = true;
+
+var splits = [[]];
+
+var stepnum = 0;
+
+var rightsideSave = [];
+var leftsideSave = [];
+
+var numoflsplits = 0;
+
+function splitcheck () {
+    var lengths = findDim(splits);
+
+    if (middleIndextotal % 2 === 0) {
+        numoflsplits = middleIndextotal ;
+    }
+    else {
+        numoflsplits = middleIndextotal + 1;
+    }
+    
+    
+    if(isfirst) {
+        
+        for (let x=0;x <= middleIndex;x++){
+            splits[stepnum][x] = array[x];
+        }
+       
+        splits[stepnum][middleIndex+1] = "split";
+
+        for (let x = middleIndex+1, y = 0;x< array.length;y++,x++){
+            rightsideSave[y] = array[x];
+        }
+    
+        for (let x = middleIndex+1, y = middleIndex+2;x< array.length;y++,x++){
+            splits[stepnum][y] = array[x];
+        }
+
+        isfirst = false;
+    }
+
+    lengths = findDim(splits);
+    
+    splits.push([]);
+
+    for(let x = 0; x < lengths[1]; x++){
+        
+        splits[stepnum+1][x] = splits[stepnum][x];
+    }
+    
+    while(numoflsplits > 0) {
+        
+        lengths = findDim(splits);
+        var lengthx = lengths[1]+1;
+        stepnum++;
+        splits.push([]);
+        
+        rightIndex = middleIndex;
+        leftIndex = 0;
+        middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
+       
+        for(let x = 0; x < lengths[1]; x++){
+        
+            array[x] = splits[stepnum][x];
+        }
+
+     
+    
+        for (let x=0 ;x <= middleIndex; x++){
+            
+            splits[stepnum][x] = array[x];
+
+        }
+        
+        splits[stepnum][middleIndex+1] = "split";
+    
+        for (let x = middleIndex+1, y = middleIndex+2;x< array.length;y++,x++){
+    
+            splits[stepnum][y] = array[x];
+        }
+
+        numoflsplits--;
+        
+        for(let x = 0; x < lengthx; x++){
+        
+            splits[stepnum+1][x] = splits[stepnum][x];
+        }
+    }
+
+console.log(splits);
+
+return splits;
+}
+
+function findDim(a){
+    var mainLen = 0;
+    var subLen = 0;
+
+    mainLen = a.length;
+
+    for(var i=0; i < mainLen; i++){
+        var len = a[i].length;
+        subLen = (len > subLen ? len : subLen);
+    }
+
+    return [mainLen, subLen];
+};
+
+function additembox() {
+
+    currentitemcount++;
+
+    arrayforgroupinfo[parseInt(stepnum)] = currentitemcount;
+
+    var row = document.getElementById(("stepnumber-"+stepnum));
+    var x = row.insertCell(-1);
+    var thisid = ("step"+stepnum+"-group-"+currentitemcount);
+    x.setAttribute("id", thisid);
+
+    
+    boxcontent= "<input class =\"itembox\" id =\"s";
+    boxcontent = boxcontent + stepnum;
+    boxcontent = boxcontent +"-i";
+    boxcontent = boxcontent +currentitemcount;
+    boxcontent = boxcontent+ "\" type=\"text\"/>";
+ 
+    x.insertAdjacentHTML("afterbegin", boxcontent);
+
+}//end of addgroup
+
+function subitembox() {
+    if(currentitemcount >= 0){
+        currentitemcount--;
+        var row = document.getElementById(("stepnumber-"+stepnum));
+        row.deleteCell(currentitemcount+1);
+    }
+}//end of subgroup
+
  
 const ArrayElement = styled.div`
-
-    background: ${(props) => (props.isDragging ? '#e991dd' : '#e2b4ee')};
-    font-family: "Courier New", Courier, monospace; 
-    height: 20px;
-    width: 20px;
-    border: 1px solid #999;
-    padding: 10px;
+    border: 1px ${props => (props.isDragging ? 'dashed #000' : 'solid #999')};
+    background: ${(props) => (props.isDragging ? '#e991dd' : '#ffebfc')};
+    color: '#e2b4ee';
+    font-family: "Courier New", Courier, monospace;
+    padding: 5px;
     text-align: center;
     display: inline;
     margin: 3px;
+    display: inline;
+ 
 `;
 
-const DropBox = styled.div`
-    background: ${(props) => (props.isDraggingOver ? '#e991dd' : '#faddf6')};
-    text-align: center;
-    vertical-align: middle;
-    border: 2px;
-    height: 40px;
-`;
 
 const TopDropBox = styled.div`
     text-align: center;
     padding: 0.5rem;
     height: 40px;
-    /*background: ${(props) => (props.isDraggingOver ? '#e991dd' : '#faddf6')};*/
 `;
 
 const Clone = styled(ArrayElement)`
     + div {
-        display: none !important;
+         /* display: none !important; */
     }
 `;
-
-function addgroup() {
-    var row = document.getElementById("1row");
-    var x = row.insertCell(-1);
-    x.classList.add("groupArrayCells");
-    numOfGroups++;
-}//end of addgroup
-
-function subgroup() {
-    var row = document.getElementById("1row");
-    row.deleteCell(0);
-    numOfGroups--;
-}//end of addgroup
 
 function RandomNumbersArray(size, max, min) {
     var count = 1;
@@ -131,79 +292,170 @@ function Start() {
   
 }//end of start function
 
-const getItems = (size) => {
+function print(array, size) {
+    for (var i = 0; i < size; i++){
+        console.log("["+array[i] + "]");
+    }
+}//end of print function
+
+
+function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compareRArray) {
+    //if the start index has become equal or less than the end index then the merge sort is done
+    if(leftIndex >= rightIndex) {
+        return;
+    }//end of if 
     
-    var x = Array.from({ length: size }, (v, k) => k).map(k => ({
-        id: `toparrayitem-${k}`,
-        content: `${numbersArray[k]}`,
-    }));
+    //set the middle index
+    var middleIndex = leftIndex + parseInt((rightIndex - leftIndex) / 2);
+    var thisBlockSize;
     
-    numOfItems = size;
+    //set variable and conditionals which check if the algorithm has moved on the the right side of the original split
+    //if it has it resets the first call
+    var newBlockCheck;
+    
+    if((arraySize % 2)==0){
+        newBlockCheck = (arraySize/2)-1;
+    }
 
-    return x;
-}
+    else{
+        newBlockCheck = Math.ceil(arraySize/2); 
+    }
+
+    if(middleIndex == newBlockCheck) {
+        firstCall = true;
+    }
+
+    if(firstCall){
+        thisBlockSize = arraySize - leftIndex;
+        firstCall = false;
+    }
+    else {
+        thisBlockSize = arraySize - (arraySize -(rightIndex+1));
+    }
+    
+    //declaring variables
+    var rightSideSize = rightIndex - middleIndex;
+    var leftSideSize = thisBlockSize - rightSideSize;
+    
+    compareLArray = new Array(leftSideSize);
+    compareRArray = new Array(rightSideSize);
+
+    //setting the left side of the numbers to compare
+    for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
+        compareLArray[y] = array[i];
+    }
+    
+    //setting right side of the numbers to compare
+    for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
+        compareRArray[k] = array[j];
+    }
+
+    mergestepcurrentstep++;
+    if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
+        hasHitStep = true;
+        for (let j = 0;j < arraySize; j++){
+            mergesortstepresult = array[j];
+        }
+    }
 
 
-//a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
-    console.log("in reorder");
-    console.log(startIndex);
-    console.log(endIndex);
-    console.log(list);
+    console.log (compareLArray);
+    //console.log("Splitting numbers: "); print(compareLArray, leftSideSize); console.log("   "); print(compareRArray, rightSideSize); console.log(" "); console.log(" ");
 
+    //recursively spliting the left side
+    mergeSortAlgorithm(array, leftIndex, middleIndex, compareLArray, compareRArray);
+    
+    //setting the left side of the numbers to compare
+    for (let i =leftIndex,y=0; i <= middleIndex;y++,i++){
+        compareLArray[y] = array[i];
+    }
 
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-  
-    return result;
-};
+    //setting right side of the numbers to compare
+    for (let j = (middleIndex + 1), k= 0;j <= rightIndex; k++ , j++){
+        compareRArray[k] = array[j];
+    }
+   
+    mergestepcurrentstep++;
+    if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
+        hasHitStep=true;
+       for (let j = 0;j < arraySize; j++){
+           mergesortstepresult = array[j];
+       }
+    }
+    //recursively merge sorting the right (end) side
+    mergeSortAlgorithm(array, middleIndex + 1, rightIndex, compareLArray, compareRArray);
+    
+    //merging the array
+    mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray);
+}//end of the mergesortalgorithm function
 
-const copy = (source, destination, droppableSource, droppableDestination) => {
-    console.log("in copy");
-    console.log(source);
-    console.log(destination);
-    console.log(droppableSource);
-    console.log(droppableDestination);
+//merge function
+function mergeArray(array, leftIndex, middleIndex, rightIndex, compareLArray, compareRArray) {
+    var lSize = middleIndex - leftIndex + 1;
+    var rSize = rightIndex - middleIndex;
 
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const item = sourceClone[droppableSource.index];
+    var left = new Array(lSize); 
+    var right = new Array(rSize);
 
-    destClone.splice(droppableDestination.index, 0, { ...item, id: elementidnumber });
-    return destClone;
-};
+    for (var i = 0; i < lSize; i++) {
+        left[i] = array[leftIndex + i];
+    }
 
-const move = (source, destination, droppableSource, droppableDestination) => {
-    console.log("in move");
-    console.log(source);
-    console.log(destination);
-    console.log(droppableSource);
-    console.log(droppableDestination);
+    for (var j = 0; j < rSize; j++) {
+        right[j] = array[middleIndex + 1 + j];
+    }
 
+    var i = 0;
+    var j = 0;
+    var k = leftIndex;
 
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const [removed] = sourceClone.splice(droppableSource.index, 1);
+    while (i < lSize && j < rSize) {
+        console.log(" "); console.log(" "); console.log("Comparing: " + left[i] + " & "+ right[j]);
+        if (left[i] <= right[j]) {
+            array[k] = left[i];
+            console.log("  --->  "+left[i]+" is smaller than or equal to "+right[j]);
+            console.log(" ");
+            console.log("Inserting "+left[i]+" to the array at index "+k);
+            console.log(" ");
+            console.log("The updated array looks like this: "); print(array,arraySize); console.log(" ");
+            i++;
+        }
+        else {
+            array[k] = right[j];
+            console.log("  --->  "+right[j]+" is smaller than "+left[i]);
+            console.log(" "); console.log("Inserting "+right[j]+" to the array at index "+k);
+            console.log(" "); console.log("The updated array looks like this: "); print(array,arraySize); console.log(" ");
+            j++;
+        }
+        k++;
+    }
 
-    destClone.splice(droppableDestination.index, 0, removed);
+    
+    console.log(" "); console.log("Inserting any remaining numbers from the left side:"); 
+    if (!(i < lSize)){
+        console.log(" No numbers to add");
+    }
+    while (i < lSize) {
+        console.log(" "+left[i]+" at index "+k+".");
+        array[k] = left[i];
+        i++;
+        k++;
+    }
 
-    const result = {};
-    result[droppableSource.droppableId] = sourceClone;
-    result[droppableDestination.droppableId] = destClone;
-
-    return result;
-};
-
-const arraynumberslist = getItems(size);
-
-function updateDropGroups() {
-    return Array.from({ length: numOfGroups }, (v, k) => k).map(k => ({
-        droppableId: `boxdropid-${k}`,
-        content: [],
-      }));
-}
-
+    
+    console.log(" "); console.log(" "); console.log("Inserting any remaining numbers from the right side:"); 
+    if (!(j < rSize)){
+        console.log(" No numbers to add")
+    }
+    while (j < rSize) {
+        console.log(" "+right[j]+" at index "+k+".");
+        array[k] = right[j];
+        j++;
+        k++;
+    }
+    
+    console.log(" "); console.log(" "); console.log("This is the array after the merge: "); print(array, arraySize); console.log(" "); console.log(" "); console.log(" ");
+}//end of the merge function
 export default class LevelFour extends Component {
     constructor(props) {
         super(props);
@@ -212,82 +464,103 @@ export default class LevelFour extends Component {
             feedbacktext: "",
             toptext: ("A set of "+ size +" numbers has been randomly generated"),
             bottomtext: "Should the array be split or merged next?", 
-
+            toptext2: "",
             topArrayItems: getItems(size),
 
-            boxstateids : updateDropGroups(),
+
         };
+
         this.onDragEnd = this.onDragEnd.bind(this);
+        // for timer
+        this.timer = 0;
+        this.startTimer = this.startTimer.bind(this);
+        this.countUp = this.countUp.bind(this);
+        this.clearTimer = this.clearTimer.bind(this);
+    }
+
+    // convert seconds to time
+    secondsToTime(secs) {
+        let hours = Math.floor(secs / (60 * 60));
+
+        let minute_divisor = secs % (60 * 60);
+        let minutes = Math.floor(minute_divisor / 60);
+
+        let seconds_divisor = minute_divisor % 60;
+        let seconds = Math.ceil(seconds_divisor);
+        // function to add the leading zeros
+        if (seconds < 10) {
+        seconds = "0" + seconds.toString();
+        }
+
+        let obj = {
+        "h": hours,
+        "m": minutes,
+        "s": seconds
+        };
+        return obj;
+    }
+
+    // initialize timer
+    componentDidMount() {
+        let initialTime = this.secondsToTime(this.state.seconds);
+        this.setState({ time: initialTime });
+    }
+
+    // start timer
+    startTimer() {
+        if (!this.state.timerIsActive) {
+        this.setState({ timerIsActive: true });
+        this.timer = setInterval(this.countUp, 1000);
+        }
+    }
+
+    // count up
+    countUp() {
+        // Add one second, set state so a re-render happens.
+        let seconds = this.state.seconds + 1;
+        this.setState({
+        time: this.secondsToTime(seconds),
+        seconds: seconds,
+        });
+
+        // check if user was inactive for 5 minutes
+        if (this.state.seconds - this.state.lastActive > 300) {
+        // set exitLevel state to true so that user will be returned to home
+        this.setState({ lastActive: this.state.seconds });
+        alert("You will be returned to home due to 5 minutes of inactivity");
+        this.setState({ exitLevel: true });
+        }
+    }
+
+    clearTimer() {
+        clearInterval(this.timer);
+    }
+
+    // log the time user was last active at
+    setLastActive() {
+        this.setState({ lastActive: this.state.seconds });
+    }
+
+    addGroupItem = (id) => {
+      
+        var currentgrouptoaddto = parseInt(getidnum(id));
+       
+        currentgroupcount = arrayforgroupinfo[stepnum][currentgrouptoaddto];
+        currentgroupitemcount++;
+        
+        groupitemboxcontent = "<input id =\"box-s"+stepnum+"-g"+currentgrouptoaddto+"-"+currentgroupitemcount+"\" type=\"number\"></input>"
+    
+        arrayforgroupinfo[stepnum][currentgrouptoaddto] += 1
+    
+        var group = document.getElementById(("step"+stepnum+"-group-"+currentgrouptoaddto));
+       
+        group.insertAdjacentHTML("beforeend", groupitemboxcontent);
     }
 
     onDragEnd = (result) =>  {
         
         const { source, destination } = result;
 
-        // console.log("elementidnumber");
-        // console.log(elementidnumber);
-
-        // console.log("useriscorrect");
-        // console.log(useriscorrect);
-
-        // console.log("allSplit" );
-        // console.log(allSplit );
-
-        // console.log("wasSplitStep");
-        // console.log(wasSplitStep);
-
-        // console.log("incorrectCount");
-        // console.log(incorrectCount);
-
-        // console.log("size");
-        // console.log(size);
-
-        // console.log("max");
-        // console.log(max);
-
-        // console.log("min");
-        // console.log(min);
-
-        // console.log("numOfGroups");
-        // console.log(numOfGroups);
-
-        // console.log("numOfItems");
-        // console.log(numOfItems);
-     
-        console.log("source:");
-        console.log(source);
-
-        console.log("destination:");
-        console.log(destination);
-
-        console.log("result:");
-        console.log(result);
-
-        // console.log("this.state.topArrayItems:");
-        // console.log(this.state.topArrayItems);
-
-        // console.log("id tests:")
-        
-        // console.log("this.state.topArrayItems[3].content:")
-        // console.log(this.state.boxstateids[3].droppableId); 
-
-
-        console.log("aougfibdhjcanlaifhu");
-        var helpme = Object.keys((this.state.boxstateids));
-        console.log(helpme);
-        console.log(this.state.boxstateids.length);
-        console.log(this.setDropIdArray());
-        console.log(this.state.boxstateids[0].content.length );
-
-
-
-        listOfDropfBoxIds = new Array(this.state.boxstateids.length);
-        
-        for(let i=0;i<this.state.boxstateids.length;i++) {
-
-            listOfDropfBoxIds[i] = this.state.boxstateids[i].droppableId;
-
-        }
 
 
         // dropped outside the list
@@ -296,87 +569,7 @@ export default class LevelFour extends Component {
           return;
         }
             
-
-        else if(source.droppableId === destination.droppableId ) {
-            console.log("here: ===");
-
-            var toReorder;
-
-            console.log(destination.droppableId);
-            
-            if(destination.droppableId === 'TopDropBoxDropID') {
-                toReorder = this.state.topArrayItems
-            }
-            
-            else {
-                for (let i = 0; i<numOfGroups;i++){
-                    if(this.state.boxstateids[i].droppableId === destination.droppableId ) {
-                        toReorder = this.state.boxstateids[i].content;
-                        console.log("this is reorder passed: "+this.state.boxstateids[i].content);
-                    }
-                }
-            }
-
-            this.setState({
-                [destination.droppableId]: reorder(
-                    toReorder,
-                    source.index,
-                    destination.index
-                )
-            });
-        }
-        
-        else if(source.droppableId === 'TopDropBoxDropID') {
-            console.log("here: topdboxid");
-            var toReorder;
-            
-            
-            for (let i = 0; i<numOfGroups;i++){
-                if(this.state.boxstateids[i].droppableId === destination.droppableId ) {
-                    toReorder = this.state.boxstateids[i].content;
-                    console.log("this is reorder passed: "+this.state.boxstateids[i].content);
-                }
-            }
-
-            this.setState({
-                [destination.droppableId]: copy(
-                    arraynumberslist,
-                    toReorder,
-                    source,
-                    destination
-                )
-            });
-        }
-        
-        else {
-            console.log("here: default");
-            this.setState(
-                move(
-                    this.groups[source.droppableId],
-                    this.groups[destination.droppableId],
-                    source,
-                    destination
-                )
-            );
-        } 
     };
-
-
-
-    setDropIdArray = () => {
-
-        listOfDropfBoxIds = new Array(this.state.boxstateids.length);
-        
-        for(let i=0;i<this.state.boxstateids.length;i++) {
-
-            listOfDropfBoxIds[i] = this.state.boxstateids[i].droppableId;
-
-        }
-
-        return listOfDropfBoxIds;
-
-    }
-    
 
     playSound = () => {
         if (useriscorrect) {
@@ -441,6 +634,19 @@ export default class LevelFour extends Component {
         document.getElementById("bottomtext").classList.add("hidden");
     }
 
+    notANumber  = () => {
+
+         document.getElementById("nexthidden").classList.add("hidden");
+         document.getElementById("next").classList.remove("hidden");
+
+         document.getElementById("NANwarning").classList.remove("hidden");
+         
+        
+         document.getElementById("toptext").classList.add("hidden");
+         document.getElementById("toptext2").classList.add("hidden");
+         
+    }
+
     nextSplit = () => {
         //hide next button and feedback bar
         document.getElementById("next").classList.add("hidden");
@@ -454,8 +660,13 @@ export default class LevelFour extends Component {
 
         //set top text to instruction
         document.getElementById("toptext").classList.remove("hidden");
-        this.ReplaceTopTextFunction("Next, Drag and Drop the numbers from the array into the correct groups");
+        this.ReplaceTopTextFunction("Next, enter the numbers from the array into the correct groups. Leave a blank box to indicate a split");
         
+        //set top text to instruction
+        document.getElementById("toptext2").classList.remove("hidden");
+        this.ReplaceTopTextFunction("Leave a blank box to indicate a split");
+        
+
         //show check answer button
         document.getElementById("checkanswerBttn").classList.remove("hidden");
         this.ReplaceBottomTextFunction("Click the check answer button when finished");
@@ -491,6 +702,11 @@ export default class LevelFour extends Component {
     }
 
     Next = () =>{
+        if(wascontenterror){
+            document.getElementById("NANwarning").classList.add("hidden");
+            this.TryAgain();
+        }
+
         if(!useriscorrect){
             this.TryAgain();
         }
@@ -541,6 +757,11 @@ export default class LevelFour extends Component {
         this.setState({ toptext : NewText});
     }
 
+    ReplaceTopTextFunction = (text) =>{
+        var NewText = text;
+        this.setState({ toptext2 : NewText});
+    }
+
     ReplaceBottomTextFunction = (text) =>{
         var NewText = text;
         this.setState({ bottomtext : NewText});
@@ -548,11 +769,60 @@ export default class LevelFour extends Component {
 
     CheckAnswer = () => {
 
+        var answerArray=[];
+
+        for (var j = 0; j <= currentitemcount; j++) {
+
+            if(document.getElementById(("s"+stepnum+"-i"+j)).value === "") {
+                answerArray[j] = "";
+            }
+            else if (isNaN(parseInt(document.getElementById(("s"+stepnum+"-i"+j)).value))) {
+                //show warning for not numbers
+                wascontenterror = true;
+                this.notANumber();
+             }
+
+            else {
+                answerArray[j] = document.getElementById(("s"+stepnum+"-i"+j)).value;
+            } 
+        }
+
+        var thislevelArray = [];
+
+        for (var i = 0; i <arraynumberslist.length; i++) {
+            thislevelArray[i] = arraynumberslist[i];
+        }
+
+
+        mergeSortAlgorithm(thislevelArray, 0, arraySize - 1, compareLArray, compareRArray);
+
+        var splitsx = splitcheck();
+
+        var splitcountchecker= 0;
+        for (i=0; i< answerArray.length;i++){
+            //not at a split
+            if(splitsx[stepnum][i] !== "split") {
+                if(answerArray[i] !== thislevelArray[i+splitcountchecker]){
+                    useriscorrect=false;
+                }
+            }
+            
+            //is at a split
+            else {
+                splitcountchecker++;
+                if (answerArray[i] !== ""){
+                    useriscorrect=false;
+                }
+            } 
+
+
+        }
+        
+        //go to next step-- make all cells in top uneditable
+
     };
 
-    addList = (e) => {
-        this.setState({ [numOfGroups.toString()]: [] });
-    };
+
 
     render() {
         return (<div><DragDropContext onDragEnd={this.onDragEnd}><div id="root">{/* enclosing div*/}
@@ -562,6 +832,9 @@ export default class LevelFour extends Component {
                     <a href="#about">Quit</a>
                     <c href="#level4">Restart</c>
                     <a href="#home">Home</a>
+                    <b>Time Elapsed: {this.state.time.m}:{this.state.time.s}</b>
+                    {/* return user to home after 5 minutes of inactivity using state*/}
+                    {this.state.exitLevel && <Navigate to="/" replace={true} />}
                 </div> {/*end of navbar */}
 
                 <div id= "startHeader" class="instructions">
@@ -573,7 +846,7 @@ export default class LevelFour extends Component {
                         type="button"
                         className="choiceBttn"
                         value="Start"
-                        onClick={Start}
+                        onClick={() => { Start(); this.startTimer(); this.setLastActive() }}
                     />
                 </div>
 
@@ -585,14 +858,19 @@ export default class LevelFour extends Component {
                     <h3>{ this.state.toptext} </h3>
                 </div>
 
+                <div id= "toptext2" class="instructions hidden">
+                    <h3>{ this.state.toptext2} </h3>
+                </div>
 
-                <table id="BaseArrayTable" class="BaseTableStyle">
-                </table>
-                <div><br></br></div>
+                <div id= "NANwarning" class="hidden">
+                    <h3 class="nanwarning">One or more of your inputs is not a number</h3><h3></h3>
+                    <h3 class="nanwarning">Try again!</h3>
+                    
+                </div>
 
             </div>
-
-            <Droppable droppableId="TopDropBoxDropID" direction="horizontal">
+<div id=" top array stuff">
+            <Droppable droppableId="TopDropBoxDropID" direction="horizontal" isDropDisabled={true}>
                 {(provided, snapshot) => (
 
                     <div id="TopArrayHidden" class = "hidden">
@@ -607,13 +885,13 @@ export default class LevelFour extends Component {
                                     {(provided, snapshot) => ( 
 
                                         <React.Fragment>
-                                            <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
+                                            <div class="arrayElement" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
                                                 
                                                 
                                                 {number.content}
                                 
                                         
-                                            </ArrayElement>
+                                            </div>
                                             {snapshot.isDragging && (
                                                 <Clone>{number.content}</Clone>
                                             )}
@@ -628,12 +906,39 @@ export default class LevelFour extends Component {
                     </div>
                 )}
             </Droppable>
+</div>
 
 <div id="nexthidden">
+
             <div id="stepstablehidden"> {/*hide everything below to show next step */}
                 <div id="stepstable" class="centerdiv hidden">
-                    <table id="stepstable" class="stepsTableFormat">
-                        <td class="steptablecells centerdiv">
+                    
+                    <table class="buttonsTableStyle">
+                        <td width="5%" class="buttonsArrayCells">
+                            <div class="groupboxdivleft"> 
+                                <input 
+                                    type="button"
+                                    value="+"
+                                    id= "addgroupbutton"
+                                    class="groupBox"
+                                    onClick={additembox} 
+                                />
+                            </div>
+                        </td>
+                        
+                        <td class="itembigtablecells">
+                            <div>   
+                                <table class="itemsTableStyle">
+                                    <tr id="stepnumber-0">
+                                        <td>
+                                            <input class="itembox" id ="s0-i0" type="text"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        
+                         <td class="steptablecells centerdiv">
                             <div id="splitArray" class="centerdiv">
                                 <table class="buttonsTableStyle">
                                     <td width="5%" class="buttonsArrayCells">
@@ -643,121 +948,30 @@ export default class LevelFour extends Component {
                                                 value="+"
                                                 id= "addgroupbutton"
                                                 class="groupBox"
-                                                onClick={addgroup} 
+
                                             />
                                         </div>
                                     </td>
-                                
+                                 
                                     <td class="buttonsArrayCells">
-
-
-                                        <Droppable droppableId="boxdropid-10" direction="horizontal">
-                                                        {(provided, snapshot) => (
-                                                            <DropBox ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
-                                                                {arraynumberslist.map((number, index) => (
-                
-                                                                    <Draggable key={number.id} draggableId={"secondlvele"+number.id} index={index}>
-                                                                        {(provided, snapshot) => ( 
-
-                                                                            <React.Fragment>
-                                                                                <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
-                                                                                    
-                                                                                    
-                                                                                    {number.content}
-                                                                    
-                                                                            
-                                                                                </ArrayElement>
-                                                                                {snapshot.isDragging && (
-                                                                                    <Clone>{number.content}</Clone>
-                                                                                )}
-
-                                                                            </React.Fragment>
-                                                                        )}
-                                                                    </Draggable>
-                                                                ))} {provided.placeholder}
-                                                                                                
-                                                            </DropBox>
-                                                        )}
-                                        </Droppable>
-                                        
-                                        {this.setDropIdArray().map((list, i) => (
+                                        <div>
+                                              
+                                            <table class="groupTableStyle">
                                             
-                                            <Droppable key={list} droppableId={listOfDropfBoxIds[list]}>
-                                                {(provided, snapshot) => (
+                                                <tr id="stepnumber-0">
+                                                    <td id="step0-group-0" class="groupArrayCells">
+                                                        <input type="button" value="+" id= "plusitem-s0-g0"  class="groupBoxadditem" onClick={this.addGroupItem.bind(this,"plusitem-s0-g0")} />  
+                                                       
+                                                        <input id ="box-s0-g0-i0" type="number"/>
+                                                    </td>
+                                                </tr>
 
-                                                    <DropBox id={"dropboxid-"+numOfGroups} ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
+                                            </table>
 
-                                                        {this.state.boxstateids[list].content.length ? this.state.boxstateids[list].content.map((item, index) => (
-                                                                    
-                                                                    <Draggable key={item.id} draggableId={item.id} index={index}>
-                                                                        {(provided, snapshot) => (
-                                                                            
-                                                                            
-                                                                            <ArrayElement ref={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
-                                                                                
-                                                                                {list.content}
-                                                                                
-                                                                            </ArrayElement>
-
-
-                                                                        )}
-                                                                    </Draggable>
-
-                                                                )): !provided.placeholder && (<Notice>Drop items here</Notice>)}
-
-                                                        {provided.placeholder}
-                                                    </DropBox>
-
-                                                )}
-                                            </Droppable>
                                             
-                                        ))}
-
-                                    {/* {this.state.boxstateids.map(id, content) => (
-
-
-
-                                    ))} */}
-
-                                        {/* <Droppable droppableId="TopDropBoxDropI2D" direction="horizontal">
-                                            {(provided, snapshot) => (
-
-                                                <div id="TopArrayHidden" class = "hidden">
-                                                    
-                                                    
-                                                    <TopDropBox id="topArrayBox" ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
-                                                        
-                                                        
-                                                        {arraynumberslist.map((number, index) => (
-                                            
-                                                            <Draggable key={number.id} draggableId={number.id} index={index}>
-                                                                {(provided, snapshot) => ( 
-
-                                                                    <React.Fragment>
-                                                                        <ArrayElement ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} isDragging={snapshot.isDragging} style={provided.draggableProps.style}>
-                                                                            
-                                                                            
-                                                                            {number.content}
-                                                            
-                                                                    
-                                                                        </ArrayElement>
-                                                                        {snapshot.isDragging && (
-                                                                            <Clone>{number.content}</Clone>
-                                                                        )}
-
-                                                                    </React.Fragment>
-                                                                )}
-                                                            </Draggable>
-                                                        ))} {provided.placeholder}
-                                                    </TopDropBox>
-
-
-                                                </div>
-                                            )}
-                                        </Droppable> */}
-
+                                        </div>
                                     </td>
-
+                                    
                                     <td width="5%" class="buttonsArrayCells">
                                         <div class="groupboxdivright"> 
                                             <input 
@@ -765,19 +979,22 @@ export default class LevelFour extends Component {
                                                 value="-"
                                                 id= "subgroupbutton"
                                                 class="groupBox"
-                                                onClick={subgroup}
+                                                onClick={() => { subgroup(); this.setLastActive() }}
                                             />
                                         </div>
                                     </td>{/*for sub button cell*/}
                                 </table> {/*for tablebuttons */}
                             </div>{/*for splitarray */}
                         </td>{/*for stepstable cells*/}
+
+                    </tr>
+
                     </table>{/*for stepstable */}
                 </div> {/*for stepstable */}
             </div>{/* for stepstablehidden */}
 
 
-                           
+    <div id="bottom stuff">                      
             <div id= "bottomtext" class="instructions hidden">
                 <h3>{this.state.bottomtext}</h3>
             </div>
@@ -788,7 +1005,7 @@ export default class LevelFour extends Component {
                     value="Split"
                     id= "splitchoicebttn" 
                     class="choiceBttn"
-                    onClick={this.SplitChoice}
+                    onClick={() => { this.SplitChoice(); this.setLastActive() }}
                     />
 
                            
@@ -797,7 +1014,7 @@ export default class LevelFour extends Component {
                     id= "mergechoicebttn"
                     class="choiceBttn"
                     value="Merge"
-                    onClick={this.MergeChoice}
+                    onClick={() => { this.MergeChoice(); this.setLastActive() }}
                 />
             </div>
 
@@ -807,10 +1024,10 @@ export default class LevelFour extends Component {
                     value="Check Answer"
                     id= "checkanswerbttn" 
                     class="choiceBttn"
-                    onClick={this.CheckAnswer}
+                    onClick={() => { this.CheckAnswer(); this.setLastActive() }}
                     />
             </div>
-
+    </div> 
 </div> {/* end of nexthidden*/}
                         
             <div id= "next" className="centerdiv hidden">
@@ -821,7 +1038,7 @@ export default class LevelFour extends Component {
                         value="Next"
                         id= "nextbttn" 
                         class="choiceBttn"
-                        onClick={this.Next}
+                        onClick={() => { this.Next(); this.setLastActive() }}
                     />
             </div> 
 

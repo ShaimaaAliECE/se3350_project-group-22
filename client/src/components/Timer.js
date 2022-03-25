@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import { Route, Navigate, Link } from "react-router-dom";
 
 class Timer extends React.Component {
     constructor() {
       super();
-      this.state = { time: {}, seconds: 0, lastActive: 0, timerIsActive: false};
+      this.state = { time: {}, seconds: 0, lastActive: 0, timerIsActive: false, exitLevel: false};
       this.timer = 0;
       this.startTimer = this.startTimer.bind(this);
       this.countUp = this.countUp.bind(this);
@@ -49,10 +50,11 @@ class Timer extends React.Component {
             seconds: seconds,
         });      
         // check if user was inactive for 5 minutes
-        if (this.state.seconds - this.state.lastActive >= 300)
-        {
-            alert("You have been logged out due to 5 minutes of inactivity");
-            console.log("You have been logged out due to 5 minutes of inactivity");
+        if (this.state.seconds - this.state.lastActive > 300) {
+          // set exitLevel state to true so that user will be returned to home
+          this.setState({ lastActive: this.state.seconds });
+          alert("You will be returned to home due to 5 minutes of inactivity");
+          this.setState({ exitLevel: true });
         }
     }
 
@@ -71,6 +73,8 @@ class Timer extends React.Component {
         <div>
           <button onClick={this.startTimer}>Start</button>
           Time Elapsed: {this.state.time.m}:{this.state.time.s}
+          {/* return user to home after 5 minutes of inactivity using state*/}
+          {this.state.exitLevel && <Navigate to="/" replace={true} />}
         </div>
       );
     }
