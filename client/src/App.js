@@ -6,6 +6,8 @@ import LevelOne from "./components/pages/level1page/levelPage"
 import LevelTwo from "./components/pages/level2page/levelTwo"
 import LevelThree from "./components/pages/level3page/levelThree";
 import LevelFour from "./components/pages/level4page/4test";
+import LevelFive from "./components/pages/level5page/level5";
+import LevelSix from "./components/pages/level6page/level6";
 import LoginPage from "./components/pages/loginpage/login";
 import SignupPage from "./components/pages/loginpage/signup";
 import AdminDashboard from "./components/pages/adminDash/adminDashboard";
@@ -28,6 +30,8 @@ class App extends Component {
           <Route path="/levelTwo" element={<LevelTwo/>}/>
           <Route path="/levelThree" element={<LevelThree/>}/>
           <Route path="/levelFour" element={<LevelFour/>}/>
+          <Route path="/levelFive" element={<LevelFive/>}/>
+          <Route path="/levelSix" element={<LevelSix/>}/>
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/signup" element={<SignupPage/>}/>
           <Route path="/dashboard" element={<AdminDashboard/>}/>

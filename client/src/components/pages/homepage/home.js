@@ -62,14 +62,14 @@ class home extends Component {
               Level4
             </Link>
             <Link
-              to="/"
+              to="/levelFive/"
               style={{ textDecoration: "none" }}
               className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
             >
               Level5
             </Link>
             <Link
-              to="/"
+              to="/levelSix/"
               style={{ textDecoration: "none" }}
               className="btn2 btn-shadow-drop2 btn-shadow-drop--black"
             >
