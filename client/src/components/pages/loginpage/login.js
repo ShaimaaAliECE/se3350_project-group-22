@@ -111,4 +111,3 @@ export default class LoginPage extends React.Component {
 //     }
 // }
 
-// // <ErrorMsg message={this.state.errorMsg}/>
