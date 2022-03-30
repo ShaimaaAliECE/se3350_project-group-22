@@ -987,8 +987,6 @@ export default class LevelFour extends Component {
                             </div>{/*for splitarray */}
                         </td>{/*for stepstable cells*/}
 
-                    </tr>
-
                     </table>{/*for stepstable */}
                 </div> {/*for stepstable */}
             </div>{/* for stepstablehidden */}
