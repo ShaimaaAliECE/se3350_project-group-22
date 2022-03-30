@@ -4,7 +4,7 @@ import { Route, Navigate, Link } from "react-router-dom";
 import styled from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-var size = 20;
+var size = 10;
 var max = 50;
 var min = 1;
 
@@ -19,9 +19,6 @@ const getItems = (size) => {
     }));
     return x;
 }
-
-
-
 const arraynumberslist = getItems(size);
 
 var wascontenterror = false;
@@ -40,14 +37,13 @@ var compareR;
 var reminaingLArray;
 var remainingRArray;
 
-
 var middleIndextotal = 0 + parseInt(((arraySize - 1) - 0) / 2);
 
 //define array/get random numbers
 levelArray = arraynumberslist;
 
 var elementidnumber = 0;
-var useriscorrect = true;
+var useriscorrect = false;
 var allSplit = false;
 var wasSplitStep = false;
 var incorrectCount = 0;
@@ -82,7 +78,6 @@ var isfirst = true;
 
 var splits = [[]];
 
-var stepnum = 0;
 
 var rightsideSave = [];
 var leftsideSave = [];
@@ -90,7 +85,7 @@ var leftsideSave = [];
 var numoflsplits = 0;
 
 function splitcheck () {
-    var lengths = findDim(splits);
+
 
     if (middleIndextotal % 2 === 0) {
         numoflsplits = middleIndextotal ;
@@ -119,7 +114,7 @@ function splitcheck () {
         isfirst = false;
     }
 
-    lengths = findDim(splits);
+    var lengths = findDim(splits);
     
     splits.push([]);
 
@@ -167,9 +162,9 @@ function splitcheck () {
         }
     }
 
-console.log(splits);
+    console.log(splits);
 
-return splits;
+    return splits;
 }
 
 function findDim(a){
@@ -350,16 +345,16 @@ function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compare
         compareRArray[k] = array[j];
     }
 
-    mergestepcurrentstep++;
-    if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
-        hasHitStep = true;
-        for (let j = 0;j < arraySize; j++){
-            mergesortstepresult[j] = array[j];
-        }
-    }
+    // mergestepcurrentstep++;
+    // if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
+    //     hasHitStep = true;
+    //     for (let j = 0;j < arraySize; j++){
+    //         mergesortstepresult = array[j];
+    //     }
+    // }
 
 
-    console.log (compareLArray);
+
     //console.log("Splitting numbers: "); print(compareLArray, leftSideSize); console.log("   "); print(compareRArray, rightSideSize); console.log(" "); console.log(" ");
 
     //recursively spliting the left side
@@ -375,13 +370,13 @@ function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compare
         compareRArray[k] = array[j];
     }
    
-    mergestepcurrentstep++;
-    if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
-        hasHitStep=true;
-       for (let j = 0;j < arraySize; j++){
-           mergesortstepresult = array[j];
-       }
-    }
+    // mergestepcurrentstep++;
+    // if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
+    //     hasHitStep=true;
+    //    for (let j = 0;j < arraySize; j++){
+    //        mergesortstepresult = array[j];
+    //    }
+    // }
     //recursively merge sorting the right (end) side
     mergeSortAlgorithm(array, middleIndex + 1, rightIndex, compareLArray, compareRArray);
     
@@ -467,79 +462,79 @@ export default class LevelFour extends Component {
             toptext2: "",
             topArrayItems: getItems(size),
 
-           
+
         };
 
         this.onDragEnd = this.onDragEnd.bind(this);
-         //for timer
-        this.timer = 0;
-        this.startTimer = this.startTimer.bind(this);
-        this.countUp = this.countUp.bind(this);
-        this.clearTimer = this.clearTimer.bind(this);
+        // for timer
+        // this.timer = 0;
+        // this.startTimer = this.startTimer.bind(this);
+        // this.countUp = this.countUp.bind(this);
+        // this.clearTimer = this.clearTimer.bind(this);
     }
 
-    // convert seconds to time
-    secondsToTime(secs) {
-        let hours = Math.floor(secs / (60 * 60));
+    // // convert seconds to time
+    // secondsToTime(secs) {
+    //     let hours = Math.floor(secs / (60 * 60));
 
-        let minute_divisor = secs % (60 * 60);
-        let minutes = Math.floor(minute_divisor / 60);
+    //     let minute_divisor = secs % (60 * 60);
+    //     let minutes = Math.floor(minute_divisor / 60);
 
-        let seconds_divisor = minute_divisor % 60;
-        let seconds = Math.ceil(seconds_divisor);
-        // function to add the leading zeros
-        if (seconds < 10) {
-        seconds = "0" + seconds.toString();
-        }
+    //     let seconds_divisor = minute_divisor % 60;
+    //     let seconds = Math.ceil(seconds_divisor);
+    //     // function to add the leading zeros
+    //     if (seconds < 10) {
+    //     seconds = "0" + seconds.toString();
+    //     }
 
-        let obj = {
-        "h": hours,
-        "m": minutes,
-        "s": seconds
-        };
-        return obj;
-    }
+    //     let obj = {
+    //     "h": hours,
+    //     "m": minutes,
+    //     "s": seconds
+    //     };
+    //     return obj;
+    // }
 
-    // initialize timer
-    componentDidMount= () => {
-        let initialTime = this.secondsToTime(this.state.seconds);
-        this.setState({ time: initialTime });
-    }
+    // // initialize timer
+    // componentDidMount= () => {
+    //     let initialTime = this.secondsToTime(this.state.seconds);
+    //     this.setState({ time: initialTime });
+    // }
 
-    // start timer
-    startTimer = () => {
-        if (!this.state.timerIsActive) {
-        this.setState({ timerIsActive: true });
-        this.timer = setInterval(this.countUp, 1000);
-        }
-    }
+    // // start timer
+    // startTimer = () => {
+    //     if (!this.state.timerIsActive) {
+    //     this.setState({ timerIsActive: true });
+    //     this.timer = setInterval(this.countUp, 1000);
+    //     }
+    // }
 
-    // count up
-    countUp = () => {
-        // Add one second, set state so a re-render happens.
-        let seconds = this.state.seconds + 1;
-        this.setState({
-        time: this.secondsToTime(seconds),
-        seconds: seconds,
-        });
+    // // count up
+    // countUp = () => {
+    //     // Add one second, set state so a re-render happens.
+    //     let seconds = this.state.seconds + 1;
+    //     this.setState({
+    //     time: this.secondsToTime(seconds),
+    //     seconds: seconds,
+    //     });
 
-        // check if user was inactive for 5 minutes
-        if (this.state.seconds - this.state.lastActive > 300) {
-        // set exitLevel state to true so that user will be returned to home
-        this.setState({ lastActive: this.state.seconds });
-        alert("You will be returned to home due to 5 minutes of inactivity");
-        this.setState({ exitLevel: true });
-        }
-    }
+    //     // check if user was inactive for 5 minutes
+    //     if (this.state.seconds - this.state.lastActive > 300) {
+    //     // set exitLevel state to true so that user will be returned to home
+    //     this.setState({ lastActive: this.state.seconds });
+    //     alert("You will be returned to home due to 5 minutes of inactivity");
+    //     this.setState({ exitLevel: true });
+    //     }
+    // }
 
-    clearTimer = () => {
-        clearInterval(this.timer);
-    }
+    // clearTimer = () => {
+    //     clearInterval(this.timer);
+    // }
 
-    // log the time user was last active at
-    setLastActive = () => {
-        this.setState({ lastActive: this.state.seconds });
-    }
+    // // log the time user was last active at
+    // setLastActive = () => {
+    //     this.setState({ lastActive: this.state.seconds });
+    // }
 
     onDragEnd = (result) =>  {
         
@@ -686,10 +681,10 @@ export default class LevelFour extends Component {
     }
 
     Next = () =>{
-        if(wascontenterror){
-            document.getElementById("NANwarning").classList.add("hidden");
-            this.TryAgain();
-        }
+        // if(wascontenterror){
+        //     document.getElementById("NANwarning").classList.add("hidden");
+        //     this.TryAgain();
+        // }
 
         if(!useriscorrect){
             this.TryAgain();
@@ -741,7 +736,7 @@ export default class LevelFour extends Component {
         this.setState({ toptext : NewText});
     }
 
-    ReplaceTopTextFunction = (text) =>{
+    ReplaceTopText2Function = (text) =>{
         var NewText = text;
         this.setState({ toptext2 : NewText});
     }
@@ -771,38 +766,38 @@ export default class LevelFour extends Component {
             } 
         }
 
-        var thislevelArray = [];
+        // var thislevelArray = [];
 
-        for (var i = 0; i <arraynumberslist.length; i++) {
-            thislevelArray[i] = arraynumberslist[i];
-        }
+        // for (var i = 0; i <arraynumberslist.length; i++) {
+        //     thislevelArray[i] = arraynumberslist[i];
+        // }
 
 
-        mergeSortAlgorithm(thislevelArray, 0, arraySize - 1, compareLArray, compareRArray);
+        // mergeSortAlgorithm(thislevelArray, 0, arraySize - 1, compareLArray, compareRArray);
 
-        var splitsx = splitcheck();
+        // var splitsx = splitcheck();
 
-        var splitcountchecker= 0;
-        for (i=0; i< answerArray.length;i++){
-            //not at a split
-            if(splitsx[stepnum][i] !== "split") {
-                if(answerArray[i] !== thislevelArray[i+splitcountchecker]){
-                    useriscorrect=false;
-                }
-            }
+        // var splitcountchecker= 0;
+        // for (i=0; i< answerArray.length;i++){
+        //     //not at a split
+        //     if(splitsx[stepnum][i] !== "split") {
+        //         if(answerArray[i] !== thislevelArray[i+splitcountchecker]){
+        //             useriscorrect=false;
+        //         }
+        //     }
             
-            //is at a split
-            else {
-                splitcountchecker++;
-                if (answerArray[i] !== ""){
-                    useriscorrect=false;
-                }
-            } 
+        //     //is at a split
+        //     else {
+        //         splitcountchecker++;
+        //         if (answerArray[i] !== ""){
+        //             useriscorrect=false;
+        //         }
+        //     } 
 
 
-        }
+        // }
         
-        //go to next step-- make all cells in top uneditable
+        // //go to next step-- make all cells in top uneditable
 
     };
 
@@ -816,9 +811,9 @@ export default class LevelFour extends Component {
                     <a href="#about">Quit</a>
                     <c href="#level4">Restart</c>
                     <a href="#home">Home</a>
-                    {/* <b>Time Elapsed: {this.state.time.m}:{this.state.time.s}</b>
+                    {/* <b>Time Elapsed: {this.state.time.m}:{this.state.time.s}</b> */}
                     {/* return user to home after 5 minutes of inactivity using state*/}
-                    {/*{this.state.exitLevel && <Navigate to="/" replace={true} />}  */}
+                    {/* {this.state.exitLevel && <Navigate to="/" replace={true} />} */}
                 </div> {/*end of navbar */}
 
                 <div id= "startHeader" class="instructions">
@@ -896,45 +891,45 @@ export default class LevelFour extends Component {
 
             <div id="stepstablehidden"> {/*hide everything below to show next step */}
                 <div id="stepstable" class="centerdiv hidden">
-                    
                     <table class="buttonsTableStyle">
-                        <td width="5%" class="buttonsArrayCells">
-                            <div class="groupboxdivleft"> 
-                                <input 
-                                    type="button"
-                                    value="+"
-                                    id= "addgroupbutton"
-                                    class="groupBox"
-                                    onClick={additembox} 
-                                />
-                            </div>
-                        </td>
-                        
-                        <td class="itembigtablecells">
-                            <div>   
-                                <table class="itemsTableStyle">
-                                    <tr id="stepnumber-0">
-                                        <td>
-                                            <input class="itembox" id ="s0-i0" type="text"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                    
-                        <td width="5%" class="buttonsArrayCells">
-                            <div class="groupboxdivright"> 
-                                <input 
-                                    type="button"
-                                    value="-"
-                                    id= "subgroupbutton"
-                                    class="groupBox"
-                                    onClick={subitembox}
-                                />
-                            </div>
-                        </td>{/*for sub button cell*/}
-                    </table> {/*for tablebuttons */}
-
+                        <tr>
+                            <td width="5%" class="buttonsArrayCells">
+                                <div class="groupboxdivleft"> 
+                                    <input 
+                                        type="button"
+                                        value="+"
+                                        id= "addgroupbutton"
+                                        class="groupBox"
+                                        onClick={additembox} 
+                                    />
+                                </div>
+                            </td>
+                            
+                            <td class="itembigtablecells">
+                                <div>   
+                                    <table class="itemsTableStyle">
+                                        <tr id="stepnumber-0">
+                                            <td>
+                                                <input class="itembox" id ="s0-i0" type="text"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+            
+                            <td width="5%" class="buttonsArrayCells">
+                                <div class="groupboxdivright"> 
+                                    <input 
+                                        type="button"
+                                        value="-"
+                                        id= "subgroupbutton"
+                                        class="groupBox"
+                                        onClick={ subitembox }
+                                    />
+                                </div>
+                            </td>{/*for sub button cell*/}
+                        </tr>
+                    </table>{/*for stepstable */}
                 </div> {/*for stepstable */}
             </div>{/* for stepstablehidden */}
 
@@ -953,7 +948,6 @@ export default class LevelFour extends Component {
                     onClick={this.SplitChoice}
                     />
 
-                           
                 <input
                     type="button"
                     id= "mergechoicebttn"
@@ -983,7 +977,7 @@ export default class LevelFour extends Component {
                         value="Next"
                         id= "nextbttn" 
                         class="choiceBttn"
-                        onClick={this.Next}
+                        onClick={this.Next()}
                     />
             </div> 
 

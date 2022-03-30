@@ -1,11 +1,11 @@
 import React, { Component, useRef} from "react";
-import "./levelFour.css";
-import { Route, Navigate, Link } from "react-router-dom";
+import "./levelSix.css";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-var size = 20;
-var max = 50;
+var size = 15;
+var max = 20;
 var min = 1;
 
 var numbersArray = new Array(size);
@@ -278,6 +278,17 @@ function InNumberList(numbersArray, randomNum, size) {
 
 function Start() {
     //remove header and start button
+    size = parseInt(document.getElementById("sizebox").value);
+    min = parseInt(document.getElementById("minbox").value);
+    max = parseInt(document.getElementById("maxbox").value);
+
+    numbersArray = RandomNumbersArray(size, max, min);
+    const arraynumberslist = getItems(size);
+
+    var boxesremove = document.getElementById("todeleteuserinput");
+    boxesremove.remove();
+
+
     var startheaderremove = document.getElementById("startHeader");
     startheaderremove.remove();
     var startbttnremove = document.getElementById("startBttn");
@@ -354,7 +365,7 @@ function mergeSortAlgorithm(array, leftIndex, rightIndex, compareLArray, compare
     if(currentstepcheck === mergestepcurrentstep && !hasHitStep) {
         hasHitStep = true;
         for (let j = 0;j < arraySize; j++){
-            mergesortstepresult[j] = array[j];
+            mergesortstepresult = array[j];
         }
     }
 
@@ -471,74 +482,6 @@ export default class LevelFour extends Component {
         };
 
         this.onDragEnd = this.onDragEnd.bind(this);
-         //for timer
-        this.timer = 0;
-        this.startTimer = this.startTimer.bind(this);
-        this.countUp = this.countUp.bind(this);
-        this.clearTimer = this.clearTimer.bind(this);
-    }
-
-    // convert seconds to time
-    secondsToTime(secs) {
-        let hours = Math.floor(secs / (60 * 60));
-
-        let minute_divisor = secs % (60 * 60);
-        let minutes = Math.floor(minute_divisor / 60);
-
-        let seconds_divisor = minute_divisor % 60;
-        let seconds = Math.ceil(seconds_divisor);
-        // function to add the leading zeros
-        if (seconds < 10) {
-        seconds = "0" + seconds.toString();
-        }
-
-        let obj = {
-        "h": hours,
-        "m": minutes,
-        "s": seconds
-        };
-        return obj;
-    }
-
-    // initialize timer
-    componentDidMount= () => {
-        let initialTime = this.secondsToTime(this.state.seconds);
-        this.setState({ time: initialTime });
-    }
-
-    // start timer
-    startTimer = () => {
-        if (!this.state.timerIsActive) {
-        this.setState({ timerIsActive: true });
-        this.timer = setInterval(this.countUp, 1000);
-        }
-    }
-
-    // count up
-    countUp = () => {
-        // Add one second, set state so a re-render happens.
-        let seconds = this.state.seconds + 1;
-        this.setState({
-        time: this.secondsToTime(seconds),
-        seconds: seconds,
-        });
-
-        // check if user was inactive for 5 minutes
-        if (this.state.seconds - this.state.lastActive > 300) {
-        // set exitLevel state to true so that user will be returned to home
-        this.setState({ lastActive: this.state.seconds });
-        alert("You will be returned to home due to 5 minutes of inactivity");
-        this.setState({ exitLevel: true });
-        }
-    }
-
-    clearTimer = () => {
-        clearInterval(this.timer);
-    }
-
-    // log the time user was last active at
-    setLastActive = () => {
-        this.setState({ lastActive: this.state.seconds });
     }
 
     onDragEnd = (result) =>  {
@@ -812,18 +755,29 @@ export default class LevelFour extends Component {
         return (<div><DragDropContext onDragEnd={this.onDragEnd}><div id="root">{/* enclosing div*/}
             <div id="all the top stuff">
                 <div class="topnav">{/* navbar */}
-                    <b>MergeSort Algorithm: Level 4</b>
+                    <b>MergeSort Algorithm: Level 6</b>
                     <a href="#about">Quit</a>
                     <c href="#level4">Restart</c>
                     <a href="#home">Home</a>
-                    {/* <b>Time Elapsed: {this.state.time.m}:{this.state.time.s}</b>
-                    {/* return user to home after 5 minutes of inactivity using state*/}
-                    {/*{this.state.exitLevel && <Navigate to="/" replace={true} />}  */}
                 </div> {/*end of navbar */}
 
                 <div id= "startHeader" class="instructions">
-                    <h3> Click to Generate the Array</h3>
+                    <h3> Enter Your Numbers and Click to Generate the Array</h3>
                 </div>
+
+                <table id="todeleteuserinput" class="itemsTableStyle">
+                    <tr >
+                        <td>
+                            <input class="itembox" id="sizebox" type="text"/>
+                        </td>
+                        <td>
+                            <input class="itembox" id="minbox" type="text"/>
+                        </td>
+                        <td>
+                            <input class="itembox" id="maxbox" type="text"/>
+                        </td>
+                    </tr>
+                </table>
                 
                 <div id= "startBttn" className="centerdiv">
                     <input
@@ -921,7 +875,7 @@ export default class LevelFour extends Component {
                                 </table>
                             </div>
                         </td>
-                    
+                        
                         <td width="5%" class="buttonsArrayCells">
                             <div class="groupboxdivright"> 
                                 <input 
@@ -934,7 +888,6 @@ export default class LevelFour extends Component {
                             </div>
                         </td>{/*for sub button cell*/}
                     </table> {/*for tablebuttons */}
-
                 </div> {/*for stepstable */}
             </div>{/* for stepstablehidden */}
 
