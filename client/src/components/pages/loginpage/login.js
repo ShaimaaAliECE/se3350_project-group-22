@@ -41,4 +41,4 @@ export default class LoginPage extends React.Component {
             this.setErrorMsg(error.message);
           });
     }
-
+}
