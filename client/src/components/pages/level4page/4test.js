@@ -921,7 +921,7 @@ export default class LevelFour extends Component {
                                 </table>
                             </div>
                         </td>
-                    
+                        
                         <td width="5%" class="buttonsArrayCells">
                             <div class="groupboxdivright"> 
                                 <input 
@@ -934,7 +934,6 @@ export default class LevelFour extends Component {
                             </div>
                         </td>{/*for sub button cell*/}
                     </table> {/*for tablebuttons */}
-
                 </div> {/*for stepstable */}
             </div>{/* for stepstablehidden */}
 
