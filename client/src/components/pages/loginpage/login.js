@@ -112,3 +112,28 @@
 // // }
 
 // // // <ErrorMsg message={this.state.errorMsg}/>
+
+    handleInput(event){
+        event.preventDefault();
+        const target = event.target;
+        this.setState({
+        [target.name]: target.value,
+        });
+    }
+
+    setErrorMsg(message) {
+        this.setState({errorMsg: message});
+    }
+
+    handleSubmit(event){
+        this.setErrorMsg();
+        event.preventDefault();
+        Userfront.login({
+            method: "password",
+            email: this.state.email,
+            password: this.state.password,
+          }).catch((error) => {
+            this.setErrorMsg(error.message);
+          });
+    }
+}
